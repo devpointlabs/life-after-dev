@@ -6,6 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css'
 import {BrowserRouter } from 'react-router-dom'
 import AuthProvider from './providers/AuthProvider';
+import { initMiddleware, } from 'devise-axios';
+
+initMiddleware();
+
 
 ReactDOM.render(
   <AuthProvider>
@@ -20,3 +24,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
