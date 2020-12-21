@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Axios from "axios"
+import axios from "axios"
 
 export const AuthContext = React.createContext()
 export const AuthConsumer = AuthContext.Consumer;
@@ -17,7 +17,7 @@ const AuthProvider = (props) => {
       console.log(res);
     })
   }
-  handleLogin = (user, history) => {
+  const handleLogin = (user, history) => {
     axios.post("/api/auth/sign_in", user)
       .then( res => {
         setUser(res.data.data)
@@ -28,7 +28,7 @@ const AuthProvider = (props) => {
       })
   }
   
-  handleLogout = (history) => {
+  const handleLogout = (history) => {
     axios.delete("/api/auth/sign_out")
       .then( res => {
         setUser(null)
