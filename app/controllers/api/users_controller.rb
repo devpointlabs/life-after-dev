@@ -1,6 +1,9 @@
 class Api::UsersController < ApplicationController
   def index
   render json: User.all
+  render json: Project.all
+  render json: Comment.all
+  render json: Request.all
   end
 
   def show
