@@ -1,19 +1,8 @@
 class Api::ProjectsController < ApplicationController
-  def index
-  end
-
+  before_action :set_project only: [:show, :update, :destroy]
+  
   def show
+    render json: Project.all
   end
 
-  def new
-  end
-
-  def create
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-end
+ 

@@ -1,5 +1,6 @@
 class Api::CommentsController < ApplicationController
   def index
+
   end
 
   def show
