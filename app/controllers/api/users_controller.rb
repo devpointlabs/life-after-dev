@@ -1,5 +1,4 @@
 class Api::UsersController < ApplicationController
-  before_action :authenticate_user!
 
   def index
   # render json: { user: User.all, project: Project.all, comment: Comment.all, request: Request.all }
