@@ -1,15 +1,13 @@
 class Api::UsersController < ApplicationController
+
   def index
+  # render json: { user: User.all, project: Project.all, comment: Comment.all, request: Request.all }
+
     render json: User.all
   end
 
   def show
-  end
-
-  def new
-  end
-
-  def create
+    render json: User.current_user
   end
 
   def update
