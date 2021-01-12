@@ -1,4 +1,5 @@
 class Api::ProjectsController < ApplicationController
+<<<<<<< HEAD
   before_action :set_user, only: [:show, :update, :create, :destroy]
   before_action :set_project, only: [:show, :update, :destroy]
 
@@ -49,3 +50,12 @@ class Api::ProjectsController < ApplicationController
     @project = @user.projects.find(params[:id])
   end
 end
+=======
+  before_action :set_project only: [:show, :update, :destroy]
+  
+  def show
+    render json: Project.all
+  end
+
+ 
+>>>>>>> 0708d7a9a7b5d550b6eb305f0c29150d16da98b8

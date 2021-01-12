@@ -11,6 +11,7 @@ import Register from './components/Register';
 import FetchUser from './components/FetchUser';
 import ProtectedRoute from './components/ProtectedRoute';
 
+
 function App() {
   return (
     <>
