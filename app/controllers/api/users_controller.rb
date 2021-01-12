@@ -13,6 +13,10 @@ class Api::UsersController < ApplicationController
   def update
   end
 
+  def settings
+    render json: User.find(params[:id])
+  end
+
   def destroy
   end
 end

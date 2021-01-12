@@ -8,9 +8,9 @@
 
 require "faker"
 
-# User.create(email: "test@test.com", firstname: "Cottonheaded", lastname: "Ninnymuggins",
-# image: "this is an image", github_link: "githublink.com", personal_site: "personalsite.com", linkedin_link: "linkedin.com",
-# tag: "this is my project. You like?")
+User.create(email: "test@test.com", password: "password", firstname: "Cottonheaded", lastname: "Ninnymuggins",
+image: "this is an image", github_link: "githublink.com", personal_site: "personalsite.com", linkedin_link: "linkedin.com",
+tag: "this is my project. You like?")
 
 
 Project.create(title: "Project Title", picture: "This is a project picture", github_link: "projectgithublink.com", 
