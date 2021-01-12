@@ -4,11 +4,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :users do
-    resources :projects do
-      resources :comments
-      resources :requests
+      resources :projects, module: :users
   end
-end
-end
-end
+  resources :projects do
+    resources :comments
+    resources :requests
+      end
+    end
+  end
 

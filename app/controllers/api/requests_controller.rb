@@ -28,6 +28,8 @@ class Api::RequestsController < ApplicationController
   end
 
   def destroy
+    @requests.destroy
+    render json: @request
   end
 
   private
