@@ -3,11 +3,7 @@ class Api::CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
 
   def index
-<<<<<<< HEAD
     render json: @project.comments.all
-=======
-
->>>>>>> 0708d7a9a7b5d550b6eb305f0c29150d16da98b8
   end
 
   def show
