@@ -1,44 +1,37 @@
 class Api::RequestsController < ApplicationController
-  
-  
+  before_action :set_project
+  before_action :set_request, only: [:show, :destroy]
+
   def index
-    render json: @requests.user
-    render json: @requests.project
+    render json: @project.requests
   end
 
   def show
-    render json: @request.as_json(inclue: {project:{
-      include: :user
-    }}), status :ok
+    render json: @request
   end
 
   def new
   end
 
   def create
-    @requests = @requests.users.create(params.require(:request).permit(:user_id, :project_id))
+    @project.requests.create()
   end
 
   def update
-    request = Request.new(project_params)
-    if request.save
-      render json: request
-    else 
-      render json: { errors: request.errors}, status: :unprocessable
   end
 
   def destroy
-    @requests.destroy
+    @request.destroy
     render json: @request
   end
 
   private
 
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
+
   def set_request
-    @user =User.find
-
-    def set_project
-      @project = @project.requests.find
+    @request = @project.requests.find(params[:id])
+  end
 end
-
-def 
