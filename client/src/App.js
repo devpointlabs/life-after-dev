@@ -28,6 +28,7 @@ function App() {
               component={UserSettings}
             />
             <Route component={NoMatch} />
+
           </Switch>
         </Container>
       </FetchUser>
