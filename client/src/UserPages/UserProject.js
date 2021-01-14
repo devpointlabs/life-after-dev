@@ -1,7 +1,25 @@
-import { Card, Image, Button } from "semantic-ui-react";
-import style from "./style.css";
+import Axios from 'axios'
+import { useEffect, useState } from 'react'
+import { Card } from 'semantic-ui-react'
+import style from './style.css'
 
 export default (props) => {
+  const [comments, setComments] = useState([])
+
+  useEffect(()=> {
+    getComments()
+  },[])
+
+  const getComments = async () => {
+    try {
+      let res = await Axios.get(`/api/projects/${props.project.id}/comments`)
+      console.log(res.data)
+      setComments(res.data)
+    }
+    catch (err) {
+      console.log(err)
+    }
+  }
   return (
     <>
       <Card style={projectCardStyle}>
@@ -50,3 +68,4 @@ const projectCardStyle = {
 const internalCardStyle = {
   width: "150px",
 };
+

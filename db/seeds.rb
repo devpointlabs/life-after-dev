@@ -13,7 +13,7 @@ u1 = User.create(email: "test@test.com", password: "123456", firstname: "Cottonh
                  tag: "The four basic food groups are candy, candy canes, candy corn, and sugar.")
 
 u2 = User.create(email: "tester@test.com", password: "123456", firstname: "LifeAfterDev", lastname: "Lover",
-                 image: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610256956/photo-1608284465265-c2424b346179_mvpzjf.jpg", github_link: "github.com", personal_site: "personalsite.com", linkedin_link: "linkedin.com",
+                 image: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610257165/photo-1576076873449-f9530e1c50f3_skjiss.jpg", github_link: "github.com", personal_site: "personalsite.com", linkedin_link: "linkedin.com",
                  tag: "I've devoted my life to this website, it has everything I need!")
 
 20.times do

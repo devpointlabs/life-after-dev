@@ -14,7 +14,6 @@ import UserSettings from "./components/UserSettings";
 import LandingPage from "./pages/landing/LandingPage";
 import User from "./UserPages/User";
 
-
 function App() {
   return (
     <>
@@ -26,7 +25,6 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/user/:id" component={User} />
-
             <Route
               exact
               path="/profile/:id/settings"
