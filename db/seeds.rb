@@ -5,19 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 require "faker"
-
-User.create(email: "test@test.com", password: "password", firstname: "Cottonheaded", lastname: "Ninnymuggins",
-image: "this is an image", github_link: "githublink.com", personal_site: "personalsite.com", linkedin_link: "linkedin.com",
-tag: "this is my project. You like?")
-
-
-Project.create(title: "Project Title", picture: "This is a project picture", github_link: "projectgithublink.com", 
- description: "I love my project SO much", live_link: "this is my live link",  user_id: 1)
-
-Comment.create(body: "this is a comment", user_id: 1, project_id: 1)
-
-Request.create(user_id: 1, project_id: 1)
-
- puts "seeded baby"
+projects = []
+u1 = User.create(email: "test@test.com", password: "123456", firstname: "Cottonheaded", lastname: "Ninnymuggins",
+                 image: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610257165/photo-1576076873449-f9530e1c50f3_skjiss.jpg", github_link: "github.com", personal_site: "personalsite.com", linkedin_link: "linkedin.com",
+                 tag: "The four basic food groups are candy, candy canes, candy corn, and sugar.")
+u2 = User.create(email: "tester@test.com", password: "123456", firstname: "LifeAfterDev", lastname: "Lover",
+                 image: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610257165/photo-1576076873449-f9530e1c50f3_skjiss.jpg", github_link: "github.com", personal_site: "personalsite.com", linkedin_link: "linkedin.com",
+                 tag: "I've devoted my life to this website, it has everything I need!")
+20.times do
+  projects.push(u1.projects.create(title: Faker::Creature::Animal.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg", github_link: "github.com",
+                                   live_link: "livelink.com", description: Faker::Quote.most_interesting_man_in_the_world))
+  projects.push(u2.projects.create(title: Faker::Creature::Animal.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg", github_link: "github.com",
+                                   live_link: "livelink.com", description: Faker::Quote.most_interesting_man_in_the_world))
+end
+3.times do
+  projects.each do |p|
+    p.comments.create(body: Faker::Quotes::Shakespeare.hamlet_quote, user_id: p.user_id, project_id: p.id)
+  end
+end
+puts "seeded baby"
