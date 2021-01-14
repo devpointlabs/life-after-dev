@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Card, Grid, Header } from "semantic-ui-react";
 import UserProject from "./UserProject";
 import "./style.css";
+import { AuthContext } from "../providers/AuthProvider"; //Taylor added
 
 let imagelinks = {
   github:
@@ -13,6 +14,10 @@ let imagelinks = {
 };
 
 export default (props) => {
+  const userLoggedIn = useContext(AuthContext); //Taylor added
+  const [loginCheck, setLoginCheck] = useState(null); //Taylor added
+  const [showLoggedInComp, setShowLoggedInComp] = useState(false); //Taylor added
+
   const [user, setUser] = useState({});
   const [projects, setProjects] = useState([]);
   const [comments, setComments] = useState([]);
@@ -42,8 +47,13 @@ export default (props) => {
     }
   };
 
+  const renderLoggedIn = () => {
+    return <div>You're logged in!</div>;
+  };
+
   return (
     <>
+      {renderLoggedIn()}
       <div className="userSection">
         <Grid>
           <Grid.Row centered columns={2}>
