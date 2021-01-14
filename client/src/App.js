@@ -11,6 +11,7 @@ import Register from "./components/Register";
 import FetchUser from "./components/FetchUser";
 import ProtectedRoute from "./components/ProtectedRoute";
 import UserSettings from "./components/UserSettings";
+import LandingPage from "./pages/landing/LandingPage";
 import User from "./UserPages/User";
 
 function App() {
@@ -20,17 +21,16 @@ function App() {
       <FetchUser>
         <Container>
           <Switch>
-            <ProtectedRoute exact path="/" component={Home} />
+            <Route exact path="/" component={LandingPage} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
-            <Route exact path='/user/:id' component={User}/>
+            <Route exact path="/user/:id" component={User} />
             <Route
               exact
               path="/profile/:id/settings"
               component={UserSettings}
             />
             <Route component={NoMatch} />
-
           </Switch>
         </Container>
       </FetchUser>

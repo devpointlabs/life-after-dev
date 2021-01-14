@@ -10,32 +10,34 @@ let imagelinks = {
   personalsite:"https://image.flaticon.com/icons/png/512/25/25284.png",
 }
 
-export default (props) => {
-  const [user, setUser] = useState({})
-  const [projects, setProjects] = useState([])
-  const [comments, setComments] = useState([])
 
-  useEffect(()=> {
+export default (props) => {
+  const [user, setUser] = useState({});
+  const [projects, setProjects] = useState([]);
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
     getUser();
     getProjects();
-  },[])
-  
+  }, []);
+
   const getUser = async () => {
     try {
-      let res = await axios.get(`/api/users/${props.match.params.id}`)
+      let res = await axios.get(`/api/users/${props.match.params.id}`);
       //add flexible call
-      console.log(res.data)
-      setUser(res.data)
+      console.log(res.data);
+      setUser(res.data);
+    } catch (err) {
+      console.log(err);
     }
-    catch (err) {
-      console.log(err)
-    }
-  }
+  };
   const getProjects = async () => {
     try {
-      let res = await axios.get(`/api/users/${props.match.params.id}/projects`)
-      console.log(res.data)
-      setProjects(res.data)
+      let res = await axios.get(`/api/users/${props.match.params.id}/projects`);
+      console.log(res.data);
+      setProjects(res.data);
+    } catch (err) {
+      console.log(err);
     }
     catch (err) {
       console.log(err)
@@ -75,5 +77,5 @@ export default (props) => {
       ))}
     </Card.Group>
     </>
-  )
-}
+  );
+};
