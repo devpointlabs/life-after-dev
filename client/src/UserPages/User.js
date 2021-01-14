@@ -14,7 +14,7 @@ let imagelinks = {
 };
 
 export default (props) => {
-  const userLoggedIn = useContext(AuthContext); //Taylor added
+  const current_user = useContext(AuthContext); //Taylor added
   const [loginCheck, setLoginCheck] = useState(null); //Taylor added
   const [showLoggedInComp, setShowLoggedInComp] = useState(false); //Taylor added
 
@@ -48,7 +48,12 @@ export default (props) => {
   };
 
   const renderLoggedIn = () => {
-    return <div>You're logged in!</div>;
+    //Taylor added
+    if (current_user) {
+      return <div>You're logged in!</div>;
+    } else {
+      return "";
+    }
   };
 
   return (
