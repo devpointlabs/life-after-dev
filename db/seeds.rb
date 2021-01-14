@@ -5,9 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
 require "faker"
-
 projects = []
 
 u1 = User.create(email: "test@test.com", password: "123456", firstname: "Cottonheaded", lastname: "Ninnymuggins",
