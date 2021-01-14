@@ -1,22 +1,21 @@
-import React, { useContext } from "react"
-import { Link, useHistory, useLocation } from "react-router-dom"
-import { Menu } from "semantic-ui-react"
-import AuthConsumer, { AuthContext } from "../providers/AuthProvider.js"
+import React, { useContext } from "react";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { Menu } from "semantic-ui-react";
+import AuthConsumer, { AuthContext } from "../providers/AuthProvider.js";
 
 const Navbar1 = (props) => {
-    let history = useHistory();
-    let { pathname } = useLocation();
-    const { user, handleLogout } = useContext(AuthContext);
-  
-    const rightNavItems = () => {
+  let history = useHistory();
+  let { pathname } = useLocation();
+  const { user, handleLogout } = useContext(AuthContext);
+
+  const rightNavItems = () => {
     if (user) {
       return (
         <Menu.Menu position="right">
-          <Menu.Item name="Logout" onClick={()=> handleLogout(history)}/>
+          <Menu.Item name="Logout" onClick={() => handleLogout(history)} />
         </Menu.Menu>
-        )
-      }
-    else {
+      );
+    } else {
       return (
         <Menu.Menu position="right">
           <Link to="/login">
@@ -30,19 +29,27 @@ const Navbar1 = (props) => {
             />
           </Link>
         </Menu.Menu>
-      )
-      } 
+      );
     }
+  };
+
   return (
     <div>
       <Menu pointing secondary>
         <Link to="/">
           <Menu.Item name="home" id="home" active={pathname === "/"} />
         </Link>
+        <Link to="/project/1">
+          <Menu.Item
+            name="project1"
+            id="project"
+            active={pathname === "/project/1"}
+          />
+        </Link>
         {rightNavItems()}
       </Menu>
     </div>
-  )
-}
+  );
+};
 
-  export default Navbar1;
+export default Navbar1;
