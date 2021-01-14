@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Card } from 'semantic-ui-react'
+import { Button, Card, Image } from 'semantic-ui-react'
+import useRequestSend from '../Hooks/useRequestSend';
 import style from './style.css'
 
 export default (props) => {
@@ -39,7 +40,7 @@ export default (props) => {
         </Card.Content>
         <Card.Content extra>
           <div className="ui two buttons">
-            <Button basic color="blue">
+            <Button basic color="blue" onClick={() => useRequestSend(props.project.id, props.project.user_id)}>
               Request to join
             </Button>
           </div>

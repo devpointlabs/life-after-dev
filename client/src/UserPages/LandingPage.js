@@ -1,6 +1,6 @@
 import {useEffect, useState, prevState } from "react";
 import Axios from 'axios';
-import useInfiniteScroll from "../../hooks/useInfiniteScroll";
+import useInfiniteScroll from "../Hooks/useInfiniteScroll";
 
 
 
@@ -47,9 +47,6 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
-
-
-
 
 
 
