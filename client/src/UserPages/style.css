@@ -1,7 +1,37 @@
-.card{
-  display: grid;
-  grid-auto-rows: auto;
-  grid-gap: 1rem;
-  border: 2x solid #050505;
+.userSection {
+  margin-top: 3%
 }
 
+.namePlate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.imagelinks {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.test {
+  align-items: flex-end;
+}
+.imgtext {
+  float:left;
+  align-items: center;
+}
+.userpic{
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+.username {
+  float: left
+}
+.userTag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
