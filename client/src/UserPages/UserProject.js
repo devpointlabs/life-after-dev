@@ -1,6 +1,6 @@
 import Axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Image, Button } from 'semantic-ui-react'
 import style from './style.css'
 
 export default (props) => {
