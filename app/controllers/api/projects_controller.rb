@@ -1,9 +1,11 @@
 class Api::ProjectsController < ApplicationController
   
   def index
-    render json: Project.all
+   
+   
+    render json: Project.limit(5).offset(params[:offset])
   end
-end
+
 
   def show
     render json: Project.find(params[:id])
