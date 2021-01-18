@@ -1,27 +1,25 @@
 .header {
-  padding: 60px;
-  text-align: center;
-  background: #bc1a1a;
-  color: white;
+  padding: 40px;
+  text-align: left;
+  color: black;
   font-size: 30px;
 }
 
 .picture {
-  background-color: balck;
-  width: 300px;
+  width: 400px;
   border: 15px solid black;
-  padding: 60px;
-  margin: 20px;
+  margin: 5px;
+  float: left;
 }
 
 .description {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-end;
+  justify-content: space-around;
+  align-items: center;
+  float: center;
+  padding: 80px;
 }
 
-.github {
-  display: flex;
-  justify-content: flex-start;
-  align-self: center;
+.liveLink {
+  float: right;
 }
