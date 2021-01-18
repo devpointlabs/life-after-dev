@@ -26,7 +26,22 @@ const SearchBar = () => {
     setData({ search: e.target.value });
   };
 
-  return <Search onSearchChange={handleSearchChange} />;
+  return (
+    <div style={mastheadStyle}>
+      <h1 style={mastheadTextStyle}>Life After Dev</h1>
+      <Search onSearchChange={handleSearchChange} />
+    </div>
+  );
+};
+
+const mastheadStyle = {
+  borderStyle: "solid",
+  textAlign: "center",
+  height: "200px",
+};
+
+const mastheadTextStyle = {
+  paddingTop: "50px",
 };
 
 export default SearchBar;
