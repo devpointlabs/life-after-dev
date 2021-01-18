@@ -1,6 +1,8 @@
 import { useEffect, useState, prevState } from "react";
 import Axios from "axios";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
+import { Search } from "semantic-ui-react";
+import SearchBar from "../components/SearchBar";
 
 const LandingPage = () => {
   const [loading, setLoading] = useState(true);
@@ -39,6 +41,10 @@ const LandingPage = () => {
 
   return (
     <>
+      <div style={mastheadStyle}>
+        <h1 style={mastheadTextStyle}>Life After Dev</h1>
+        <SearchBar />
+      </div>
       <ul className="list-group mb-2">
         {data.map((data) => (
           <li style={bigTime} className="list-group-item">
@@ -49,6 +55,16 @@ const LandingPage = () => {
       {isFetching && "Fetching more list items..."}
     </>
   );
+};
+
+const mastheadStyle = {
+  borderStyle: "solid",
+  textAlign: "center",
+  height: "200px",
+};
+
+const mastheadTextStyle = {
+  paddingTop: "50px",
 };
 
 export default LandingPage;

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
-import { Card, Grid, Header } from "semantic-ui-react";
+import { Button, Card, Grid, Header, Icon } from "semantic-ui-react";
 import UserProject from "./UserProject";
 import "./style.css";
 import { AuthContext } from "../providers/AuthProvider"; //Taylor added
@@ -14,7 +14,7 @@ let imagelinks = {
 };
 
 export default (props) => {
-  const current_user = useContext(AuthContext); //Taylor added
+  const authContext = useContext(AuthContext); //Taylor added
   const [loginCheck, setLoginCheck] = useState(null); //Taylor added
   const [showLoggedInComp, setShowLoggedInComp] = useState(false); //Taylor added
 
@@ -47,18 +47,22 @@ export default (props) => {
     }
   };
 
-  const renderLoggedIn = () => {
+  const renderLoggedIn = () =>
     //Taylor added
-    if (current_user) {
-      return <div>You're logged in!</div>;
-    } else {
-      return "";
-    }
-  };
+    authContext.user.id == props.match.params.id && (
+      <div>
+        <Button
+          color="teal"
+          onClick={() => props.history.push(`/profile/${user.id}/settings`)}
+        >
+          <Icon name="pencil" />
+          Edit Profile
+        </Button>
+      </div>
+    );
 
   return (
     <>
-      {renderLoggedIn()}
       <div className="userSection">
         <Grid>
           <Grid.Row centered columns={2}>
@@ -68,6 +72,7 @@ export default (props) => {
                   {user.firstname} {user.lastname}{" "}
                 </Header>
                 <p>{user.tag}</p>
+                {renderLoggedIn()}
               </Grid.Column>
               <Grid.Column>
                 <img className="userpic" src={user.image} />
@@ -78,7 +83,7 @@ export default (props) => {
             <Grid.Column>
               <div className="socialPlate center">
                 <span className="socialText">Github</span>
-                <a href={`http://${user.github_link}`}>
+                <a href={`http://${user.github_link}`} target="_blank">
                   <img
                     className="socialIcon"
                     src={imagelinks.github}
@@ -93,7 +98,7 @@ export default (props) => {
             <Grid.Column>
               <div className="socialPlate center">
                 <span className="socialText">LinkedIn</span>
-                <a href={`http://${user.linkedin_link}`}>
+                <a href={`http://${user.linkedin_link}`} target="_blank">
                   <img
                     className="socialIcon"
                     src={imagelinks.linkedin}
@@ -108,7 +113,7 @@ export default (props) => {
             <Grid.Column>
               <div className="socialPlate center">
                 <span className="socialText">Personal Site</span>
-                <a href={`http://${user.personal_site}`}>
+                <a href={`http://${user.personal_site}`} target="_blank">
                   <img
                     className="socialIcon"
                     src={imagelinks.personalsite}
@@ -125,11 +130,15 @@ export default (props) => {
 
       <h2 className="center projectHeader">Projects</h2>
 
-      <Card.Group>
-        {projects.map((p) => (
-          <UserProject key={p.id} project={p} />
-        ))}
-      </Card.Group>
+      <Grid>
+        
+          
+            {projects.map((p) => (
+              <UserProject key={p.id} project={p} />
+            ))}
+          
+        
+      </Grid>
     </>
   );
 };

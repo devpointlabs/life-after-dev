@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { useEffect, useState } from "react";
-import { Card, Button, Image } from "semantic-ui-react";
+import { Card, Button, Image, Grid } from "semantic-ui-react";
 import style from "./style.css";
 
 export default (props) => {
@@ -19,31 +19,53 @@ export default (props) => {
       console.log(err);
     }
   };
+
   return (
     <>
-      <Card style={projectCardStyle}>
-        <Card.Content>
-          <Card.Header>{props.project.title}</Card.Header>
-          <Card.Description>{props.project.description}</Card.Description>
-          <Image floated="left" size="small" src={`${props.project.picture}`} />
-          <Card style={internalCardStyle}>
-            <h4>Contributors</h4>
-            <ul>
-              <li>User 1</li>
-              <li>User 1</li>
-              <li>User 1</li>
-              <li>User 1</li>
-            </ul>
+      <Grid.Row columns={2}>
+        <Grid.Column width={12}>
+          <Card style={projectCardStyle}>
+            <Card.Content>
+              <Card.Header>{props.project.title}</Card.Header>
+              <Card.Description>{props.project.description}</Card.Description>
+              <Image
+                floated="left"
+                size="small"
+                src={`${props.project.picture}`}
+              />
+              <Card style={internalCardStyle}>
+                <h4>Contributors</h4>
+                <ul>
+                  <li>User 1</li>
+                  <li>User 1</li>
+                  <li>User 1</li>
+                  <li>User 1</li>
+                </ul>
+              </Card>
+            </Card.Content>
+            <Card.Content extra>
+              <div className="ui two buttons">
+                <Button basic color="blue">
+                  Request to join
+                </Button>
+              </div>
+            </Card.Content>
           </Card>
-        </Card.Content>
-        <Card.Content extra>
-          <div className="ui two buttons">
-            <Button basic color="blue">
-              Request to join
+          <br />
+        </Grid.Column>
+        <Grid.Column width={4}>
+          <div>
+            <Button style={rightColStyle} basic color="violet">
+              Edit Project
             </Button>
           </div>
-        </Card.Content>
-      </Card>
+          <div>
+            <Button style={rightColStyle} basic color="red">
+              Delete Project
+            </Button>
+          </div>
+        </Grid.Column>
+      </Grid.Row>
       <br />
     </>
 
@@ -61,9 +83,14 @@ export default (props) => {
 };
 
 const projectCardStyle = {
-  width: "550px",
+  width: "600px",
+  marginLeft: "40px",
 };
 
 const internalCardStyle = {
   width: "150px",
+};
+
+const rightColStyle = {
+  marginRight: "40px",
 };
