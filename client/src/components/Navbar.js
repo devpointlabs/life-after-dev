@@ -13,8 +13,8 @@ const Navbar1 = (props) => {
       return (
         <Menu.Menu position="right">
           <Menu.Item
-            onClick={() => history.push(`/profile/${user.id}/settings`)}
-            icon="setting"
+            onClick={() => history.push(`/user/${user.id}`)}
+            icon="user"
           />
 
           <Menu.Item name="Logout" onClick={() => handleLogout(history)} />
