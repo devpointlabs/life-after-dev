@@ -39,12 +39,8 @@ class Api::RequestsController < ApplicationController
   def set_request
     @request = @project.requests.find(params[:id])
   end
-<<<<<<< HEAD
 
   def request_params
     params.require(:request).permit(:user_id, :project_id)
   end
 end
-=======
-end
->>>>>>> b4925cb36b7277f20e7b8e6360f355c70ecfd11a
