@@ -22,36 +22,57 @@ export default (props) => {
       setComments(res.data)
     }
     catch (err) {
-      console.log(err)
+      console(err)
     }
   }
+
   return (
     <>
-      <Card style={projectCardStyle}>
-        <Card.Content>
-          <Card.Header>{props.project.id}: {props.project.title}</Card.Header>
-          <Card.Description>{props.project.description}</Card.Description>
-          <Image floated="left" size="small" src={`${props.project.picture}`} />
-          <Card style={internalCardStyle}>
-            <h4>Contributors</h4>
-            <ul>
-              <li>User 1</li>
-              <li>User 1</li>
-              <li>User 1</li>
-              <li>User 1</li>
-            </ul>
-          </Card>
-        </Card.Content>
-        <Card.Content extra>
-          <div className="ui two buttons">
-            <Button basic color="blue" onClick={() => sendRequest(props.project.id, user.id)}>
-              {/* {(requestStatus === "none") ? "Request?" : (requestStatus === "contributor") ? "Already Joined" : "Pending request"} */}
+      <Grid.Row columns={2}>
+        <Grid.Column width={12}>
+          <Card style={projectCardStyle}>
+            <Card.Content>
+              <Card.Header>{props.project.title}</Card.Header>
+              <Card.Description>{props.project.description}</Card.Description>
+              <Image
+                floated="left"
+                size="small"
+                src={`${props.project.picture}`}
+              />
+              <Card style={internalCardStyle}>
+                <h4>Contributors</h4>
+                <ul>
+                  <li>User 1</li>
+                  <li>User 1</li>
+                  <li>User 1</li>
+                  <li>User 1</li>
+                </ul>
+              </Card>
+            </Card.Content>
+            <Card.Content extra>
+              <div className="ui two buttons">
+                <Button basic color="blue">
+                   {/* {(requestStatus === "none") ? "Request?" : (requestStatus === "contributor") ? "Already Joined" : "Pending request"} */}
               {requestStatus}
-
+                </Button>
+              </div>
+            </Card.Content>
+          </Card>
+          <br />
+        </Grid.Column>
+        <Grid.Column width={4}>
+          <div>
+            <Button style={rightColStyle} basic color="violet">
+              Edit Project
             </Button>
           </div>
-        </Card.Content>
-      </Card>
+          <div>
+            <Button style={rightColStyle} basic color="red">
+              Delete Project
+            </Button>
+          </div>
+        </Grid.Column>
+      </Grid.Row>
       <br />
     </>
 
@@ -69,10 +90,14 @@ export default (props) => {
 };
 
 const projectCardStyle = {
-  width: "550px",
+  width: "600px",
+  marginLeft: "40px",
 };
 
 const internalCardStyle = {
   width: "150px",
 };
 
+const rightColStyle = {
+  marginRight: "40px",
+};

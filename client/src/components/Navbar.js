@@ -12,7 +12,12 @@ const Navbar = (props) => {
     if (user) {
       return (
         <Menu.Menu position="right">
-          <Menu.Item name="logout" onClick={() => handleLogout(history)} />
+          <Menu.Item
+            onClick={() => history.push(`/user/${user.id}`)}
+            icon="user"
+          />
+
+          <Menu.Item name="Logout" onClick={() => handleLogout(history)} />
         </Menu.Menu>
       );
     } else {
@@ -38,6 +43,13 @@ const Navbar = (props) => {
       <Menu pointing secondary>
         <Link to="/">
           <Menu.Item name="home" id="home" active={pathname === "/"} />
+        </Link>
+        <Link to="/project/1">
+          <Menu.Item
+            name="project1"
+            id="project"
+            active={pathname === "/project/1"}
+          />
         </Link>
         {rightNavItems()}
       </Menu>

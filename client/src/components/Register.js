@@ -12,7 +12,6 @@ const Register = ({ history }) => {
   const password = useFormInput("", "Password");
   const passwordConfirmation = useFormInput("", "Password Confirmation");
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password.value === passwordConfirmation.value)
@@ -27,7 +26,6 @@ const Register = ({ history }) => {
     else alert("Passwords Do Not Match!");
   };
 
-
   return (
     <Segment basic>
       <Header as="h1" textAlign="center">
@@ -38,10 +36,7 @@ const Register = ({ history }) => {
         <Form.Input type="password" {...password} />
         <Form.Input type="password" {...passwordConfirmation} />
         <Segment textAlign="center" basic>
-          <Button
-            primary
-            type="submit"
-          >
+          <Button primary type="submit">
             Submit
           </Button>
         </Segment>

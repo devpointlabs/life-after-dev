@@ -1,0 +1,31 @@
+.landing_header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:90%;
+	height:200px;
+  background-color:#1313c4;
+  text-align: center;
+  margin: 0 auto;
+  
+}
+.site_purp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+  height:150px;
+  background-color:#293522;
+  margin: 30px 55px ;
+}
+
+.scroll{
+  display: flex;
+  align-items: flex-start;
+  justify-content:flex-start;
+  flex-direction: column;
+  }
+
+  .login{
+   
+  }

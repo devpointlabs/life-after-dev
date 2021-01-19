@@ -25,7 +25,7 @@ const UserSettings = ({ match, history }) => {
   const handleSubmit = () => {
     console.log("submit clicked");
     Axios.patch(`/api/users/${match.params.id}`, userData).then((res) => {
-      history.push("/");
+      history.push(`/user/${match.params.id}`);
       console.log("updated name", res);
     });
   };
@@ -35,6 +35,8 @@ const UserSettings = ({ match, history }) => {
       <h1>User Settings</h1>
       <Form onSubmit={handleSubmit}>
         <Button>Save Profile</Button>
+        <br />
+        <br />
         <Form.Input
           label="First Name"
           placeholder="First Name"
