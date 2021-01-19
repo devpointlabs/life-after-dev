@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
+import { Menu } from "semantic-ui-react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { Menu, Icon } from "semantic-ui-react";
-import AuthConsumer, { AuthContext } from "../providers/AuthProvider.js";
+import { AuthContext } from "../providers/AuthProvider";
 
-const Navbar1 = (props) => {
+const Navbar = (props) => {
   let history = useHistory();
   let { pathname } = useLocation();
   const { user, handleLogout } = useContext(AuthContext);
@@ -12,12 +12,7 @@ const Navbar1 = (props) => {
     if (user) {
       return (
         <Menu.Menu position="right">
-          <Menu.Item
-            onClick={() => history.push(`/profile/${user.id}/settings`)}
-            icon="setting"
-          />
-
-          <Menu.Item name="Logout" onClick={() => handleLogout(history)} />
+          <Menu.Item name="logout" onClick={() => handleLogout(history)} />
         </Menu.Menu>
       );
     } else {
@@ -37,6 +32,7 @@ const Navbar1 = (props) => {
       );
     }
   };
+
   return (
     <div>
       <Menu pointing secondary>
@@ -49,4 +45,4 @@ const Navbar1 = (props) => {
   );
 };
 
-export default Navbar1;
+export default Navbar;
