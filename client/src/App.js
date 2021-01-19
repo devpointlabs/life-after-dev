@@ -8,8 +8,8 @@ import Register from "./components/Register";
 import FetchUser from "./components/FetchUser";
 import Project from "./pages/project/Project";
 import UserSettings from "./components/UserSettings";
-import LandingPage from "./UserPages/LandingPage";
 import User from "./UserPages/User";
+import LandingPage from "./UserPages/LandingPage";
 
 function App() {
   return (
