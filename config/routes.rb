@@ -10,6 +10,6 @@ Rails.application.routes.draw do
       resources :comments
       resources :requests
     end
-    end
+    get 'user/:id/profile/settings', to: 'users#settings'
   end
-
+end

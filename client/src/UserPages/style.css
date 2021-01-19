@@ -1,0 +1,63 @@
+.userSection {
+  margin-top: 3%;
+}
+
+.namePlate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagelinks {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.test {
+  align-items: flex-end;
+}
+.imgtext {
+  float: left;
+  align-items: center;
+}
+.userpic {
+  border-radius: 50%;
+  height: 130px !important;
+  width: 130px !important;
+  margin-left: 20px;
+}
+.username {
+  float: left;
+}
+.userTag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialIcon {
+  height: 50px;
+  width: 50px;
+}
+
+.socialText {
+  font-size: 20px;
+  padding-right: 20px;
+}
+
+.socialPlate {
+  /* text-align: center; */
+}
+
+.divider {
+  margin: 60px 0px 40px 0px;
+}
+
+.center {
+  text-align: center;
+}
+
+.projectHeader {
+  padding-bottom: 30px;
+}

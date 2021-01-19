@@ -1,59 +1,14 @@
 class Api::ProjectsController < ApplicationController
-  #before_action :set_user, only: [:show, :update, :create, :destroy]
-  #before_action :set_project, only: [:show, :update, :destroy]
-
-  def index
-    render json: Project.all
-  end
   
+  def index
+   
+   
+    render json: Project.limit(5).offset(params[:offset])
+  end
+
+
   def show
     render json: Project.find(params[:id])
-     end
-    end
+  end
+end
 
-#   def new
-#   end
-
-#   def create
-#     project = @user.projects.new(project_params)
-#     if (project.save)
-#       render json: project
-#     else
-#       render json: project.errors, status: 422
-#     end
-#   end
-
-#   def update
-#     if (@project.update(project_params))
-#       render json: @project
-#     else
-#       render json: @project.errors, status: 422
-#     end
-#   end
-
-#   def destroy
-#     @project.destroy
-#     render json: @project
-#   end
-
-#   private
-
-#   def project_params
-#     params.require(:project).permit(:title, :picture, :github_link, :description, :live_link)
-#   end
-
-#   def set_user
-#     @user = User.find(params[:user_id])
-#   end
-
-#   def set_project
-#     @project = @user.projects.find(params[:id])
-#   end
-# end
-#   #before_action :set_project only: [:show, :update, :destroy]
-  
-#   def show
-#     render json: Project.all
-#   end
-# end
- 

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { Menu } from "semantic-ui-react";
+import { Menu, Icon } from "semantic-ui-react";
 import AuthConsumer, { AuthContext } from "../providers/AuthProvider.js";
 
 const Navbar1 = (props) => {
@@ -12,6 +12,11 @@ const Navbar1 = (props) => {
     if (user) {
       return (
         <Menu.Menu position="right">
+          <Menu.Item
+            onClick={() => history.push(`/user/${user.id}`)}
+            icon="user"
+          />
+
           <Menu.Item name="Logout" onClick={() => handleLogout(history)} />
         </Menu.Menu>
       );
