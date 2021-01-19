@@ -14,7 +14,12 @@ class Api::RequestsController < ApplicationController
   end
 
   def create
-    @project.requests.create()
+    request = Request.new(request_params)
+    if request.save
+      render json: request
+    else
+      render json: { errors: request.errors }, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -33,5 +38,9 @@ class Api::RequestsController < ApplicationController
 
   def set_request
     @request = @project.requests.find(params[:id])
+  end
+
+  def request_params
+    params.require(:request).permit(:user_id, :project_id)
   end
 end

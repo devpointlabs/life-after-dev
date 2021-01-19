@@ -1,9 +1,11 @@
-import axios from "axios";
-import { useState, useEffect, useContext } from "react";
+import axios from 'axios'
+import { useState, useEffect, useContext} from "react"
 import { Button, Card, Grid, Header, Icon } from "semantic-ui-react";
-import UserProject from "./UserProject";
-import "./style.css";
+import UserProject from './UserProject'
+import "./style.css"
+import Requests from '../components/Requests'
 import { AuthContext } from "../providers/AuthProvider"; //Taylor added
+
 
 let imagelinks = {
   github:
@@ -20,18 +22,15 @@ export default (props) => {
 
   const [user, setUser] = useState({});
   const [projects, setProjects] = useState([]);
-  const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    getUser();
     getProjects();
+    getUser();
   }, []);
 
   const getUser = async () => {
     try {
       let res = await axios.get(`/api/users/${props.match.params.id}`);
-      //add flexible call
-      console.log(res.data);
       setUser(res.data);
     } catch (err) {
       console.log(err);
@@ -40,7 +39,6 @@ export default (props) => {
   const getProjects = async () => {
     try {
       let res = await axios.get(`/api/users/${props.match.params.id}/projects`);
-      console.log(res.data);
       setProjects(res.data);
     } catch (err) {
       console.log(err);
