@@ -1,8 +1,6 @@
 import { useEffect, useState, prevState } from "react";
-
 import SearchBar from "../components/SearchBar";
 import Scroller from "../components/Scroller";
-
 const LandingPage = () => {
   return (
     <>
@@ -11,5 +9,4 @@ const LandingPage = () => {
     </>
   );
 };
-
 export default LandingPage;

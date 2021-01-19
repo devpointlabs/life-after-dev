@@ -1,24 +1,30 @@
-import Axios from "axios";
-import { useEffect, useState } from "react";
-import { Card, Button, Image, Grid } from "semantic-ui-react";
-import style from "./style.css";
+import Axios from 'axios'
+import { useContext, useEffect, useState } from 'react'
+import { Button, Card, Grid, Image } from 'semantic-ui-react'
+import useRequest from '../Hooks/useRequest';
+import { AuthContext } from '../providers/AuthProvider';
+import style from './style.css'
 
 export default (props) => {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState([])
+  const { user } = useContext(AuthContext)
+  const { checkRequests, sendRequest} = useRequest();
+  const [requestStatus, setRequestStatus] = useState("")
 
-  useEffect(() => {
-    getComments();
-  }, []);
+  useEffect(()=> {
+    getComments()
+    setRequestStatus(checkRequests(props.project.id, user.id))
+  },[])
 
   const getComments = async () => {
     try {
-      let res = await Axios.get(`/api/projects/${props.project.id}/comments`);
-      console.log(res.data);
-      setComments(res.data);
-    } catch (err) {
-      console.log(err);
+      let res = await Axios.get(`/api/projects/${props.project.id}/comments`)
+      setComments(res.data)
     }
-  };
+    catch (err) {
+      console(err)
+    }
+  }
 
   return (
     <>
@@ -46,7 +52,8 @@ export default (props) => {
             <Card.Content extra>
               <div className="ui two buttons">
                 <Button basic color="blue">
-                  Request to join
+                   {/* {(requestStatus === "none") ? "Request?" : (requestStatus === "contributor") ? "Already Joined" : "Pending request"} */}
+              {requestStatus}
                 </Button>
               </div>
             </Card.Content>

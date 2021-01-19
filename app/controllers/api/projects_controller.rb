@@ -1,5 +1,4 @@
 class Api::ProjectsController < ApplicationController
-  
   def index
    
    
@@ -11,4 +10,3 @@ class Api::ProjectsController < ApplicationController
     render json: Project.find(params[:id])
   end
 end
-
