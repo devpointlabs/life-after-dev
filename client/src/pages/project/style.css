@@ -1,0 +1,25 @@
+.header {
+  padding: 40px;
+  text-align: left;
+  color: black;
+  font-size: 30px;
+}
+
+.picture {
+  width: 400px;
+  border: 15px solid black;
+  margin: 5px;
+  float: left;
+}
+
+.description {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  float: center;
+  padding: 80px;
+}
+
+.liveLink {
+  float: right;
+}

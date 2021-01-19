@@ -37,11 +37,19 @@ const Navbar1 = (props) => {
       );
     }
   };
+
   return (
     <div>
       <Menu pointing secondary>
         <Link to="/">
           <Menu.Item name="home" id="home" active={pathname === "/"} />
+        </Link>
+        <Link to="/project/1">
+          <Menu.Item
+            name="project1"
+            id="project"
+            active={pathname === "/project/1"}
+          />
         </Link>
         {rightNavItems()}
       </Menu>
