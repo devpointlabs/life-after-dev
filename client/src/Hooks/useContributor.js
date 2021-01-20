@@ -9,7 +9,7 @@ export const useContributor = () => {
   // }
   const [contributors, setContributors] = useState([]);
   useEffect(()=> {
-    Axios.get("")
+    Axios.get("") //need to set custom route
       .then((res) => {
         setContributors(res.data);
       })
