@@ -5,6 +5,7 @@ import UserProject from './UserProject'
 import "./style.css"
 import Requests from '../components/Requests'
 import { AuthContext } from "../providers/AuthProvider"; //Taylor added
+import RequestBox from '../components/RequestBox';
 
 
 let imagelinks = {
@@ -59,8 +60,18 @@ export default (props) => {
       </div>
     );
 
+  //change this to a new component
+  const renderRequests = () => ( 
+    authContext.user.id == props.match.params.id && (
+      <div>
+        <RequestBox userProjects={projects}/> 
+      </div>
+    )
+  )
+
   return (
     <>
+      {/* {renderRequests()} */}
       <div className="userSection">
         <Grid>
           <Grid.Row centered columns={2}>
