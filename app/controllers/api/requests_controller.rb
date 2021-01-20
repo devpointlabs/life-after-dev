@@ -29,7 +29,7 @@ class Api::RequestsController < ApplicationController
     @request.destroy
     render json: @request
   end
-
+  
   private
 
   def set_project
@@ -41,6 +41,6 @@ class Api::RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:user_id, :project_id)
+    params.require(:request).permit(:user_id, :project_id, :contributor)
   end
 end
