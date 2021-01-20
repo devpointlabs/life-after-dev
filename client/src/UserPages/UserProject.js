@@ -1,30 +1,29 @@
-import Axios from 'axios'
-import { useContext, useEffect, useState } from 'react'
-import { Button, Card, Grid, Image } from 'semantic-ui-react'
-import useRequest from '../Hooks/useRequest';
-import { AuthContext } from '../providers/AuthProvider';
-import style from './style.css'
+import Axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { Button, Card, Grid, Image } from "semantic-ui-react";
+import useRequest from "../hooks/useRequest";
+import { AuthContext } from "../providers/AuthProvider";
+import style from "./style.css";
 
 export default (props) => {
-  const [comments, setComments] = useState([])
-  const { user } = useContext(AuthContext)
-  const { checkRequests, sendRequest} = useRequest();
-  const [requestStatus, setRequestStatus] = useState("")
+  const [comments, setComments] = useState([]);
+  const { user } = useContext(AuthContext);
+  const { checkRequests, sendRequest } = useRequest();
+  const [requestStatus, setRequestStatus] = useState("");
 
-  useEffect(()=> {
-    getComments()
-    setRequestStatus(checkRequests(props.project.id, user.id))
-  },[])
+  useEffect(() => {
+    getComments();
+    setRequestStatus(checkRequests(props.project.id, user.id));
+  }, []);
 
   const getComments = async () => {
     try {
-      let res = await Axios.get(`/api/projects/${props.project.id}/comments`)
-      setComments(res.data)
+      let res = await Axios.get(`/api/projects/${props.project.id}/comments`);
+      setComments(res.data);
+    } catch (err) {
+      console(err);
     }
-    catch (err) {
-      console(err)
-    }
-  }
+  };
 
   return (
     <>
@@ -52,8 +51,8 @@ export default (props) => {
             <Card.Content extra>
               <div className="ui two buttons">
                 <Button basic color="blue">
-                   {/* {(requestStatus === "none") ? "Request?" : (requestStatus === "contributor") ? "Already Joined" : "Pending request"} */}
-              {requestStatus}
+                  {/* {(requestStatus === "none") ? "Request?" : (requestStatus === "contributor") ? "Already Joined" : "Pending request"} */}
+                  {requestStatus}
                 </Button>
               </div>
             </Card.Content>

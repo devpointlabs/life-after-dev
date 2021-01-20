@@ -11,5 +11,6 @@ Rails.application.routes.draw do
       resources :requests
     end
     get "user/:id/profile/settings", to: "users#settings"
+    get "all_projects", to: "projects#all_projects"
   end
 end
