@@ -11,11 +11,17 @@ import "./style.css";
 //}
 
 export default function Project() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
 
+  ///api/users/1
   useEffect(() => {
     getData();
   }, []);
+  useEffect(() => {
+    //  getUser();
+  }, [data]);
+
+  //component didupdate
 
   const getData = async () => {
     try {
@@ -26,13 +32,30 @@ export default function Project() {
       alert(err);
     }
   };
+
   return (
     <div>
-      <h1 className="header">{data.title}</h1>
-      <img className="picture" src={data.picture} />
-      <p className="description">{data.description}</p>
-      <p className="github">{data.github_link} </p>
-      <p className="liveLink">{data.live_link}</p>
+      <h1 className="header">{data?.title}</h1>
+      <img className="picture" src={data?.picture} />
+      <p className="description">{data?.description}</p>
+      <a
+        href={data?.github_link}
+        onClick="console.log('The link was clicked.'); return false"
+      >
+        Github
+      </a>
+      <br />
+      <a
+        href={data?.live_link}
+        onClick="console.log('The link was clicked.'); return false"
+      >
+        Live_Link
+      </a>
+
+      <h2 className="project">Project Members</h2>
+      <div className="container">
+        {"user1"} {"user2"}
+      </div>
     </div>
   );
 }
