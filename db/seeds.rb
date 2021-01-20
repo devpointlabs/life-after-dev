@@ -16,7 +16,7 @@ u2 = User.create(email: "tester@test.com", password: "123456", firstname: "LifeA
                  image: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610657206/profile_pic_2_mffymy.jpg", github_link: "github.com", personal_site: "personalsite.com", linkedin_link: "linkedin.com",
                  tag: "I've devoted my life to this website, it has everything I need!")
 
-5.times do
+20.times do
   projects.push(u1.projects.create(title: Faker::Creature::Animal.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg", github_link: "github.com",
                                    live_link: "livelink.com", description: Faker::Quote.most_interesting_man_in_the_world))
   projects.push(u2.projects.create(title: Faker::Creature::Animal.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg", github_link: "github.com",
@@ -31,35 +31,4 @@ end
 
 puts "seeded baby"
 
-require "faker"
-groups = []
 
-u1 = User.create(email: "test@test.com", password: "123456", name: Faker::FunnyName.four_word_name)
-                
-u2 = User.create(email: "test2@test.com", password: "123456", name: Faker::FunnyName.four_word_name)
-                 
-u3 = User.create(email: "test3@test.com", password: "123456", name: Faker::FunnyName.four_word_name)
-                 
-
-20.times do
-  groups.push(u1.groups.create(title:Faker::University.suffix, description:Faker::TvShows::Friends.quote))
-                                   
-  groups.push(u2.groups.create(title:Faker::University.suffix, description:Faker::TvShows::Friends.quote))
-
-  groups.push(u3.groups.create(title:Faker::University.suffix, description:Faker::TvShows::Friends.quote)) 
-end
-
-
-5.times do 
-  groups.each do |c|
-    c.channels.create(subject:Faker::Games::SuperMario.location  public:true description:Faker::TvShows::DumbAndDumber.quote)
-
-  end
-
-3.times do
-  channels.each do |i|
-    i.comments.create(body:Faker::TvShows::MichaelScott.quote points:Faker::Number.within(range: 1..100) photo:"this is a photo" )
-  end
-end
-
-puts "seeded"

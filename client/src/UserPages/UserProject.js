@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import { Button, Card, Grid, Image } from 'semantic-ui-react'
-import useRequest from '../Hooks/useRequest';
+import useRequest from '../hooks/useRequest';
 import { AuthContext } from '../providers/AuthProvider';
 import style from './style.css'
 
