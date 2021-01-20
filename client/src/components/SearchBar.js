@@ -2,55 +2,30 @@ import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import SearchResults from "./SearchResults";
 
-const SearchBar = () => {
-  const [results, setResults] = useState([]);
-  const [error, setError] = useState(null);
+const SearchBar = ({ getResults }) => {
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState(null);
-
-  const getResults = () => {
-    Axios.get(`/api/all_projects/?query=${search}`)
-      .then((res) => {
-        console.log("search bar call", res.data);
-        setResults(res.data);
-        setError(null);
-        // debugger;
-      })
-      .catch((err) => {
-        setError(err.response);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
+  const [query, setQuery] = useState(null);
 
   const handleChange = (e) => {
     let keyword = e.target.value;
-    console.log(keyword);
-    setSearch(keyword);
+    setQuery(keyword);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit handled");
-    getResults();
+    getResults(query);
   };
-
-  const renderResults = () => {};
 
   return (
     <div style={mastheadStyle}>
       <h1 style={mastheadTextStyle}>Life After Dev</h1>
-      {/* <Search onSearchChange={handleSearchChange} /> */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Search..."
           onChange={(e) => handleChange(e)}
-          //onsubmit, add getresults method to useeffect
         />
       </form>
-      <h2>{results.title}</h2>
     </div>
   );
 };

@@ -4,8 +4,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def all_projects
-    render json: Project.all
-    Project.search(params[:query])
+    render json: Project.search(params[:query])
   end
 
   def show
