@@ -4,7 +4,6 @@ import AddIdeaModal from "./AddIdeaModal";
 
 const SearchResults = ({ results, query }) => {
   const renderAddIdea = () => {
-    console.log("Add Idea", results);
     return (
       <div style={spacingStyle}>
         <h3>{query}</h3>

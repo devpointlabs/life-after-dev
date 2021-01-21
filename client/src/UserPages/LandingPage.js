@@ -14,7 +14,6 @@ const LandingPage = () => {
   const getResults = (query) => {
     Axios.get(`/api/all_projects/?query=${query}`)
       .then((res) => {
-        console.log("search bar call", res.data);
         setResults(res.data);
         setError(null);
       })
