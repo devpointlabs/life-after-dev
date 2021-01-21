@@ -3,20 +3,20 @@ import { useContext, useEffect, useState } from 'react'
 import { Button, Card, Grid, Image } from 'semantic-ui-react'
 import useRequest from '../hooks/useRequest';
 import { AuthContext } from '../providers/AuthProvider';
+import { Link } from 'react-router-dom';
 import style from './style.css'
 
 export default (props) => {
   const [comments, setComments] = useState([])
   const { user } = useContext(AuthContext)
-  const { checkRequests, sendRequest} = useRequest();
-  const [requestStatus, setRequestStatus] = useState("")
+  const { checkRequests, sendRequest, requestStatus} = useRequest();
 
   useEffect(()=> {
     getComments()
-    setRequestStatus(checkRequests(props.project.id, user.id))
+    checkRequests(props.project.id, user.id)
   },[])
 
-  const getComments = async () => {
+  const getComments = async () => { //currently not rendered anywhere
     try {
       let res = await Axios.get(`/api/projects/${props.project.id}/comments`)
       setComments(res.data)
@@ -51,10 +51,21 @@ export default (props) => {
             </Card.Content>
             <Card.Content extra>
               <div className="ui two buttons">
-                <Button basic color="blue">
-                   {/* {(requestStatus === "none") ? "Request?" : (requestStatus === "contributor") ? "Already Joined" : "Pending request"} */}
-              {requestStatus}
+                {(requestStatus === "none") &&
+                <Button basic color="blue" onClick={()=> sendRequest(props.project.id, user.id)}>
+                {requestStatus}
                 </Button>
+                }
+                {(requestStatus === "pending") && 
+                <Button disabled>
+                  Request Pending
+                </Button>
+                }
+                {(requestStatus === "contributor") &&
+                <Button basic color="green" as={Link} to={`/project/${props.project.id}`}>
+                  Already Contributing - go to Project Page
+                </Button>
+                }
               </div>
             </Card.Content>
           </Card>

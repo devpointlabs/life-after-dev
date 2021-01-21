@@ -3,7 +3,7 @@ import { Container,} from "semantic-ui-react";
 import { useHistory, useLocation } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import Login from "../components/Login";
-import Requests from "../components/Requests";
+import RequestBox from "../components/Requests";
 
 
 const LandingLogin = () => {
@@ -23,7 +23,7 @@ const LandingLogin = () => {
       return(
         <Container style={loginContainer}>
         <h1>Pending Requests Here</h1>
-        {/* <Requests /> */}
+        {/* <RequestBox /> */}
         </Container>
       )
 

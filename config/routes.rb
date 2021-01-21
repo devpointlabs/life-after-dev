@@ -11,5 +11,6 @@ Rails.application.routes.draw do
       resources :requests
     end
     get "user/:id/profile/settings", to: "users#settings"
+    get "/projects/:project_id/get_contributors", to: "requests#get_contributors"
   end
 end

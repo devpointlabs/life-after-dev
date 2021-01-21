@@ -14,6 +14,7 @@ class Api::Users::ProjectsController < ApplicationController
     render json: Project.new
   end
 
+
   def create
     project = Project.new(project_params)
     if project.save

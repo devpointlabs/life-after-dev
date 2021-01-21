@@ -1,16 +1,13 @@
 import Axios from "axios";
 import { useState } from "react";
 
-export const useContributor = () => {
- //    request = {
-  //   user_id: user,
-  //   project_id: project,
-  //   contributor: false, 
-  // }
+export const useContributor = (project_id) => {
+
   const [contributors, setContributors] = useState([]);
   useEffect(()=> {
-    Axios.get("") //need to set custom route
+    Axios.get(`/projects/${project_id}/get_contributors`) 
       .then((res) => {
+        console.log(res)
         setContributors(res.data);
       })
       .catch((err) => {
@@ -19,4 +16,7 @@ export const useContributor = () => {
  
   },[])
 
+  return {contributors}
 }
+
+export default useContributor;

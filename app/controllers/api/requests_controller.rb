@@ -10,6 +10,10 @@ class Api::RequestsController < ApplicationController
     render json: @request
   end
 
+  def get_contributors
+    render json: @project.users.where("requests.contributor = true")
+   end
+  
   def new
   end
 
@@ -29,10 +33,11 @@ class Api::RequestsController < ApplicationController
     @request.destroy
     render json: @request
   end
-
+  
   private
 
   def set_project
+  
     @project = Project.find(params[:project_id])
   end
 
@@ -41,6 +46,6 @@ class Api::RequestsController < ApplicationController
   end
 
   def request_params
-    params.require(:request).permit(:user_id, :project_id)
+    params.require(:request).permit(:user_id, :project_id, :contributor)
   end
 end
