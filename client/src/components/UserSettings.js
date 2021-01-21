@@ -6,7 +6,7 @@ const UserSettings = ({ match, history }) => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    Axios.get(`/api/user/${match.params.id}/profile/settings`)
+    Axios.get(`/api/user/${match.params.id}`)
       .then((res) => {
         console.log(res.data);
         setUserData(res.data);

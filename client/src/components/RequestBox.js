@@ -1,7 +1,7 @@
-import Axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import usePendingRequests from "../hooks/usePendingRequests";
-import { AuthContext } from "../providers/AuthProvider";
+import Axios from "axios"
+import { useContext, useEffect, useState } from "react"
+import usePendingRequests from "../hooks/usePendingRequests"
+import { AuthContext } from "../providers/AuthProvider"
 
 export default (props) => {
   const { getUserProjects, userProjectList } = usePendingRequests();

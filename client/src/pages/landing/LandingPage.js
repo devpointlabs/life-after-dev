@@ -1,6 +1,7 @@
-import SearchBar from "../components/SearchBar";
-import Scroller from "../components/Scroller";
-import SearchResults from "../components/SearchResults";
+import SearchBar from "./SearchBar";
+import Scroller from "../../components/Scroller";
+import LandingLogin from "./LandingLogin";
+import SearchResults from "../../components/SearchResults";
 import { useState } from "react";
 import Axios from "axios";
 
@@ -32,10 +33,12 @@ const LandingPage = () => {
 
   return (
     <>
+      <LandingLogin />
       <SearchBar getResults={getResults} getQuery={getQuery} />
       <SearchResults results={results} toggle={toggle} query={query} />
       <Scroller />
     </>
   );
 };
+
 export default LandingPage;

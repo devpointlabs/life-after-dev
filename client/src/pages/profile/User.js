@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { useState, useEffect, useContext} from "react"
 import { Button, Card, Grid, Header, Icon } from "semantic-ui-react";
-import UserProject from './UserProject'
+import UserProject from '../profile/UserProject'
 import "./style.css"
-import Requests from '../pages/profile/Requests'
-import { AuthContext } from "../providers/AuthProvider"; //Taylor added
-import RequestBox from '../components/RequestBox';
+import Requests from "../../components/Requests";
+import { AuthContext } from "../../providers/AuthProvider"; //Taylor added
+
 
 
 let imagelinks = {
