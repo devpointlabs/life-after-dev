@@ -1,35 +1,30 @@
-import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Search } from "semantic-ui-react";
 
-const SearchBar = () => {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
+const SearchBar = ({ getResults, getQuery }) => {
   const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState(null);
 
-  useEffect(() => {
-    Axios.get("/api/projects")
-      .then((res) => {
-        console.log(res);
-        setData(res.data);
-        setError(null);
-      })
-      .catch((err) => {
-        setError(err.response);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+  const handleChange = (e) => {
+    let keyword = e.target.value;
+    setQuery(keyword);
+    getQuery(keyword);
+  };
 
-  const handleSearchChange = (e) => {
-    setData({ search: e.target.value });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    getResults(query);
   };
 
   return (
     <div style={mastheadStyle}>
       <h1 style={mastheadTextStyle}>Life After Dev</h1>
-      <Search onSearchChange={handleSearchChange} />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Search..."
+          onChange={(e) => handleChange(e)}
+        />
+      </form>
     </div>
   );
 };
