@@ -7,7 +7,7 @@ class Api::RequestsController < ApplicationController
   end
 
   def get_inactive_requests
-    render json: @project.requests.where('requests.contributor = false')
+    render json: @project.requests.where("requests.contributor = false")
   end
 
   def show
@@ -38,7 +38,7 @@ class Api::RequestsController < ApplicationController
     @request.destroy
     render json: @request
   end
-  
+
   private
 
   def set_project
@@ -50,6 +50,6 @@ class Api::RequestsController < ApplicationController
   end
 
   def request_params
-    params.permit(:user_id, :project_id, :contributor)
+    params.require(:request).permit(:user_id, :project_id, :contributor)
   end
 end

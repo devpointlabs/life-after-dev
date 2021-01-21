@@ -30,23 +30,33 @@ export default (props) => {
       let res = await Axios.put(`/api/projects/${props.project.id}/requests/${props.request.id}`,
       {
         project_id: props.project.id,
-        user_id: props.request.id,
+        user_id: props.request.user_id,
         contributor: true,
       })
+      console.log(res)
     }
     catch (err){
+      console.log(err)
+    }
+  }
 
+  const denyRequest = async () => {
+    try {
+      let res = await Axios.delete(`/api/projects/${props.project.id}/requests/${props.request.id}`)
+      console.log(res)
+    } catch (err) {
+      console.log(err)
     }
   }
   return (
     <>
       <h1>{user?.firstname} {user?.lastname} wants to join {props.project.title}</h1>
       {/* make function to connect edit request call */}
-      <Button> 
+      <Button onClick={()=> acceptRequest()}> 
         Accept
       </Button>
       {/* make function to connect delete call */}
-      <Button>
+      <Button onClick={()=> denyRequest()}>
         Decline
       </Button>
     </>
