@@ -21,7 +21,8 @@
 }
 
 .liveLink {
-  float: right;
+  display: flex;
+  justify-content: right;
 }
 
 .project {

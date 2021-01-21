@@ -12,14 +12,14 @@ import "./style.css";
 
 export default function Project() {
   const [data, setData] = useState(null);
-
+  // const [user, setUser] = useState();
   ///api/users/1
   useEffect(() => {
     getData();
   }, []);
-  useEffect(() => {
-    //  getUser();
-  }, [data]);
+  // useEffect(() => {
+  //   getUser();
+  // }, [data]);
 
   //component didupdate
 
@@ -32,6 +32,16 @@ export default function Project() {
       alert(err);
     }
   };
+
+  // const getUser = async () => {
+  //   try {
+  //     let res = await axios.get("/api/users/1");
+  //     setUser(res.data);
+  //     console.log(res);
+  //   } catch (err) {
+  //     alert(err);
+  //   }
+  // };
 
   return (
     <div>
