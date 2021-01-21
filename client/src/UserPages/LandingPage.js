@@ -3,7 +3,6 @@ import Scroller from "../components/Scroller";
 import SearchResults from "../components/SearchResults";
 import { useState } from "react";
 import Axios from "axios";
-import { Grid } from "semantic-ui-react";
 
 const LandingPage = () => {
   const [results, setResults] = useState([]);
@@ -18,7 +17,6 @@ const LandingPage = () => {
         console.log("search bar call", res.data);
         setResults(res.data);
         setError(null);
-        // debugger;
       })
       .catch((err) => {
         setError(err.response);
@@ -29,18 +27,14 @@ const LandingPage = () => {
       });
   };
 
-  const toggler = (query) => {
-    if (query !== null) {
-      setToggle(true);
-    } else {
-      setToggle(false);
-    }
+  const getQuery = (query) => {
+    setQuery(query);
   };
 
   return (
     <>
-      <SearchBar getResults={getResults} toggler={toggler} />
-      <SearchResults results={results} toggle={toggle} />
+      <SearchBar getResults={getResults} getQuery={getQuery} />
+      <SearchResults results={results} toggle={toggle} query={query} />
       <Scroller />
     </>
   );

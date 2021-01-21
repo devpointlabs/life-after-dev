@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import { Button, Grid, Segment } from "semantic-ui-react";
+import { Grid, Segment } from "semantic-ui-react";
 import AddIdeaModal from "./AddIdeaModal";
 
-const SearchResults = ({ results, toggle, query }) => {
-  const [toggled, setToggled] = useState(toggle);
-
+const SearchResults = ({ results, query }) => {
   const renderAddIdea = () => {
     console.log("Add Idea", results);
     return (
-      
       <div style={spacingStyle}>
-        <h3>Query Text</h3>
-        {toggle && <AddIdeaModal />}
+        <h3>{query}</h3>
+        {<AddIdeaModal query={query} />}
       </div>
     );
   };

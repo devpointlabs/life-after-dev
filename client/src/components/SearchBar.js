@@ -1,20 +1,18 @@
-import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import SearchResults from "./SearchResults";
 
-const SearchBar = ({ getResults, toggler }) => {
+const SearchBar = ({ getResults, getQuery }) => {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState(null);
 
   const handleChange = (e) => {
     let keyword = e.target.value;
     setQuery(keyword);
+    getQuery(keyword);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     getResults(query);
-    toggler(query);
   };
 
   return (

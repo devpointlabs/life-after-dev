@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { Button, Header, Image, Modal } from "semantic-ui-react";
+import { Button, Form, Header, Image, Modal } from "semantic-ui-react";
 
-const AddIdeaModal = () => {
+const AddIdeaModal = ({ query }) => {
   const [open, setOpen] = React.useState(false);
+
+  const handleSubmit = () => {};
+
+  const handleChange = () => {};
 
   return (
     <Modal
@@ -11,24 +15,71 @@ const AddIdeaModal = () => {
       open={open}
       trigger={<Button color="teal">Create New Idea</Button>}
     >
-      <Modal.Header>Select a Photo</Modal.Header>
+      <Modal.Header>Create New Idea</Modal.Header>
       <Modal.Content image>
-        <Image size="medium" src="/images/avatar/large/rachel.png" wrapped />
         <Modal.Description>
-          <Header>Default Profile Image</Header>
-          <p>
-            We've found the following gravatar image associated with your e-mail
-            address.
-          </p>
-          <p>Is it okay to use this photo?</p>
+          <Header>{query}</Header>
+          <Form id="newIdea" onSubmit={handleSubmit}>
+            <br />
+            <Form.Input
+              label="First Name"
+              placeholder="First Name"
+              name="firstname"
+              value=""
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="Last Name"
+              placeholder="Last Name"
+              name="lastname"
+              value=""
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="Image"
+              placeholder="Image"
+              name="image"
+              value=""
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="GitHub"
+              placeholder="GitHub Link"
+              name="github_link"
+              value=""
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="Personal Site"
+              placeholder="Personal Site URL"
+              name="personal_site"
+              value=""
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="Linkedin"
+              placeholder="Linkedin"
+              name="linkedin_link"
+              value=""
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="Tag"
+              placeholder="Tag"
+              name="tag"
+              value=""
+              onChange={handleChange}
+            />
+          </Form>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
         <Button color="black" onClick={() => setOpen(false)}>
-          Nope
+          Cancel
         </Button>
         <Button
-          content="Yep, that's me"
+          form="newIdea"
+          content="Create Idea"
           labelPosition="right"
           icon="checkmark"
           onClick={() => setOpen(false)}
