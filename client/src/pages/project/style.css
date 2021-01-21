@@ -21,5 +21,20 @@
 }
 
 .liveLink {
-  float: right;
+  display: flex;
+  justify-content: right;
+}
+
+.project {
+  padding: 40px;
+  text-align: left;
+  color: black;
+  font-size: 30px;
+}
+
+.container {
+  padding-left: 15px;
+  text-align: left;
+  display: flex;
+  color: black;
 }
