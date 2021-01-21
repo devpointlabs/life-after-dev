@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Container,} from "semantic-ui-react";
 import { useHistory, useLocation } from "react-router-dom";
-import { AuthContext } from "../providers/AuthProvider";
-import Login from "../components/Login";
-import RequestBox from "../components/Requests";
+import { AuthContext } from "../../providers/AuthProvider";
+import Login from "../../components/Login";
+import RequestBox from "../../components/Requests";
 
 
 const LandingLogin = () => {

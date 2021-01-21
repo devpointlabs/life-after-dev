@@ -10,8 +10,6 @@ const Scroller = () => {
   const [error, setError] = useState(null);
   const [moreProjects, setMoreProjects] = useState(true);
 
-  console.log(data);
-
   const loadData = (page) => {
     Axios.get(`/api/projects/?offset=${data.length}`)
       .then((res) => {

@@ -4,4 +4,10 @@ class Project < ApplicationRecord
   has_many :requests
   has_many :users, through: :requests
 
+  
+  def self.search(search) #class.search outside, pass params into ()
+    if search.length >= 3
+      Project.where('title ILIKE ?', "%#{search}%")
+    end
+  end
 end
