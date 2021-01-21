@@ -2,7 +2,7 @@ import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import SearchResults from "./SearchResults";
 
-const SearchBar = ({ getResults }) => {
+const SearchBar = ({ getResults, toggler }) => {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState(null);
 
@@ -14,6 +14,7 @@ const SearchBar = ({ getResults }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getResults(query);
+    toggler(query);
   };
 
   return (

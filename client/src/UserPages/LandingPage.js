@@ -10,6 +10,7 @@ const LandingPage = () => {
   const [query, setQuery] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [toggle, setToggle] = useState(false);
 
   const getResults = (query) => {
     Axios.get(`/api/all_projects/?query=${query}`)
@@ -28,10 +29,18 @@ const LandingPage = () => {
       });
   };
 
+  const toggler = (query) => {
+    if (query !== null) {
+      setToggle(true);
+    } else {
+      setToggle(false);
+    }
+  };
+
   return (
     <>
-      <SearchBar getResults={getResults} />
-      <SearchResults results={results} query={query} />
+      <SearchBar getResults={getResults} toggler={toggler} />
+      <SearchResults results={results} toggle={toggle} />
       <Scroller />
     </>
   );
