@@ -1,10 +1,25 @@
-import React, { useState } from "react";
+import Axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Form, Header, Image, Modal } from "semantic-ui-react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const AddIdeaModal = ({ query }) => {
   const [open, setOpen] = React.useState(false);
+  const [projects, setProjects] = useState([]);
+  const { user } = useContext(AuthContext);
 
-  const handleSubmit = () => {};
+  const addProject = async (newProject) => {
+    try {
+      let res = await Axios.post(`/api/users/${user.id}/projects`, newProject);
+      console.log("project added");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleSubmit = () => {
+    console.log("Idea submit clicked");
+  };
 
   const handleChange = () => {};
 
@@ -22,9 +37,9 @@ const AddIdeaModal = ({ query }) => {
           <Form id="newIdea" onSubmit={handleSubmit}>
             <br />
             <Form.Input
-              label="First Name"
-              placeholder="First Name"
-              name="firstname"
+              label="Description"
+              placeholder="Description"
+              name="description"
               value=""
               onChange={handleChange}
             />
