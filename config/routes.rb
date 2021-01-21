@@ -11,5 +11,6 @@ Rails.application.routes.draw do
       resources :requests
     end
     get "user/:id/profile/settings", to: "users#settings"
+    get "projects/:project_id/inactive", to: "requests#get_inactive_requests"
   end
 end

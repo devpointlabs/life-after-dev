@@ -3,7 +3,7 @@ import { useState, useEffect, useContext} from "react"
 import { Button, Card, Grid, Header, Icon } from "semantic-ui-react";
 import UserProject from './UserProject'
 import "./style.css"
-import Requests from '../components/Requests'
+import Requests from '../pages/profile/Requests'
 import { AuthContext } from "../providers/AuthProvider"; //Taylor added
 import RequestBox from '../components/RequestBox';
 
@@ -63,15 +63,15 @@ export default (props) => {
   //change this to a new component
   const renderRequests = () => ( 
     authContext.user.id == props.match.params.id && (
-      <div>
-        <RequestBox userProjects={projects}/> 
-      </div>
+      projects.map(p =>(
+        <Requests project={p}/>
+      ))  
     )
   )
 
   return (
     <>
-      {/* {renderRequests()} */}
+      {renderRequests()}
       <div className="userSection">
         <Grid>
           <Grid.Row centered columns={2}>
