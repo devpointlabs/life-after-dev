@@ -1,9 +1,11 @@
 class Api::Users::ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :update]
   before_action :set_project, only: [:show, :update, :destroy, :get_project_ids]
+  before_action :set_user
 
   def index
     render json: @user.projects
+    # render json: @project.users.where("requests.contributor = true")
   end
 
   def show

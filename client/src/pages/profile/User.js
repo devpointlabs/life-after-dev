@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { Button, Card, Grid, Header, Icon } from "semantic-ui-react";
-import UserProject from './UserProject'
-import "./style.css"
+import UserProject from "./UserProject";
+import "./style.css";
 import Requests from "../../components/Requests";
 import { AuthContext } from "../../providers/AuthProvider"; //Taylor added
+import ContributingProject from "./ContributingProject";
 
 let imagelinks = {
   github:
@@ -21,10 +22,12 @@ const User = (props) => {
 
   const [user, setUser] = useState({});
   const [projects, setProjects] = useState([]);
+  const [contributingProjects, setContributingProjects] = useState([]);
 
   useEffect(() => {
     getUser();
     getProjects();
+    getContributingProjects();
   }, []);
 
   const getUser = async () => {
@@ -39,15 +42,23 @@ const User = (props) => {
   const getProjects = async () => {
     try {
       let res = await axios.get(`/api/users/${props.match.params.id}/projects`);
-      console.log(res.data);
+      console.log("user projects", res.data);
       setProjects(res.data);
     } catch (err) {
       console.log(err);
     }
   };
 
+  const getContributingProjects = async () => {
+    try {
+      let res = await axios.get(`/api/users/${props.match.params.id}/requests`);
+      console.log("all requests", res);
+      setContributingProjects(res.data);
+    } catch (err) {}
+  };
+
   const renderLoggedIn = () =>
-    authContext.user.id == props.match.params.id && (
+    authContext.user?.id == props.match.params.id && (
       <div>
         <Button
           color="teal"
@@ -60,11 +71,11 @@ const User = (props) => {
     );
 
   // change this to a new component
-  // const renderRequests = () => ( 
+  // const renderRequests = () => (
   //   authContext.user.id == props.match.params.id && (
   //     projects.map(p =>(
   //       <Requests project={p}/>
-  //     ))  
+  //     ))
   //   )
   // )
 
@@ -141,6 +152,14 @@ const User = (props) => {
       <Grid>
         {projects.map((p) => (
           <UserProject key={p.id} project={p} />
+        ))}
+      </Grid>
+
+      <h2 className="center projectHeader">Contributing Projects</h2>
+      
+      <Grid>
+        {contributingProjects.map((c) => (
+          <ContributingProject key={c.id} contProject={c} />
         ))}
       </Grid>
     </>
