@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect, useContext} from "react"
 import { Button, Card, Grid, Header, Icon } from "semantic-ui-react";
-import UserProject from '../profile/UserProject'
+import UserProject from './UserProject'
 import "./style.css"
 import Requests from "../../components/Requests";
 import { AuthContext } from "../../providers/AuthProvider"; //Taylor added
@@ -25,8 +25,8 @@ export default (props) => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    getProjects();
     getUser();
+    getProjects();
   }, []);
 
   const getUser = async () => {
@@ -60,18 +60,18 @@ export default (props) => {
       </div>
     );
 
-  //change this to a new component
-  const renderRequests = () => ( 
-    authContext.user.id == props.match.params.id && (
-      projects.map(p =>(
-        <Requests project={p}/>
-      ))  
-    )
-  )
+  // change this to a new component
+  // const renderRequests = () => ( 
+  //   authContext.user.id == props.match.params.id && (
+  //     projects.map(p =>(
+  //       <Requests project={p}/>
+  //     ))  
+  //   )
+  // )
 
   return (
     <>
-      {renderRequests()}
+      {/* {renderRequests()} */}
       <div className="userSection">
         <Grid>
           <Grid.Row centered columns={2}>
