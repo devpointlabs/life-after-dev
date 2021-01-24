@@ -1,12 +1,10 @@
-import axios from 'axios'
-import { useState, useEffect, useContext} from "react"
+import axios from "axios";
+import { useState, useEffect, useContext } from "react";
 import { Button, Card, Grid, Header, Icon } from "semantic-ui-react";
-import UserProject from '../profile/UserProject'
-import "./style.css"
+import UserProject from "../profile/UserProject";
+import "./style.css";
 import Requests from "../../components/Requests";
 import { AuthContext } from "../../providers/AuthProvider"; //Taylor added
-
-
 
 let imagelinks = {
   github:
@@ -16,7 +14,7 @@ let imagelinks = {
   personalsite: "https://image.flaticon.com/icons/png/512/25/25284.png",
 };
 
-export default (props) => {
+const User = (props) => {
   const authContext = useContext(AuthContext); //Taylor added
   const [loginCheck, setLoginCheck] = useState(null); //Taylor added
   const [showLoggedInComp, setShowLoggedInComp] = useState(false); //Taylor added
@@ -37,9 +35,11 @@ export default (props) => {
       console.log(err);
     }
   };
+
   const getProjects = async () => {
     try {
       let res = await axios.get(`/api/users/${props.match.params.id}/projects`);
+      console.log(res.data);
       setProjects(res.data);
     } catch (err) {
       console.log(err);
@@ -47,7 +47,6 @@ export default (props) => {
   };
 
   const renderLoggedIn = () =>
-    //Taylor added
     authContext.user.id == props.match.params.id && (
       <div>
         <Button
@@ -61,17 +60,14 @@ export default (props) => {
     );
 
   //change this to a new component
-  const renderRequests = () => ( 
-    authContext.user.id == props.match.params.id && (
-      projects.map(p =>(
-        <Requests project={p}/>
-      ))  
-    )
-  )
+
+  // const renderRequests = () =>
+  //   authContext.user.id == props.match.params.id &&
+  //   projects.map((p) => <Requests project={p} />);
 
   return (
     <>
-      {renderRequests()}
+      {/* {renderRequests()} */}
       <div className="userSection">
         <Grid>
           <Grid.Row centered columns={2}>
@@ -140,14 +136,12 @@ export default (props) => {
       <h2 className="center projectHeader">Projects</h2>
 
       <Grid>
-        
-          
-            {projects.map((p) => (
-              <UserProject key={p.id} project={p} />
-            ))}
-          
-        
+        {projects.map((p) => (
+          <UserProject key={p.id} project={p} />
+        ))}
       </Grid>
     </>
   );
 };
+
+export default User;

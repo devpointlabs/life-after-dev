@@ -1,5 +1,5 @@
 class Api::Users::ProjectsController < ApplicationController
-  before_action :set_user 
+  before_action :authenticate_user!, only: [:create, :update]
   before_action :set_project, only: [:show, :update, :destroy, :get_project_ids]
 
   def index
@@ -16,7 +16,7 @@ class Api::Users::ProjectsController < ApplicationController
 
 
   def create
-    project = Project.new(project_params)
+    project = current_user.projects.new(project_params)
     if project.save
       render json: project
     else
@@ -48,6 +48,6 @@ class Api::Users::ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :picture, :github_link, :live_link, :description)
+    params.permit(:title, :picture, :github_link, :live_link, :description, :user_id)
   end
 end
