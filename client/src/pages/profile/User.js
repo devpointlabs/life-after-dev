@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { Button, Card, Grid, Header, Icon } from "semantic-ui-react";
-import UserProject from "../profile/UserProject";
-import "./style.css";
+import UserProject from './UserProject'
+import "./style.css"
 import Requests from "../../components/Requests";
 import { AuthContext } from "../../providers/AuthProvider"; //Taylor added
 
@@ -23,8 +23,8 @@ const User = (props) => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    getProjects();
     getUser();
+    getProjects();
   }, []);
 
   const getUser = async () => {
@@ -59,11 +59,14 @@ const User = (props) => {
       </div>
     );
 
-  //change this to a new component
-
-  // const renderRequests = () =>
-  //   authContext.user.id == props.match.params.id &&
-  //   projects.map((p) => <Requests project={p} />);
+  // change this to a new component
+  // const renderRequests = () => ( 
+  //   authContext.user.id == props.match.params.id && (
+  //     projects.map(p =>(
+  //       <Requests project={p}/>
+  //     ))  
+  //   )
+  // )
 
   return (
     <>

@@ -61,7 +61,6 @@ end
   projects.each do |p|
     def choose_other_user(p)
       choice = rand(1..6)
-
       if ( choice != p.user_id)
         p.requests.create(user_id: choice, project_id: p.id, contributor: Faker::Boolean.boolean  )
       else 
@@ -73,4 +72,3 @@ end
 end
 
 puts "seeded baby"
-
