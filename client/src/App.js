@@ -4,13 +4,14 @@ import { Route, Switch } from "react-router-dom";
 import NoMatch from "./components/NoMatch";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-import Dropzone from "./components/Dropzone"
+import Dropzone from "./components/Dropzone";
 import Register from "./components/Register";
 import FetchUser from "./components/FetchUser";
 import Project from "./pages/project/Project";
 import UserSettings from "./components/UserSettings";
 import LandingPage from "./pages/landing/LandingPage";
 import User from "./pages/profile/User";
+import StyleTest from "./components/StyleTest";
 
 function App() {
   return (
@@ -24,13 +25,14 @@ function App() {
             <Route exact path="/project/:id" component={Project} />
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/user/:id" component={User} />
-            <Route exact path="/dropzone" component={Dropzone}/>
+            <Route exact path="/dropzone" component={Dropzone} />
             <Route
               exact
               path="/profile/:id/settings"
               component={UserSettings}
             />
             <Route component={NoMatch} />
+            <Route exact path="/styletest" component={StyleTest} />
           </Switch>
         </Container>
       </FetchUser>

@@ -17,7 +17,7 @@ const Navbar = (props) => {
             icon="user"
           />
 
-          <Menu.Item name="Logout" onClick={() => handleLogout(history)}/>
+          <Menu.Item name="Logout" onClick={() => handleLogout(history)} />
         </Menu.Menu>
       );
     } else {
