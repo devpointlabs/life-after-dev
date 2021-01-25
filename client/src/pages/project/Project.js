@@ -45,29 +45,30 @@ export default function Project() {
 
   return (
     <div className="Project_Title">
-      <h3> {data?.title} </h3>
+      <h1> {data?.title} </h1>
       <div className="Project_Image">
         <img className="project_image" src={data?.picture} />
+
+        <div className="description">
+          <p>{data?.description}</p>
+        </div>
+        <div className="links">
+          <a
+            href={data?.github_link}
+            onClick="console.log('The link was clicked.'); return false"
+          >
+            Github
+          </a>
+          <br />
+          <a
+            href={data?.live_link}
+            onClick="console.log('The link was clicked.'); return false"
+          >
+            Live_Link
+          </a>
+        </div>
+        {data && <Comments project={data} />}
       </div>
-      <div className="description">
-        <p>{data?.description}</p>
-      </div>
-      <div className="links">
-        <a
-          href={data?.github_link}
-          onClick="console.log('The link was clicked.'); return false"
-        >
-          Github
-        </a>
-        <br />
-        <a
-          href={data?.live_link}
-          onClick="console.log('The link was clicked.'); return false"
-        >
-          Live_Link
-        </a>
-      </div>
-      {data && <Comments project={data} />}
     </div>
   );
 }
