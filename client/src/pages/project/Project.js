@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./style.css";
 
+
 // let logo ={
 //   picture:
 //     "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg",
@@ -22,6 +23,7 @@ export default function Project() {
   // }, [data]);
 
   //component didupdate
+  
 
   const getData = async () => {
     try {
@@ -62,7 +64,7 @@ export default function Project() {
         Live_Link
       </a>
 
-      <h2 className="project">Project Members</h2>
+      <h2 className="project">Contributors</h2>
       <div className="container">
         {"user1"} {"user2"}
       </div>
