@@ -14,7 +14,7 @@ const ContributingProject = (props) => {
 
   useEffect(() => {
     getComments();
-    checkRequests(props.contProject.id, user?.id);
+    checkRequests(props.contProject.project_id, user?.id);
     getProjectData();
   }, []);
 
@@ -23,7 +23,7 @@ const ContributingProject = (props) => {
       let res = await Axios.get(
         `/api/projects/${props.contProject.project_id}`
       );
-      console.log("project data", res);
+      // console.log("project data", res);
       setProject(res.data);
     } catch (err) {
       console.log("project data", err);
@@ -34,11 +34,11 @@ const ContributingProject = (props) => {
     //currently not rendered anywhere
     try {
       let res = await Axios.get(
-        `/api/projects/${props.contProject.id}/comments`
+        `/api/projects/${props.contProject.project_id}/comments`
       );
       setComments(res.data);
     } catch (err) {
-      console.log(err);
+      console.log("getComments error", err);
     }
   };
 

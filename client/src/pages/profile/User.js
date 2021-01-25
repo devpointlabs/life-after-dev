@@ -54,7 +54,9 @@ const User = (props) => {
       let res = await axios.get(`/api/users/${props.match.params.id}/requests`);
       console.log("all requests", res);
       setContributingProjects(res.data);
-    } catch (err) {}
+    } catch (err) {
+      console.log("getContributingProjects error", err);
+    }
   };
 
   const renderLoggedIn = () =>
@@ -156,7 +158,7 @@ const User = (props) => {
       </Grid>
 
       <h2 className="center projectHeader">Contributing Projects</h2>
-      
+
       <Grid>
         {contributingProjects.map((c) => (
           <ContributingProject key={c.id} contProject={c} />

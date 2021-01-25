@@ -22,7 +22,9 @@ const useRequest = (project, id) => {
           }
         });
       })
-      .catch(console.log);
+      .catch((err) => {
+        console.log("request hook error", err);
+      });
   };
 
   const sendRequest = (project, id) => {
@@ -32,7 +34,9 @@ const useRequest = (project, id) => {
       contributor: false,
     })
       .then((res) => console.log(res))
-      .catch(console.log);
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return {
