@@ -20,11 +20,13 @@ const ContributingProject = (props) => {
 
   const getProjectData = async () => {
     try {
-      let res = await Axios.get(`/api/projects/${props.contProject.id}`);
+      let res = await Axios.get(
+        `/api/projects/${props.contProject.project_id}`
+      );
       console.log("project data", res);
       setProject(res.data);
     } catch (err) {
-      console.log(err);
+      console.log("project data", err);
     }
   };
 
@@ -47,14 +49,8 @@ const ContributingProject = (props) => {
           <Card style={projectCardStyle}>
             <Card.Content>
               <Card.Header>{project.title}</Card.Header>
-              <Card.Description>
-                {project.description}
-              </Card.Description>
-              <Image
-                floated="left"
-                size="small"
-                src={`${project.picture}`}
-              />
+              <Card.Description>{project.description}</Card.Description>
+              <Image floated="left" size="small" src={`${project.picture}`} />
               <Card style={internalCardStyle}>
                 <h4>Contributors</h4>
                 <ul>
