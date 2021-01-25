@@ -54,7 +54,7 @@ export default function Project() {
         </div>
         <div className="links">
           <a
-            href={data?.github_link}
+            href={"https://github.com/devpointlabs/life-after-dev"}
             onClick="console.log('The link was clicked.'); return false"
           >
             Github
