@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Button, Form, Segment, Header } from "semantic-ui-react";
-import { useFormInput } from "../hooks/useFormInput";
+import { useFormInput } from "../Hooks/useFormInput";
 
 const Register = ({ history }) => {
   // const [email, setEmail] = useState("");

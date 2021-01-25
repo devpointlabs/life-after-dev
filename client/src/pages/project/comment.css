@@ -1,0 +1,38 @@
+.comment {
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0.75);
+}
+
+.comment_topinfo {
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding: 15px;
+  font-size: medium;
+}
+
+.comment_topinfo > p {
+  font-size: small;
+  color: grey;
+}
+.comment_image {
+  width: 100%;
+}
+
+.comment_options {
+  padding-top: 20px;
+  border-top: 1px solid lightgray;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: medium;
+  color: blue;
+  cursor: pointer;
+  padding: 15px;
+}
+
+.comment_options > p {
+  margin-left: 10px;
+}
