@@ -16,7 +16,7 @@ class Api::RequestsController < ApplicationController
 
   def get_contributors
     render json: @project.users.where("requests.contributor = true")
-   end
+  end
   
   def new
   end

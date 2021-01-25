@@ -6,23 +6,39 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import style from "./style.css";
 
-const UserProject = (props) => {
+const ContributingProject = (props) => {
   const [comments, setComments] = useState([]);
   const { user } = useContext(AuthContext);
   const { checkRequests, sendRequest, requestStatus } = useRequest();
+  const [project, setProject] = useState([]);
 
   useEffect(() => {
     getComments();
-    checkRequests(props.project.id, user?.id);
+    checkRequests(props.contProject.project_id, user?.id);
+    getProjectData();
   }, []);
+
+  const getProjectData = async () => {
+    try {
+      let res = await Axios.get(
+        `/api/projects/${props.contProject.project_id}`
+      );
+      // console.log("project data", res);
+      setProject(res.data);
+    } catch (err) {
+      console.log("project data", err);
+    }
+  };
 
   const getComments = async () => {
     //currently not rendered anywhere
     try {
-      let res = await Axios.get(`/api/projects/${props.project.id}/comments`);
+      let res = await Axios.get(
+        `/api/projects/${props.contProject.project_id}/comments`
+      );
       setComments(res.data);
     } catch (err) {
-      console(err);
+      console.log("getComments error", err);
     }
   };
 
@@ -32,13 +48,9 @@ const UserProject = (props) => {
         <Grid.Column width={12}>
           <Card style={projectCardStyle}>
             <Card.Content>
-              <Card.Header>{props.project.title}</Card.Header>
-              <Card.Description>{props.project.description}</Card.Description>
-              <Image
-                floated="left"
-                size="small"
-                src={`${props.project.picture}`}
-              />
+              <Card.Header>{project.title}</Card.Header>
+              <Card.Description>{project.description}</Card.Description>
+              <Image floated="left" size="small" src={`${project.picture}`} />
               <Card style={internalCardStyle}>
                 <h4>Contributors</h4>
                 <ul>
@@ -55,7 +67,7 @@ const UserProject = (props) => {
                   <Button
                     basic
                     color="blue"
-                    onClick={() => sendRequest(props.project.id, user.id)}
+                    onClick={() => sendRequest(props.contProject.id, user.id)}
                   >
                     {requestStatus}
                   </Button>
@@ -68,7 +80,7 @@ const UserProject = (props) => {
                     basic
                     color="green"
                     as={Link}
-                    to={`/project/${props.project.id}`}
+                    to={`/project/${props.contProject.id}`}
                   >
                     Already Contributing - go to Project Page
                   </Button>
@@ -107,7 +119,7 @@ const UserProject = (props) => {
   );
 };
 
-export default UserProject;
+export default ContributingProject;
 
 const projectCardStyle = {
   width: "600px",
