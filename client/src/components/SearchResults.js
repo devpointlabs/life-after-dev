@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Grid, Segment } from "semantic-ui-react";
-import AddIdeaModal from "./AddIdeaModal";
+import ProjectFormModal from "./ProjectFormModal";
 
 const SearchResults = ({ results, query }) => {
-  const renderAddIdea = () => {
+  const renderProjectFormModal = () => {
     return (
       <div style={spacingStyle}>
         <h3>{query}</h3>
-        {<AddIdeaModal query={query} />}
+        <ProjectFormModal query={query} />
       </div>
     );
   };
@@ -21,7 +21,7 @@ const SearchResults = ({ results, query }) => {
               return <Segment>{r.title}</Segment>;
             })}
           </Grid.Column>
-          <Grid.Column width={4}>{renderAddIdea()}</Grid.Column>
+          <Grid.Column width={4}>{renderProjectFormModal()}</Grid.Column>
         </Grid.Row>
       </Grid>
     </div>

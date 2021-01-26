@@ -14,6 +14,10 @@ class Api::RequestsController < ApplicationController
     render json: @request
   end
 
+  def get_contributors
+    render json: @project.users.where("requests.contributor = true")
+  end
+  
   def new
   end
 
@@ -42,6 +46,7 @@ class Api::RequestsController < ApplicationController
   private
 
   def set_project
+  
     @project = Project.find(params[:project_id])
   end
 

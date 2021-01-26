@@ -14,8 +14,6 @@ function Comment({ comment }) {
       .catch(console.log);
   }, []);
 
-  //This is the individual comment
-
   return (
     <div className="comment">
       <div className="comment_top">

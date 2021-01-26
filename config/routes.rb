@@ -5,13 +5,17 @@ Rails.application.routes.draw do
   namespace :api do
     resources :users do
       resources :projects, module: :users
+      resources :requests, module: :requests
     end
     resources :projects do
       resources :comments
       resources :requests
     end
-    get "user/:id/profile/settings", to: "users#settings"
+    
+    put "user/:user_id/update-picture", to: "users#update_picture"
+    get "/projects/:project_id/get_contributors", to: "requests#get_contributors"
     get "all_projects", to: "projects#all_projects"
     get "projects/:project_id/inactive", to: "requests#get_inactive_requests"
+
   end
 end

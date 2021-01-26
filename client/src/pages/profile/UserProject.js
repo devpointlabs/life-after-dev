@@ -1,19 +1,19 @@
 import Axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Button, Card, Grid, Image } from "semantic-ui-react";
-import useRequest from "../Hooks/useRequest";
-import { AuthContext } from "../providers/AuthProvider";
+import useRequest from "../../hooks/useRequest";
+import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import style from "./style.css";
 
-export default (props) => {
+const UserProject = (props) => {
   const [comments, setComments] = useState([]);
   const { user } = useContext(AuthContext);
   const { checkRequests, sendRequest, requestStatus } = useRequest();
 
   useEffect(() => {
     getComments();
-    checkRequests(props.project.id, user.id);
+    checkRequests(props.project.id, user?.id);
   }, []);
 
   const getComments = async () => {
@@ -106,6 +106,8 @@ export default (props) => {
     // </Card> */}
   );
 };
+
+export default UserProject;
 
 const projectCardStyle = {
   width: "600px",

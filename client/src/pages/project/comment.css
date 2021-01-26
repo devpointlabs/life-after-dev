@@ -36,3 +36,8 @@
 .comment_options > p {
   margin-left: 10px;
 }
+
+.post_bottom {
+  display: flex;
+  justify-content: flex-start;
+}

@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:update]
+  before_action :authenticate_user!, only: [:update, :update_picture]
   
   def index
     # render json: { user: User.all, project: Project.all, comment: Comment.all, request: Request.all }
@@ -13,16 +13,36 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      render @user
+    if @user.save
+      render json: @user
     else
-      render @user
+      render json: { errors: @user.errors.full_messages }, status: 422
     end
   end
 
-  def settings
-    render json: User.find(params[:id])
+  def update_picture
+    file = params[:file]
+    # user = current_user
+
+    if file
+      begin
+        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
+
+        if current_user.update(image: cloud_image["secure_url"]) #try other way here
+          render json: { data: current_user }
+        else
+          render json: { error: "error uploading image" }, status: 422
+        end
+        # (image: cloud_image["secure_url"])
+        
+      rescue => e
+        render json: { errors: e }, status: 422
+        return
+      end
+    end
   end
+
+
 
   def destroy
   end

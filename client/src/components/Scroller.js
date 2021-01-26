@@ -29,12 +29,7 @@ const Scroller = () => {
 
   return (
     <>
-      <div className="site_purp">
-        <h1>site purpose description</h1>
-      </div>
-      <div className="login">
-        <h1>log in logic here</h1>
-      </div>
+     
       <div className="scroll">
         <InfiniteScroll
           threshold={10}

@@ -20,7 +20,7 @@ export default (props) => {
         .then((res) => {
           filteredRequests.push(res.data);
         })
-        .catch(console.log);
+        .catch(console.log("get request error"));
     });
     setFilteredList(filteredRequests);
   };
