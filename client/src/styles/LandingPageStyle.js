@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+////// Search Bar Styles //////
 export const SearchBarContainer = styled.div`
   padding-top: 40px;
   padding-bottom: 30px;

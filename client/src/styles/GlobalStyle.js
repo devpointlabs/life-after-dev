@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const AppContainer = styled.div`
   min-height: 100vh;
   min-width: 100vh;
-  background-color: #2959fd;
+  background-color: #0559fd;
 `;
 // 2 sections, 'nav' and 'main'
 export const AppGrid = styled.div`
@@ -13,22 +13,21 @@ export const AppGrid = styled.div`
   height: 100%;
   grid-template-areas: "nav main";
   grid-template-rows: fit-content(100%);
-  grid-template-columns: 160px 1280px;
+  grid-template-columns: 165px 1275px;
   margin: auto;
   background-color: #f7f7f7;
 `;
 
-
 ////// Nav Styles ///////
 export const NavColumn = styled.div`
   grid-area: nav;
-  background-color: #2959fd;
+  background-color: #0559fd;
   min-height: 100vh;
 `;
 
 export const Logo = styled.img`
   display: block;
-  margin: 45px auto 90px auto;
+  margin: 43px auto 90px auto;
 `;
 
 export const NavIcon = styled.img`
