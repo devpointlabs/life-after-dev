@@ -1,36 +1,24 @@
 import Axios from "axios";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext } from "react";
 import { useDropzone } from "react-dropzone";
+import useCustomDrop from "../hooks/useCustomDrop";
+import { AuthContext } from "../providers/AuthProvider";
 
 export default (props) => {
   const [image, setImage] = useState(null);
+  const {updateProfile} = useCustomDrop()
+  const { user } = useContext(AuthContext);
 
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
     setImage(acceptedFiles[0]);
+    console.log(acceptedFiles[0])
   }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (image == null) {
-      alert("cant be blank");
-      return;
-    }
-    let data = new FormData();
-    data.append("file", image);
-    try {
-      let res = Axios.put(`/api/user/1/update-picture`, data)
-      console.log(res)
-    } catch (err) {
-      console.log(err);
-      alert("err occured");
-    }
-  };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
   return ( 
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={() => updateProfile(user, image)}>
         
         <p>image</p>
         <div {...getRootProps()}>
