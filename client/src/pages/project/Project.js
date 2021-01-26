@@ -1,7 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./style.css";
+<<<<<<< HEAD
+
+
+=======
 import Comments from "./Comments";
+>>>>>>> 0d16d5860a5008ee5b0e61068208bb890048ba49
 // let logo ={
 //   picture:
 //     "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg",
@@ -22,6 +27,7 @@ export default function Project() {
   // }, [data]);
 
   //component didupdate
+  
 
   const getData = async () => {
     try {
@@ -49,6 +55,11 @@ export default function Project() {
       <div className="Project_Image">
         <img className="project_image" src={data?.picture} />
 
+<<<<<<< HEAD
+      <h2 className="project">Contributors</h2>
+      <div className="container">
+        {"user1"} {"user2"}
+=======
         <div className="description">
           <p>{data?.description}</p>
         </div>
@@ -68,6 +79,7 @@ export default function Project() {
           </a>
         </div>
         {data && <Comments project={data} />}
+>>>>>>> 0d16d5860a5008ee5b0e61068208bb890048ba49
       </div>
     </div>
   );
