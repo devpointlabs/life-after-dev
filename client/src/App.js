@@ -12,30 +12,36 @@ import UserSettings from "./components/UserSettings";
 import LandingPage from "./pages/landing/LandingPage";
 import User from "./pages/profile/User";
 import StyleTest from "./components/StyleTest";
+import { AppContainer, AppGrid, Logo, NavColumn } from "./styles/GlobalStyle";
+import devpointlogo from "./icons/devpointlogo.png";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <FetchUser>
-        <Container>
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/project/:id" component={Project} />
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/user/:id" component={User} />
-            <Route exact path="/dropzone" component={Dropzone} />
-            <Route
-              exact
-              path="/profile/:id/settings"
-              component={UserSettings}
-            />
-            <Route component={NoMatch} />
-            <Route exact path="/styletest" component={StyleTest} />
-          </Switch>
-        </Container>
-      </FetchUser>
+      <AppContainer>
+        <AppGrid>
+          <Navbar />
+          <FetchUser>
+            <Container>
+              <Switch>
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/project/:id" component={Project} />
+                <Route exact path="/" component={LandingPage} />
+                <Route exact path="/user/:id" component={User} />
+                <Route exact path="/dropzone" component={Dropzone} />
+                <Route
+                  exact
+                  path="/profile/:id/settings"
+                  component={UserSettings}
+                />
+                <Route component={NoMatch} />
+                <Route exact path="/styletest" component={StyleTest} />
+              </Switch>
+            </Container>
+          </FetchUser>
+        </AppGrid>
+      </AppContainer>
     </>
   );
 }

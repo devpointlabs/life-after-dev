@@ -1,59 +1,77 @@
 import React, { useContext } from "react";
-import { Menu } from "semantic-ui-react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import {
+  Logo,
+  NavColumn,
+  NavIcon,
+  NavIconBottom,
+  AuthButton,
+} from "../styles/GlobalStyle";
+import devpointlogo from "../icons/devpointlogo.png";
+import homeicon from "../icons/homeicon.png";
+import profileicon from "../icons/profileicon.png";
+import settingsicon from "../icons/settingsicon.png";
+import logouticon from "../icons/logouticon.png";
 
 const Navbar = (props) => {
   let history = useHistory();
   let { pathname } = useLocation();
   const { user, handleLogout } = useContext(AuthContext);
 
-  const rightNavItems = () => {
+  const topNavItems = () => {
     if (user) {
       return (
-        <Menu.Menu position="right">
-          <Menu.Item
-            onClick={() => history.push(`/user/${user.id}`)}
-            icon="user"
-          />
-
-          <Menu.Item name="Logout" onClick={() => handleLogout(history)} />
-        </Menu.Menu>
+        <>
+          <Link to={`/user/${user.id}`}>
+            <NavIcon src={profileicon} />
+          </Link>
+          <Link to={`/profile/${user.id}/settings`}>
+            <NavIcon src={settingsicon} />
+          </Link>
+          <Link>
+            <NavIconBottom
+              src={logouticon}
+              onClick={() => handleLogout(history)}
+            />
+          </Link>
+        </>
       );
     } else {
       return (
-        <Menu.Menu position="right">
+        <>
           <Link to="/login">
-            <Menu.Item id="login" name="login" active={pathname === "/login"} />
+            <AuthButton id="login" name="login" active={pathname === "/login"}>
+              Login
+            </AuthButton>
           </Link>
           <Link to="/register">
-            <Menu.Item
+            <AuthButton
               id="register"
               name="register"
               active={pathname === "/register"}
-            />
+            >
+              Register
+            </AuthButton>
           </Link>
-        </Menu.Menu>
+        </>
       );
     }
   };
 
   return (
-    <div>
-      <Menu pointing secondary>
+    <NavColumn>
+      <div>
         <Link to="/">
-          <Menu.Item name="home" id="home" active={pathname === "/"} />
+          <Logo src={devpointlogo} />
+          {/* <Menu.Item name="home" id="home" active={pathname === "/"} /> */}
         </Link>
-        <Link to="/project/1">
-          <Menu.Item
-            name="project1"
-            id="project"
-            active={pathname === "/project/1"}
-          />
+        <Link to="/">
+          <NavIcon src={homeicon} />
         </Link>
-        {rightNavItems()}
-      </Menu>
-    </div>
+        {topNavItems()}
+      </div>
+    </NavColumn>
   );
 };
 
