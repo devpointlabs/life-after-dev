@@ -21,7 +21,7 @@ const useCustomDrop = (user_id, image) => {
   };
 
   return  {
-    updateProfile
+    updateProfile,
   }
 }
 
