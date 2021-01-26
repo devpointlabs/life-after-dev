@@ -6,6 +6,7 @@ import "./style.css";
 import Requests from "../../components/Requests";
 import { AuthContext } from "../../providers/AuthProvider"; //Taylor added
 import ContributingProject from "./ContributingProject";
+import { withRouter } from "react-router-dom";
 
 let imagelinks = {
   github:
@@ -28,7 +29,7 @@ const User = (props) => {
     getUser();
     getProjects();
     getContributingProjects();
-  }, []);
+  }, [props.match.params.id]);
 
   const getUser = async () => {
     try {
@@ -168,4 +169,4 @@ const User = (props) => {
   );
 };
 
-export default User;
+export default withRouter(User);

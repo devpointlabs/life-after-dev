@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
+// Full-width app container. Top level div.
 export const AppContainer = styled.div`
   min-height: 100vh;
   min-width: 100vh;
   background-color: #2959fd;
 `;
-
+// 2 sections, 'nav' and 'main'
 export const AppGrid = styled.div`
   display: grid;
   width: 1440px;
@@ -17,6 +18,8 @@ export const AppGrid = styled.div`
   background-color: #f7f7f7;
 `;
 
+
+////// Nav Styles ///////
 export const NavColumn = styled.div`
   grid-area: nav;
   background-color: #2959fd;

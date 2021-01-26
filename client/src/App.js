@@ -36,7 +36,8 @@ function App() {
                   component={UserSettings}
                 />
                 <Route component={NoMatch} />
-                <Route exact path="/styletest" component={StyleTest} />
+                <Route exact path="/styletest" component={StyleTest} />{" "}
+                {/* delete before production */}
               </Switch>
             </Container>
           </FetchUser>
