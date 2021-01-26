@@ -29,11 +29,12 @@ const Navbar = (props) => {
           <Link to={`/profile/${user.id}/settings`}>
             <NavIcon src={settingsicon} />
           </Link>
-
-          <NavIconBottom
-            src={logouticon}
-            onClick={() => handleLogout(history)}
-          />
+          <Link>
+            <NavIconBottom
+              src={logouticon}
+              onClick={() => handleLogout(history)}
+            />
+          </Link>
         </>
       );
     } else {
