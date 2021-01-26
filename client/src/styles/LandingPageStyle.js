@@ -22,3 +22,5 @@ export const SearchIcon = styled.img`
   top: -38px;
   left: 25px;
 `;
+
+
