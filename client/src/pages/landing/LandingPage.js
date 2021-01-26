@@ -33,8 +33,8 @@ const LandingPage = () => {
 
   return (
     <>
-      <LandingLogin />
       <SearchBar getResults={getResults} getQuery={getQuery} />
+      <LandingLogin />
       <SearchResults results={results} toggle={toggle} query={query} />
       <Scroller />
     </>
