@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Button, Form, Segment, Header } from "semantic-ui-react";
 import { useFormInput } from "../hooks/useFormInput";
-import {useDropzone} from 'react-dropzone';
+import { useDropzone } from "react-dropzone";
 
 const Register = ({ history }) => {
   // const [email, setEmail] = useState("");
@@ -37,8 +37,8 @@ const Register = ({ history }) => {
         Register
       </Header>
       <Form onSubmit={handleSubmit}>
-      <Form.Input autoFocus type="firstname" {...firstname} />
-      <Form.Input type="lastname" {...lastname} />
+        <Form.Input autoFocus type="firstname" {...firstname} />
+        <Form.Input type="lastname" {...lastname} />
         <Form.Input type="email" {...email} />
         <Form.Input type="password" {...password} />
         <Form.Input type="password" {...passwordConfirmation} />

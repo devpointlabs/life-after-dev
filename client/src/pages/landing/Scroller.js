@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import Axios from "axios";
-
 import { Card, Image, Button } from "semantic-ui-react";
-
 import InfiniteScroll from "react-infinite-scroller";
+import useContributor from "../../hooks/useContributor"
+import LandingProjectCard from "./LandingProjectCard"
+
 
 const Scroller = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [moreProjects, setMoreProjects] = useState(true);
-
+  const {contributors, getContributors} = useContributor()
+  
   const loadData = (page) => {
     Axios.get(`/api/projects/?offset=${data.length}`)
       .then((res) => {
         const newProjectList = data.concat(res.data);
         setData(newProjectList);
-
+        
         if (res.data.length === 0) {
           setMoreProjects(false);
         } else {
@@ -26,6 +28,7 @@ const Scroller = () => {
         console.log(err);
       });
   };
+
 
   return (
     <>
@@ -39,14 +42,13 @@ const Scroller = () => {
           loader={<div className="text-center">loading projects ...</div>}
         >
           {data.map((data) => (
-            <Card style={projectCardStyle}>
-              <Card.Content>
-                <Card.Header>
-                  {data.id} {data.title}
-                </Card.Header>
-                <Card.Description>{data.description}</Card.Description>
-              </Card.Content>
-            </Card>
+           <>
+           <br />
+           <br />
+           <LandingProjectCard key={data.id} data={data} contributors={contributors} />
+           <br />
+           <br />
+            </>
           ))}
         </InfiniteScroll>
         {moreProjects ? (

@@ -1,5 +1,5 @@
 import SearchBar from "./SearchBar";
-import Scroller from "../../components/Scroller";
+import Scroller from "./Scroller";
 import LandingLogin from "./LandingLogin";
 import SearchResults from "../../components/SearchResults";
 import { useState } from "react";
