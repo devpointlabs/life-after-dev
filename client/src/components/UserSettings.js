@@ -17,17 +17,22 @@ const UserSettings = ({ match, history }) => {
   }, []);
 
   const handleChange = (e) => {
+    console.log(e.target.value);
     setUserData({
       [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = () => {
-    console.log("submit clicked");
-    Axios.patch(`/api/users/${match.params.id}`, userData).then((res) => {
-      history.push(`/user/${match.params.id}`);
-      console.log("updated name", res);
-    });
+    console.log("submit clicked", userData);
+    Axios.patch(`/api/users/${match.params.id}`, userData)
+      .then((res) => {
+        history.push(`/user/${match.params.id}`);
+        console.log("updated name", res);
+      })
+      .catch((err) => {
+        console.log("user setting update error", err);
+      });
   };
 
   return (

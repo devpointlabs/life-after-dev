@@ -1,10 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# # This file should contain all the record creation needed to seed the database with its default values.
+# # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# #
+# # Examples:
+# #
+# #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+# #   Character.create(name: 'Luke', movie: movies.first)
+
 require "faker"
 projects = []
 
@@ -61,7 +62,6 @@ end
   projects.each do |p|
     def choose_other_user(p)
       choice = rand(1..6)
-
       if ( choice != p.user_id)
         p.requests.create(user_id: choice, project_id: p.id, contributor: Faker::Boolean.boolean  )
       else 
@@ -74,3 +74,25 @@ end
 
 puts "seeded baby"
 
+
+
+
+#### SEED DATA FOR TROUBLESHOOTING BELOW ####
+
+# @u1 = User.create(email: "test1@test.com", password: "123456", firstname: "Andrew", lastname: "Sloan",
+#                  image: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610257165/photo-1576076873449-f9530e1c50f3_skjiss.jpg", github_link: "Andrew_github.com", personal_site: "Andrew_personalsite.com", linkedin_link: "Andrew_linkedin.com",
+#                  tag: "The four basic food groups are candy, candy canes, candy corn, and sugar.")
+
+# @u2 = User.create(email: "test2@test.com", password: "123456", firstname: "Taylor", lastname: "Collins",
+#                  image: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610657206/profile_pic_2_mffymy.jpg", github_link: "Taylor_github.com", personal_site: "Taylor_personalsite.com", linkedin_link: "Taylor_linkedin.com",
+#                  tag: "I've devoted my life to this website, it has everything I need!")
+
+                
+# Project.create(title:"Project 1", user_id: 2)
+# Project.create(title:"Project 2", user_id: 2)
+# Project.create(title:"Project 3", user_id: 2)
+# Project.create(title:"Project 4", user_id: 2)
+
+# Request.create(project_id: 1, user_id: 1, contributor: false)
+# Request.create(project_id: 2, user_id: 1, contributor: true)
+# Request.create(project_id: 3, user_id: 1, contributor: true)
