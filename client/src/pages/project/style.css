@@ -1,15 +1,8 @@
-.header {
+.Project_Title > h1 {
   padding: 40px;
-  text-align: left;
+  text-align: center;
   color: black;
-  font-size: 30px;
-}
-
-.picture {
-  width: 400px;
-  border: 15px solid black;
-  margin: 5px;
-  float: left;
+  font-size: 60px;
 }
 
 .description {
@@ -20,21 +13,19 @@
   padding: 80px;
 }
 
-.liveLink {
-  display: flex;
-  justify-content: right;
+.project_image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
-
-.project {
-  padding: 40px;
-  text-align: left;
-  color: black;
-  font-size: 30px;
-}
-
-.container {
-  padding-left: 15px;
-  text-align: left;
+.links {
+  padding-top: 20px;
+  border-top: 1px solid lightgray;
   display: flex;
-  color: black;
+  justify-content: space-evenly;
+  font-size: medium;
+  color: blue;
+  cursor: pointer;
+  padding: 15px;
 }
