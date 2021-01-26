@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./style.css";
-
+import Comments from "./Comments";
 // let logo ={
 //   picture:
 //     "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg",
@@ -44,27 +44,30 @@ export default function Project() {
   // };
 
   return (
-    <div>
-      <h1 className="header">{data?.title}</h1>
-      <img className="picture" src={data?.picture} />
-      <p className="description">{data?.description}</p>
-      <a
-        href={data?.github_link}
-        onClick="console.log('The link was clicked.'); return false"
-      >
-        Github
-      </a>
-      <br />
-      <a
-        href={data?.live_link}
-        onClick="console.log('The link was clicked.'); return false"
-      >
-        Live_Link
-      </a>
+    <div className="Project_Title">
+      <h1> {data?.title} </h1>
+      <div className="Project_Image">
+        <img className="project_image" src={data?.picture} />
 
-      <h2 className="project">Project Members</h2>
-      <div className="container">
-        {"user1"} {"user2"}
+        <div className="description">
+          <p>{data?.description}</p>
+        </div>
+        <div className="links">
+          <a
+            href={"https://github.com/devpointlabs/life-after-dev"}
+            onClick="console.log('The link was clicked.'); return false"
+          >
+            Github
+          </a>
+          <br />
+          <a
+            href={data?.live_link}
+            onClick="console.log('The link was clicked.'); return false"
+          >
+            Live_Link
+          </a>
+        </div>
+        {data && <Comments project={data} />}
       </div>
     </div>
   );
