@@ -22,7 +22,7 @@ function App() {
         <AppGrid>
           <Navbar />
           <FetchUser>
-            <Container>
+            <Container style={{ width: 1160 }}>
               <Switch>
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/register" component={Register} />
@@ -37,7 +37,6 @@ function App() {
                 />
                 <Route component={NoMatch} />
                 <Route exact path="/styletest" component={StyleTest} />{" "}
-                {/* delete before production */}
               </Switch>
             </Container>
           </FetchUser>

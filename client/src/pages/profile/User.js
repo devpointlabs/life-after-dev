@@ -4,7 +4,7 @@ import { Button, Card, Grid, Header, Icon } from "semantic-ui-react";
 import UserProject from "./UserProject";
 import "./style.css";
 import Requests from "../../components/Requests";
-import { AuthContext } from "../../providers/AuthProvider"; //Taylor added
+import { AuthContext } from "../../providers/AuthProvider";
 import ContributingProject from "./ContributingProject";
 import { withRouter } from "react-router-dom";
 
@@ -17,9 +17,9 @@ let imagelinks = {
 };
 
 const User = (props) => {
-  const authContext = useContext(AuthContext); //Taylor added
-  const [loginCheck, setLoginCheck] = useState(null); //Taylor added
-  const [showLoggedInComp, setShowLoggedInComp] = useState(false); //Taylor added
+  const authContext = useContext(AuthContext);
+  const [loginCheck, setLoginCheck] = useState(null);
+  const [showLoggedInComp, setShowLoggedInComp] = useState(false);
 
   const [user, setUser] = useState({});
   const [projects, setProjects] = useState([]);
