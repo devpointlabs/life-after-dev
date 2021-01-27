@@ -7,6 +7,7 @@ import Requests from "../../components/Requests";
 import { AuthContext } from "../../providers/AuthProvider";
 import ContributingProject from "./ContributingProject";
 import { withRouter } from "react-router-dom";
+import UserProjects from "./UserProjects";
 
 let imagelinks = {
   github:
@@ -152,19 +153,11 @@ const User = (props) => {
 
       <h2 className="center projectHeader">Projects</h2>
 
-      <Grid>
-        {projects.map((p) => (
-          <UserProject key={p.id} project={p} />
-        ))}
-      </Grid>
-
-      <h2 className="center projectHeader">Contributing Projects</h2>
-
-      <Grid>
-        {contributingProjects.map((c) => (
-          <ContributingProject key={c.id} contProject={c} />
-        ))}
-      </Grid>
+      <UserProjects
+        projects={projects}
+        contributingProjects={contributingProjects}
+        userId={props.match.params.id}
+      />
     </>
   );
 };

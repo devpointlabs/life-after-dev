@@ -20,9 +20,10 @@ const UserProject = (props) => {
     //currently not rendered anywhere
     try {
       let res = await Axios.get(`/api/projects/${props.project.id}/comments`);
+      console.log("get comments", res.data);
       setComments(res.data);
     } catch (err) {
-      console(err);
+      console.log(err);
     }
   };
 
@@ -32,22 +33,20 @@ const UserProject = (props) => {
         <Grid.Column width={12}>
           <Card style={projectCardStyle}>
             <Card.Content>
-              <Card.Header>{props.project.title}</Card.Header>
-              <Card.Description>{props.project.description}</Card.Description>
+              <Image src={`${props.owner.image}`} floated="left" size="small" />
+              <h2>
+                {props.owner.firstname} {props.owner.lastname}
+              </h2>
               <Image
                 floated="left"
                 size="small"
                 src={`${props.project.picture}`}
               />
-              <Card style={internalCardStyle}>
-                <h4>Contributors</h4>
-                <ul>
-                  <li>User 1</li>
-                  <li>User 1</li>
-                  <li>User 1</li>
-                  <li>User 1</li>
-                </ul>
-              </Card>
+              <Link to={`/project/${props.project.id}`}>
+                <Card.Header>{props.project.title}</Card.Header>
+              </Link>
+              <Card.Description>{props.project.description}</Card.Description>
+              <p>{comments.length} comments</p>
             </Card.Content>
             <Card.Content extra>
               <div className="ui two buttons">

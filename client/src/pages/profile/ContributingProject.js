@@ -11,19 +11,31 @@ const ContributingProject = (props) => {
   const { user } = useContext(AuthContext);
   const { checkRequests, sendRequest, requestStatus } = useRequest();
   const [project, setProject] = useState([]);
+  const [otherOwner, setOtherOwner] = useState([]);
 
   useEffect(() => {
     getComments();
     checkRequests(props.contProject.project_id, user?.id);
     getProjectData();
-  }, []);
+    getOtherOwner();
+  }, [project.user_id]);
+
+  const getOtherOwner = async () => {
+    try {
+      let res = await Axios.get(`/api/users/${project.user_id}`);
+      console.log("get OTHER owner", res.data);
+      setOtherOwner(res.data);
+    } catch (err) {
+      console.log("get owners", err);
+    }
+  };
 
   const getProjectData = async () => {
     try {
       let res = await Axios.get(
         `/api/projects/${props.contProject.project_id}`
       );
-      // console.log("project data", res);
+      console.log("project data", res.data);
       setProject(res.data);
     } catch (err) {
       console.log("project data", err);
@@ -48,18 +60,14 @@ const ContributingProject = (props) => {
         <Grid.Column width={12}>
           <Card style={projectCardStyle}>
             <Card.Content>
+              <Image floated="left" size="small" src={`${otherOwner.image}`} />
+              <h2>
+                {otherOwner.firstname} {otherOwner.lastname}
+              </h2>
+              <Image floated="left" size="small" src={`${project.picture}`} />
               <Card.Header>{project.title}</Card.Header>
               <Card.Description>{project.description}</Card.Description>
-              <Image floated="left" size="small" src={`${project.picture}`} />
-              <Card style={internalCardStyle}>
-                <h4>Contributors</h4>
-                <ul>
-                  <li>User 1</li>
-                  <li>User 1</li>
-                  <li>User 1</li>
-                  <li>User 1</li>
-                </ul>
-              </Card>
+              <p>{comments.length} comments</p>
             </Card.Content>
             <Card.Content extra>
               <div className="ui two buttons">
