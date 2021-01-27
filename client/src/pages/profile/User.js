@@ -44,27 +44,27 @@ const User = (props) => {
       let res = await axios.get(`/api/users/${props.match.params.id}`);
       setUser(res.data);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
   const getProjects = async () => {
     try {
       let res = await axios.get(`/api/users/${props.match.params.id}/projects`);
-      console.log("user projects", res.data);
+      // console.log("user projects", res.data);
       setProjects(res.data);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
   const getContributingProjects = async () => {
     try {
       let res = await axios.get(`/api/users/${props.match.params.id}/requests`);
-      console.log("all requests", res);
+      // console.log("all requests", res);
       setContributingProjects(res.data);
     } catch (err) {
-      console.log("getContributingProjects error", err);
+      // console.log("getContributingProjects error", err);
     }
   };
 

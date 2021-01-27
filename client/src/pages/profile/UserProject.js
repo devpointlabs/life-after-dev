@@ -37,10 +37,10 @@ const UserProject = (props) => {
   const getComments = async () => {
     try {
       let res = await Axios.get(`/api/projects/${props.project.id}/comments`);
-      console.log("get comments", res.data);
+      // console.log("get comments", res.data);
       setComments(res.data);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -69,7 +69,6 @@ const UserProject = (props) => {
             <ProjectTitle>{props.project.title}</ProjectTitle>
           </Link>
         </CardDiv>
-
         <CardDiv>{props.project.description}</CardDiv>
         <CardDiv>
           <CardIcon src={commenticon} />

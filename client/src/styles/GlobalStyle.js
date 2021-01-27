@@ -49,11 +49,10 @@ export const AuthButton = styled.button`
   margin: 40px auto 0 auto;
 `;
 
-
 ///// Main Styles /////
 
 export const MainColumn = styled.div`
-grid-area: nav;
-background-color: #0559fd;
-min-height: 100vh;
+  grid-area: nav;
+  background-color: #0559fd;
+  min-height: 100vh;
 `;

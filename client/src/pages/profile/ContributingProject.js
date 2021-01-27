@@ -26,7 +26,6 @@ const ContributingProject = (props) => {
     getComments();
     checkRequests(props.contProject.project_id, user?.id);
     getProjectData();
-    
   }, []);
 
   const getProjectData = async () => {
@@ -34,12 +33,12 @@ const ContributingProject = (props) => {
       let res = await Axios.get(
         `/api/projects/${props.contProject.project_id}`
       );
-      console.log("project data", res.data);
+      // console.log("project data", res.data);
       setProject(res.data);
       let ownerRes = await Axios.get(`/api/users/${res.data.user_id}`);
       setOtherOwner(ownerRes.data);
     } catch (err) {
-      console.log("project data", err);
+      // console.log("project data", err);
     }
   };
 
@@ -51,7 +50,7 @@ const ContributingProject = (props) => {
       );
       setComments(res.data);
     } catch (err) {
-      console.log("getComments error", err);
+      // console.log("getComments error", err);
     }
   };
 

@@ -9,7 +9,7 @@ const EditProjectModal = ({ project, updateProjects }) => {
   const [projects, setProjects] = useState([]);
   const { user } = useContext(AuthContext);
 
-  console.log("project", project);
+  // console.log("project", project);
 
   const getProjects = () => {};
 
@@ -19,23 +19,22 @@ const EditProjectModal = ({ project, updateProjects }) => {
         `/api/users/${user.id}/projects/${project.id}`,
         updatedProject
       );
-      console.log("edit Project success", updatedProject);
+      // console.log("edit Project success", updatedProject);
     } catch (err) {
-      console.log("edit project error", err);
+      // console.log("edit project error", err);
     }
   };
 
   const addProject = async (newProject) => {
     try {
       let res = await Axios.post(`/api/users/${user.id}/projects`, newProject);
-      console.log("project added", res);
+      // console.log("project added", res);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
   const closeModal = () => {
-    // handleSubmit();
     setOpen(false);
   };
 

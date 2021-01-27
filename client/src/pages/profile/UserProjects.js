@@ -30,10 +30,10 @@ const UserProjects = ({
   const getOwner = async () => {
     try {
       let res = await Axios.get(`/api/users/${userId}`);
-      console.log("get YOU owner", res.data);
+      // console.log("get YOU owner", res.data);
       setOwner(res.data);
     } catch (err) {
-      console.log("get owners", err);
+      // console.log("get owners", err);
     }
   };
 

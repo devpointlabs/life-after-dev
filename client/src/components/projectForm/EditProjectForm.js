@@ -28,7 +28,7 @@ const EditProjectForm = ({
   });
 
   const handleSubmit = (e) => {
-    console.log("Project Edit submit clicked");
+    // console.log("Project Edit submit clicked");
     editProject(project);
     updateProjects(project);
     closeModal();
