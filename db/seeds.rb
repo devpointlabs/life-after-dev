@@ -58,17 +58,35 @@ puts "users created successfully"
   end
 end
 
-4.times do
-  projects.each do |p|
-    def choose_other_user(p)
-      choice = rand(1..6)
-      if ( choice != p.user_id)
-        p.requests.create(user_id: choice, project_id: p.id, contributor: Faker::Boolean.boolean  )
-      else 
-        choose_other_user(p)
-      end
-    end
-    choose_other_user(p)
+
+
+
+projects.each do |p|
+  users = [1,2,3,4,5,6]
+  4.times do 
+    #make arr1 with [1,2,3,4,5,6]
+    #first remove user_id from array
+    #arr1.sample -> create request with user_id = arr1.sample
+    #remove that ^^ from arr1
+
+    puts users
+    
+    users.delete(p.user_id)
+    requester = users.sample
+
+    p.requests.create(user_id: requester, project_id: p.id, contributor: Faker::Boolean.boolean )
+
+    users.delete(requester)
+
+    # def choose_other_user(p)
+    #   choice = rand(1..6)
+    #   if ( choice != p.user_id)
+    #     p.requests.create(user_id: choice, project_id: p.id, contributor: Faker::Boolean.boolean  )
+    #   else 
+    #     choose_other_user(p)
+    #   end
+    # end
+    # choose_other_user(p)
   end
 end
 

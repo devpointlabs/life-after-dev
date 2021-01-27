@@ -5,11 +5,29 @@ import useRequest from "../../hooks/useRequest";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import style from "./style.css";
+import {
+  CardCol,
+  CardContainer,
+  CardsContainer,
+  UserPic,
+  CardHeader,
+  UserName,
+  CrudIcon,
+  ProjectPic,
+  CardDiv,
+  ProjectTitle,
+  CardIcon,
+} from "../../styles/ProfileProjectStyle";
+import ProjectFormModal from "../../components/ProjectFormModal";
+import EditProjectModal from "../../components/EditProjectModal";
+import trashicon from "../../icons/Bin.png";
+import commenticon from "../../icons/Comment.png";
 
 const UserProject = (props) => {
   const [comments, setComments] = useState([]);
   const { user } = useContext(AuthContext);
   const { checkRequests, sendRequest, requestStatus } = useRequest();
+  const { toggle, setToggle } = useState(false);
 
   useEffect(() => {
     getComments();
@@ -17,107 +35,52 @@ const UserProject = (props) => {
   }, []);
 
   const getComments = async () => {
-    //currently not rendered anywhere
     try {
       let res = await Axios.get(`/api/projects/${props.project.id}/comments`);
+      // console.log("get comments", res.data);
       setComments(res.data);
     } catch (err) {
-      console(err);
+      // console.log(err);
     }
   };
 
   return (
     <>
-      <Grid.Row columns={2}>
-        <Grid.Column width={12}>
-          <Card style={projectCardStyle}>
-            <Card.Content>
-              <Card.Header>{props.project.title}</Card.Header>
-              <Card.Description>{props.project.description}</Card.Description>
-              <Image
-                floated="left"
-                size="small"
-                src={`${props.project.picture}`}
-              />
-              <Card style={internalCardStyle}>
-                <h4>Contributors</h4>
-                <ul>
-                  <li>User 1</li>
-                  <li>User 1</li>
-                  <li>User 1</li>
-                  <li>User 1</li>
-                </ul>
-              </Card>
-            </Card.Content>
-            <Card.Content extra>
-              <div className="ui two buttons">
-                {requestStatus === "none" && (
-                  <Button
-                    basic
-                    color="blue"
-                    onClick={() => sendRequest(props.project.id, user.id)}
-                  >
-                    {requestStatus}
-                  </Button>
-                )}
-                {requestStatus === "pending" && (
-                  <Button disabled>Request Pending</Button>
-                )}
-                {requestStatus === "contributor" && (
-                  <Button
-                    basic
-                    color="green"
-                    as={Link}
-                    to={`/project/${props.project.id}`}
-                  >
-                    Already Contributing - go to Project Page
-                  </Button>
-                )}
-              </div>
-            </Card.Content>
-          </Card>
-          <br />
-        </Grid.Column>
-        <Grid.Column width={4}>
-          <div>
-            <Button style={rightColStyle} basic color="violet">
-              Edit Project
-            </Button>
-          </div>
-          <div>
-            <Button style={rightColStyle} basic color="red">
-              Delete Project
-            </Button>
-          </div>
-        </Grid.Column>
-      </Grid.Row>
-      <br />
+      <CardContainer>
+        <CardHeader>
+          <UserPic src={`${props.owner.image}`} />
+          <UserName>
+            {props.owner.firstname} {props.owner.lastname}
+          </UserName>
+          <CrudIcon>
+            <EditProjectModal
+              project={props.project}
+              updateProjects={props.updateProjects}
+            />
+          </CrudIcon>
+        </CardHeader>
+        <CardDiv>
+          <Link to={`/project/${props.project.id}`}>
+            <ProjectPic src={`${props.project.picture}`} />
+          </Link>
+        </CardDiv>
+        <CardDiv>
+          <Link to={`/project/${props.project.id}`}>
+            <ProjectTitle>{props.project.title}</ProjectTitle>
+          </Link>
+        </CardDiv>
+        <CardDiv style={{ color: "#8e8e8e", fontWeight: 900 }}>
+          {props.project.description}
+        </CardDiv>
+        <CardDiv style={{ marginTop: 15 }}>
+          <CardIcon src={commenticon} />
+          <span style={{ marginLeft: 5, fontWeight: 900 }}>
+            {comments.length}
+          </span>
+        </CardDiv>
+      </CardContainer>
     </>
-
-    // {/* <Card>
-    //   <Card.Content>
-    //     <Card.Header>{props.project.title}</Card.Header>
-    //     <Card.Meta>{props.project.picture}</Card.Meta>
-    //     <Card.Description>{props.project.description}</Card.Description>
-    //   </Card.Content>
-    //   <Card.Content extra>
-    //     <Card.Description>{props.project.github_link}</Card.Description>
-    //   </Card.Content>
-    // </Card> */}
   );
 };
 
 export default UserProject;
-
-const projectCardStyle = {
-  width: "600px",
-  marginLeft: "40px",
-};
-
-const internalCardStyle = {
-  width: "150px",
-};
-
-const rightColStyle = {
-  marginRight: "40px",
-};
