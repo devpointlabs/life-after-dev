@@ -32,6 +32,13 @@ const User = (props) => {
     getContributingProjects();
   }, [props.match.params.id]);
 
+  const updateProjects = (project) => {
+    const updatedProjects = projects.map((p) =>
+      p.id == project.id ? project : p
+    );
+    setProjects(updatedProjects);
+  };
+
   const getUser = async () => {
     try {
       let res = await axios.get(`/api/users/${props.match.params.id}`);
@@ -151,12 +158,11 @@ const User = (props) => {
       </div>
       <hr className="divider"></hr>
 
-      
-
       <UserProjects
         projects={projects}
         contributingProjects={contributingProjects}
         userId={props.match.params.id}
+        updateProjects={updateProjects}
       />
     </>
   );

@@ -10,7 +10,7 @@ import {
 import ContributingProject from "./ContributingProject";
 import UserProject from "./UserProject";
 
-const UserProjects = ({ projects, contributingProjects, userId }) => {
+const UserProjects = ({ projects, contributingProjects, userId, updateProjects }) => {
   const [owner, setOwner] = useState([]);
   const [showProjects, setShowProjects] = useState(true);
 
@@ -32,7 +32,7 @@ const UserProjects = ({ projects, contributingProjects, userId }) => {
 
   const renderProjects = () => {
     projects.forEach((p, i) => {
-      const proj = <UserProject key={p.id} project={p} owner={owner} />;
+      const proj = <UserProject key={p.id} project={p} owner={owner} updateProjects={updateProjects}/>;
       const colNumber = i % 2;
       gridCols[colNumber].push(proj);
     });

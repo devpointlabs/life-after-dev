@@ -10,34 +10,33 @@ const formFields = [
   { title: "Live Link", name: "live_link" },
 ];
 
-const ProjectForm = ({ query, addProject, closeModal, p }) => {
-  const [project, setProject] = useState(
-    // ?
-    {
-      title: query,
-      picture: "",
-      github_link: "",
-      description: "",
-      live_link: "",
-    }
-    // :
-    //  {
-    //     title: "",
-    //     picture: "",
-    //     github_link: "",
-    //     description: "",
-    //     live_link: "",
-    //   }
-  );
+const EditProjectForm = ({
+  query,
+  addProject,
+  closeModal,
+  p,
+  editProject,
+  updateProjects,
+}) => {
+  const [project, setProject] = useState({
+    id: p.id,
+    title: p.title,
+    picture: p.picture,
+    github_link: p.github_link,
+    description: p.description,
+    live_link: p.live_link,
+  });
 
   const handleSubmit = (e) => {
-    console.log("Project Add submit clicked");
-    addProject(project);
+    console.log("Project Edit submit clicked");
+    editProject(project);
+    updateProjects(project);
+    closeModal();
   };
 
   return (
     <>
-      <Header>{query}</Header>
+      <Header>Edit Project</Header>
 
       <Form id="newProject" onSubmit={handleSubmit}>
         <br />
@@ -58,4 +57,4 @@ const ProjectForm = ({ query, addProject, closeModal, p }) => {
   );
 };
 
-export default ProjectForm;
+export default EditProjectForm;

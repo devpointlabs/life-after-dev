@@ -16,6 +16,8 @@ import {
   ProjectPic,
   CardDiv,
 } from "../../styles/ProfileProjectStyle";
+import ProjectFormModal from "../../components/ProjectFormModal";
+import EditProjectModal from "../../components/EditProjectModal";
 
 const UserProject = (props) => {
   const [comments, setComments] = useState([]);
@@ -39,8 +41,6 @@ const UserProject = (props) => {
     }
   };
 
-  
-
   return (
     <>
       <CardContainer>
@@ -50,7 +50,7 @@ const UserProject = (props) => {
             {props.owner.firstname} {props.owner.lastname}
           </UserName>
           <CrudIcon>
-            <p>Edit</p>
+            <EditProjectModal project={props.project} updateProjects={props.updateProjects} />
           </CrudIcon>
         </CardHeader>
         <CardDiv>

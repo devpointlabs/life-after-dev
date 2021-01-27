@@ -26,18 +26,8 @@ const ContributingProject = (props) => {
     getComments();
     checkRequests(props.contProject.project_id, user?.id);
     getProjectData();
-    getOtherOwner();
-  }, [project.user_id]);
-
-  const getOtherOwner = async () => {
-    try {
-      let res = await Axios.get(`/api/users/${project.user_id}`);
-      console.log("get OTHER owner", res.data);
-      setOtherOwner(res.data);
-    } catch (err) {
-      console.log("get OTHER owner", err);
-    }
-  };
+    
+  }, []);
 
   const getProjectData = async () => {
     try {
@@ -46,6 +36,8 @@ const ContributingProject = (props) => {
       );
       console.log("project data", res.data);
       setProject(res.data);
+      let ownerRes = await Axios.get(`/api/users/${res.data.user_id}`);
+      setOtherOwner(ownerRes.data);
     } catch (err) {
       console.log("project data", err);
     }
