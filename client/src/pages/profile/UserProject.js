@@ -69,8 +69,10 @@ const UserProject = (props) => {
             <ProjectTitle>{props.project.title}</ProjectTitle>
           </Link>
         </CardDiv>
-        <CardDiv>{props.project.description}</CardDiv>
-        <CardDiv>
+        <CardDiv style={{ color: "#8e8e8e", fontWeight: 900 }}>
+          {props.project.description}
+        </CardDiv>
+        <CardDiv style={{ marginTop: 15 }}>
           <CardIcon src={commenticon} />
           <span style={{ marginLeft: 5, fontWeight: 900 }}>
             {comments.length}

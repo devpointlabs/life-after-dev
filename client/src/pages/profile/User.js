@@ -64,7 +64,7 @@ const User = (props) => {
       // console.log("all requests", res);
       setContributingProjects(res.data);
     } catch (err) {
-      // console.log("getContributingProjects error", err);
+      // console.log("getContributingProjects error", err);                          
     }
   };
 
