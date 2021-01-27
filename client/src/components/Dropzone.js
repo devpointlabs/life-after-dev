@@ -12,7 +12,6 @@ export default (props) => {
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
     setImage(acceptedFiles[0]);
-    console.log(acceptedFiles[0])
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
