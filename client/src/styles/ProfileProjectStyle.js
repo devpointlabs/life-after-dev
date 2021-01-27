@@ -101,3 +101,10 @@ export const ProjectTitle = styled.h3`
   font-weight: 900;
   font-size: 16px;
 `;
+
+export const CardIcon = styled.img`
+  height: 15px;
+  width: 15px;
+  margin-top: 3px;
+  margin-left: 10px;
+`;

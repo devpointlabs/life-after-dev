@@ -16,9 +16,12 @@ import {
   ProjectPic,
   CardDiv,
   ProjectTitle,
+  CardIcon,
 } from "../../styles/ProfileProjectStyle";
 import ProjectFormModal from "../../components/ProjectFormModal";
 import EditProjectModal from "../../components/EditProjectModal";
+import trashicon from "../../icons/Bin.png";
+import commenticon from "../../icons/Comment.png";
 
 const UserProject = (props) => {
   const [comments, setComments] = useState([]);
@@ -32,7 +35,6 @@ const UserProject = (props) => {
   }, []);
 
   const getComments = async () => {
-    //currently not rendered anywhere
     try {
       let res = await Axios.get(`/api/projects/${props.project.id}/comments`);
       console.log("get comments", res.data);
@@ -69,107 +71,14 @@ const UserProject = (props) => {
         </CardDiv>
 
         <CardDiv>{props.project.description}</CardDiv>
-        <p>{comments.length} comments</p>
-        {/* <div className="ui two buttons">
-          {requestStatus === "none" && (
-            <Button
-              basic
-              color="blue"
-              onClick={() => sendRequest(props.project.id, user.id)}
-            >
-              {requestStatus}
-            </Button>
-          )}
-          {requestStatus === "pending" && (
-            <Button disabled>Request Pending</Button>
-          )}
-          {requestStatus === "contributor" && (
-            <Button
-              basic
-              color="green"
-              as={Link}
-              to={`/project/${props.project.id}`}
-            >
-              Already Contributing - go to Project Page
-            </Button>
-          )}
-        </div> */}
+        <CardDiv>
+          <CardIcon src={commenticon} />
+          <span style={{ marginLeft: 5, fontWeight: 900 }}>
+            {comments.length}
+          </span>
+        </CardDiv>
       </CardContainer>
-
-      {/* <Grid.Row columns={2}>
-        <Grid.Column width={12}>
-          <Card style={projectCardStyle}>
-            <Card.Content>
-              <Image src={`${props.owner.image}`} floated="left" size="small" />
-              <h2>
-                {props.owner.firstname} {props.owner.lastname}
-              </h2>
-              <Image
-                floated="left"
-                size="small"
-                src={`${props.project.picture}`}
-              />
-              <Link to={`/project/${props.project.id}`}>
-                <Card.Header>{props.project.title}</Card.Header>
-              </Link>
-              <Card.Description>{props.project.description}</Card.Description>
-              <p>{comments.length} comments</p>
-            </Card.Content>
-            <Card.Content extra>
-              <div className="ui two buttons">
-                {requestStatus === "none" && (
-                  <Button
-                    basic
-                    color="blue"
-                    onClick={() => sendRequest(props.project.id, user.id)}
-                  >
-                    {requestStatus}
-                  </Button>
-                )}
-                {requestStatus === "pending" && (
-                  <Button disabled>Request Pending</Button>
-                )}
-                {requestStatus === "contributor" && (
-                  <Button
-                    basic
-                    color="green"
-                    as={Link}
-                    to={`/project/${props.project.id}`}
-                  >
-                    Already Contributing - go to Project Page
-                  </Button>
-                )}
-              </div>
-            </Card.Content>
-          </Card>
-          <br />
-        </Grid.Column>
-        <Grid.Column width={4}>
-          <div>
-            <Button style={rightColStyle} basic color="violet">
-              Edit Project
-            </Button>
-          </div>
-          <div>
-            <Button style={rightColStyle} basic color="red">
-              Delete Project
-            </Button>
-          </div>
-        </Grid.Column>
-      </Grid.Row>
-      <br /> */}
     </>
-
-    // {/* <Card>
-    //   <Card.Content>
-    //     <Card.Header>{props.project.title}</Card.Header>
-    //     <Card.Meta>{props.project.picture}</Card.Meta>
-    //     <Card.Description>{props.project.description}</Card.Description>
-    //   </Card.Content>
-    //   <Card.Content extra>
-    //     <Card.Description>{props.project.github_link}</Card.Description>
-    //   </Card.Content>
-    // </Card> */}
   );
 };
 
