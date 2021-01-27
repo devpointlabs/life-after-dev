@@ -151,7 +151,7 @@ const User = (props) => {
       </div>
       <hr className="divider"></hr>
 
-      <h2 className="center projectHeader">Projects</h2>
+      
 
       <UserProjects
         projects={projects}

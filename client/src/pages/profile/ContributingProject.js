@@ -26,7 +26,7 @@ const ContributingProject = (props) => {
       console.log("get OTHER owner", res.data);
       setOtherOwner(res.data);
     } catch (err) {
-      console.log("get owners", err);
+      console.log("get OTHER owner", err);
     }
   };
 
@@ -60,12 +60,24 @@ const ContributingProject = (props) => {
         <Grid.Column width={12}>
           <Card style={projectCardStyle}>
             <Card.Content>
-              <Image floated="left" size="small" src={`${otherOwner.image}`} />
-              <h2>
-                {otherOwner.firstname} {otherOwner.lastname}
-              </h2>
-              <Image floated="left" size="small" src={`${project.picture}`} />
-              <Card.Header>{project.title}</Card.Header>
+              <Link to={`/user/${otherOwner.id}`}>
+                <Image
+                  floated="left"
+                  size="small"
+                  src={`${otherOwner.image}`}
+                />
+              </Link>
+              <Link to={`/user/${otherOwner.id}`}>
+                <h2>
+                  {otherOwner.firstname} {otherOwner.lastname}
+                </h2>
+              </Link>
+              <Link to={`/project/${project.id}`}>
+                <Image floated="left" size="small" src={`${project.picture}`} />
+              </Link>
+              <Link to={`/project/${project.id}`}>
+                <Card.Header>{project.title}</Card.Header>
+              </Link>
               <Card.Description>{project.description}</Card.Description>
               <p>{comments.length} comments</p>
             </Card.Content>

@@ -5,11 +5,23 @@ import useRequest from "../../hooks/useRequest";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import style from "./style.css";
+import {
+  CardCol,
+  CardContainer,
+  CardsContainer,
+  UserPic,
+  CardHeader,
+  UserName,
+  CrudIcon,
+  ProjectPic,
+  CardDiv,
+} from "../../styles/ProfileProjectStyle";
 
 const UserProject = (props) => {
   const [comments, setComments] = useState([]);
   const { user } = useContext(AuthContext);
   const { checkRequests, sendRequest, requestStatus } = useRequest();
+  const { toggle, setToggle } = useState(false);
 
   useEffect(() => {
     getComments();
@@ -27,9 +39,58 @@ const UserProject = (props) => {
     }
   };
 
+  
+
   return (
     <>
-      <Grid.Row columns={2}>
+      <CardContainer>
+        <CardHeader>
+          <UserPic src={`${props.owner.image}`} />
+          <UserName>
+            {props.owner.firstname} {props.owner.lastname}
+          </UserName>
+          <CrudIcon>
+            <p>Edit</p>
+          </CrudIcon>
+        </CardHeader>
+        <CardDiv>
+          <Link to={`/project/${props.project.id}`}>
+            <ProjectPic src={`${props.project.picture}`} />
+          </Link>
+        </CardDiv>
+        <CardDiv>
+          <Link to={`/project/${props.project.id}`}>{props.project.title}</Link>
+        </CardDiv>
+
+        <Card.Description>{props.project.description}</Card.Description>
+        <p>{comments.length} comments</p>
+        <div className="ui two buttons">
+          {requestStatus === "none" && (
+            <Button
+              basic
+              color="blue"
+              onClick={() => sendRequest(props.project.id, user.id)}
+            >
+              {requestStatus}
+            </Button>
+          )}
+          {requestStatus === "pending" && (
+            <Button disabled>Request Pending</Button>
+          )}
+          {requestStatus === "contributor" && (
+            <Button
+              basic
+              color="green"
+              as={Link}
+              to={`/project/${props.project.id}`}
+            >
+              Already Contributing - go to Project Page
+            </Button>
+          )}
+        </div>
+      </CardContainer>
+
+      {/* <Grid.Row columns={2}>
         <Grid.Column width={12}>
           <Card style={projectCardStyle}>
             <Card.Content>
@@ -90,7 +151,7 @@ const UserProject = (props) => {
           </div>
         </Grid.Column>
       </Grid.Row>
-      <br />
+      <br /> */}
     </>
 
     // {/* <Card>
@@ -107,16 +168,3 @@ const UserProject = (props) => {
 };
 
 export default UserProject;
-
-const projectCardStyle = {
-  width: "600px",
-  marginLeft: "40px",
-};
-
-const internalCardStyle = {
-  width: "150px",
-};
-
-const rightColStyle = {
-  marginRight: "40px",
-};

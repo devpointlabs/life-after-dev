@@ -10,7 +10,7 @@ export const Search = styled.input`
   width: 100%;
   border: 0;
   height: 60px;
-  border-radius: 15px;
+  border-radius: 12px;
   background-color: #ffffff;
   padding-left: 60px;
   font-color: #c5c6ce;
@@ -22,5 +22,3 @@ export const SearchIcon = styled.img`
   top: -38px;
   left: 25px;
 `;
-
-
