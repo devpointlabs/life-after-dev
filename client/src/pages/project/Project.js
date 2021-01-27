@@ -2,6 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./style.css";
 import Comments from "./Comments";
+// let logo ={
+//   picture:
+//     "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg",
 
 const Project = (props) => {
   const [data, setData] = useState(null);
@@ -9,6 +12,11 @@ const Project = (props) => {
   useEffect(() => {
     getData();
   }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, [data]);
+
+  //component didupdate
 
   const getData = async () => {
     try {

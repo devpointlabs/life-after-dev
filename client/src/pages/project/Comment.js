@@ -19,7 +19,9 @@ function Comment({ comment }) {
       <div className="comment_top">
         <Image src={user && user.image} avatar />
         <div className="comment_topInfo">
-          <h3>{user && user.firstname}</h3>
+          <h3>
+            {user && user.firstname} {user && user.lastname}
+          </h3>
         </div>
         <div className="post_bottom">
           <p>{comment.body}</p>
