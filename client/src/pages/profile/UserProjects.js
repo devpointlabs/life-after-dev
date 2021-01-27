@@ -44,8 +44,22 @@ const UserProjects = ({ projects, contributingProjects, userId }) => {
     );
   };
 
+  // {contributingProjects.map((c) => (
+  //   <ContributingProject key={c.id} contProject={c} />
+  // ))}
+
   const renderContProjects = () => {
-    return <div>Contributing projects go here</div>;
+    contributingProjects.forEach((c, i) => {
+      const contProj = <ContributingProject key={c.id} contProject={c} />;
+      const colNumber = i % 2;
+      gridCols[colNumber].push(contProj);
+    });
+    return (
+      <CardsContainer>
+        <CardCol>{gridCols[0]}</CardCol>
+        <CardCol>{gridCols[1]}</CardCol>
+      </CardsContainer>
+    );
   };
 
   const projectsClick = () => {
@@ -72,14 +86,6 @@ const UserProjects = ({ projects, contributingProjects, userId }) => {
       <ModuleContainer>
         <ModuleTitle>{renderProjectsToggle()}</ModuleTitle>
         {showProjects ? renderProjects() : renderContProjects()}
-
-        <h2 className="center projectHeader">Contributing Projects</h2>
-
-        <Grid>
-          {contributingProjects.map((c) => (
-            <ContributingProject key={c.id} contProject={c} />
-          ))}
-        </Grid>
       </ModuleContainer>
     </>
   );

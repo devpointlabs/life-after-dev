@@ -5,6 +5,15 @@ import useRequest from "../../hooks/useRequest";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
 import style from "./style.css";
+import {
+  CardContainer,
+  CardDiv,
+  CrudIcon,
+  ProjectPic,
+  UserName,
+  UserPic,
+  CardHeader,
+} from "../../styles/ProfileProjectStyle";
 
 const ContributingProject = (props) => {
   const [comments, setComments] = useState([]);
@@ -56,7 +65,51 @@ const ContributingProject = (props) => {
 
   return (
     <>
-      <Grid.Row columns={2}>
+      <CardContainer>
+        <CardHeader>
+          <UserPic src={`${otherOwner.image}`} />
+          <UserName>
+            {otherOwner.firstname} {otherOwner.lastname}
+          </UserName>
+        </CardHeader>
+        <CardDiv>
+          <Link to={`/project/${project.id}`}>
+            <ProjectPic src={`${project.picture}`} />
+          </Link>
+        </CardDiv>
+        <CardDiv>
+          <Link to={`/project/${project.id}`}>{project.title}</Link>
+        </CardDiv>
+
+        <Card.Description>{project.description}</Card.Description>
+        <p>{comments.length} comments</p>
+        <div className="ui two buttons">
+          {requestStatus === "none" && (
+            <Button
+              basic
+              color="blue"
+              onClick={() => sendRequest(props.contProject.id, user.id)}
+            >
+              {requestStatus}
+            </Button>
+          )}
+          {requestStatus === "pending" && (
+            <Button disabled>Request Pending</Button>
+          )}
+          {requestStatus === "contributor" && (
+            <Button
+              basic
+              color="green"
+              as={Link}
+              to={`/project/${props.contProject.id}`}
+            >
+              Already Contributing - go to Project Page
+            </Button>
+          )}
+        </div>
+      </CardContainer>
+
+      {/* <Grid.Row columns={2}>
         <Grid.Column width={12}>
           <Card style={projectCardStyle}>
             <Card.Content>
@@ -123,7 +176,7 @@ const ContributingProject = (props) => {
           </div>
         </Grid.Column>
       </Grid.Row>
-      <br />
+      <br /> */}
     </>
 
     // {/* <Card>
