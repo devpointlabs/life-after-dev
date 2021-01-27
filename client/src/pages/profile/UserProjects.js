@@ -2,6 +2,8 @@ import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Grid } from "semantic-ui-react";
 import {
+  ActiveDotOne,
+  ActiveDotTwo,
   CardCol,
   CardsContainer,
   ModuleContainer,
@@ -10,7 +12,12 @@ import {
 import ContributingProject from "./ContributingProject";
 import UserProject from "./UserProject";
 
-const UserProjects = ({ projects, contributingProjects, userId, updateProjects }) => {
+const UserProjects = ({
+  projects,
+  contributingProjects,
+  userId,
+  updateProjects,
+}) => {
   const [owner, setOwner] = useState([]);
   const [showProjects, setShowProjects] = useState(true);
 
@@ -32,7 +39,14 @@ const UserProjects = ({ projects, contributingProjects, userId, updateProjects }
 
   const renderProjects = () => {
     projects.forEach((p, i) => {
-      const proj = <UserProject key={p.id} project={p} owner={owner} updateProjects={updateProjects}/>;
+      const proj = (
+        <UserProject
+          key={p.id}
+          project={p}
+          owner={owner}
+          updateProjects={updateProjects}
+        />
+      );
       const colNumber = i % 2;
       gridCols[colNumber].push(proj);
     });
@@ -70,13 +84,32 @@ const UserProjects = ({ projects, contributingProjects, userId, updateProjects }
     setShowProjects(false);
   };
 
-  const renderProjectsToggle = () => {
+  const renderProjectsActiveToggle = () => {
     return (
       <>
-        <span onClick={projectsClick}>Projects</span>
-        <span onClick={collabsClick} style={{ marginLeft: 20 }}>
+        <span style={activeStyle} onClick={projectsClick}>
+          Projects
+        </span>
+        <span style={inactiveStyle} onClick={collabsClick}>
           Collabs
         </span>
+        <br></br>
+        <ActiveDotOne />
+      </>
+    );
+  };
+
+  const renderCollabsActiveToggle = () => {
+    return (
+      <>
+        <span style={inactiveStyle} onClick={projectsClick}>
+          Projects
+        </span>
+        <span style={activeStyle} onClick={collabsClick}>
+          Collabs
+        </span>
+        <br></br>
+        <ActiveDotTwo />
       </>
     );
   };
@@ -84,11 +117,24 @@ const UserProjects = ({ projects, contributingProjects, userId, updateProjects }
   return (
     <>
       <ModuleContainer>
-        <ModuleTitle>{renderProjectsToggle()}</ModuleTitle>
+        <ModuleTitle>
+          {showProjects
+            ? renderProjectsActiveToggle()
+            : renderCollabsActiveToggle()}
+        </ModuleTitle>
         {showProjects ? renderProjects() : renderContProjects()}
       </ModuleContainer>
     </>
   );
+};
+
+const activeStyle = {
+  color: "#000000",
+  marginLeft: 20,
+};
+const inactiveStyle = {
+  color: "#cbcbcb",
+  marginLeft: 20,
 };
 
 export default UserProjects;

@@ -15,6 +15,7 @@ import {
   CrudIcon,
   ProjectPic,
   CardDiv,
+  ProjectTitle,
 } from "../../styles/ProfileProjectStyle";
 import ProjectFormModal from "../../components/ProjectFormModal";
 import EditProjectModal from "../../components/EditProjectModal";
@@ -50,7 +51,10 @@ const UserProject = (props) => {
             {props.owner.firstname} {props.owner.lastname}
           </UserName>
           <CrudIcon>
-            <EditProjectModal project={props.project} updateProjects={props.updateProjects} />
+            <EditProjectModal
+              project={props.project}
+              updateProjects={props.updateProjects}
+            />
           </CrudIcon>
         </CardHeader>
         <CardDiv>
@@ -59,12 +63,14 @@ const UserProject = (props) => {
           </Link>
         </CardDiv>
         <CardDiv>
-          <Link to={`/project/${props.project.id}`}>{props.project.title}</Link>
+          <Link to={`/project/${props.project.id}`}>
+            <ProjectTitle>{props.project.title}</ProjectTitle>
+          </Link>
         </CardDiv>
 
-        <Card.Description>{props.project.description}</Card.Description>
+        <CardDiv>{props.project.description}</CardDiv>
         <p>{comments.length} comments</p>
-        <div className="ui two buttons">
+        {/* <div className="ui two buttons">
           {requestStatus === "none" && (
             <Button
               basic
@@ -87,7 +93,7 @@ const UserProject = (props) => {
               Already Contributing - go to Project Page
             </Button>
           )}
-        </div>
+        </div> */}
       </CardContainer>
 
       {/* <Grid.Row columns={2}>
