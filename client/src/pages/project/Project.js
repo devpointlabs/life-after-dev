@@ -22,7 +22,6 @@ export default function Project() {
   // }, [data]);
 
   //component didupdate
-  
 
   const getData = async () => {
     try {
