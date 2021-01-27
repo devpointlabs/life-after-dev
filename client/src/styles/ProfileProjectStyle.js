@@ -56,8 +56,9 @@ export const UserName = styled.span`
 `;
 
 export const CrudIcon = styled.div`
-  margin-left: 90px;
+  margin-left: auto;
   margin-top: 5px;
+  align-self: end;
 `;
 
 export const CardDiv = styled.div`
