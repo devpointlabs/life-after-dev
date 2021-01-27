@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { useContext } from "react";
 
 const useCustomDrop = (user_id, image) => {
 
@@ -7,13 +8,14 @@ const useCustomDrop = (user_id, image) => {
       alert("cant be blank");
       return;
     }
-    console.log('reached')
+
     let data = new FormData();
     data.append("file", image);
     try {
-      let res = Axios.put(`/api/user/${user_id}/update-picture`, data)
-      console.log(res)
+      console.log(image)
+      console.log(data)
       debugger
+      let res = Axios.put(`/api/user/${user_id}/update-picture`, data)
     } catch (err) {
       console.log(err);
       alert("err occured");

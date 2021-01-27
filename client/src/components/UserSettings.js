@@ -1,14 +1,17 @@
 import Axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, Form } from "semantic-ui-react";
+import { AuthContext } from "../providers/AuthProvider";
+import ProfilePicSetting from "./ProfilePicSetting";
 
 const UserSettings = ({ match, history }) => {
   const [userData, setUserData] = useState([]);
+  const { user } = useContext(AuthContext)
+  const [seen, setSeen] = useState(false)
 
   useEffect(() => {
-    Axios.get(`/api/users/${match.params.id}`)
+    Axios.get(`/api/users/${user.id}`)
       .then((res) => {
-        console.log(res.data);
         setUserData(res.data);
       })
       .catch((err) => {
@@ -25,9 +28,9 @@ const UserSettings = ({ match, history }) => {
 
   const handleSubmit = () => {
     console.log("submit clicked", userData);
-    Axios.patch(`/api/users/${match.params.id}`, userData)
+    Axios.patch(`/api/users/${user.id}`, userData)
       .then((res) => {
-        history.push(`/user/${match.params.id}`);
+        history.push(`/user/${user.id}`);
         console.log("updated name", res);
       })
       .catch((err) => {
@@ -35,9 +38,20 @@ const UserSettings = ({ match, history }) => {
       });
   };
 
+  const togglePic = () => {
+    setSeen(!seen)
+  }
+
   return (
     <div>
+      {seen ? <ProfilePicSetting toggle = {togglePic} user = {user} history = {history}/> : null}
       <h1>User Settings</h1>
+      <div>
+        <img className="userpic" src={user.image} />
+        <Button onClick={togglePic}>
+          Edit Picture
+        </Button>
+      </div>
       <Form onSubmit={handleSubmit}>
         <Button>Save Profile</Button>
         <br />
@@ -56,13 +70,13 @@ const UserSettings = ({ match, history }) => {
           value={userData.lastname}
           onChange={handleChange}
         />
-        <Form.Input
+        {/* <Form.Input
           label="Image"
           placeholder="Image"
           name="image"
           value={userData.image}
           onChange={handleChange}
-        />
+        /> */}
         <Form.Input
           label="GitHub"
           placeholder="GitHub Link"
