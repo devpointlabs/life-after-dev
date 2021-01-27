@@ -1,43 +1,64 @@
 import React, { useState } from "react"
 import axios from "axios"
+import { useHistory } from "react-router-dom";
 
 export const AuthContext = React.createContext()
 export const AuthConsumer = AuthContext.Consumer;
 
 const AuthProvider = (props) => {
   const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(false);
+  const [authError, setAuthError] = useState(null);
 
-  const handleRegister = (user, history) => {
-    axios.post("/api/auth", user)
-      .then( res => {
-        setUser(res.data.data)
-        history.push("/");
-      })
-    .catch( res => {
-      console.log(res);
-    })
-  }
-  const handleLogin = (user, history) => {
-    axios.post("/api/auth/sign_in", user)
-      .then( res => {
-        setUser(res.data.data)
-        history.push("/");
-      })
-      .catch( res => {
-        console.log(res);
-      })
+  
+  const handleRegister = async (user, history, setLoader) => {
+    
+    try {
+      setLoading(true);
+      setAuthError(null);
+      let res = await axios.post("/api/auth", user)
+      setLoading(false);
+      setUser(res.data.data)
+      history.push("/");
+  
+    } catch (err) {
+      console.log(err);
+      setAuthError(err.response.data.errors.full_messages);
+      setLoading(false);
+    }
   }
   
-  const handleLogout = (history) => {
-    axios.delete("/api/auth/sign_out")
-      .then( res => {
-        setUser(null)
-        history.push('/login');
-      })
-      .catch( res => {
-        console.log(res);
-      })
+  
+  const handleLogin = async (user, history) => {
+    try {
+      setLoading(true);
+      setAuthError(null);
+      let res = await axios.post("/api/auth/sign_in", user)
+      setLoading(false);
+      setUser(res.data.data)
+      history.push("/");
+      console.log(res.data.data.email);
+
+    } catch (err) {
+      console.log(err);
+      setLoading(false);
+      setAuthError(err.response.data.errors);
+      }
   }
+  
+  
+  const handleLogout = async (history) => {
+    
+    try {
+      await axios.delete("/api/auth/sign_out")
+          setUser(null)
+          history.push('/login');
+        } catch (err) {
+          console.log(err);
+          alert("Logout Error. Debug.")
+        }
+    }
+  
 
   return (
     <AuthContext.Provider value={{
@@ -46,6 +67,8 @@ const AuthProvider = (props) => {
       handleRegister: handleRegister,
       handleLogin: handleLogin,
       handleLogout: handleLogout,
+      authError: authError,
+      setAuthError: setAuthError,
       setUser: (user) => setUser(user),
     }}
     >
