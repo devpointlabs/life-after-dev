@@ -64,7 +64,6 @@ const Navbar = (props) => {
       <div>
         <Link to="/">
           <Logo src={devpointlogo} />
-          {/* <Menu.Item name="home" id="home" active={pathname === "/"} /> */}
         </Link>
         <Link to="/">
           <NavIcon src={homeicon} />

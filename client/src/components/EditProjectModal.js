@@ -2,30 +2,39 @@ import Axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Form, Header, Image, Modal } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
-import ProjectForm from "./projectForm/ProjectForm";
+import EditProjectForm from "./projectForm/EditProjectForm";
 
-const ProjectFormModal = ({ query, editing }) => {
+const EditProjectModal = ({ project, updateProjects }) => {
   const [open, setOpen] = React.useState(false);
   const [projects, setProjects] = useState([]);
   const { user } = useContext(AuthContext);
 
-  console.log("query", query);
+  // console.log("project", project);
 
   const getProjects = () => {};
 
-  const editProject = () => {};
+  const editProject = async (updatedProject) => {
+    try {
+      let res = await Axios.patch(
+        `/api/users/${user.id}/projects/${project.id}`,
+        updatedProject
+      );
+      // console.log("edit Project success", updatedProject);
+    } catch (err) {
+      // console.log("edit project error", err);
+    }
+  };
 
   const addProject = async (newProject) => {
     try {
       let res = await Axios.post(`/api/users/${user.id}/projects`, newProject);
-      console.log("project added", res);
+      // console.log("project added", res);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
   const closeModal = () => {
-    // handleSubmit();
     setOpen(false);
   };
 
@@ -34,16 +43,21 @@ const ProjectFormModal = ({ query, editing }) => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button color="green">Create New Project</Button>}
+      trigger={
+        <Button basic color="green">
+          Edit
+        </Button>
+      }
     >
-      <Modal.Header>Create New Project</Modal.Header>
+      <Modal.Header>Edit Project</Modal.Header>
       <Modal.Content image>
         <Modal.Description>
           {open && (
-            <ProjectForm
-              query={query}
-              addProject={addProject}
+            <EditProjectForm
+              p={project}
+              editProject={editProject}
               closeModal={closeModal}
+              updateProjects={updateProjects}
             />
           )}
         </Modal.Description>
@@ -57,4 +71,4 @@ const ProjectFormModal = ({ query, editing }) => {
   );
 };
 
-export default ProjectFormModal;
+export default EditProjectModal;

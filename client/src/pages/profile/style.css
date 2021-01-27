@@ -1,11 +1,55 @@
-.userSection {
+/* .userSection {
   margin-top: 3%;
+} */
+
+.profileShow {
+  display: flex;
+  flex-direction: row;
+}
+
+.userSection {
+  background-color: rgb(176, 176, 176);
+  width: 25%;
+  height: 100%;
+  position: fixed;
+  left: 11.45%;
+}
+
+.usersectionLogged {
+  background-color: #1e1f20;
+  width: 25%;
+  height: 100%;
+  position: fixed;
+  right: 0%;
 }
 
 .namePlate {
+  margin-top: 20%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center !important;
+}
+
+.userTag {
+  font-size: 20px;
+  text-align: center;
+}
+.dynamicProj {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 23%;
+  height: 20%
+}
+
+
+.projectsSection {
+  margin-left: 28%;
+  width: 75%;
+}
+
+.projectSectionLogged {
+  width: 75%
 }
 
 .imagelinks {
@@ -24,26 +68,23 @@
   border-radius: 50%;
   height: 130px !important;
   width: 130px !important;
-  margin-left: 20px;
 }
-.username {
+/* .username {
   float: left;
-}
-.userTag {
+} */
+/* .userTag {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.socialIcon {
+/* .socialIcon {
   height: 50px;
   width: 50px;
-}
+} */
 
 .socialText {
-  font-size: 20px;
-  padding-right: 20px;
 }
 
 .socialPlate {
