@@ -16,7 +16,6 @@ const ProjectFormModal = ({ query, editing }) => {
   const editProject = () => {};
 
   const addProject = async (newProject) => {
-    // debugger;
     try {
       let res = await Axios.post(`/api/users/${user.id}/projects`, newProject);
       console.log("project added", res);

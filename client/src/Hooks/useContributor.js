@@ -1,22 +1,27 @@
 import Axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export const useContributor = (project_id) => {
+export const useContributor = () => {
 
   const [contributors, setContributors] = useState([]);
-  useEffect(()=> {
-    Axios.get(`/projects/${project_id}/get_contributors`) 
+  
+  const getContributors = (project_id) => {
+    
+    Axios.get(`api/projects/${project_id}/get_contributors`) 
       .then((res) => {
-        console.log(res)
         setContributors(res.data);
+       
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
  
-  },[])
+  }
 
-  return {contributors}
+  return {
+  contributors,
+  getContributors
+  }
 }
 
 export default useContributor;

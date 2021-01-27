@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from "react";
+import {
+  Search,
+  SearchBarContainer,
+  SearchIcon,
+} from "../../styles/LandingPageStyle";
+import searchicon from "../../icons/searchicon2.png";
 
 const SearchBar = ({ getResults, getQuery }) => {
   const [loading, setLoading] = useState(true);
@@ -16,27 +22,17 @@ const SearchBar = ({ getResults, getQuery }) => {
   };
 
   return (
-    <div style={mastheadStyle}>
-      <h1 style={mastheadTextStyle}>Life After Dev</h1>
+    <SearchBarContainer>
       <form onSubmit={handleSubmit}>
-        <input
+        <Search
           type="text"
-          placeholder="Search..."
+          placeholder="Search in Life After Dev..."
           onChange={(e) => handleChange(e)}
         />
+        <SearchIcon src={searchicon} />
       </form>
-    </div>
+    </SearchBarContainer>
   );
-};
-
-const mastheadStyle = {
-  borderStyle: "solid",
-  textAlign: "center",
-  height: "200px",
-};
-
-const mastheadTextStyle = {
-  paddingTop: "50px",
 };
 
 export default SearchBar;
