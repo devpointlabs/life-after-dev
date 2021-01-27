@@ -23,7 +23,7 @@ const ContributingProject = (props) => {
       let res = await Axios.get(
         `/api/projects/${props.contProject.project_id}`
       );
-      // console.log("project data", res);
+      // console.log("project data", res); 
       setProject(res.data);
     } catch (err) {
       console.log("project data", err);
