@@ -28,23 +28,56 @@ export const SearchIcon = styled.img`
 
 export const CardWrapper = styled.div`
   overflow: hidden;
-  padding: 0 0 32px;
-  margin: 10px;
-  width: 900px;
+  width: 800px;
+  height: 600px;
   font-family: Quicksand, arial, sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
-  border-radius: 5px;
+  border-radius: 18px;
 `;
+
+export const UserPic = styled.img`
+  border-radius: 15px;
+  height: 60px;
+  width: 60px;
+  margin: 0 32px;
+  
+`;
+
 
 export const CardHeader = styled.header`
   padding-top: 32px;
   padding-bottom: 32px;
+  display: flex;
+  width: 100%;
 `;
 
-export const CardHeading = styled.h1`
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
+export const CardHeading = styled.span`
+  padding: 18px 0px 0px 0px;
+  font-weight: 900;
+  font-size: 14px;
+  
+ 
+`;
+
+
+export const CardImage = styled.img`
+  display: flex;
+  height: 180px;
+  width: 92%;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-left: 32px;
+  margin-right: 32px;
+ 
+`;
+
+export const ContributorSection = styled.div`
+padding-right: 32px;
+padding-left: 32px;
+font-weight: 900;
+font-size: 14px;
+ 
+  
 `;
 
 export const CardBody = styled.div`
@@ -52,34 +85,10 @@ padding-right: 32px;
 padding-left: 32px;
 `;
 
-// export const CardImage = styled.img`({
-//   background-image: ${(props) => props.src};
-//   background-repeat: no-repeat;
-//   background-size: contain;
-//   border: 1px solid red;
-//   width: 100%;
-//   height: 400px;
-//   border-radius: 8px;
-// object-fit: cover
-// `;
-// // export const CardImageWrap = styled.div`({
-//   height: 20px;  
-//   text-align: center;  
-//   padding: 15px;  
-//   border: 3px solid red;
 
-// `;
-
-
-export const CardComments = styled.h1`
+export const CardComments = styled.div`
   display: block;
   font-size: 12px;
   text-align: center;
 `;
 
-
-export const CardContributors = styled.h1`
-  display: block;
-  font-size: 12px;
-  text-align: center;
-`;

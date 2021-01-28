@@ -12,7 +12,9 @@ import {
   CardComments,
   CardContributors,
   CardImageWrap,
-  CardBody
+  CardBody,
+  UserPic,
+  ContributorSection,
 } from "../../styles/LandingPageStyle";
 
 
@@ -21,15 +23,15 @@ const LandingProjectCard = (props) => {
   const {contributors, getContributors} = useContributor()
   
   useEffect(() => {
-   getContributors(props.data.id)
-   getUser()
+    getContributors(props.incomingProject.id)
+    getUser()
   },[])
-  console.log(props.data)
-  console.log(contributors)
+  console.log(props.incomingProject)
+  console.log("These are Contributors", contributors)
   
   
   const getUser = () => {
-    let res = Axios.get(`/api/users/${props.data.user_id}`)
+    let res = Axios.get(`/api/users/${props.incomingProject.user_id}`)
     .then((res) => {
       setUser(res.data);
       console.log("User get",res.data)
@@ -39,30 +41,36 @@ const LandingProjectCard = (props) => {
     });
 };
 
-  
-// p.id == project.id ? project : p //comparing id's
+  const renderContributors = () => {
+    return contributors.map((contributor) => {
+      return (
+        <div>{contributor.firstname} {contributor.lastname}</div>
+      )
+      })}
+
   
   
   
   return (
     <>
-    {contributors.map((c) => (
-      <CardWrapper>
+     <CardWrapper>
         <CardHeader>
-          <CardHeading>{user.firstname}</CardHeading>
+          <UserPic src={`${user.image}`} /> 
+          <CardHeading>{user.firstname}   {user.lastname}</CardHeading>
         </CardHeader>
-        <CardBody>
-          {/* <CardImage src={props.data.picture} /> */}
+        <CardImage src={`${props.incomingProject.picture}`} />
+        <ContributorSection>Project Contributors: {renderContributors()}</ContributorSection>
+          
+          
          
-        <CardComments>{props.data && <Comments project={props.data} />}</CardComments>
-        <CardContributors>{c?.firstname}</CardContributors>
-        </CardBody>
+        <CardComments>{props.incomingProject && <Comments project={props.incomingProject} />}</CardComments>
+     
       </CardWrapper>
     
       
-      
-    ))}
-    </>
-  )
+      </>
+    )
+  
+  
 }
 export default LandingProjectCard;

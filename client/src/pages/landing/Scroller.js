@@ -6,17 +6,17 @@ import useContributor from "../../hooks/useContributor"
 import LandingProjectCard from "./LandingProjectCard"
 
 
-const Scroller = () => {
-  const [data, setData] = useState([]);
+  const Scroller = () => {
+  const [incomingProject, setIncomingProject] = useState([]);
   const [error, setError] = useState(null);
   const [moreProjects, setMoreProjects] = useState(true);
   const {contributors, getContributors} = useContributor()
   
-  const loadData = (page) => {
-    Axios.get(`/api/projects/?offset=${data.length}`)
+  const loadProject = (page) => {
+    Axios.get(`/api/projects/?offset=${incomingProject.length}`)
       .then((res) => {
-        const newProjectList = data.concat(res.data);
-        setData(newProjectList);
+        const newProjectList = incomingProject.concat(res.data);
+        setIncomingProject(newProjectList);
         
         if (res.data.length === 0) {
           setMoreProjects(false);
@@ -37,15 +37,15 @@ const Scroller = () => {
         <InfiniteScroll
           threshold={10}
           pageStart={0}
-          loadMore={loadData}
+          loadMore={loadProject}
           hasMore={moreProjects}
           loader={<div className="text-center">loading projects ...</div>}
         >
-          {data.map((data) => (
+          {incomingProject.map((incomingProject) => (
            <>
            <br />
            <br />
-           <LandingProjectCard key={data.id} data={data} contributors={contributors} />
+           <LandingProjectCard key={incomingProject.id} incomingProject={incomingProject} contributors={contributors} />
            <br />
            <br />
             </>
@@ -59,11 +59,6 @@ const Scroller = () => {
       </div>
     </>
   );
-};
-
-const projectCardStyle = {
-  width: "600px",
-  marginLeft: "40px",
 };
 
 export default Scroller;
