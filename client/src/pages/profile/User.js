@@ -30,7 +30,7 @@ const User = (props) => {
     getTargetUser();
     getProjects();
     getContributingProjects();
-  }, []);
+  }, [props.match.params.id]);
 
   const updateProjects = (project) => {
     const updatedProjects = projects.map((p) =>
