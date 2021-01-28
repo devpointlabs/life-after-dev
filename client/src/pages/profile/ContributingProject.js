@@ -13,7 +13,11 @@ import {
   UserName,
   UserPic,
   CardHeader,
+  ProjectTitle,
+  CardIcon,
 } from "../../styles/ProfileProjectStyle";
+import trashicon from "../../icons/Bin.png";
+import commenticon from "../../icons/Comment.png";
 
 const ContributingProject = (props) => {
   const [comments, setComments] = useState([]);
@@ -58,22 +62,35 @@ const ContributingProject = (props) => {
     <>
       <CardContainer>
         <CardHeader>
-          <UserPic src={`${otherOwner.image}`} />
-          <UserName>
-            {otherOwner.firstname} {otherOwner.lastname}
-          </UserName>
+          <Link to={`/user/${otherOwner.id}`}>
+            <UserPic src={`${otherOwner.image}`} />
+          </Link>
+          <Link to={`/user/${otherOwner.id}`}>
+            <UserName>
+              {otherOwner.firstname} {otherOwner.lastname}
+            </UserName>
+          </Link>
         </CardHeader>
         <CardDiv>
-          <Link to={`/project/${project.id}`}>
+          <Link to={`/projects/${project.id}`}>
             <ProjectPic src={`${project.picture}`} />
           </Link>
         </CardDiv>
         <CardDiv>
-          <Link to={`/project/${project.id}`}>{project.title}</Link>
+          <Link to={`/projects/${project.id}`}>
+            <ProjectTitle>{project.title}</ProjectTitle>
+          </Link>
         </CardDiv>
 
-        <Card.Description>{project.description}</Card.Description>
-        <p>{comments.length} comments</p>
+        <CardDiv style={{ color: "#8e8e8e", fontWeight: 900 }}>
+          {project.description}
+        </CardDiv>
+        <CardDiv style={{ marginTop: 15 }}>
+          <CardIcon src={commenticon} />
+          <span style={{ marginLeft: 5, fontWeight: 900 }}>
+            {comments.length}
+          </span>
+        </CardDiv>
         <div className="ui two buttons">
           {requestStatus === "none" && (
             <Button

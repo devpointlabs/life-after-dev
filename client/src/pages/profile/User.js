@@ -70,9 +70,9 @@ const User = (props) => {
 
   const checkLoggedIn = () =>
     user.id === props.match.params.id && <h1>teseee</h1>;
+
   const renderOutPage = (
     <div className="profileShow">
-      {/* {renderRequests()} */}
       <div className="userSection">
         <div className="namePlate">
           <h1>
@@ -204,11 +204,11 @@ const User = (props) => {
 
   return (
     <>
-      {user?.id == props.match.params.id && renderInPage}
-      {user?.id !== props.match.id && renderOutPage}
+      {user?.id == props.match.params.id ? renderInPage : renderOutPage}
+      {/* {user?.id !== props.match.params.id && renderOutPage} */}
       {user == null && renderOutPage}
     </>
   );
 };
 
-export default withRouter(User);
+export default User;
