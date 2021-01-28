@@ -4,12 +4,14 @@ import { useHistory, useLocation } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Login from "../../components/Login";
 import RequestBox from "../../components/Requests";
+import useRequest from "../../hooks/useRequest";
 
 
 const LandingLogin = () => {
   let history = useHistory();
   let { pathname } = useLocation();
   const { user } = useContext(AuthContext);
+  const { sendRequest, checkRequests, requestStatus } = useRequest()
 
   const loginContainer = {
     borderStyle: "solid",
@@ -22,8 +24,8 @@ const LandingLogin = () => {
     if (user) {
       return(
         <Container style={loginContainer}>
-        <h1>Pending Requests Here</h1>
-        {/* <RequestBox /> */}
+        <h1>Welcome Back { user.firstname} {user.lastname}!</h1>
+          <p>pending requests here</p>
         </Container>
       )
 
@@ -38,7 +40,7 @@ const LandingLogin = () => {
     )
   };
 
-  export default LandingLogin;
+  export default LandingLogin; 
 
 
 

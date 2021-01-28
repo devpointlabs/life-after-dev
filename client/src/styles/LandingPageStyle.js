@@ -59,6 +59,15 @@ export const CardHeading = styled.span`
  
 `;
 
+export const ProjectName = styled.div`
+font-weight: 900;
+font-size: 14px;
+color: #B8B8B8;
+padding-left: 40px;
+padding-bottom: 5px;
+
+`;
+
 
 export const CardImage = styled.img`
   display: flex;

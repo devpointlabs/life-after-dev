@@ -10,15 +10,13 @@ import {
   CardHeading,
   CardImage,
   CardComments,
-  CardContributors,
-  CardImageWrap,
-  CardBody,
   UserPic,
   ContributorSection,
+  ProjectName
 } from "../../styles/LandingPageStyle";
 
 
-const LandingProjectCard = (props) => {
+const LandingProjectCard = (props) => { 
   const [user, setUser] = useState([]);
   const {contributors, getContributors} = useContributor()
   
@@ -58,6 +56,7 @@ const LandingProjectCard = (props) => {
           <UserPic src={`${user.image}`} /> 
           <CardHeading>{user.firstname}   {user.lastname}</CardHeading>
         </CardHeader>
+        <ProjectName>{ `${props.incomingProject.title}`}</ProjectName>
         <CardImage src={`${props.incomingProject.picture}`} />
         <ContributorSection>Project Contributors: {renderContributors()}</ContributorSection>
           
