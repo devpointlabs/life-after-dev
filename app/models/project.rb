@@ -8,6 +8,7 @@ class Project < ApplicationRecord
   def self.search(search) #class.search outside, pass params into ()
     if search.length >= 3
       Project.where('title ILIKE ?', "%#{search}%")
+        .or(Project.where('description ILIKE ?', "%#{search}%"))
     end
   end
 end
