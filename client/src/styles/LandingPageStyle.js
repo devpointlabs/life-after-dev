@@ -23,9 +23,45 @@ export const SearchIcon = styled.img`
   left: 25px;
 `;
 
+//// Search Results ////
+export const ResultsCard = styled.div`
+  width: 480px;
+  background: #ffffff;
+  border: solid;
+  border-width: 2px;
+  border-color: #e2e2e5;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  display: flex;
+`;
+
+export const ResultsTitle = styled.div`
+  color: #000000;
+  font-size: 16px;
+  margin: 10px;
+  font-weight: 900;
+`;
+
+export const ResultsContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ResultsDescription = styled.div`
+  color: #8e8e8e;
+  font-weight: 900;
+  margin: 10px;
+`;
+
+export const ResultsImage = styled.img`
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 20px;
+`;
+
 //// Landing Project Card ////
-
-
 export const CardWrapper = styled.div`
   overflow: hidden;
   padding: 0 0 32px;
@@ -48,8 +84,8 @@ export const CardHeading = styled.h1`
 `;
 
 export const CardBody = styled.div`
-padding-right: 32px;
-padding-left: 32px;
+  padding-right: 32px;
+  padding-left: 32px;
 `;
 
 // export const CardImage = styled.img`({
@@ -63,20 +99,18 @@ padding-left: 32px;
 // object-fit: cover
 // `;
 // // export const CardImageWrap = styled.div`({
-//   height: 20px;  
-//   text-align: center;  
-//   padding: 15px;  
+//   height: 20px;
+//   text-align: center;
+//   padding: 15px;
 //   border: 3px solid red;
 
 // `;
-
 
 export const CardComments = styled.h1`
   display: block;
   font-size: 12px;
   text-align: center;
 `;
-
 
 export const CardContributors = styled.h1`
   display: block;

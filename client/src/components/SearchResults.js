@@ -1,6 +1,14 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { Grid, Segment } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
+import {
+  ResultsCard,
+  ResultsContent,
+  ResultsDescription,
+  ResultsImage,
+  ResultsTitle,
+} from "../styles/LandingPageStyle";
 import ProjectFormModal from "./ProjectFormModal";
 
 const SearchResults = ({ results, query }) => {
@@ -27,7 +35,17 @@ const SearchResults = ({ results, query }) => {
         <Grid.Row>
           <Grid.Column width={12}>
             {results?.map((r) => {
-              return <Segment>{r.title}</Segment>;
+              return (
+                <Link to={`/projects/${r.id}`}>
+                  <ResultsCard>
+                    <ResultsImage src={r.picture} />
+                    <ResultsContent>
+                      <ResultsTitle>{r.title}</ResultsTitle>
+                      <ResultsDescription>{r.description}</ResultsDescription>
+                    </ResultsContent>
+                  </ResultsCard>
+                </Link>
+              );
             })}
           </Grid.Column>
           <Grid.Column width={4}>
