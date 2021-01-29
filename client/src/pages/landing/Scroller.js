@@ -6,7 +6,7 @@ import useContributor from "../../hooks/useContributor"
 import LandingProjectCard from "./LandingProjectCard"
 
 
-  const Scroller = () => {
+const Scroller = ({ currentUser }) => {
   const [incomingProject, setIncomingProject] = useState([]);
   const [error, setError] = useState(null);
   const [moreProjects, setMoreProjects] = useState(true);
@@ -45,7 +45,7 @@ import LandingProjectCard from "./LandingProjectCard"
            <>
            <br />
            <br />
-           <LandingProjectCard key={incomingProject.id} incomingProject={incomingProject} contributors={contributors} />
+           <LandingProjectCard key={incomingProject.id} incomingProject={incomingProject} contributors={contributors} currentUser={currentUser} />
            <br />
            <br />
             </>

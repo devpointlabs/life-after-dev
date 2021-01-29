@@ -89,6 +89,22 @@ font-size: 14px;
   
 `;
 
+export const JoinButton = styled.button`
+background-color: #555555; 
+border-radius: 10px;
+color: white;
+padding: 0 32px;
+text-align: center;
+text-decoration: none;
+font-size: 16px;
+cursor: pointer;
+height: 40px;
+float: right;
+display: inline-block;
+
+
+`;
+
 export const CardBody = styled.div`
 padding-right: 32px;
 padding-left: 32px;
