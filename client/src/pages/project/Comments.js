@@ -48,7 +48,7 @@ function Comments({ project }) {
 }
 
 const Styledh4 = styled.h4`
-  color: white;
+  color: black;
 `;
 
 export default Comments;

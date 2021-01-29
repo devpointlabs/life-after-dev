@@ -14,10 +14,13 @@ import {
   UserPic,
   ContributorSection,
   ProjectName,
-  JoinButton
+  JoinButton,
+  CommentInputStyle
 } from "../../styles/LandingPageStyle";
 import useRequest from "../../hooks/useRequest";
 import RequestAction from "../../components/RequestAction";
+import CommentInput from "../project/CommentInput";
+
 
 
 const LandingProjectCard = (props) => { 
@@ -71,7 +74,9 @@ const LandingProjectCard = (props) => {
       }
     } else {
       return (
-       <a href= "http://localhost:3000/register"><button>Join</button></a> 
+        <JoinButton href="http://localhost:3000/register">
+          <button>Join</button></JoinButton>
+       
       )
     }
     
@@ -95,12 +100,14 @@ const LandingProjectCard = (props) => {
         <CardImage src={`${props.incomingProject.picture}`} />
         </Link>
         <ContributorSection>Project Contributors: {renderContributors()}</ContributorSection>
-        {renderRequestAction()}
+        {renderRequestAction()} 
           
-          
+        <CommentInputStyle> 
+        <CommentInput />
+        </CommentInputStyle>  
          
-        <CardComments>{props.incomingProject && <Comments project={props.incomingProject} />}</CardComments>
-     
+         {props.incomingProject && <Comments project={props.incomingProject} />}
+   
       </CardWrapper>
     
       

@@ -2,7 +2,7 @@ import Axios from "axios";
 import { useState } from "react";
 
 const useRequest = (project, id) => {
-  const [requestStatus, setRequestStatus] = useState("none");
+  const [requestStatus, setRequestStatus] = useState("Join");
 
 
   const checkRequests = (project, id) => {

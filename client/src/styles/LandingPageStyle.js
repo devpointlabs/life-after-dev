@@ -147,8 +147,16 @@ padding-left: 32px;
 `;
 
 
-export const CardComments = styled.div`
-  display: block;
-  font-size: 12px;
-  text-align: center;
+// export const CardComments = styled.div`
+// display: flex;
+// height: 180px;
+// width: 100%;
+// border-radius: 3px;
+// margin-left: 32px;
+// margin-right: 32px;
+// `;
+
+export const CommentInputStyle = styled.div`
+padding-right: 32px;
+padding-left: 32px;
 `;
