@@ -16,6 +16,6 @@ Rails.application.routes.draw do
     put "user/:user_id/update-picture", to: "users#update_picture"
     get "all_projects", to: "projects#all_projects"
     get "projects/:project_id/inactive", to: "requests#get_inactive_requests"
-
+    get "requests/:user_id/get_pending_requests", to: "users#pending_requests"
   end
 end
