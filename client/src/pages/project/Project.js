@@ -30,6 +30,12 @@ const Project = (props) => {
   };
 
   return (
+    <div className="Project_Title">
+      <h1> {data?.title} </h1>
+      <div className="Project_Image">
+        <img className="project_image" src={data?.picture} />
+        <div className="description">
+          <p>{data?.description}</p>
     <Wrapper>
       <div className="Project_Title">
         <h1> {project?.title} </h1>

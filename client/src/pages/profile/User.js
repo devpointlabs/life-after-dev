@@ -3,11 +3,11 @@ import { useState, useEffect, useContext } from "react";
 import { Button, Card, Grid, Header, Icon } from "semantic-ui-react";
 import UserProject from "./UserProject";
 import "./style.css";
-import Requests from "../../components/Requests";
 import { AuthContext } from "../../providers/AuthProvider";
 import ContributingProject from "./ContributingProject";
 import { withRouter } from "react-router-dom";
 import UserProjects from "./UserProjects";
+import Requests from "./Requests";
 
 let imagelinks = {
   github:
@@ -51,7 +51,7 @@ const User = (props) => {
   const getProjects = async () => {
     try {
       let res = await axios.get(`/api/users/${props.match.params.id}/projects`);
-      // console.log("user projects", res.data);
+      console.log("user projects", res.data);
       setProjects(res.data);
     } catch (err) {
       // console.log(err);
@@ -68,8 +68,9 @@ const User = (props) => {
     }
   };
 
-  const checkLoggedIn = () =>
-    user.id === props.match.params.id && <h1>teseee</h1>;
+  // const checkLoggedIn = () =>
+  //   user.id === props.match.params.id && <h1>teseee</h1>;
+
   const renderOutPage = (
     <div className="profileShow">
       {/* {renderRequests()} */}
@@ -130,12 +131,17 @@ const User = (props) => {
 
   const renderInPage = (
     <div className="profileShow">
+      <div className="projectsectionlogged">
+        {projects.map(p => (
+          <Requests project={p}/>
+        ))}
       <UserProjects
         projects={projects}
         contributingProjects={contributingProjects}
         userId={props.match.params.id}
         updateProjects={updateProjects}
       />
+      </div>
       <div className="usersectionLogged">
         <div className="namePlate">
           <h1 style={{ color: "white" }}>

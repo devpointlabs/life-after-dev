@@ -2,12 +2,8 @@ import Axios from "axios";
 import { useState } from "react";
 
 const useRequest = (project, id) => {
-  const [requestStatus, setRequestStatus] = useState("Join");
-  // const request = {
-  //   user_id: user,
-  //   project_id: project,
-  //   contributor: false,
-  // }
+  const [requestStatus, setRequestStatus] = useState("none");
+
 
   const checkRequests = (project, id) => {
     Axios.get(`/api/projects/${project}/requests`)
