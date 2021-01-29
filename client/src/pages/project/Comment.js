@@ -1,57 +1,39 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Axios from "axios";
 import { Image } from "semantic-ui-react";
 import styled from "styled-components";
+import binicon from "../../icons/Bin.png";
+import { AuthContext } from "../../providers/AuthProvider";
 
-function Comment({ comment }) {
-  const [user, setUser] = useState(null);
+function Comment({ comment, project, deleteComment }) {
+  const [account, setAccount] = useState(null);
+  const { user } = useContext(AuthContext);
+  const [newComment, setNewComment] = useState(comment);
 
   useEffect(() => {
     Axios.get(`/api/users/${comment.user_id}/`)
       .then((res) => {
-        setUser(res.data);
+        setAccount(res.data);
       })
       .catch(console.log);
-  }, []);
+  }, [newComment]);
 
-  ///api/projects/:project_id/comments/:id
-  const deleteComment = async (comment) => {
-    try {
-      let res = await Axios.delete(
-        `/api/projects/${project_id}/comments/${id}`
-      );
-      console.log(res.data);
+  const renderDelete = () => {
+    if (user?.id == comment.user_id) {
+      return <div onClick={() => deleteComment(comment.id)}>Delete</div>;
     }
   };
 
   return (
-    // <div className="comment">
-    //   <div className="comment_top">
-    //     <Image src={user && user.image} avatar />
-    //     <div className="comment_topInfo">
-    //       <h3>
-    //         {user && user.firstname} {user && user.lastname}
-    //       </h3>
-    //     </div>
-    //     <div className="post_bottom">
-    //       <p>{comment.body}</p>
-    //     </div>
-    //   </div>
-    //   <div className="comment_options">
-    //     <p>❤️</p>
-    //     <p>😱</p>
-    //     <p>🤮</p>
-    //     <p>Reply</p>
-    //   </div>
-    // </div>
     <Wrapper>
       <UserInfo>
-        <Image src={user?.image} avatar />
+        <Image src={account?.image} avatar />
         <span>
-          {user?.firstname} {user?.lastname}
+          {account?.firstname} {account?.lastname}
         </span>
       </UserInfo>
       <p>{comment.body}</p>
+      {renderDelete()}
     </Wrapper>
   );
 }

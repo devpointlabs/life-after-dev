@@ -8,10 +8,10 @@ import styled from "styled-components";
 //     "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg",
 
 const Project = (props) => {
-  const [data, setData] = useState(null);
+  const [project, setProject] = useState(null);
 
   useEffect(() => {
-    getData();
+    getProject();
   }, []);
   // useEffect(() => {
   //   getUser();
@@ -19,10 +19,10 @@ const Project = (props) => {
 
   //component didupdate
 
-  const getData = async () => {
+  const getProject = async () => {
     try {
       let res = await axios.get(`/api/projects/${props.match.params.id}`);
-      setData(res.data);
+      setProject(res.data);
       console.log(res);
     } catch (err) {
       alert(err);
@@ -32,12 +32,12 @@ const Project = (props) => {
   return (
     <Wrapper>
       <div className="Project_Title">
-        <h1> {data?.title} </h1>
+        <h1> {project?.title} </h1>
         <div className="Project_Image">
-          <img className="project_image" src={data?.picture} />
+          <img className="project_image" src={project?.picture} />
 
           <div className="description">
-            <p>{data?.description}</p>
+            <p>{project?.description}</p>
           </div>
           <div className="links">
             <a
@@ -48,7 +48,7 @@ const Project = (props) => {
             </a>
             <br />
             <a
-              href={data?.live_link}
+              href={project?.live_link}
               onClick="console.log('The link was clicked.'); return false"
             >
               Live_Link
@@ -56,7 +56,9 @@ const Project = (props) => {
           </div>
         </div>
       </div>
-      <CommentSection>{data && <Comments project={data} />}</CommentSection>
+      <CommentSection>
+        {project && <Comments project={project} />}
+      </CommentSection>
     </Wrapper>
   );
 };

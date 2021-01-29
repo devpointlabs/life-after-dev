@@ -15,15 +15,34 @@ function Comments({ project }) {
       .catch(console.log);
   }, []);
 
-  //This component returns all the comments for this project
+  const updateComments = (comment) => {
+    console.log("comment", comment);
+    setComments([...comments, comment]);
+  };
+
+  const deleteComment = (id) => {
+    Axios.delete(`/api/projects/${project.id}/comments/${id}`)
+      .then((res) => {
+        setComments(comments.filter((comment) => comment.id !== id));
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <>
       <Styledh4>Comments ({comments?.length})</Styledh4>
       {comments?.map((comment) => (
-        <Comment key={comment.id} comment={comment} />
+        <Comment
+          key={comment.id}
+          comment={comment}
+          project={project}
+          deleteComment={deleteComment}
+        />
       ))}
-      <CommentInput project={project} />
+      <CommentInput project={project} updateComments={updateComments} />
     </>
   );
 }
