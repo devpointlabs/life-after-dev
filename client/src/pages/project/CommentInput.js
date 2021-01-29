@@ -1,26 +1,21 @@
 import Axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Button } from "semantic-ui-react";
 import styled from "styled-components";
 
-export default function CommentInput({ project }) {
+export default function CommentInput({ project, updateComments }) {
   const [comment, setComment] = useState("");
-  // const [commentMap, setcommentMap] = useState(comments ? comments : []);
 
-  // const addComment = () => {
-  //   commentMap.push({
-  //     comment: comment,
-  //   });
-  // };
+  useEffect(() => {}, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = Axios.post(`/api/projects/${project.id}/comments`, {
+      let res = await Axios.post(`/api/projects/${project.id}/comments`, {
         body: comment,
       });
-      console.log(res.data);
-      setComment([res.data, ...comment]);
-      handleChange();
+      console.log("axios post for comment", res.data);
+      updateComments(res.data);
       console.log(res);
     } catch (error) {
       console.log(error);
@@ -35,6 +30,7 @@ export default function CommentInput({ project }) {
     <Wrapper>
       <form onSubmit={handleSubmit}>
         <NewComment onChange={handleChange} placeholder="Write a comment..." />
+        <Button>Submit</Button>
       </form>
     </Wrapper>
     // <div className="commentInput">
