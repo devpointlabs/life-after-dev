@@ -28,7 +28,7 @@ const Project = (props) => {
       console.log("owner", ownerRes);
     } catch (err) {
       console.log(err);
-    }
+    } 
   };
 
   const updateProjects = (project) => {
