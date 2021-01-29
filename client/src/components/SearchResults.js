@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { Grid, Segment } from "semantic-ui-react";
+import { Button, Grid, Segment } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
 import {
   ResultsCard,
@@ -20,6 +20,15 @@ const SearchResults = ({ results, query }) => {
         <div style={spacingStyle}>
           <h3>{query}</h3>
           <ProjectFormModal query={query} />
+        </div>
+      );
+    } else {
+      return (
+        <div style={spacingStyle}>
+          <h3>{query}</h3>
+          <Link to={"/register"}>
+            <Button color="green">Create New Project</Button>
+          </Link>
         </div>
       );
     }
