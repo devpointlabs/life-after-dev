@@ -33,7 +33,6 @@ const Project = (props) => {
       <h1> {data?.title} </h1>
       <div className="Project_Image">
         <img className="project_image" src={data?.picture} />
-
         <div className="description">
           <p>{data?.description}</p>
         </div>

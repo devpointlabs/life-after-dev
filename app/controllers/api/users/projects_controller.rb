@@ -1,5 +1,5 @@
 class Api::Users::ProjectsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :update]
+  before_action :authenticate_user!, only: [:create, :update, :update_picture]
   before_action :set_project, only: [:show, :update, :destroy, :get_project_ids]
   before_action :set_user
 
@@ -16,13 +16,24 @@ class Api::Users::ProjectsController < ApplicationController
     render json: Project.new
   end
 
-
   def create
     project = current_user.projects.new(project_params)
-    if project.save
-      render json: project
-    else
-      render json: { errors: project.errors }, status: :unprocessable_entity
+    file = params[:file]
+    if file
+      begin
+        ext = File.extname(file.tempfile)
+        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
+        project.picture = cloud_image["secure_url"]
+
+        if project.save
+          render json: project
+        else
+          render json: { errors: project.errors }, status: :unprocessable_entity
+        end
+      rescue => e
+        render json: { errors: e }, status: 422
+        return
+      end
     end
   end
 
@@ -31,6 +42,25 @@ class Api::Users::ProjectsController < ApplicationController
       render json: @project
     else
       render json: @project.errors, status: 422
+    end
+  end
+
+  def update_picture
+    project = Project.find(params[:id])
+    file = param[:file]
+
+    if file
+      begin
+        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
+        if project.update(picture: cloud_image["secure_url"])
+          render json: { data: project }
+        else
+          render json: { error: "error uploading image" }, status: 422
+        end
+
+      rescue => e
+        render json: { errors: e }, status: 422
+      end
     end
   end
 
@@ -50,6 +80,6 @@ class Api::Users::ProjectsController < ApplicationController
   end
 
   def project_params
-    params.permit(:title, :picture, :github_link, :live_link, :description, :user_id)
+    params.permit(:title, :github_link, :live_link, :description, :picture)
   end
 end
