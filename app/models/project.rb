@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :user
-  has_many :comments
-  has_many :requests
+  has_many :comments, dependent: :destroy
+  has_many :requests, dependent: :destroy
   # has_many :users, through: :requests
 
   

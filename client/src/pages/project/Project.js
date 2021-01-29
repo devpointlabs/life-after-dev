@@ -1,16 +1,18 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./style.css";
 import Comments from "./Comments";
 import styled from "styled-components";
 import { Button, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import EditProjectModal from "../../components/EditProjectModal";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Project = (props) => {
   const [project, setProject] = useState(null);
   const [owner, setOwner] = useState([]);
   const [projects, setProjects] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     getProjectData();
@@ -34,6 +36,36 @@ const Project = (props) => {
     setProject(updatedProject);
   };
 
+  const deleteProject = (id) => {
+    axios
+      .delete(`/api/users/${owner.id}/projects/${id}`)
+      .then((res) => {
+        console.log("project deleted", res);
+        props.history.push(`/user/${owner.id}`);
+      })
+      .catch((err) => {
+        console.log("delete project error", err);
+      });
+  };
+
+  const renderEditButton = () => {
+    if (user?.id == owner.id) {
+      return (
+        <EditProjectModal project={project} updateProjects={updateProjects} />
+      );
+    }
+  };
+
+  const renderDeleteButton = () => {
+    if (user?.id == owner.id) {
+      return (
+        <Button onClick={() => deleteProject(project.id)} color="red">
+          Delete
+        </Button>
+      );
+    }
+  };
+
   return (
     <Wrapper>
       <div className="Project_Title">
@@ -46,7 +78,8 @@ const Project = (props) => {
           <Image src={owner.image} avatar />
         </Link>
         <h2> {project?.title} </h2>
-        <EditProjectModal project={project} updateProjects={updateProjects} />
+        {renderEditButton()}
+        {renderDeleteButton()}
         <div className="Project_Image">
           <img className="project_image" src={project?.picture} />
           <Button color="black">Join</Button>
