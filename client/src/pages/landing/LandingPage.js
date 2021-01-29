@@ -2,7 +2,8 @@ import SearchBar from "./SearchBar";
 import Scroller from "./Scroller";
 import LandingLogin from "./LandingLogin";
 import SearchResults from "../../components/SearchResults";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 import Axios from "axios";
 
 const LandingPage = () => {
@@ -11,6 +12,7 @@ const LandingPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [toggle, setToggle] = useState(false);
+  const { user } = useContext(AuthContext);
 
   const getResults = (query) => {
     Axios.get(`/api/all_projects/?query=${query}`)
@@ -20,7 +22,7 @@ const LandingPage = () => {
       })
       .catch((err) => {
         setError(err.response);
-        console.log(error);
+        
       })
       .finally(() => {
         setLoading(false);
@@ -30,13 +32,14 @@ const LandingPage = () => {
   const getQuery = (query) => {
     setQuery(query);
   };
+  
 
   return (
     <>
       <SearchBar getResults={getResults} getQuery={getQuery} />
-      <LandingLogin />
+      {user?.id !== null && <LandingLogin />}
       <SearchResults results={results} toggle={toggle} query={query} />
-      <Scroller />
+      <Scroller currentUser={user}/>
     </>
   );
 };

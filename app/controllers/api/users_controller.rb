@@ -20,6 +20,10 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def pending_requests
+    render json: User.pending_requests(params[:id])
+  end
+
   def update_picture
     file = params[:file]
     # user = current_user

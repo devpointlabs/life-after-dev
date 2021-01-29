@@ -11,9 +11,9 @@ const useRequest = (project, id) => {
         res.data.forEach((r) => {
           if (r.user_id === id) {
             if (r.contributor === true) {
-              setRequestStatus("contributor");
+              setRequestStatus("Joined");
             } else {
-              setRequestStatus("pending");
+              setRequestStatus("Pending");
             }
           }
         });
@@ -29,7 +29,9 @@ const useRequest = (project, id) => {
       project_id: project,
       contributor: false,
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        setRequestStatus("Pending")
+      })
       .catch((err) => {
         console.log(err);
       });

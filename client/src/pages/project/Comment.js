@@ -1,40 +1,52 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Axios from "axios";
-import "./comment.css";
 import { Image } from "semantic-ui-react";
+import styled from "styled-components";
+import binicon from "../../icons/Bin.png";
+import { AuthContext } from "../../providers/AuthProvider";
 
-function Comment({ comment }) {
-  const [user, setUser] = useState(null);
+function Comment({ comment, project, deleteComment }) {
+  const [account, setAccount] = useState(null);
+  const { user } = useContext(AuthContext);
+  const [newComment, setNewComment] = useState(comment);
 
   useEffect(() => {
     Axios.get(`/api/users/${comment.user_id}/`)
       .then((res) => {
-        setUser(res.data);
+        setAccount(res.data);
       })
       .catch(console.log);
-  }, []);
+  }, [newComment]);
+
+  const renderDelete = () => {
+    if (user?.id == comment.user_id) {
+      return <div onClick={() => deleteComment(comment.id)}>Delete</div>;
+    }
+  };
 
   return (
-    <div className="comment">
-      <div className="comment_top">
-        <Image src={user && user.image} avatar />
-        <div className="comment_topInfo">
-          <h3>
-            {user && user.firstname} {user && user.lastname}
-          </h3>
-        </div>
-        <div className="post_bottom">
-          <p>{comment.body}</p>
-        </div>
-      </div>
-      <div className="comment_options">
-        <p>❤️</p>
-        <p>😱</p>
-        <p>🤮</p>
-        <p>Reply</p>
-      </div>
-    </div>
+    <Wrapper>
+      <UserInfo>
+        <Image src={account?.image} avatar />
+        <span>
+          {account?.firstname} {account?.lastname}
+        </span>
+      </UserInfo>
+      <p>{comment.body}</p>
+      {renderDelete()}
+    </Wrapper>
   );
 }
+
+const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+`;
+
+const Wrapper = styled.div`
+  color: white;
+  padding: 1rem 0;
+`;
 
 export default Comment;
