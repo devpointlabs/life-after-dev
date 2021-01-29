@@ -15,12 +15,14 @@ class Api::CommentsController < ApplicationController
 
   def create
     comment = @project.comments.new(comment_params)
-    if (comment.save)
+    comment.user_id = current_user.id
+    if comment.save
       render json: comment
     else
       render json: comment.errors, status: 422
     end
   end
+  
 
   def update
     if (@comment.update(comment_params))
