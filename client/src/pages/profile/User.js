@@ -30,7 +30,7 @@ const User = (props) => {
     getTargetUser();
     getProjects();
     getContributingProjects();
-  }, []);
+  }, [props.match.params.id]);
 
   const updateProjects = (project) => {
     const updatedProjects = projects.map((p) =>
@@ -73,7 +73,6 @@ const User = (props) => {
 
   const renderOutPage = (
     <div className="profileShow">
-      {/* {renderRequests()} */}
       <div className="userSection">
         <div className="namePlate">
           <h1>
@@ -210,11 +209,11 @@ const User = (props) => {
 
   return (
     <>
-      {user?.id == props.match.params.id && renderInPage}
-      {user?.id !== props.match.id && renderOutPage}
+      {user?.id == props.match.params.id ? renderInPage : renderOutPage}
+      {/* {user?.id !== props.match.params.id && renderOutPage} */}
       {user == null && renderOutPage}
     </>
   );
 };
 
-export default withRouter(User);
+export default User;

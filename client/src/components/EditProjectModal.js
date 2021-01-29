@@ -19,7 +19,7 @@ const EditProjectModal = ({ project, updateProjects }) => {
         `/api/users/${user.id}/projects/${project.id}`,
         updatedProject
       );
-      // console.log("edit Project success", updatedProject);
+      console.log("edit Project success", updatedProject);
     } catch (err) {
       // console.log("edit project error", err);
     }

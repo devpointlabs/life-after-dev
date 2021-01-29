@@ -53,6 +53,7 @@ export const UserName = styled.span`
   margin: 10px 0px 0px 10px;
   font-weight: 900;
   font-size: 14px;
+  color: #000000;
 `;
 
 export const CrudIcon = styled.div`

@@ -131,10 +131,12 @@ const UserProjects = ({
 const activeStyle = {
   color: "#000000",
   marginLeft: 20,
+  cursor: "pointer",
 };
 const inactiveStyle = {
   color: "#cbcbcb",
   marginLeft: 20,
+  cursor: "pointer",
 };
 
 export default UserProjects;

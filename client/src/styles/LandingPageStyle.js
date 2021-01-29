@@ -23,9 +23,45 @@ export const SearchIcon = styled.img`
   left: 25px;
 `;
 
+//// Search Results ////
+export const ResultsCard = styled.div`
+  width: 480px;
+  background: #ffffff;
+  border: solid;
+  border-width: 2px;
+  border-color: #e2e2e5;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  display: flex;
+`;
+
+export const ResultsTitle = styled.div`
+  color: #000000;
+  font-size: 16px;
+  margin: 10px;
+  font-weight: 900;
+`;
+
+export const ResultsContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ResultsDescription = styled.div`
+  color: #8e8e8e;
+  font-weight: 900;
+  margin: 10px;
+`;
+
+export const ResultsImage = styled.img`
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 20px;
+`;
+
 //// Landing Project Card ////
-
-
 export const CardWrapper = styled.div`
   overflow: hidden;
   width: 800px;
@@ -116,4 +152,3 @@ export const CardComments = styled.div`
   font-size: 12px;
   text-align: center;
 `;
-

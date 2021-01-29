@@ -60,12 +60,12 @@ const UserProject = (props) => {
           </CrudIcon>
         </CardHeader>
         <CardDiv>
-          <Link to={`/project/${props.project.id}`}>
+          <Link to={`/projects/${props.project.id}`}>
             <ProjectPic src={`${props.project.picture}`} />
           </Link>
         </CardDiv>
         <CardDiv>
-          <Link to={`/project/${props.project.id}`}>
+          <Link to={`/projects/${props.project.id}`}>
             <ProjectTitle>{props.project.title}</ProjectTitle>
           </Link>
         </CardDiv>

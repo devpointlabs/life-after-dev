@@ -1,47 +1,88 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./style.css";
 import Comments from "./Comments";
 import styled from "styled-components";
-// let logo ={
-//   picture:
-//     "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg",
+import { Button, Image } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import EditProjectModal from "../../components/EditProjectModal";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Project = (props) => {
   const [project, setProject] = useState(null);
+  const [owner, setOwner] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    getProject();
+    getProjectData();
   }, []);
-  // useEffect(() => {
-  //   getUser();
-  // }, [data]);
 
-  //component didupdate
-
-  const getProject = async () => {
+  const getProjectData = async () => {
     try {
       let res = await axios.get(`/api/projects/${props.match.params.id}`);
       setProject(res.data);
-      console.log(res);
+      console.log("project", res);
+      let ownerRes = await axios.get(`/api/users/${res.data.user_id}`);
+      setOwner(ownerRes.data);
+      console.log("owner", ownerRes);
     } catch (err) {
-      alert(err);
+      console.log(err);
+    }
+  };
+
+  const updateProjects = (project) => {
+    const updatedProject = project;
+    setProject(updatedProject);
+  };
+
+  const deleteProject = (id) => {
+    axios
+      .delete(`/api/users/${owner.id}/projects/${id}`)
+      .then((res) => {
+        console.log("project deleted", res);
+        props.history.push(`/user/${owner.id}`);
+      })
+      .catch((err) => {
+        console.log("delete project error", err);
+      });
+  };
+
+  const renderEditButton = () => {
+    if (user?.id == owner.id) {
+      return (
+        <EditProjectModal project={project} updateProjects={updateProjects} />
+      );
+    }
+  };
+
+  const renderDeleteButton = () => {
+    if (user?.id == owner.id) {
+      return (
+        <Button onClick={() => deleteProject(project.id)} color="red">
+          Delete
+        </Button>
+      );
     }
   };
 
   return (
-    <div className="Project_Title">
-      <h1> {data?.title} </h1>
-      <div className="Project_Image">
-        <img className="project_image" src={data?.picture} />
-        <div className="description">
-          <p>{data?.description}</p>
     <Wrapper>
       <div className="Project_Title">
-        <h1> {project?.title} </h1>
+        <Link to={`/user/${owner.id}`}>
+          <h2>
+            {owner.firstname} {owner.lastname}
+          </h2>
+        </Link>
+        <Link to={`/user/${owner.id}`}>
+          <Image src={owner.image} avatar />
+        </Link>
+        <h2> {project?.title} </h2>
+        {renderEditButton()}
+        {renderDeleteButton()}
         <div className="Project_Image">
           <img className="project_image" src={project?.picture} />
-
+          <Button color="black">Join</Button>
           <div className="description">
             <p>{project?.description}</p>
           </div>
