@@ -1,68 +1,114 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Axios from "axios";
 import { Card, Image, Header, Container } from "semantic-ui-react";
 import InfiniteScroll from "react-infinite-scroller";
 import Comments from "../project/Comments"
 import useContributor from "../../hooks/useContributor"
+import { Link } from "react-router-dom"
 import {
   CardWrapper,
   CardHeader,
   CardHeading,
   CardImage,
   CardComments,
-  CardContributors,
-  CardImageWrap,
-  CardBody
+  UserPic,
+  ContributorSection,
+  ProjectName,
+  JoinButton
 } from "../../styles/LandingPageStyle";
+import useRequest from "../../hooks/useRequest";
+import RequestAction from "../../components/RequestAction";
 
 
-const LandingProjectCard = (props) => {
+const LandingProjectCard = (props) => { 
   const [user, setUser] = useState([]);
   const {contributors, getContributors} = useContributor()
+  const { sendRequest, checkRequests, requestStatus } = useRequest()
+
+  
   
   useEffect(() => {
-   getContributors(props.data.id)
-   getUser()
+    getContributors(props.incomingProject.id)
+    getUser()
   },[])
-  console.log(props.data)
-  console.log(contributors)
+  
   
   
   const getUser = () => {
-    let res = Axios.get(`/api/users/${props.data.user_id}`)
+    let res = Axios.get(`/api/users/${props.incomingProject.user_id}`)
     .then((res) => {
       setUser(res.data);
-      console.log("User get",res.data)
+      
     })
     .catch((err) => {
       console.log(err);
     });
 };
 
-  
-// p.id == project.id ? project : p //comparing id's
+  const renderContributors = () => {
+    return contributors.map((contributor) => {
+      return (
+        <div>{contributor.firstname} {contributor.lastname}</div>
+      )
+    })
+  };
+
+
+  // const registerRedirect = () => {
+  //   let path = `/register`;
+  //   let history = useHistory()
+  //   history.push(path)
+
+  // }
+
+  const renderRequestAction = () => {
+    if (props.currentUser) {
+      if (props.currentUser.id !== props.incomingProject.user_id) {
+        return (<RequestAction projectId={props.incomingProject.id} userId={props.currentUser.id}/>)
+      }
+      else {
+        return (<span></span>)
+      }
+    } else {
+      return (
+       <a href= "http://localhost:3000/register"><button>Join</button></a> 
+      )
+    }
+    
+}
+ 
+
   
   
   
   return (
     <>
-    {contributors.map((c) => (
-      <CardWrapper>
+     <CardWrapper>
         <CardHeader>
-          <CardHeading>{user.firstname}</CardHeading>
+        <Link to={`/user/${user.id}`}>
+            <UserPic src={`${user.image}`} />
+          <CardHeading>{user.firstname}   {user.lastname}</CardHeading>
+          </Link>
         </CardHeader>
-        <CardBody>
-          {/* <CardImage src={props.data.picture} /> */}
+        <Link to={`/projects/${props.incomingProject.id}`}>
+        <ProjectName>{ `${props.incomingProject.title}`}</ProjectName>
+        <CardImage src={`${props.incomingProject.picture}`} />
+        </Link>
+        <ContributorSection>Project Contributors: {renderContributors()}</ContributorSection>
+        {renderRequestAction()}
+          
+          
          
-        <CardComments>{props.data && <Comments project={props.data} />}</CardComments>
-        <CardContributors>{c?.firstname}</CardContributors>
-        </CardBody>
+        <CardComments>{props.incomingProject && <Comments project={props.incomingProject} />}</CardComments>
+     
       </CardWrapper>
     
       
-      
-    ))}
-    </>
-  )
+      </>
+    )
+  
+  
 }
 export default LandingProjectCard;
+
+// if own user make sure button is not there
