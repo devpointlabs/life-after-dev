@@ -3,11 +3,7 @@ import { useState } from "react";
 
 const useRequest = (project, id) => {
   const [requestStatus, setRequestStatus] = useState("none");
-  // const request = {
-  //   user_id: user,
-  //   project_id: project,
-  //   contributor: false,
-  // }
+
 
   const checkRequests = (project, id) => {
     Axios.get(`/api/projects/${project}/requests`)
@@ -15,9 +11,9 @@ const useRequest = (project, id) => {
         res.data.forEach((r) => {
           if (r.user_id === id) {
             if (r.contributor === true) {
-              setRequestStatus("contributor");
+              setRequestStatus("Joined");
             } else {
-              setRequestStatus("pending");
+              setRequestStatus("Pending");
             }
           }
         });
@@ -33,7 +29,9 @@ const useRequest = (project, id) => {
       project_id: project,
       contributor: false,
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        setRequestStatus("Pending")
+      })
       .catch((err) => {
         console.log(err);
       });

@@ -42,7 +42,7 @@ const AuthProvider = (props) => {
     } catch (err) {
       console.log(err);
       setLoading(false);
-      setAuthError(err.response.data.errors);
+      // setAuthError(err.response.data.errors);
       }
   }
   

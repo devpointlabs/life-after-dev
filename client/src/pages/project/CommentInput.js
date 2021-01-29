@@ -33,16 +33,6 @@ export default function CommentInput({ project, updateComments }) {
         <Button>Submit</Button>
       </form>
     </Wrapper>
-    // <div className="commentInput">
-    //   <textarea
-    //     className="commentInput__textarea"
-    //     rows="1"
-    //     placeholder="write a comment..."
-    //     value={comment}
-    //     onChange={(e) => setComment(e.target.value)}
-    //   ></textarea>
-    //   <button className="commentInput__btn">Post</button>
-    // </div>
   );
 }
 
