@@ -1,4 +1,4 @@
-.Project_Title > h1 {
+.Project_Title > h2 {
   padding: 40px;
   text-align: center;
   color: black;
@@ -10,14 +10,15 @@
   justify-content: space-around;
   align-items: center;
   float: center;
-  padding: 80px;
+  padding: 20px;
 }
 
 .project_image {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 70%;
+  border-radius: 20%;
 }
 .links {
   padding-top: 20px;
