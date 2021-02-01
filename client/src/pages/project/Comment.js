@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from "react";
 import Axios from "axios";
-import { Image } from "semantic-ui-react";
 import styled from "styled-components";
 import binicon from "../../icons/Bin.png";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -27,7 +26,7 @@ function Comment({ comment, project, deleteComment }) {
   return (
     <Wrapper>
       <UserInfo>
-        <Image src={account?.image} avatar />
+        <UserImage src={account?.image} />
         <span>
           {account?.firstname} {account?.lastname}
         </span>
@@ -50,3 +49,9 @@ const Wrapper = styled.div`
 `;
 
 export default Comment;
+
+const UserImage = styled.img`
+  border-radius: 8px;
+  padding: 5px;
+  width: 50px;
+`;
