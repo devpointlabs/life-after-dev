@@ -15,20 +15,6 @@ const SearchBar = ({ getQuery }) => {
   const [error, setError] = useState(null);
   let history = useHistory();
 
-  // const getResults = (query) => {
-  //   Axios.get(`/api/all_projects/?query=${query}`)
-  //     .then((res) => {
-  //       setResults(res.data);
-  //       setError(null);
-  //     })
-  //     .catch((err) => {
-  //       setError(err.response);
-  //     })
-  //     .finally(() => {
-  //       setLoading(false);
-  //     });
-  // };
-
   const handleChange = (e) => {
     let keyword = e.target.value;
     setQuery(keyword);
@@ -37,7 +23,6 @@ const SearchBar = ({ getQuery }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // getResults(query);
     history.push(`/results/${query}`);
   };
 

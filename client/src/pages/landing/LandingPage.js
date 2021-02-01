@@ -36,7 +36,6 @@ const LandingPage = () => {
     <>
       <SearchBar getResults={getResults} getQuery={getQuery} />
       {user?.id !== null && <LandingLogin />}
-      {/* <SearchResults results={results} query={query} /> */}
       <Scroller currentUser={user} />
     </>
   );
