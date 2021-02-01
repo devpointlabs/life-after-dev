@@ -5,6 +5,7 @@ import Comments from "./Comments";
 import styled from "styled-components";
 import { AuthContext } from "../../providers/AuthProvider";
 import githubicon from "../../icons/githubicon.png";
+import livelink from "../../icons/livelink.png";
 import { CommentSection, Wrapper } from "../../styles/ProjectShowStyle";
 
 const Project = (props) => {
@@ -36,14 +37,11 @@ const Project = (props) => {
           </div>
           <div className="links">
             <a href={`http://${project?.github_link}`} target="_blank">
-              <img src={githubicon}></img>
+              <img className="Github" src={githubicon}></img>
             </a>
             <br />
-            <a
-              href={project?.live_link}
-              onClick="console.log('The link was clicked.'); return false"
-            >
-              Live_Link
+            <a href={`http://${project?.live_link}`} target="_blank">
+              <img className="LiveLink" src={livelink}></img>
             </a>
           </div>
         </div>
