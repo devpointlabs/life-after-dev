@@ -3,5 +3,31 @@
     "babel-eslint": "^10.1.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-react": "^7.22.0"
-  }
+  },
+  "name": "life-after-dev",
+  "description": "1. `git clone git@github.com:jimibue/react-rails-semantic-starter.git` CHANGE THIS TO YOUR REPO 2. `cd project-name` 3. `bundle install` 4. in database.yml change name of database `what_ever_you_named_your_start_project` to **project-name** 5. `rails db:create db:migrate db:seed` 6. `rails s -p 3001` 7. `cd client && yarn` 8. `yarn start` ### handle git 1.  - remove origin `git remote rm origin`     - git add remote origin to new repo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm install --only=dev && npm install && npm run build && cd ..",
+      "deploy": "cp -a client/build/. public/",
+      "heroku-postbuild": "npm run build && npm run deploy && echo 'Client Built'"
+      
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devpointlabs/life-after-dev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devpointlabs/life-after-dev/issues"
+  },
+  "homepage": "https://github.com/devpointlabs/life-after-dev#readme"
 }
