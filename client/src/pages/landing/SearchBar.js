@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   Search,
   SearchBarContainer,
   SearchIcon,
 } from "../../styles/LandingPageStyle";
 import searchicon from "../../icons/searchicon2.png";
+import Axios from "axios";
 
-const SearchBar = ({ getResults, getQuery }) => {
+const SearchBar = ({ getQuery }) => {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState(null);
+  const [results, setResults] = useState([]);
+  const [error, setError] = useState(null);
+  let history = useHistory();
 
   const handleChange = (e) => {
     let keyword = e.target.value;
@@ -18,7 +23,7 @@ const SearchBar = ({ getResults, getQuery }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getResults(query);
+    history.push(`/results/${query}`);
   };
 
   return (

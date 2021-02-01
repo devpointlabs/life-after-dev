@@ -1,4 +1,4 @@
-.Project_Title > h1 {
+.Project_Title > h2 {
   padding: 40px;
   text-align: center;
   color: black;
@@ -10,22 +10,33 @@
   justify-content: space-around;
   align-items: center;
   float: center;
-  padding: 80px;
+  padding: 20px;
 }
 
 .project_image {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 70%;
+  border-radius: 10%;
+  padding: 30px;
 }
 .links {
   padding-top: 20px;
   border-top: 1px solid lightgray;
   display: flex;
-  justify-content: space-evenly;
-  font-size: medium;
-  color: blue;
-  cursor: pointer;
+  justify-content: left;
   padding: 15px;
+}
+
+.Github {
+  border-radius: 8px;
+  padding: 5px;
+  width: 40px;
+}
+
+.Livelink {
+  border-radius: 8px;
+  padding: 5px;
+  width: 40px;
 }

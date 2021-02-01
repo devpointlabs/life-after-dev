@@ -2,6 +2,7 @@ import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "semantic-ui-react";
 import styled from "styled-components";
+import Send from "../../icons/Send.png";
 
 export default function CommentInput({ project, updateComments }) {
   const [comment, setComment] = useState("");
@@ -30,17 +31,24 @@ export default function CommentInput({ project, updateComments }) {
     <Wrapper>
       <form onSubmit={handleSubmit}>
         <NewComment onChange={handleChange} placeholder="Write a comment..." />
-        <Button>Submit</Button>
+        <SendIcon src={Send} />
       </form>
     </Wrapper>
   );
 }
 
 const NewComment = styled.input`
-  height: 3rem;
+  width: 210px;
+  height: 50px;
+  border-radius: 10px;
 
   &::placeholder {
     padding-left: 0.5rem;
   }
 `;
 const Wrapper = styled.div``;
+
+const SendIcon = styled.img`
+  position: relative;
+  padding: 10;
+`;

@@ -14,6 +14,7 @@ import User from "./pages/profile/User";
 import StyleTest from "./components/StyleTest";
 import { AppContainer, AppGrid, Logo, NavColumn } from "./styles/GlobalStyle";
 import devpointlogo from "./icons/devpointlogo.png";
+import ResultsPage from "./pages/landing/ResultsPage";
 
 function App() {
   return (
@@ -35,8 +36,8 @@ function App() {
                   path="/profile/:id/settings"
                   component={UserSettings}
                 />
+                <Route exact path="/results/:query" component={ResultsPage} />
                 <Route component={NoMatch} />
-                <Route exact path="/styletest" component={StyleTest} />{" "}
               </Switch>
             </Container>
           </FetchUser>

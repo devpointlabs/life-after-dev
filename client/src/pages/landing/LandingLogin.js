@@ -3,26 +3,22 @@ import { Container,} from "semantic-ui-react";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Axios from "axios";
-import Login from "../../components/Login";
-import RequestBox from "../../components/Requests";
 import useRequest from "../../hooks/useRequest";
+import { LoginContainer, LogInButton, Input, LandingLoginForm} from "../../styles/LandingPageStyle";
 
 
-const LandingLogin = () => {
+
+const LandingLogin = (props) => {
   let history = useHistory();
   let { pathname } = useLocation();
   const { user } = useContext(AuthContext);
   const { sendRequest, checkRequests, requestStatus } = useRequest()
   const [pendingRequests, setPendingRequests] = useState(0)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const { handleLogin } = useContext(AuthContext);
  
-  
-  
-  const loginContainer = {
-    borderStyle: "solid",
-    textAlign: "center",
-    width: "300px",
-    float: "right"
-  }
+
   useEffect(() => {
     getPendingRequests()
   }, []);
@@ -49,29 +45,58 @@ const LandingLogin = () => {
     else {
       console.log("")
    }
- 
   }
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogin({email,password}, props.history);
+  }
+
 
 
 
     if (user) {
       return(
-        <Container style={loginContainer}>
+        <LoginContainer>
         <h1>Welcome Back { user.firstname} {user.lastname}!</h1>
           <p>You have
           <Link to={`/user/${user.id}`}>
              {pendingRequests}
              </Link>
              pending requests</p>
-        </Container>
+        </LoginContainer>
       )
 
     }else
       return (
       <>
-      <Container style={loginContainer}>
-      <Login />
-    </Container>
+          <LoginContainer>
+            
+      <LandingLoginForm onSubmit={handleSubmit} >
+        <Input 
+          label="Email"
+          autoFocus
+          required
+          name="email"
+          value={email}
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Input
+          label="Password"
+          required
+          name="password"
+          value={password}
+          placeholder="Password"
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+       
+        <LogInButton primary type="submit">
+            Login
+          </LogInButton>
+          </LandingLoginForm>
+      </LoginContainer>
       
       </>
     )
