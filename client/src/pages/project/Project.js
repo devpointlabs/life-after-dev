@@ -7,6 +7,7 @@ import { Button, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import EditProjectModal from "../../components/EditProjectModal";
 import { AuthContext } from "../../providers/AuthProvider";
+import RequestAction from "../../components/RequestAction";
 
 const Project = (props) => {
   const [project, setProject] = useState(null);
@@ -66,6 +67,22 @@ const Project = (props) => {
     }
   };
 
+  const renderRequestAction = () => {
+    if (user) {
+      if (user.id !== project?.user_id) {
+        return <RequestAction projectId={project?.id} userId={user.id} />;
+      } else {
+        return <span></span>;
+      }
+    } else {
+      return (
+        <a href="http://localhost:3000/register">
+          <button>Join</button>
+        </a>
+      );
+    }
+  };
+
   return (
     <Wrapper>
       <div className="Project_Title">
@@ -82,7 +99,7 @@ const Project = (props) => {
         {renderDeleteButton()}
         <div className="Project_Image">
           <img className="project_image" src={project?.picture} />
-          <Button color="black">Join</Button>
+          {renderRequestAction()}
           <div className="description">
             <p>{project?.description}</p>
           </div>
