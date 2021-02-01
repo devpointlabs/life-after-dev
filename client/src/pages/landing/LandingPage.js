@@ -22,7 +22,6 @@ const LandingPage = () => {
       })
       .catch((err) => {
         setError(err.response);
-        
       })
       .finally(() => {
         setLoading(false);
@@ -32,14 +31,12 @@ const LandingPage = () => {
   const getQuery = (query) => {
     setQuery(query);
   };
-  
 
   return (
     <>
       <SearchBar getResults={getResults} getQuery={getQuery} />
       {user?.id !== null && <LandingLogin />}
-      <SearchResults results={results} toggle={toggle} query={query} />
-      <Scroller currentUser={user}/>
+      <Scroller currentUser={user} />
     </>
   );
 };
