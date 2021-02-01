@@ -44,7 +44,7 @@ const UserInfo = styled.div`
 `;
 
 const Wrapper = styled.div`
-  color: white;
+  color: black;
   padding: 1rem 0;
 `;
 

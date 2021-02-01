@@ -5,7 +5,6 @@ import { Button, Form, Header, Image, Modal } from "semantic-ui-react";
 const formFields = [
   { title: "Project Title", name: "title" },
   { title: "Github Link", name: "github_link" },
-  { title: "Picture", name: "picture" },
   { title: "Description", name: "description" },
   { title: "Live Link", name: "live_link" },
 ];

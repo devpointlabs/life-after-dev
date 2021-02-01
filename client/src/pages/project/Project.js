@@ -7,9 +7,14 @@ import { AuthContext } from "../../providers/AuthProvider";
 import githubicon from "../../icons/githubicon.png";
 import livelink from "../../icons/livelink.png";
 import { CommentSection, Wrapper } from "../../styles/ProjectShowStyle";
+import ProjectPicModal from "./ProjectPicModal";
 
 const Project = (props) => {
   const [project, setProject] = useState(null);
+  const [owner, setOwner] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const { user } = useContext(AuthContext);
+  const [seen, setSeen] = useState(false);
 
   useEffect(() => {
     getProject();
@@ -25,13 +30,33 @@ const Project = (props) => {
     }
   };
 
+  const togglePic = () => {
+    setSeen(!seen);
+  };
+
   return (
     <Wrapper>
-      <div className="Project_Image">
-        <img className="project_image" src={project?.picture} />
-        <div className="Project_Title">
-          <h2> {project?.title} </h2>
-
+      {seen ? (
+        <ProjectPicModal toggle={togglePic} user={user} project={project} />
+      ) : null}
+      <div className="Project_Title">
+        <Link to={`/user/${owner.id}`}>
+          <h2>
+            {owner.firstname} {owner.lastname}
+          </h2>
+        </Link>
+        <Link to={`/user/${owner.id}`}>
+          <Image src={owner.image} avatar />
+        </Link>
+        <h2> {project?.title} </h2>
+        {renderEditButton()}
+        {renderDeleteButton()}
+        <div className="Project_Image">
+          <img className="project_image" src={project?.picture} />
+          <Button color="black">Join</Button>
+          <button type="button" onClick={togglePic}>
+            Change Picture
+          </button>
           <div className="description">
             <p>{project?.description}</p>
           </div>

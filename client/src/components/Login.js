@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Button, Form, Segment, Header } from "semantic-ui-react";
 

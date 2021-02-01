@@ -52,7 +52,7 @@ function Comments({ project }) {
 }
 
 const Styledh4 = styled.h4`
-  color: white;
+  color: black;
 `;
 const UserImage = styled.img`
   border-radius: 8px;

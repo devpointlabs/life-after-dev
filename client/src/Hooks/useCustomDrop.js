@@ -12,9 +12,6 @@ const useCustomDrop = (user_id, image) => {
     let data = new FormData();
     data.append("file", image);
     try {
-      console.log(image)
-      console.log(data)
-      debugger
       let res = Axios.put(`/api/user/${user_id}/update-picture`, data)
     } catch (err) {
       console.log(err);
@@ -22,8 +19,24 @@ const useCustomDrop = (user_id, image) => {
     }
   };
 
+  const updateProject = async (user_id, project_id, image) => {
+    if (image == null) {
+      alert("cant be blank");
+      return;
+    }
+    let data = new FormData();
+    data.append("file", image);
+    try {
+      let res = Axios.put(`/api/project/${project_id}/update-picture`, data)
+  } catch (err) {
+    console.log(err);
+    alert("err occured");
+  }
+  }
+
   return  {
     updateProfile,
+    updateProject,
   }
 }
 
