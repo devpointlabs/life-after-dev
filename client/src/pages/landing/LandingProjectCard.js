@@ -15,7 +15,8 @@ import {
   ContributorSection,
   ProjectName,
   JoinButton,
-  CommentInputStyle
+  CommentInputStyle,
+  JoinDiv,
 } from "../../styles/LandingPageStyle";
 import useRequest from "../../hooks/useRequest";
 import RequestAction from "../../components/RequestAction";
@@ -100,13 +101,20 @@ const LandingProjectCard = (props) => {
         <CardImage src={`${props.incomingProject.picture}`} />
         </Link>
         <ContributorSection>Project Contributors: {renderContributors()}</ContributorSection>
+        
+        <JoinDiv>
         {renderRequestAction()} 
-          
-        <CommentInputStyle> 
+
+        </JoinDiv>
+        
+
+
+
+        {/* <CommentInputStyle> 
         <CommentInput />
         </CommentInputStyle>  
          
-         {props.incomingProject && <Comments project={props.incomingProject} />}
+         {props.incomingProject && <Comments project={props.incomingProject} />} */}
    
       </CardWrapper>
     
