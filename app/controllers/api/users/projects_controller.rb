@@ -45,25 +45,6 @@ class Api::Users::ProjectsController < ApplicationController
     end
   end
 
-  def update_picture
-    project = Project.find(params[:id])
-    file = param[:file]
-
-    if file
-      begin
-        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
-        if project.update(picture: cloud_image["secure_url"])
-          render json: { data: project }
-        else
-          render json: { error: "error uploading image" }, status: 422
-        end
-
-      rescue => e
-        render json: { errors: e }, status: 422
-      end
-    end
-  end
-
   def destroy
     @project.destroy
     render json: @project
