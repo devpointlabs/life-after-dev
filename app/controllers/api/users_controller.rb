@@ -24,6 +24,11 @@ class Api::UsersController < ApplicationController
     render json: User.pending_requests(params[:id])
   end
 
+  def pending_with_names
+    render json: User.pending_with_names(params[:id])
+  end
+
+
   def update_picture
     file = params[:file]
     # user = current_user

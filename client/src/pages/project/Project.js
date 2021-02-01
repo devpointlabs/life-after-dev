@@ -7,12 +7,15 @@ import { Button, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import EditProjectModal from "../../components/EditProjectModal";
 import { AuthContext } from "../../providers/AuthProvider";
+import ProjectPicModal from "./ProjectPicModal";
 
 const Project = (props) => {
   const [project, setProject] = useState(null);
   const [owner, setOwner] = useState([]);
   const [projects, setProjects] = useState([]);
   const { user } = useContext(AuthContext);
+  const [seen, setSeen] = useState(false)
+
 
   useEffect(() => {
     getProjectData();
@@ -66,8 +69,13 @@ const Project = (props) => {
     }
   };
 
+  const togglePic = () => {
+    setSeen(!seen)
+  }
+
   return (
     <Wrapper>
+      {seen ? <ProjectPicModal toggle = {togglePic} user = {user} project = {project}/> : null}
       <div className="Project_Title">
         <Link to={`/user/${owner.id}`}>
           <h2>
@@ -81,8 +89,9 @@ const Project = (props) => {
         {renderEditButton()}
         {renderDeleteButton()}
         <div className="Project_Image">
-          <img className="project_image" src={project?.picture} />
+          <img className="project_image" src={project?.picture}/>
           <Button color="black">Join</Button>
+          <button type ="button" onClick={togglePic}>Change Picture</button>
           <div className="description">
             <p>{project?.description}</p>
           </div>

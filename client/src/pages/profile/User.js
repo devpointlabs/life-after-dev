@@ -8,6 +8,8 @@ import ContributingProject from "./ContributingProject";
 import { withRouter } from "react-router-dom";
 import UserProjects from "./UserProjects";
 import Requests from "./Requests";
+import Axios from "axios";
+import useRequest from "../../hooks/useRequest";
 
 let imagelinks = {
   github:
@@ -19,17 +21,21 @@ let imagelinks = {
 const User = (props) => {
   const { user } = useContext(AuthContext);
   // const authContext = useContext(AuthContext);
+  const { getTheseRequests, myRequests, acceptRequest, denyRequest } = useRequest()
   const [loginCheck, setLoginCheck] = useState(null);
   const [showLoggedInComp, setShowLoggedInComp] = useState(false);
-
   const [targetuser, setTargetUser] = useState({});
   const [projects, setProjects] = useState([]);
   const [contributingProjects, setContributingProjects] = useState([]);
+  const [requests, setRequests] = useState([]);
+  const [toggle, setToggle] = useState(false);
+
 
   useEffect(() => {
     getTargetUser();
     getProjects();
     getContributingProjects();
+    getTheseRequests(user.id);
   }, [props.match.params.id]);
 
   const updateProjects = (project) => {
@@ -51,25 +57,25 @@ const User = (props) => {
   const getProjects = async () => {
     try {
       let res = await axios.get(`/api/users/${props.match.params.id}/projects`);
-      console.log("user projects", res.data);
+      // console.log("user projects", res.data);
       setProjects(res.data);
     } catch (err) {
-      // console.log(err);
     }
   };
 
   const getContributingProjects = async () => {
     try {
       let res = await axios.get(`/api/users/${props.match.params.id}/requests`);
-      // console.log("all requests", res);
       setContributingProjects(res.data);
     } catch (err) {
-      // console.log("getContributingProjects error", err);
     }
   };
 
-  // const checkLoggedIn = () =>
-  //   user.id === props.match.params.id && <h1>teseee</h1>;
+  const toggleRequestView = () => {
+    setToggle(!toggle)
+    console.log("im being pressed")
+  }
+
 
   const renderOutPage = (
     <div className="profileShow">
@@ -131,9 +137,29 @@ const User = (props) => {
   const renderInPage = (
     <div className="profileShow">
       <div className="projectsectionlogged">
-        {projects.map(p => (
-          <Requests project={p}/>
+        {toggle === true && myRequests.map(r => (
+          <>
+          <h1>{r.firstname} {r.lastname} wants to join {r.title}</h1>
+          <Button onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
+            Accept
+          </Button>
+          <Button onClick={()=> denyRequest(r.project_id, r.id)}>
+            Decline
+          </Button>
+      </>
         ))}
+        {toggle == false && myRequests.slice(0,5).map(r => (
+          <>
+          <h1>{r.firstname} {r.lastname} wants to join {r.title}</h1>
+          <Button onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
+            Accept
+          </Button>
+          <Button onClick={()=> denyRequest(r.project_id, r.id)}>
+            Decline
+          </Button>
+      </>
+        ))}
+        {myRequests.length >5 && <button type="button" onClick={toggleRequestView}>Show More/Less</button>}
       <UserProjects
         projects={projects}
         contributingProjects={contributingProjects}
