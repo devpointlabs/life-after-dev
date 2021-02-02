@@ -7,7 +7,19 @@ import { AuthContext } from "../../providers/AuthProvider";
 import RequestAction from "../../components/RequestAction";
 import githubicon from "../../icons/githubicon.png";
 import livelink from "../../icons/livelink.png";
-import { CommentSection, Wrapper } from "../../styles/ProjectShowStyle";
+import {
+  BackButton,
+  CommentSection,
+  JoinButtonDiv,
+  ProjectLinksDiv,
+  ProjectOwnerDiv,
+  ProjectOwnerName,
+  ProjectOwnerPic,
+  ProjectPic,
+  ProjectSection,
+  ProjectTitle,
+  Wrapper,
+} from "../../styles/ProjectShowStyle";
 import ProjectPicModal from "./ProjectPicModal";
 import EditProjectModal from "../../components/EditProjectModal";
 import { Button, Image } from "semantic-ui-react";
@@ -93,46 +105,57 @@ const Project = (props) => {
   };
 
   return (
-    <Wrapper>
-      {seen ? (
-        <ProjectPicModal toggle={togglePic} user={user} project={project} />
-      ) : null}
-      <div className="Project_Title">
-        <Link to={`/user/${owner.id}`}>
-          <h2>
-            {owner.firstname} {owner.lastname}
-          </h2>
-        </Link>
-        <Link to={`/user/${owner.id}`}>
-          <Image src={owner.image} avatar />
-        </Link>
-        <h2> {project?.title} </h2>
-        {renderEditButton()}
-        {renderDeleteButton()}
-        <div className="Project_Image">
-          <img className="project_image" src={project?.picture} />
-          <Button color="black">Join</Button>
-          <button type="button" onClick={togglePic}>
-            Change Picture
-          </button>
-          <div className="description">
-            <p>{project?.description}</p>
+    <>
+      <Wrapper>
+        <ProjectSection>
+          <BackButton>
+            <Button>Back</Button>
+          </BackButton>
+          {seen ? (
+            <ProjectPicModal toggle={togglePic} user={user} project={project} />
+          ) : null}
+          <ProjectOwnerDiv>
+            <Link to={`/user/${owner.id}`}>
+              <ProjectOwnerPic src={owner.image} />
+            </Link>
+            <Link to={`/user/${owner.id}`}>
+              <ProjectOwnerName>
+                {owner.firstname} {owner.lastname}
+              </ProjectOwnerName>
+            </Link>
+            <JoinButtonDiv>
+              <Button color="black">Join</Button>
+            </JoinButtonDiv>
+          </ProjectOwnerDiv>
+          <ProjectPic src={project?.picture} />
+          <ProjectTitle>{project?.title}</ProjectTitle>
+          <ProjectLinksDiv>
+            <div className="links">
+              <a href={`http://${project?.github_link}`} target="_blank">
+                <img className="Github" src={githubicon} />
+              </a>
+              <br />
+              <a href={`http://${project?.live_link}`} target="_blank">
+                <img className="LiveLink" src={livelink} />
+              </a>
+            </div>
+          </ProjectLinksDiv>
+          {renderEditButton()}
+          {renderDeleteButton()}
+          <div className="Project_Image">
+            <button type="button" onClick={togglePic}>
+              Change Picture
+            </button>
+            <div className="description">
+              <p>{project?.description}</p>
+            </div>
           </div>
-          <div className="links">
-            <a href={`http://${project?.github_link}`} target="_blank">
-              <img className="Github" src={githubicon}></img>
-            </a>
-            <br />
-            <a href={`http://${project?.live_link}`} target="_blank">
-              <img className="LiveLink" src={livelink}></img>
-            </a>
-          </div>
-        </div>
-      </div>
-      <CommentSection>
-        {project && <Comments project={project} />}
-      </CommentSection>
-    </Wrapper>
+        </ProjectSection>
+        <CommentSection>
+          {project && <Comments project={project} />}
+        </CommentSection>
+      </Wrapper>
+    </>
   );
 };
 

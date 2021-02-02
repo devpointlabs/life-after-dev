@@ -1,8 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import Axios from "axios";
 import styled from "styled-components";
-import binicon from "../../icons/Bin.png";
+import binicon from "../../icons/bin.png";
 import { AuthContext } from "../../providers/AuthProvider";
+import {
+  CommentBin,
+  CommentBody,
+  CommentName,
+  UserPic,
+} from "../../styles/ProjectShowStyle";
 
 function Comment({ comment, project, deleteComment }) {
   const [account, setAccount] = useState(null);
@@ -19,19 +25,23 @@ function Comment({ comment, project, deleteComment }) {
 
   const renderDelete = () => {
     if (user?.id == comment.user_id) {
-      return <div onClick={() => deleteComment(comment.id)}>Delete</div>;
+      return (
+        <div onClick={() => deleteComment(comment.id)}>
+          <CommentBin src={binicon} />
+        </div>
+      );
     }
   };
 
   return (
     <Wrapper>
       <UserInfo>
-        <UserImage src={account?.image} />
-        <span>
+        <UserPic src={account?.image} />
+        <CommentName>
           {account?.firstname} {account?.lastname}
-        </span>
+        </CommentName>
       </UserInfo>
-      <p>{comment.body}</p>
+      <CommentBody>{comment.body}</CommentBody>
       {renderDelete()}
     </Wrapper>
   );
@@ -40,7 +50,8 @@ function Comment({ comment, project, deleteComment }) {
 const UserInfo = styled.div`
   display: flex;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1.1rem 0;
+  color: #fff;
 `;
 
 const Wrapper = styled.div`
@@ -49,9 +60,3 @@ const Wrapper = styled.div`
 `;
 
 export default Comment;
-
-const UserImage = styled.img`
-  border-radius: 8px;
-  padding: 5px;
-  width: 50px;
-`;

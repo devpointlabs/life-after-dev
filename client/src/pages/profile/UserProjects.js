@@ -64,7 +64,9 @@ const UserProjects = ({
 
   const renderContProjects = () => {
     contributingProjects.forEach((c, i) => {
-      const contProj = <ContributingProject key={c.id} contProject={c} />;
+      const contProj = (
+        <ContributingProject key={c.id} project_id={c.project_id} id={c.id} />
+      );
       const colNumber = i % 2;
       gridCols[colNumber].push(contProj);
     });

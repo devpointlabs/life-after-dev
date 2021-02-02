@@ -40,10 +40,15 @@ export default function CommentInput({ project, updateComments }) {
 const NewComment = styled.input`
   width: 210px;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 6px;
+  margin-left: 30px;
+  padding-left: 10px;
 
   &::placeholder {
     padding-left: 0.5rem;
+  }
+  &:focus {
+    outline: none !important;
   }
 `;
 const Wrapper = styled.div``;
@@ -51,4 +56,8 @@ const Wrapper = styled.div``;
 const SendIcon = styled.img`
   position: relative;
   padding: 10;
+  left: -32px;
+  top: 4px;
+  filter: invert(23%) sepia(51%) saturate(6610%) hue-rotate(218deg)
+    brightness(99%) contrast(106%);
 `;
