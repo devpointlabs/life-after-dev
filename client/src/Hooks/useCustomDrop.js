@@ -40,4 +40,4 @@ const useCustomDrop = (user_id, image) => {
   }
 }
 
-export default useCustomDrop
+export default useCustomDrop;
