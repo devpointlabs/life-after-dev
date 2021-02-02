@@ -2,7 +2,6 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import "./style.css";
 import Comments from "./Comments";
-import styled from "styled-components";
 import { AuthContext } from "../../providers/AuthProvider";
 import RequestAction from "../../components/RequestAction";
 import { useHistory } from "react-router-dom";
@@ -36,7 +35,6 @@ import DeleteProjectModal from "./DeleteProjectModal";
 const Project = (props) => {
   const [project, setProject] = useState(null);
   const [owner, setOwner] = useState([]);
-  const [projects, setProjects] = useState([]);
   const { user } = useContext(AuthContext);
   const [seen, setSeen] = useState(false);
   let history = useHistory();
@@ -57,12 +55,10 @@ const Project = (props) => {
       console.log(err);
     }
   };
-
   const updateProjects = (project) => {
     const updatedProject = project;
     setProject(updatedProject);
   };
-
   const deleteProject = (id) => {
     axios
       .delete(`/api/users/${owner.id}/projects/${id}`)
@@ -74,7 +70,6 @@ const Project = (props) => {
         console.log("delete project error", err);
       });
   };
-
   const renderEditButton = () => {
     if (user?.id == owner.id) {
       return (
@@ -84,7 +79,6 @@ const Project = (props) => {
       );
     }
   };
-
   const renderDeleteButton = () => {
     if (user?.id == owner.id) {
       return (
@@ -92,7 +86,6 @@ const Project = (props) => {
       );
     }
   };
-
   const renderRequestAction = () => {
     if (user) {
       if (user.id !== owner.id) {

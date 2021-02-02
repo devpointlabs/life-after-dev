@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import Axios from "axios";
 import { Card, Image, Header, Container } from "semantic-ui-react";
 import InfiniteScroll from "react-infinite-scroller";
@@ -10,18 +11,21 @@ import {
   CardHeader,
   CardHeading,
   CardImage,
-  CardComments,
+  Right,
   UserPic,
   ContributorSection,
-  ProjectName,
+  ContributorWrapper,
   JoinButton,
-  CommentInputStyle,
-  JoinDiv,
+  Left,
+  LandingCommentsWrap,
+  ContributorImage,
+  ProjectDescrip,
+  ProjectTitle,
 } from "../../styles/LandingPageStyle";
 import useRequest from "../../hooks/useRequest";
 import RequestAction from "../../components/RequestAction";
 import CommentInput from "../project/CommentInput";
-
+import LandingComments from './LandingComments';
 
 
 const LandingProjectCard = (props) => { 
@@ -49,13 +53,16 @@ const LandingProjectCard = (props) => {
     });
 };
 
-  const renderContributors = () => {
-    return contributors.map((contributor) => {
-      return (
-        <div>{contributor.firstname} {contributor.lastname}</div>
-      )
-    })
-  };
+  const maxcontribs = 3
+
+  const renderContributors = () => (
+    <ContributorWrapper>
+      {contributors.map((c, i) => (
+        i < maxcontribs && <ContributorImage image={c.image} />
+      ))}
+      {contributors.length > maxcontribs && ` +  ${contributors.length - maxcontribs}`}
+    </ContributorWrapper>
+  )
 
 
   // const registerRedirect = () => {
@@ -68,62 +75,52 @@ const LandingProjectCard = (props) => {
   const renderRequestAction = () => {
     if (props.currentUser) {
       if (props.currentUser.id !== props.incomingProject.user_id) {
-        return (<RequestAction projectId={props.incomingProject.id} userId={props.currentUser.id}/>)
+        return <JoinButton> <RequestAction projectId={props.incomingProject.id} userId={props.currentUser.id}/> </JoinButton>
       }
       else {
-        return (<span></span>)
+        return " "
       }
     } else {
       return (
-        <JoinButton href="http://localhost:3000/register">
-          <button>Join</button></JoinButton>
+        <div href="http://localhost:3000/register">
+          Join</div>
        
       )
     }
     
 }
  
-
-  
-  
-  
   return (
     <>
      <CardWrapper>
-        <CardHeader>
-        <Link to={`/user/${user.id}`}>
-            <UserPic src={`${user.image}`} />
-          <CardHeading>{user.firstname}   {user.lastname}</CardHeading>
-          </Link>
-        </CardHeader>
-        <Link to={`/projects/${props.incomingProject.id}`}>
-        <ProjectName>{ `${props.incomingProject.title}`}</ProjectName>
-        <CardImage src={`${props.incomingProject.picture}`} />
-        </Link>
-        <ContributorSection>Project Contributors: {renderContributors()}</ContributorSection>
-        
-        <JoinDiv>
+     <Left>
+          <CardHeader>
+            <Link to={`/user/${user.id}`}>
+            
+              <UserPic src={`${user.image}`} />
+              <CardHeading>{user.firstname}   {user.lastname}</CardHeading>
+            </Link>
+          
+          </CardHeader>
+          <ContributorSection> {renderContributors()}</ContributorSection>
+          <CardImage src={`${props.incomingProject.picture}`} />
+          <LandingCommentsWrap>
+          <LandingComments projectId={props.incomingProject.id} />
+          </LandingCommentsWrap>
+        </Left>
+        <Right>
+          <ProjectTitle> {props.incomingProject.title}</ProjectTitle>
+          <ProjectDescrip>{props.incomingProject.description}</ProjectDescrip>
         {renderRequestAction()} 
-
-        </JoinDiv>
-        
-
-
-
-        {/* <CommentInputStyle> 
-        <CommentInput />
-        </CommentInputStyle>  
-         
-         {props.incomingProject && <Comments project={props.incomingProject} />} */}
-   
-      </CardWrapper>
+        </Right>
+        </CardWrapper>
     
-      
       </>
     )
   
   
 }
+
+
 export default LandingProjectCard;
 
-// if own user make sure button is not there
