@@ -35,8 +35,10 @@ const Scroller = ({ currentUser }) => {
 
   return (
     <>
-     
+    
+      
       <div className="scroll">
+      
         <InfiniteScroll
           threshold={10}
           pageStart={0}
@@ -44,19 +46,7 @@ const Scroller = ({ currentUser }) => {
           hasMore={moreProjects}
           loader={<div className="text-center">loading projects ...</div>}
         >
-            <SiteInfoContainer>
-                <h1>
-                  Life After Dev
-                  <h4>Site Info</h4>
-                </h1>
-               
-                <p>Welcome to Life After Dev! This is tool for DevPointLabs alumni to
-                show off, collaborate, and work together on any projects in any stage whether it's just an idea
-                  or a completed project. We hope you enjoy it!  </p>
-                <Link to={`/register`}>
-                <SiteInfoRegisterButton>Register</SiteInfoRegisterButton>
-                </Link>
-              </SiteInfoContainer>
+            
           {incomingProject.map((incomingProject) => (
            <>
               <LandingProjectCard
@@ -70,7 +60,7 @@ const Scroller = ({ currentUser }) => {
         {moreProjects ? (
           ""
         ) : (
-          <div className="text-center">no data anymore ...</div>
+          <div className="text-center">No More Projects</div>
         )}
       </div>
     </>

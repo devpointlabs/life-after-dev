@@ -23,7 +23,7 @@ const RequestAction = (props) => {
     sendRequest(props.projectId, props.userId)
     }
   return (
-    <button onClick={handleClick}>{requestStatus}</button>
+    <div onClick={handleClick}>{requestStatus}</div>
 
   )
 
