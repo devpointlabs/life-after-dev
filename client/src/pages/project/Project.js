@@ -5,13 +5,16 @@ import Comments from "./Comments";
 import styled from "styled-components";
 import { AuthContext } from "../../providers/AuthProvider";
 import RequestAction from "../../components/RequestAction";
-import githubicon from "../../icons/githubicon.png";
-import livelink from "../../icons/livelink.png";
 import { useHistory } from "react-router-dom";
 import {
   BackButton,
+  ChangePicButton,
   CommentSection,
+  CrudContainer,
+  EditButtonDiv,
+  GithubIcon,
   JoinButtonDiv,
+  LiveIcon,
   ProjectLinksDiv,
   ProjectOwnerDiv,
   ProjectOwnerName,
@@ -23,8 +26,11 @@ import {
 } from "../../styles/ProjectShowStyle";
 import ProjectPicModal from "./ProjectPicModal";
 import EditProjectModal from "../../components/EditProjectModal";
-import { Button, Image } from "semantic-ui-react";
+import { Button, ButtonContent, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import githubicon from "../../icons/google2x.png";
+import liveicon from "../../icons/eye2x.png";
+import { CrudIcon } from "../../styles/ProfileProjectStyle";
 
 const Project = (props) => {
   const [project, setProject] = useState(null);
@@ -71,7 +77,9 @@ const Project = (props) => {
   const renderEditButton = () => {
     if (user?.id == owner.id) {
       return (
-        <EditProjectModal project={project} updateProjects={updateProjects} />
+        <EditButtonDiv>
+          <EditProjectModal project={project} updateProjects={updateProjects} />
+        </EditButtonDiv>
       );
     }
   };
@@ -79,8 +87,13 @@ const Project = (props) => {
   const renderDeleteButton = () => {
     if (user?.id == owner.id) {
       return (
-        <Button onClick={() => deleteProject(project.id)} color="red">
-          Delete
+        <Button
+          basic
+          size="mini"
+          onClick={() => deleteProject(project.id)}
+          color="red"
+        >
+          Delete Project
         </Button>
       );
     }
@@ -88,7 +101,7 @@ const Project = (props) => {
 
   const renderRequestAction = () => {
     if (user) {
-      if (user.id !== project?.user_id) {
+      if (user.id !== owner.id) {
         return <RequestAction projectId={project?.id} userId={user.id} />;
       } else {
         return <span></span>;
@@ -104,6 +117,18 @@ const Project = (props) => {
 
   const togglePic = () => {
     setSeen(!seen);
+  };
+
+  const renderJoinButton = () => {
+    if (user?.id !== owner.id) {
+      return (
+        <JoinButtonDiv>
+          <RequestAction projectId={project?.id} userId={project?.user_id} />
+        </JoinButtonDiv>
+      );
+    } else {
+      return <span></span>;
+    }
   };
 
   return (
@@ -125,33 +150,31 @@ const Project = (props) => {
                 {owner.firstname} {owner.lastname}
               </ProjectOwnerName>
             </Link>
-            <JoinButtonDiv>
-              <Button color="black">Join</Button>
-            </JoinButtonDiv>
+            {renderJoinButton()}
           </ProjectOwnerDiv>
           <ProjectPic src={project?.picture} />
+          <ChangePicButton>
+            <Button basic size="small" onClick={togglePic}>
+              <Icon name="edit" />
+              Edit Photo
+            </Button>
+          </ChangePicButton>
           <ProjectTitle>{project?.title}</ProjectTitle>
           <ProjectLinksDiv>
-            <div className="links">
-              <a href={`http://${project?.github_link}`} target="_blank">
-                <img className="Github" src={githubicon} />
-              </a>
-              <br />
-              <a href={`http://${project?.live_link}`} target="_blank">
-                <img className="LiveLink" src={livelink} />
-              </a>
-            </div>
+            <a href={`${project?.github_link}`} target="_blank">
+              <GithubIcon src={githubicon} />
+            </a>
+            <a href={`http://${project?.live_link}`} target="_blank">
+              <LiveIcon src={liveicon} />
+            </a>
           </ProjectLinksDiv>
-          {renderEditButton()}
-          {renderDeleteButton()}
+          <CrudContainer>{renderEditButton()}</CrudContainer>
           <div className="Project_Image">
-            <button type="button" onClick={togglePic}>
-              Change Picture
-            </button>
             <div className="description">
               <p>{project?.description}</p>
             </div>
           </div>
+          <CrudContainer>{renderDeleteButton()}</CrudContainer>
         </ProjectSection>
         <CommentSection>
           {project && <Comments project={project} />}

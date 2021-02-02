@@ -22,6 +22,7 @@ export const ProjectOwnerPic = styled.img`
   border-radius: 15px;
   height: 50px;
   width: 50px;
+  object-fit: cover;
 `;
 
 export const ProjectOwnerName = styled.span`
@@ -52,15 +53,42 @@ export const BackButton = styled.div`
 export const ProjectTitle = styled.div`
   font-weight: 900;
   font-size: 28px;
-  margin: 30px 0px 10px 20px;
+  margin: 10px 0px 10px 20px;
 `;
 
-export const ProjectLinksDiv = styled.div``;
+export const ProjectLinksDiv = styled.div`
+  display: flex;
+  margin-top: 15px;
+`;
+
+export const GithubIcon = styled.img`
+  margin: 5px 10px 0px 20px;
+  width: 25px;
+  height: 25px;
+`;
+
+export const LiveIcon = styled.img`
+  margin: 5px 10px 0px 0px;
+  width: 25px;
+  height: 25px;
+`;
+
+export const ChangePicButton = styled.div`
+  margin: 0px 0px 0px 545px;
+`;
+
+export const CrudContainer = styled.div`
+  display: flex;
+  margin: 30px 0px 0px 20px;
+`;
+
+export const EditButtonDiv = styled.div``;
 
 //// Comment Section ////
 
 export const UserImage = styled.img`
   border-radius: 16px;
+  object-fit: cover;
   width: 50px;
   height: 50px;
   margin: 20px 0px 0px 325px;
@@ -90,7 +118,7 @@ export const CommentsList = styled.div`
 
 export const UserPic = styled.img`
   border-radius: 8px;
-
+  object-fit: cover;
   width: 28px;
   height: 28px;
 `;

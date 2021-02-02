@@ -1,3 +1,4 @@
+import { Button } from "semantic-ui-react";
 import styled from "styled-components";
 
 // Full-width app container. Top level div.
@@ -144,3 +145,10 @@ export const MainColumn = styled.div`
   background-color: #0559fd;
   min-height: 100vh;
 `;
+
+
+//// Other ////
+
+export const JoinButton = styled(Button)`
+  
+`

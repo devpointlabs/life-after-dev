@@ -26,7 +26,7 @@ const LandingLogin = (props) => {
   }, []);
 
   const getPendingRequests = () => {
-    if (!user) {
+    if (user) {
       Axios.get(`api/requests/${user.id}/get_pending_requests`)
         .then((res) => {
           let requestCounter = 0;
