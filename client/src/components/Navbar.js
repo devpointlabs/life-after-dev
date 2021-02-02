@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import {
@@ -31,6 +31,10 @@ const Navbar = (props) => {
   const [profileActive, setProfileActive] = useState(false);
   const [settingsActive, setSettingsActive] = useState(false);
   const [addActive, setAddActive] = useState(false);
+
+  useEffect(() => {
+    homeToggle();
+  }, []);
 
   const homeToggle = () => {
     setHomeActive(true);
