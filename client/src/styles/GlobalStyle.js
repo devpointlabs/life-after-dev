@@ -4,12 +4,12 @@ import styled from "styled-components";
 export const AppContainer = styled.div`
   min-height: 100vh;
   min-width: 100vh;
-  background-color: #0559fd;
+  background-color: #f7f7f7;
 `;
 // 2 sections, 'nav' and 'main'
 export const AppGrid = styled.div`
   display: grid;
-  width: 1440px;
+  width: 100%px;
   height: 100%;
   grid-template-areas: "nav main";
   grid-template-rows: fit-content(100%);
@@ -23,11 +23,62 @@ export const NavColumn = styled.div`
   grid-area: nav;
   background-color: #0559fd;
   min-height: 100vh;
+  display: block;
+`;
+
+export const StickyNav = styled.div`
+  display: block;
+  position: fixed;
+  padding-left: 52px;
 `;
 
 export const Logo = styled.img`
   display: block;
   margin: 43px auto 90px auto;
+`;
+
+export const NavActiveIcon = styled.img`
+  display: block;
+  margin-top: 12px;
+  height: 25px;
+  filter: invert(23%) sepia(51%) saturate(6610%) hue-rotate(218deg)
+    brightness(99%) contrast(106%);
+`;
+
+export const NavInactiveIcon = styled.img`
+  display: block;
+  margin-top: 12px;
+  height: 25px;
+  filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(240deg)
+    brightness(107%) contrast(101%);
+`;
+
+export const NavActiveSquare = styled.div`
+  height: 50px;
+  width: 50px;
+  display: flex;
+  margin: 40px auto 0 auto;
+  background-color: #fff;
+  border-radius: 15px;
+  justify-content: center;
+`;
+
+export const NavInactiveSquare = styled.div`
+  height: 50px;
+  width: 50px;
+  display: flex;
+  margin: 40px auto 0 auto;
+  background-color: #377afd;
+  border-radius: 15px;
+  justify-content: center;
+
+  &:hover {
+    background-color: #fff;
+  }
+  &:hover ${NavInactiveIcon} {
+    filter: invert(23%) sepia(51%) saturate(6610%) hue-rotate(218deg)
+      brightness(99%) contrast(106%);
+  }
 `;
 
 export const NavIcon = styled.img`
