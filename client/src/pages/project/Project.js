@@ -19,13 +19,12 @@ import {
 } from "../../styles/ProjectShowStyle";
 import ProjectPicModal from "./ProjectPicModal";
 import EditProjectModal from "../../components/EditProjectModal";
-import { Button, Image } from "semantic-ui-react";
+import { Button, Image, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const Project = (props) => {
   const [project, setProject] = useState(null);
   const [owner, setOwner] = useState([]);
-  const [projects, setProjects] = useState([]);
   const { user } = useContext(AuthContext);
   const [seen, setSeen] = useState(false);
 
@@ -105,6 +104,7 @@ const Project = (props) => {
             {owner.firstname} {owner.lastname}
           </h2>
         </Link>
+
         <Link to={`/user/${owner.id}`}>
           <Image src={owner.image} avatar />
         </Link>
