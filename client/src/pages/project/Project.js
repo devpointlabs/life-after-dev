@@ -158,7 +158,7 @@ const Project = (props) => {
             <a href={`${project?.github_link}`} target="_blank">
               <GithubIcon src={githubicon} />
             </a>
-            <a href={`http://${project?.live_link}`} target="_blank">
+            <a href={`${project?.live_link}`} target="_blank">
               <LiveIcon src={liveicon} />
             </a>
           </ProjectLinksDiv>
