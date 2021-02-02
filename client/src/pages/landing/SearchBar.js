@@ -8,7 +8,7 @@ import {
 import searchicon from "../../icons/searchicon.png";
 import Axios from "axios";
 
-const SearchBar = ({ getQuery, prevQuery }) => {
+const SearchBar = ({ getQuery }) => {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState(null);
   const [results, setResults] = useState([]);
@@ -33,6 +33,7 @@ const SearchBar = ({ getQuery, prevQuery }) => {
           type="text"
           placeholder="Search in Life After Dev..."
           onChange={(e) => handleChange(e)}
+          value={query}
         />
         <SearchIcon src={searchicon} />
       </form>

@@ -8,15 +8,18 @@ import { BrowserRouter } from "react-router-dom";
 import AuthProvider from "./providers/AuthProvider";
 import { initMiddleware } from "devise-axios";
 import ScrollToTop from "./pages/landing/ScrollToTop";
+import QueryProvider from "./providers/QueryProvider";
 
 initMiddleware();
 
 ReactDOM.render(
   <AuthProvider>
-    <BrowserRouter>
-      <ScrollToTop />
-      <App />
-    </BrowserRouter>
+    <QueryProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <App />
+      </BrowserRouter>
+    </QueryProvider>
   </AuthProvider>,
   document.getElementById("root")
 );

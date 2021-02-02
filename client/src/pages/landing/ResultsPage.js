@@ -30,8 +30,8 @@ const ResultsPage = (props) => {
 
   return (
     <>
-      <SearchBar />
-      <SearchResults results={results} />
+      <SearchBar  />
+      <SearchResults results={results} query={query} />
     </>
   );
 };
