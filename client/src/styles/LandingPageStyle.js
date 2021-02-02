@@ -13,7 +13,7 @@ export const Search = styled.input`
   border-radius: 12px;
   background-color: #ffffff;
   padding-left: 60px;
-  font-color: #c5c6ce;
+  color: #c5c6ce;
   &:focus {
     outline: none !important;
   }
@@ -149,15 +149,14 @@ export const CardWrapper = styled.div`
   background-color: white;
   overflow: hidden;
   border: solid;
-  border-color: #B8B8B8;;
+  border-color: #b8b8b8;
   border-width: 3px;
   width: 100%;
   height: 480px;
   font-family: Quicksand, arial, sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
   border-radius: 18px;
-  margin-top 20px;
-
+  margin-top: 20px;
 `;
 
 export const UserPic = styled.img`
