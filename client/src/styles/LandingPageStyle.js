@@ -14,6 +14,9 @@ export const Search = styled.input`
   background-color: #ffffff;
   padding-left: 60px;
   font-color: #c5c6ce;
+  &:focus {
+    outline: none !important;
+  }
 `;
 
 export const SearchIcon = styled.img`
@@ -21,6 +24,7 @@ export const SearchIcon = styled.img`
   float: left;
   top: -38px;
   left: 25px;
+  filter: opacity(60%);
 `;
 
 //// Search Results ////
@@ -77,13 +81,13 @@ export const LoginContainer = styled.div`
 
 export const Input = styled.input`
   padding: 13px;
-	color: none;
-	background: white;
+  color: none;
+  background: white;
   border: solid;
   border-color: grey;
   border-width: 2px;
-	border-radius: 10px;
-	width: 80%;
+  border-radius: 10px;
+  width: 80%;
   margin: 8px;
   outline: none;
 `;
@@ -93,22 +97,21 @@ export const LandingLoginForm = styled.form`
 `;
 
 export const LogInButton = styled.button`
-background-color: #42A5F5; 
-border-radius: 10px;
-border: none;
-color: white;
-padding: 0 32px;
-text-align: center;
-text-decoration: none;
-font-size: 16px;
-cursor: pointer;
-height: 40px;
-display: inline-block;
-float: right;
-margin: 0 20px;
-outline: none;
+  background-color: #42a5f5;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  padding: 0 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 40px;
+  display: inline-block;
+  float: right;
+  margin: 0 20px;
+  outline: none;
 `;
-
 
 export const SiteInfoContainer = styled.div`
   background-color: white;
@@ -126,19 +129,19 @@ export const SiteInfoContainer = styled.div`
 `;
 
 export const SiteInfoRegisterButton = styled.button`
-background-color: #42A5F5; 
-border-radius: 10px;
-border: none;
-border-width: 3px;
-color: white;
-padding: 0 32px;
-text-align: center;
-text-decoration: none;
-font-size: 16px;
-cursor: pointer;
-height: 40px;
-display: inline-block;
-outline: none;
+  background-color: #42a5f5;
+  border-radius: 10px;
+  border: none;
+  border-width: 3px;
+  color: white;
+  padding: 0 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 40px;
+  display: inline-block;
+  outline: none;
 `;
 
 export const CardWrapper = styled.div`
@@ -163,10 +166,7 @@ export const UserPic = styled.img`
   width: 60px;
   margin: 0 32px;
   float: left;
- 
-  
 `;
-
 
 export const CardHeader = styled.header`
   padding-top: 32px;
@@ -174,8 +174,6 @@ export const CardHeader = styled.header`
   display: flex;
   width: 780px;
   float: left;
- 
- 
 `;
 
 export const CardHeading = styled.span`
@@ -183,22 +181,15 @@ export const CardHeading = styled.span`
   font-weight: 900;
   font-size: 14px;
   float: left;
- 
-  
- 
 `;
 
 export const ProjectName = styled.div`
-font-weight: 900;
-font-size: 14px;
-color: #B8B8B8;
-padding-left: 40px;
-padding-bottom: 5px;
-
- 
-
+  font-weight: 900;
+  font-size: 14px;
+  color: #b8b8b8;
+  padding-left: 40px;
+  padding-bottom: 5px;
 `;
-
 
 export const CardImage = styled.img`
   display: flex;
@@ -209,44 +200,35 @@ export const CardImage = styled.img`
   margin-left: 32px;
   margin-right: 32px;
   float: left;
- 
 `;
 
 export const ContributorSection = styled.div`
-font-weight: 900;
-font-size: 14px;
-width: 780px;
-float: left;
-
-  
+  font-weight: 900;
+  font-size: 14px;
+  width: 780px;
+  float: left;
 `;
 
 export const JoinButton = styled.button`
-background-color: #555555; 
-border-radius: 10px;
-color: white;
-text-align: center;
-text-decoration: none;
-font-size: 16px;
-cursor: pointer;
-height: 40px;
-outline: none;
-
-
-
-
+  background-color: #555555;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 40px;
+  outline: none;
 `;
 
 export const JoinDiv = styled.div`
-width: 300px;
-height: 420px;
-background-color: black;
-float: right;
-display: flex;
-border-radius: 20px;
-
+  width: 300px;
+  height: 420px;
+  background-color: black;
+  float: right;
+  display: flex;
+  border-radius: 20px;
 `;
-
 
 // export const CardComments = styled.div`
 // display: flex;
@@ -258,6 +240,6 @@ border-radius: 20px;
 // `;
 
 export const CommentInputStyle = styled.div`
-padding-right: 32px;
-padding-left: 32px;
+  padding-right: 32px;
+  padding-left: 32px;
 `;

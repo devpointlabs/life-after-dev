@@ -12,6 +12,8 @@ import {
   NavInactiveSquare,
   NavActiveIcon,
   NavInactiveIcon,
+  NavIconBottomSquare,
+  NavIconBottomInactive,
 } from "../styles/GlobalStyle";
 import devpointlogo from "../icons/devpointlogo.png";
 import homeiconz from "../icons/homeicon.png";
@@ -22,6 +24,7 @@ import homeicon from "../icons/home2x.png";
 import profileicon from "../icons/user2x.png";
 import settingsicon from "../icons/settings2x.png";
 import addicon from "../icons/plus2x.png";
+import logouticon from "../icons/logout2x.png";
 
 const Navbar = (props) => {
   let history = useHistory();
@@ -117,12 +120,15 @@ const Navbar = (props) => {
           <Link to={`/profile/${user.id}/settings`}>
             {renderSettingsIcon()}
           </Link>
+
           <Link>
             {
-              <NavIconBottom
-                src={logouticonz}
-                onClick={() => handleLogout(history)}
-              />
+              <NavIconBottomSquare>
+                <NavIconBottomInactive
+                  src={logouticon}
+                  onClick={() => handleLogout(history)}
+                />
+              </NavIconBottomSquare>
             }
           </Link>
         </>
