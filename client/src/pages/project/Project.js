@@ -7,6 +7,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import RequestAction from "../../components/RequestAction";
 import githubicon from "../../icons/githubicon.png";
 import livelink from "../../icons/livelink.png";
+import { useHistory } from "react-router-dom";
 import {
   BackButton,
   CommentSection,
@@ -31,6 +32,7 @@ const Project = (props) => {
   const [projects, setProjects] = useState([]);
   const { user } = useContext(AuthContext);
   const [seen, setSeen] = useState(false);
+  let history = useHistory();
 
   useEffect(() => {
     getProjectData();
@@ -109,7 +111,7 @@ const Project = (props) => {
       <Wrapper>
         <ProjectSection>
           <BackButton>
-            <Button>Back</Button>
+            <Button onClick={() => history.goBack()}>Back</Button>
           </BackButton>
           {seen ? (
             <ProjectPicModal toggle={togglePic} user={user} project={project} />
