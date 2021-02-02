@@ -13,9 +13,15 @@ export const Search = styled.input`
   border-radius: 12px;
   background-color: #ffffff;
   padding-left: 60px;
-  color: #c5c6ce;
+  color: #000;
   &:focus {
     outline: none !important;
+  }
+  &:focus::placeholder {
+    color: #d9d9d9;
+  }
+  &::placeholder {
+    color: #868686;
   }
 `;
 
