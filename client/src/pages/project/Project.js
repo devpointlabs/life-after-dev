@@ -31,6 +31,7 @@ import { Link } from "react-router-dom";
 import githubicon from "../../icons/google2x.png";
 import liveicon from "../../icons/eye2x.png";
 import { CrudIcon } from "../../styles/ProfileProjectStyle";
+import DeleteProjectModal from "./DeleteProjectModal";
 
 const Project = (props) => {
   const [project, setProject] = useState(null);
@@ -87,14 +88,7 @@ const Project = (props) => {
   const renderDeleteButton = () => {
     if (user?.id == owner.id) {
       return (
-        <Button
-          basic
-          size="mini"
-          onClick={() => deleteProject(project.id)}
-          color="red"
-        >
-          Delete Project
-        </Button>
+        <DeleteProjectModal deleteProject={deleteProject} project={project} />
       );
     }
   };

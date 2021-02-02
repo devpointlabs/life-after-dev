@@ -1,13 +1,10 @@
 import Axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Form, Header, Image, Modal } from "semantic-ui-react";
-import { AuthContext } from "../providers/AuthProvider";
-import EditProjectForm from "./projectForm/EditProjectForm";
+import { Button, Form, Header, Icon, Image, Modal } from "semantic-ui-react";
 
-const EditProjectModal = ({ project, deleteProject }) => {
+const DeleteProjectModal = ({ project, deleteProject }) => {
   const [open, setOpen] = React.useState(false);
   const [projects, setProjects] = useState([]);
-  const { user } = useContext(AuthContext);
 
   const onSubmit = () => {
     deleteProject(project.id);
@@ -21,7 +18,11 @@ const EditProjectModal = ({ project, deleteProject }) => {
       onOpen={() => setOpen(true)}
       open={open}
       size="small"
-      trigger={<Button>Delete Project</Button>}
+      trigger={
+        <Button basic color="red">
+          Delete Project
+        </Button>
+      }
     >
       <Header icon>
         <Icon name="trash" />
@@ -38,7 +39,7 @@ const EditProjectModal = ({ project, deleteProject }) => {
         <Button basic color="red" inverted onClick={() => setOpen(false)}>
           <Icon name="remove" /> Cancel
         </Button>
-        <Button color="green" inverted onClick={() => onSubmit()}>
+        <Button color="red" inverted onClick={() => onSubmit()}>
           <Icon name="checkmark" /> Yes, delete it
         </Button>
       </Modal.Actions>
@@ -46,4 +47,4 @@ const EditProjectModal = ({ project, deleteProject }) => {
   );
 };
 
-export default EditProjectModal;
+export default DeleteProjectModal;
