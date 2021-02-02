@@ -4,6 +4,11 @@ import Comment from "./Comment";
 import CommentInput from "./CommentInput";
 import styled from "styled-components";
 import { AuthContext } from "../../providers/AuthProvider";
+import {
+  CommentsList,
+  CommentsTotal,
+  UserImage,
+} from "../../styles/ProjectShowStyle";
 
 function Comments({ project }) {
   const [comments, setComments] = useState(null);
@@ -37,27 +42,20 @@ function Comments({ project }) {
     <>
       {user?.id == project.user_id && <UserImage src={user.image} />}
 
-      <Styledh4>Comments ({comments?.length})</Styledh4>
-      {comments?.map((comment) => (
-        <Comment
-          key={comment.id}
-          comment={comment}
-          project={project}
-          deleteComment={deleteComment}
-        />
-      ))}
+      <CommentsTotal>Comments ({comments?.length})</CommentsTotal>
+      <CommentsList>
+        {comments?.map((comment) => (
+          <Comment
+            key={comment.id}
+            comment={comment}
+            project={project}
+            deleteComment={deleteComment}
+          />
+        ))}
+      </CommentsList>
       <CommentInput project={project} updateComments={updateComments} />
     </>
   );
 }
-
-const Styledh4 = styled.h4`
-  color: black;
-`;
-const UserImage = styled.img`
-  border-radius: 8px;
-  padding: 5px;
-  width: 50px;
-`;
 
 export default Comments;

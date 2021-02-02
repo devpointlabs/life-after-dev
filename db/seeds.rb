@@ -34,22 +34,22 @@ projects = []
                  tag: "This is the coolest thing I have ever done")
 puts "users created successfully"
 10.times do
-  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg", github_link: "github.com", user_id: @u1.id, live_link: "livelink.com", description: Faker::Quote.most_interesting_man_in_the_world))
+  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151677/markus-spiske-466ENaLuhLY-unsplash_jrcxan.jpg", github_link: "http://github.com", user_id: @u1.id, live_link: "http://google.com", description: Faker::Quote.most_interesting_man_in_the_world))
  
-  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151671/kaleidico-26MJGnCM0Wc-unsplash_shxpgo.jpg", github_link: "github.com",user_id: @u2.id,
-                                   live_link: "livelink.com", description: Faker::Quote.most_interesting_man_in_the_world))
+  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1610151671/kaleidico-26MJGnCM0Wc-unsplash_shxpgo.jpg", github_link: "http://github.com",user_id: @u2.id,
+                                   live_link: "http://google.com", description: Faker::Quote.most_interesting_man_in_the_world))
 
-  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1611265549/pexels-photo-1462725_hubxfs.jpg", github_link: "github.com",user_id: @u3.id,
-                                   live_link: "livelink.com", description: Faker::Quote.most_interesting_man_in_the_world))
+  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1611265549/pexels-photo-1462725_hubxfs.jpg", github_link: "http://github.com",user_id: @u3.id,
+                                   live_link: "http://google.com", description: Faker::Quote.most_interesting_man_in_the_world))
 
-  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1611265601/play-stone-network-networked-interactive-163064_ir3ccz.jpg", github_link: "github.com", user_id: @u4.id,
-                                   live_link: "livelink.com", description: Faker::Quote.most_interesting_man_in_the_world))
+  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1611265601/play-stone-network-networked-interactive-163064_ir3ccz.jpg", github_link: "http://github.com", user_id: @u4.id,
+                                   live_link: "http://google.com", description: Faker::Quote.most_interesting_man_in_the_world))
 
-  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1611265626/pexels-photo-1670977_bv7lwz.jpg", github_link: "github.com", user_id: @u5.id,
-                                   live_link: "livelink.com", description: Faker::Quote.most_interesting_man_in_the_world))
+  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1611265626/pexels-photo-1670977_bv7lwz.jpg", github_link: "http://github.com", user_id: @u5.id,
+                                   live_link: "http://google.com", description: Faker::Quote.most_interesting_man_in_the_world))
 
-  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1611265657/pexels-photo-776092_hr8via.jpg", github_link: "github.com", user_id: @u6.id,
-                                   live_link: "livelink.com", description: Faker::Quote.most_interesting_man_in_the_world))
+  projects.push(Project.create(title: Faker::ProgrammingLanguage.name, picture: "https://res.cloudinary.com/lifeafterdev/image/upload/v1611265657/pexels-photo-776092_hr8via.jpg", github_link: "http://github.com", user_id: @u6.id,
+                                   live_link: "http://google.com", description: Faker::Quote.most_interesting_man_in_the_world))
   end
 
 2.times do

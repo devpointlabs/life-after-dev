@@ -6,8 +6,8 @@ import ProfilePicSetting from "./ProfilePicSetting";
 
 const UserSettings = ({ match, history }) => {
   const [userData, setUserData] = useState([]);
-  const { user } = useContext(AuthContext)
-  const [seen, setSeen] = useState(false)
+  const { user } = useContext(AuthContext);
+  const [seen, setSeen] = useState(false);
 
   useEffect(() => {
     Axios.get(`/api/users/${user.id}`)
@@ -39,18 +39,18 @@ const UserSettings = ({ match, history }) => {
   };
 
   const togglePic = () => {
-    setSeen(!seen)
-  }
+    setSeen(!seen);
+  };
 
   return (
     <div>
-      {seen ? <ProfilePicSetting toggle = {togglePic} user = {user} history = {history}/> : null}
+      {seen ? (
+        <ProfilePicSetting toggle={togglePic} user={user} history={history} />
+      ) : null}
       <h1>User Settings</h1>
       <div>
-        <img className="userpic" src={user.image} />
-        <Button onClick={togglePic}>
-          Edit Picture
-        </Button>
+        <img className="userpic" src={user?.image} />
+        <Button onClick={togglePic}>Edit Picture</Button>
       </div>
       <Form onSubmit={handleSubmit}>
         <Button>Save Profile</Button>

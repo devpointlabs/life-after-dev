@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Grid, Segment } from "semantic-ui-react";
+import ContributingProject from "../pages/profile/ContributingProject";
 import { AuthContext } from "../providers/AuthProvider";
 import {
   ResultsCard,
@@ -10,6 +11,7 @@ import {
   ResultsTitle,
 } from "../styles/LandingPageStyle";
 import ProjectFormModal from "./ProjectFormModal";
+import styled from "styled-components";
 
 const SearchResults = ({ results, query }) => {
   const { user } = useContext(AuthContext);
@@ -37,25 +39,17 @@ const SearchResults = ({ results, query }) => {
   const renderNothing = () => {
     return <span></span>;
   };
-
+  console.log("results", results);
   return (
     <div>
       <Grid>
         <Grid.Row>
           <Grid.Column width={12}>
-            {results?.map((r) => {
-              return (
-                <Link to={`/projects/${r.id}`}>
-                  <ResultsCard>
-                    <ResultsImage src={r.picture} />
-                    <ResultsContent>
-                      <ResultsTitle>{r.title}</ResultsTitle>
-                      <ResultsDescription>{r.description}</ResultsDescription>
-                    </ResultsContent>
-                  </ResultsCard>
-                </Link>
-              );
-            })}
+            <Flex>
+              {results?.map((r) => (
+                <ContributingProject key={r.id} project_id={r.id} />
+              ))}
+            </Flex>
           </Grid.Column>
           <Grid.Column width={4}>
             {query ? renderProjectFormModal() : renderNothing()}
@@ -69,5 +63,10 @@ const SearchResults = ({ results, query }) => {
 const spacingStyle = {
   marginTop: "20px",
 };
+
+const Flex = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 export default SearchResults;

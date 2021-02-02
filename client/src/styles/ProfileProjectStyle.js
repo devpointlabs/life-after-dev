@@ -41,6 +41,7 @@ export const UserPic = styled.img`
   border-radius: 15px;
   height: 50px;
   width: 50px;
+  object-fit: cover;
 `;
 
 export const CardHeader = styled.div`

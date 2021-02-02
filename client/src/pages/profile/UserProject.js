@@ -20,7 +20,7 @@ import {
 } from "../../styles/ProfileProjectStyle";
 import ProjectFormModal from "../../components/ProjectFormModal";
 import EditProjectModal from "../../components/EditProjectModal";
-import trashicon from "../../icons/Bin.png";
+import trashicon from "../../icons/bin.png";
 import commenticon from "../../icons/Comment.png";
 
 const UserProject = (props) => {
@@ -41,6 +41,14 @@ const UserProject = (props) => {
       setComments(res.data);
     } catch (err) {
       // console.log(err);
+    }
+  };
+
+  const returnShortDescription = () => {
+    if (props.project.description.length > 100) {
+      return props.project.description.substring(0, 100) + "...";
+    } else {
+      return props.project.description;
     }
   };
 
@@ -70,14 +78,22 @@ const UserProject = (props) => {
           </Link>
         </CardDiv>
         <CardDiv style={{ color: "#8e8e8e", fontWeight: 900 }}>
-          {props.project.description}
+          {returnShortDescription()}
         </CardDiv>
-        <CardDiv style={{ marginTop: 15 }}>
-          <CardIcon src={commenticon} />
-          <span style={{ marginLeft: 5, fontWeight: 900 }}>
-            {comments.length}
-          </span>
-        </CardDiv>
+        <Link to={`/projects/${props.project.id}`}>
+          <CardDiv style={{ marginTop: 15 }}>
+            <CardIcon src={commenticon} />
+            <span
+              style={{
+                marginLeft: 5,
+                fontWeight: 900,
+                color: "black",
+              }}
+            >
+              {comments.length}
+            </span>
+          </CardDiv>
+        </Link>
       </CardContainer>
     </>
   );
