@@ -10,13 +10,12 @@ import livelink from "../../icons/livelink.png";
 import { CommentSection, Wrapper } from "../../styles/ProjectShowStyle";
 import ProjectPicModal from "./ProjectPicModal";
 import EditProjectModal from "../../components/EditProjectModal";
-import { Button, Image } from "semantic-ui-react";
+import { Button, Image, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const Project = (props) => {
   const [project, setProject] = useState(null);
   const [owner, setOwner] = useState([]);
-  const [projects, setProjects] = useState([]);
   const { user } = useContext(AuthContext);
   const [seen, setSeen] = useState(false);
 
@@ -88,14 +87,22 @@ const Project = (props) => {
     }
   };
 
+  const togglePic = () => {
+    setSeen(!seen);
+  };
+
   return (
     <Wrapper>
+              {seen ? (
+            <ProjectPicModal toggle={togglePic} user={user} project={project} />
+          ) : null}
       <div className="Project_Title">
         <Link to={`/user/${owner.id}`}>
           <h2>
             {owner.firstname} {owner.lastname}
           </h2>
         </Link>
+
         <Link to={`/user/${owner.id}`}>
           <Image src={owner.image} avatar />
         </Link>
@@ -104,6 +111,10 @@ const Project = (props) => {
         {renderDeleteButton()}
         <div className="Project_Image">
           <img className="project_image" src={project?.picture} />
+          <Button basic size="small" onClick={togglePic}>
+              <Icon name="edit" />
+              Edit Photo
+            </Button>
           {renderRequestAction()}
           <div className="description">
             <p>{project?.description}</p>

@@ -10,6 +10,8 @@ import UserProjects from "./UserProjects";
 import Requests from "./Requests";
 import Axios from "axios";
 import useRequest from "../../hooks/useRequest";
+import styled from "styled-components";
+
 
 let imagelinks = {
   github:
@@ -29,14 +31,19 @@ const User = (props) => {
   const [contributingProjects, setContributingProjects] = useState([]);
   const [requests, setRequests] = useState([]);
   const [toggle, setToggle] = useState(false);
-
+  // const [userpos, setUserpos] = useState({marginTop: `0px`});
 
   useEffect(() => {
     getTargetUser();
     getProjects();
     getContributingProjects();
     getTheseRequests(user.id);
+    // window.addEventListener('scroll', listenScrollEvent)
   }, [props.match.params.id]);
+
+  // const listenScrollEvent = (e) => {
+  //   setUserpos({marginTop: `${window.scrollY + 40}px`})
+  // }
 
   const updateProjects = (project) => {
     const updatedProjects = projects.map((p) =>
@@ -78,8 +85,8 @@ const User = (props) => {
 
 
   const renderOutPage = (
-    <div className="profileShow">
-      <div className="userSection">
+    <Wrapper>
+      <UserSection>
         <div className="namePlate">
           <h1>
             {targetuser.firstname} {targetuser.lastname}{" "}
@@ -124,18 +131,18 @@ const User = (props) => {
             />
           </a>
         </div>
-      </div>
+      </UserSection>
       <UserProjects
         projects={projects}
         contributingProjects={contributingProjects}
         userId={props.match.params.id}
         updateProjects={updateProjects}
       />
-    </div>
+    </Wrapper>
   );
 
   const renderInPage = (
-    <div className="profileShow">
+    <Wrapper>
       <div className="projectsectionlogged">
         {toggle === true && myRequests.map(r => (
           <>
@@ -230,7 +237,7 @@ const User = (props) => {
                 </a>
               </div> */}
       </div>
-    </div>
+    </Wrapper>
   );
 
   return (
@@ -243,3 +250,21 @@ const User = (props) => {
 };
 
 export default User;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const UserSection = styled.div`
+background-color: rgb(176, 176, 176);
+width: 100%;
+height: 100%;
+border-radius: 25px;
+position: -webkit-sticky;
+position: sticky;
+margin-top: 5%;
+margin-right: 7%;
+top: 0;
+`
+

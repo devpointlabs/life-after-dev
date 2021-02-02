@@ -6,13 +6,19 @@ import { AuthContext } from "../providers/AuthProvider";
 
 export default (props) => {
   const [image, setImage] = useState(null);
-  const {updateProfile} = useCustomDrop()
+  const {updateProfile, userPhoto} = useCustomDrop()
 
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
     setImage(acceptedFiles[0]);
     console.log(acceptedFiles[0])
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateProfile(props.user.id, image)
+    props.toggle()
+  }
 
   const styles = {
     modal: {
@@ -33,7 +39,7 @@ export default (props) => {
       border: "2px solid black",
     }
   }
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive, acceptedFiles } = useDropzone({ onDrop });
 
   return (
     <div className="modal" style={styles.modal}>
@@ -42,7 +48,7 @@ export default (props) => {
             &times;
         </span>
         <>
-          <form onSubmit={() => updateProfile(props.user.id, image)}>
+          <form onSubmit={handleSubmit}>
             {/* {image !== null ? <img src={image}/>: null} */}
             <div {...getRootProps()}>
               <input {...getInputProps()} />
@@ -52,6 +58,13 @@ export default (props) => {
                 <p>Drag 'n' drop some files here, or click to select files</p>
               )}
             </div>
+            <ul>
+              {acceptedFiles.map(f=> (
+                <li>
+                  {f.path} - {f.size} bytes
+                </li>
+              ))}
+            </ul>
             <button type="submit">add</button>
           </form>
         </>
