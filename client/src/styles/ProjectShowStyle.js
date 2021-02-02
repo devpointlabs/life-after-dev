@@ -22,7 +22,7 @@ export const ProjectOwnerPic = styled.img`
   border-radius: 15px;
   height: 50px;
   width: 50px;
-  object-fit: cover;
+  object-fit: cover;        
 `;
 
 export const ProjectOwnerName = styled.span`

@@ -8,7 +8,7 @@ import {
 import searchicon from "../../icons/searchicon.png";
 import Axios from "axios";
 
-const SearchBar = ({ getQuery }) => {
+const SearchBar = ({ getQuery, prevQuery }) => {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState(null);
   const [results, setResults] = useState([]);

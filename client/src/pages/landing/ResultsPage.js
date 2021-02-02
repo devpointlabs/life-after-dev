@@ -1,6 +1,7 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import SearchResults from "../../components/SearchResults";
+import SearchBar from "./SearchBar";
 
 const ResultsPage = (props) => {
   const [results, setResults] = useState([]);
@@ -29,8 +30,8 @@ const ResultsPage = (props) => {
 
   return (
     <>
-      <div>Results Page</div>
-      <SearchResults results={results} query={query} />
+      <SearchBar />
+      <SearchResults results={results} />
     </>
   );
 };
