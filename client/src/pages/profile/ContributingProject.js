@@ -16,10 +16,10 @@ import {
   ProjectTitle,
   CardIcon,
 } from "../../styles/ProfileProjectStyle";
-import trashicon from "../../icons/Bin.png";
+import trashicon from "../../icons/bin.png";
 import commenticon from "../../icons/Comment.png";
 
-const ContributingProject = (props) => {
+const ContributingProject = ({ id, project_id }) => {
   const [comments, setComments] = useState([]);
   const { user } = useContext(AuthContext);
   const { checkRequests, sendRequest, requestStatus } = useRequest();
@@ -28,15 +28,13 @@ const ContributingProject = (props) => {
 
   useEffect(() => {
     getComments();
-    checkRequests(props.contProject.project_id, user?.id);
+    checkRequests(project_id, user?.id);
     getProjectData();
   }, []);
 
   const getProjectData = async () => {
     try {
-      let res = await Axios.get(
-        `/api/projects/${props.contProject.project_id}`
-      );
+      let res = await Axios.get(`/api/projects/${project_id}`);
       // console.log("project data", res.data);
       setProject(res.data);
       let ownerRes = await Axios.get(`/api/users/${res.data.user_id}`);
@@ -49,9 +47,7 @@ const ContributingProject = (props) => {
   const getComments = async () => {
     //currently not rendered anywhere
     try {
-      let res = await Axios.get(
-        `/api/projects/${props.contProject.project_id}/comments`
-      );
+      let res = await Axios.get(`/api/projects/${project_id}/comments`);
       setComments(res.data);
     } catch (err) {
       // console.log("getComments error", err);
@@ -93,11 +89,7 @@ const ContributingProject = (props) => {
         </CardDiv>
         <div className="ui two buttons">
           {requestStatus === "none" && (
-            <Button
-              basic
-              color="blue"
-              onClick={() => sendRequest(props.contProject.id, user.id)}
-            >
+            <Button basic color="blue" onClick={() => sendRequest(id, user.id)}>
               {requestStatus}
             </Button>
           )}
@@ -105,12 +97,7 @@ const ContributingProject = (props) => {
             <Button disabled>Request Pending</Button>
           )}
           {requestStatus === "contributor" && (
-            <Button
-              basic
-              color="green"
-              as={Link}
-              to={`/project/${props.contProject.id}`}
-            >
+            <Button basic color="green" as={Link} to={`/project/${id}`}>
               Already Contributing - go to Project Page
             </Button>
           )}

@@ -5,7 +5,7 @@ import {
   SearchBarContainer,
   SearchIcon,
 } from "../../styles/LandingPageStyle";
-import searchicon from "../../icons/searchicon2.png";
+import searchicon from "../../icons/searchicon.png";
 import Axios from "axios";
 
 const SearchBar = ({ getQuery }) => {

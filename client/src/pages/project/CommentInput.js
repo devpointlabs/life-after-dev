@@ -40,10 +40,15 @@ export default function CommentInput({ project, updateComments }) {
 const NewComment = styled.input`
   width: 210px;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 6px;
+  margin-left: 30px;
+  padding-left: 10px;
 
   &::placeholder {
     padding-left: 0.5rem;
+  }
+  &:focus {
+    outline: none !important;
   }
 `;
 const Wrapper = styled.div``;

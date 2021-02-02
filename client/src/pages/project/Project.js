@@ -4,29 +4,40 @@ import "./style.css";
 import Comments from "./Comments";
 import { AuthContext } from "../../providers/AuthProvider";
 import RequestAction from "../../components/RequestAction";
-import githubicon from "../../icons/githubicon.png";
-import livelink from "../../icons/livelink.png";
+import { useHistory } from "react-router-dom";
 import {
+  BackButton,
+  ChangePicButton,
   CommentSection,
+  CrudContainer,
+  EditButtonDiv,
+  GithubIcon,
+  JoinButtonDiv,
+  LiveIcon,
+  ProjectLinksDiv,
+  ProjectOwnerDiv,
+  ProjectOwnerName,
+  ProjectOwnerPic,
+  ProjectPic,
+  ProjectSection,
+  ProjectTitle,
   Wrapper,
-  ProjectName,
-  ProjectImage,
-  Description,
-  GithubImage,
-  SocialLink,
-  LivelinkImage,
-  IconDiv,
 } from "../../styles/ProjectShowStyle";
 import ProjectPicModal from "./ProjectPicModal";
 import EditProjectModal from "../../components/EditProjectModal";
-import { Button, Image, Icon } from "semantic-ui-react";
+import { Button, ButtonContent, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import githubicon from "../../icons/google2x.png";
+import liveicon from "../../icons/eye2x.png";
+import { CrudIcon } from "../../styles/ProfileProjectStyle";
+import DeleteProjectModal from "./DeleteProjectModal";
 
 const Project = (props) => {
   const [project, setProject] = useState(null);
   const [owner, setOwner] = useState([]);
   const { user } = useContext(AuthContext);
   const [seen, setSeen] = useState(false);
+  let history = useHistory();
 
   useEffect(() => {
     getProjectData();
@@ -62,22 +73,22 @@ const Project = (props) => {
   const renderEditButton = () => {
     if (user?.id == owner.id) {
       return (
-        <EditProjectModal project={project} updateProjects={updateProjects} />
+        <EditButtonDiv>
+          <EditProjectModal project={project} updateProjects={updateProjects} />
+        </EditButtonDiv>
       );
     }
   };
   const renderDeleteButton = () => {
     if (user?.id == owner.id) {
       return (
-        <Button onClick={() => deleteProject(project.id)} color="red">
-          Delete
-        </Button>
+        <DeleteProjectModal deleteProject={deleteProject} project={project} />
       );
     }
   };
   const renderRequestAction = () => {
     if (user) {
-      if (user.id !== project?.user_id) {
+      if (user.id !== owner.id) {
         return <RequestAction projectId={project?.id} userId={user.id} />;
       } else {
         return <span></span>;
@@ -90,47 +101,73 @@ const Project = (props) => {
       );
     }
   };
+
   const togglePic = () => {
     setSeen(!seen);
   };
+
+  const renderJoinButton = () => {
+    if (user?.id !== owner.id) {
+      return (
+        <JoinButtonDiv>
+          <RequestAction projectId={project?.id} userId={project?.user_id} />
+        </JoinButtonDiv>
+      );
+    } else {
+      return <span></span>;
+    }
+  };
+
   return (
-    <Wrapper>
-      {seen ? (
-        <ProjectPicModal toggle={togglePic} user={user} project={project} />
-      ) : null}
-      <div className="Project_Title">
-        <Link to={`/user/${owner.id}`}>
-          <h2>
-            {owner.firstname} {owner.lastname}
-          </h2>
-        </Link>
-
-        <Link to={`/user/${owner.id}`}>
-          <Image src={owner.image} avatar />
-        </Link>
-        <ProjectName>{project?.title}</ProjectName>
-        {renderEditButton()}
-        {renderDeleteButton()}
-        <ProjectImage src={project?.picture} />
-        <Button color="black">Join</Button>
-        <button type="button" onClick={togglePic}>
-          Change Picture
-        </button>
-        <Description>{project?.description}</Description>
-        <IconDiv>
-          <SocialLink a href={`http://${project?.github_link}`} target="_blank">
-            <GithubImage src={githubicon} />
-          </SocialLink>
-          <SocialLink a href={`http://${project?.live_link}`} targe="_blank">
-            <LivelinkImage src={livelink} />
-          </SocialLink>
-        </IconDiv>
-      </div>
-
-      <CommentSection>
-        {project && <Comments project={project} />}
-      </CommentSection>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <ProjectSection>
+          <BackButton>
+            <Button onClick={() => history.goBack()}>Back</Button>
+          </BackButton>
+          {seen ? (
+            <ProjectPicModal toggle={togglePic} user={user} project={project} />
+          ) : null}
+          <ProjectOwnerDiv>
+            <Link to={`/user/${owner.id}`}>
+              <ProjectOwnerPic src={owner.image} />
+            </Link>
+            <Link to={`/user/${owner.id}`}>
+              <ProjectOwnerName>
+                {owner.firstname} {owner.lastname}
+              </ProjectOwnerName>
+            </Link>
+            {renderJoinButton()}
+          </ProjectOwnerDiv>
+          <ProjectPic src={project?.picture} />
+          <ChangePicButton>
+            <Button basic size="small" onClick={togglePic}>
+              <Icon name="edit" />
+              Edit Photo
+            </Button>
+          </ChangePicButton>
+          <ProjectTitle>{project?.title}</ProjectTitle>
+          <ProjectLinksDiv>
+            <a href={`${project?.github_link}`} target="_blank">
+              <GithubIcon src={githubicon} />
+            </a>
+            <a href={`${project?.live_link}`} target="_blank">
+              <LiveIcon src={liveicon} />
+            </a>
+          </ProjectLinksDiv>
+          <CrudContainer>{renderEditButton()}</CrudContainer>
+          <div className="Project_Image">
+            <div className="description">
+              <p>{project?.description}</p>
+            </div>
+          </div>
+          <CrudContainer>{renderDeleteButton()}</CrudContainer>
+        </ProjectSection>
+        <CommentSection>
+          {project && <Comments project={project} />}
+        </CommentSection>
+      </Wrapper>
+    </>
   );
 };
 

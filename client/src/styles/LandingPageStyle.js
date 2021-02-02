@@ -13,7 +13,16 @@ export const Search = styled.input`
   border-radius: 12px;
   background-color: #ffffff;
   padding-left: 60px;
-  font-color: #c5c6ce;
+  color: #000;
+  &:focus {
+    outline: none !important;
+  }
+  &:focus::placeholder {
+    color: #d9d9d9;
+  }
+  &::placeholder {
+    color: #868686;
+  }
 `;
 
 export const SearchIcon = styled.img`
@@ -21,6 +30,7 @@ export const SearchIcon = styled.img`
   float: left;
   top: -38px;
   left: 25px;
+  filter: opacity(60%);
 `;
 
 //// Search Results ////
@@ -88,13 +98,13 @@ export const LoginContainer = styled.div`
 
 export const Input = styled.input`
   padding: 13px;
-	color: none;
-	background: white;
+  color: none;
+  background: white;
   border: solid;
   border-color: grey;
   border-width: 2px;
-	border-radius: 10px;
-	width: 80%;
+  border-radius: 10px;
+  width: 80%;
   margin: 8px;
   outline: none;
 `;
@@ -104,22 +114,21 @@ export const LandingLoginForm = styled.form`
 `;
 
 export const LogInButton = styled.button`
-background-color: #42A5F5; 
-border-radius: 10px;
-border: none;
-color: white;
-padding: 0 32px;
-text-align: center;
-text-decoration: none;
-font-size: 16px;
-cursor: pointer;
-height: 40px;
-display: inline-block;
-float: right;
-margin: 0 20px;
-outline: none;
+  background-color: #42a5f5;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  padding: 0 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 40px;
+  display: inline-block;
+  float: right;
+  margin: 0 20px;
+  outline: none;
 `;
-
 
 export const SiteInfoContainer = styled.div`
   background-color: white;
@@ -138,19 +147,19 @@ export const SiteInfoContainer = styled.div`
 `;
 
 export const SiteInfoRegisterButton = styled.button`
-background-color: #42A5F5; 
-border-radius: 10px;
-border: none;
-border-width: 3px;
-color: white;
-padding: 0 32px;
-text-align: center;
-text-decoration: none;
-font-size: 16px;
-cursor: pointer;
-height: 40px;
-display: inline-block;
-outline: none;
+  background-color: #42a5f5;
+  border-radius: 10px;
+  border: none;
+  border-width: 3px;
+  color: white;
+  padding: 0 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 40px;
+  display: inline-block;
+  outline: none;
 `;
 
 export const CardWrapper = styled.div`
@@ -176,7 +185,6 @@ export const UserPic = styled.img`
   
 `;
 
-
 export const CardHeader = styled.header`
   display: flex;
 
@@ -193,7 +201,6 @@ export const CardHeading = styled.span`
 
 
 
-
 export const CardImage = styled.img`
   display: flex;
   height: 130px;
@@ -207,12 +214,10 @@ export const CardImage = styled.img`
 `;
 
 export const ContributorSection = styled.div`
-font-weight: 900;
-font-size: 14px;
-width: 780px;
-float: left;
-
-  
+  font-weight: 900;
+  font-size: 14px;
+  width: 780px;
+  float: left;
 `;
 
 export const ProjectTitle = styled.div`
@@ -241,7 +246,6 @@ text-decoration: none;
 font-size: 16px;
 cursor: pointer;
 height: 40px;
-
 outline: none;
 margin-top: 20px;
 

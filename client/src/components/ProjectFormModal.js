@@ -17,22 +17,26 @@ const ProjectFormModal = ({ query, editing }) => {
 
   const addProject = async (newProject, image) => {
     if (image == null) {
-      alert("Image can't be blank")
+      alert("Image can't be blank");
       return;
     }
-    const options = { 
-      params: { 
+    const options = {
+      params: {
         title: newProject.title,
         github_link: newProject.github_link,
         live_link: newProject.live_link,
-        description: newProject.description
-      } 
-    }
-    console.log(newProject)
+        description: newProject.description,
+      },
+    };
+    console.log(newProject);
     let data = new FormData();
     data.append("file", image);
     try {
-      let res = await Axios.post(`/api/users/${user.id}/projects`, data, options);
+      let res = await Axios.post(
+        `/api/users/${user.id}/projects`,
+        data,
+        options
+      );
       console.log("project added", res);
     } catch (err) {
       console.log(err);
