@@ -20,29 +20,10 @@ const LandingPage = () => {
   const [toggle, setToggle] = useState(false);
   const { user } = useContext(AuthContext);
 
-  const getResults = (query) => {
-    Axios.get(`/api/all_projects/?query=${query}`)
-      .then((res) => {
-        setResults(res.data);
-        setError(null);
-      })
-      .catch((err) => {
-        setError(err.response);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  const getQuery = (query) => {
-    setQuery(query);
-  };
-
-  // store the query state, allow access across the board.
 
   return (
     <>
-      <SearchBar getResults={getResults} getQuery={getQuery} />
+      <SearchBar />
       <LandingInfoWrap>
         <SiteInfoContainer>
           <h1>

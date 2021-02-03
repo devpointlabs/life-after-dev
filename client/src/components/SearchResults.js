@@ -12,9 +12,11 @@ import {
 } from "../styles/LandingPageStyle";
 import ProjectFormModal from "./ProjectFormModal";
 import styled from "styled-components";
+import { QueryContext } from "../providers/QueryProvider";
 
-const SearchResults = ({ results, query }) => {
+const SearchResults = ({ results }) => {
   const { user } = useContext(AuthContext);
+  const { query, setQuery } = useContext(QueryContext);
 
   const renderProjectFormModal = () => {
     if (user) {
@@ -39,7 +41,7 @@ const SearchResults = ({ results, query }) => {
   const renderNothing = () => {
     return <span></span>;
   };
-  console.log("results", results);
+  // console.log("results", results);
   return (
     <div>
       <Grid>

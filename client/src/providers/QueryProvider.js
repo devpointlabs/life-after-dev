@@ -10,8 +10,11 @@ const QueryProvider = (props) => {
     <QueryContext.Provider
       value={{
         query,
+        setQuery,
       }}
-    >{props.children}</QueryContext.Provider>
+    >
+      {props.children}
+    </QueryContext.Provider>
   );
 };
 

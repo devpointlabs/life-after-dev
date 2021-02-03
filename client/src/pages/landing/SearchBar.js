@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   Search,
@@ -7,18 +7,19 @@ import {
 } from "../../styles/LandingPageStyle";
 import searchicon from "../../icons/searchicon.png";
 import Axios from "axios";
+import { QueryContext } from "../../providers/QueryProvider";
 
-const SearchBar = ({ getQuery }) => {
+const SearchBar = () => {
   const [loading, setLoading] = useState(true);
-  const [query, setQuery] = useState(null);
+  // const [query, setQuery] = useState(null);
   const [results, setResults] = useState([]);
   const [error, setError] = useState(null);
+  const { query, setQuery } = useContext(QueryContext);
   let history = useHistory();
 
   const handleChange = (e) => {
     let keyword = e.target.value;
     setQuery(keyword);
-    getQuery(keyword);
   };
 
   const handleSubmit = (e) => {

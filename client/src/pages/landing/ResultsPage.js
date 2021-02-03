@@ -1,17 +1,19 @@
 import Axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SearchResults from "../../components/SearchResults";
+import { QueryContext } from "../../providers/QueryProvider";
 import SearchBar from "./SearchBar";
 
 const ResultsPage = (props) => {
   const [results, setResults] = useState([]);
   const [error, setError] = useState(null);
-  const [query, setQuery] = useState(props.match.params.query);
+  // const [query, setQuery] = useState(props.match.params.query);
   const [loading, setLoading] = useState(true);
+  const { query, setQuery } = useContext(QueryContext);
 
   useEffect(() => {
     getResults(query);
-  }, []);
+  }, [query]);
 
   const getResults = (query) => {
     Axios.get(`/api/all_projects/?query=${query}`)
@@ -30,7 +32,7 @@ const ResultsPage = (props) => {
 
   return (
     <>
-      <SearchBar  />
+      <SearchBar />
       <SearchResults results={results} query={query} />
     </>
   );

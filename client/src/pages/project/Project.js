@@ -31,17 +31,29 @@ import githubicon from "../../icons/google2x.png";
 import liveicon from "../../icons/eye2x.png";
 import { CrudIcon } from "../../styles/ProfileProjectStyle";
 import DeleteProjectModal from "./DeleteProjectModal";
+import useContributor from "../../hooks/useContributor";
+import {
+  ContributorImage,
+  ContributorWrapper,
+} from "../../styles/LandingPageStyle";
 
 const Project = (props) => {
   const [project, setProject] = useState(null);
   const [owner, setOwner] = useState([]);
   const { user } = useContext(AuthContext);
   const [seen, setSeen] = useState(false);
+  const { contributors, getContributors } = useContributor();
   let history = useHistory();
 
   useEffect(() => {
     getProjectData();
   }, []);
+
+  useEffect(() => {
+    if (project) {
+      getContributors(project.id);
+    }
+  }, [project]);
 
   const getProjectData = async () => {
     try {
@@ -55,10 +67,12 @@ const Project = (props) => {
       console.log(err);
     }
   };
+
   const updateProjects = (project) => {
     const updatedProject = project;
     setProject(updatedProject);
   };
+
   const deleteProject = (id) => {
     axios
       .delete(`/api/users/${owner.id}/projects/${id}`)
@@ -70,6 +84,7 @@ const Project = (props) => {
         console.log("delete project error", err);
       });
   };
+
   const renderEditButton = () => {
     if (user?.id == owner.id) {
       return (
@@ -79,6 +94,7 @@ const Project = (props) => {
       );
     }
   };
+
   const renderDeleteButton = () => {
     if (user?.id == owner.id) {
       return (
@@ -86,6 +102,7 @@ const Project = (props) => {
       );
     }
   };
+
   const renderRequestAction = () => {
     if (user) {
       if (user.id !== owner.id) {
@@ -101,6 +118,19 @@ const Project = (props) => {
       );
     }
   };
+
+  const maxcontribs = 3;
+
+  const renderContributors = () => (
+    <ContributorWrapper>
+      <span>Contributors</span>
+      {contributors.map(
+        (c, i) => i < maxcontribs && <ContributorImage image={c.image} />
+      )}
+      {contributors.length > maxcontribs &&
+        ` +  ${contributors.length - maxcontribs}`}
+    </ContributorWrapper>
+  );
 
   const togglePic = () => {
     setSeen(!seen);
@@ -138,6 +168,7 @@ const Project = (props) => {
               </ProjectOwnerName>
             </Link>
             {renderJoinButton()}
+            {renderContributors()}
           </ProjectOwnerDiv>
           <ProjectPic src={project?.picture} />
           <ChangePicButton>
