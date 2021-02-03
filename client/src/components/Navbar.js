@@ -14,6 +14,7 @@ import {
   NavInactiveIcon,
   NavIconBottomSquare,
   NavIconBottomInactive,
+  AuthButtonDiv,
 } from "../styles/GlobalStyle";
 import devpointlogo from "../icons/devpointlogo.png";
 import homeiconz from "../icons/homeicon.png";
@@ -25,6 +26,8 @@ import profileicon from "../icons/user2x.png";
 import settingsicon from "../icons/settings2x.png";
 import addicon from "../icons/plus2x.png";
 import logouticon from "../icons/logout2x.png";
+import ProjectFormModal from "./ProjectFormModal";
+import NavAddModal from "./NavAddModal";
 
 const Navbar = (props) => {
   let history = useHistory();
@@ -107,20 +110,15 @@ const Navbar = (props) => {
     }
   };
 
-  const renderAddIcon = () => {};
-
   const topNavItems = () => {
     if (user) {
       return (
         <>
           <Link to={`/user/${user.id}`}>{renderProfileIcon()}</Link>
-          <NavInactiveSquare>
-            <NavInactiveIcon src={addicon} />
-          </NavInactiveSquare>
+          <NavAddModal />
           <Link to={`/profile/${user.id}/settings`}>
             {renderSettingsIcon()}
           </Link>
-
           <Link>
             {
               <NavIconBottomSquare>
@@ -136,20 +134,26 @@ const Navbar = (props) => {
     } else {
       return (
         <>
-          <Link to="/login">
-            <AuthButton id="login" name="login" active={pathname === "/login"}>
-              Login
-            </AuthButton>
-          </Link>
-          <Link to="/register">
-            <AuthButton
-              id="register"
-              name="register"
-              active={pathname === "/register"}
-            >
-              Register
-            </AuthButton>
-          </Link>
+          <AuthButtonDiv>
+            <Link to="/login">
+              <AuthButton
+                id="login"
+                name="login"
+                active={pathname === "/login"}
+              >
+                Login
+              </AuthButton>
+            </Link>
+            <Link to="/register">
+              <AuthButton
+                id="register"
+                name="register"
+                active={pathname === "/register"}
+              >
+                Sign Up
+              </AuthButton>
+            </Link>
+          </AuthButtonDiv>
         </>
       );
     }
