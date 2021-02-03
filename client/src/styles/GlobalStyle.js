@@ -6,6 +6,7 @@ export const AppContainer = styled.div`
   min-height: 100vh;
   min-width: 100vh;
   background-color: #f7f7f7;
+  font-family: SFNS !important;
 `;
 // 2 sections, 'nav' and 'main'
 export const AppGrid = styled.div`
@@ -146,9 +147,6 @@ export const MainColumn = styled.div`
   min-height: 100vh;
 `;
 
-
 //// Other ////
 
-export const JoinButton = styled(Button)`
-  
-`
+export const JoinButton = styled(Button)``;
