@@ -123,7 +123,6 @@ const Project = (props) => {
 
   const renderContributors = () => (
     <ContributorWrapper>
-      <span>Contributors</span>
       {contributors.map(
         (c, i) => i < maxcontribs && <ContributorImage image={c.image} />
       )}
@@ -168,8 +167,8 @@ const Project = (props) => {
               </ProjectOwnerName>
             </Link>
             {renderJoinButton()}
-            {renderContributors()}
           </ProjectOwnerDiv>
+          <div style={{ marginLeft: 570 }}>{renderContributors()}</div>
           <ProjectPic src={project?.picture} />
           <ChangePicButton>
             <Button basic size="small" onClick={togglePic}>
