@@ -16,11 +16,14 @@
 }
 
 .usersectionLogged {
-  background-color: #1e1f20;
-  width: 25%;
-  height: 100%;
-  position: fixed;
-  right: 0%;
+  background: #1e2021;
+  width: 425px;
+  height: 600vh;
+  padding: 1rem;
+  flex-shrink: 0;
+  border-radius: 30px 0px 0px 0px;
+  color: #fff;
+  margin-right: -50px;
 }
 
 .namePlate {
@@ -30,10 +33,10 @@
   align-items: center !important;
 }
 
-.userTag {
+/* .userTag {
   font-size: 20px;
   text-align: center;
-}
+} */
 .dynamicProj {
   display: flex;
   flex-direction: row;
@@ -47,7 +50,9 @@
 }
 
 .projectSectionLogged {
-  width: 75%;
+  width: 800px;
+  height: 600vh;
+  padding-right: 115px;
 }
 
 .imagelinks {
@@ -63,9 +68,10 @@
   align-items: center;
 }
 .userpic {
-  border-radius: 30%;
+  border-radius: 25%;
   height: 130px !important;
   width: 130px !important;
+  object-fit: cover;
 }
 /* .username {
   float: left;

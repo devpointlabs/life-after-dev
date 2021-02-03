@@ -20,7 +20,7 @@ import {
 } from "../../styles/ProfileProjectStyle";
 import ProjectFormModal from "../../components/ProjectFormModal";
 import EditProjectModal from "../../components/EditProjectModal";
-import trashicon from "../../icons/bin.png";
+import trashicon from "../../icons/Bin.png";
 import commenticon from "../../icons/Comment.png";
 
 const UserProject = (props) => {
@@ -45,10 +45,10 @@ const UserProject = (props) => {
   };
 
   const returnShortDescription = () => {
-    if (props.project.description.length > 100) {
+    if (props.project.description?.length > 100) {
       return props.project.description.substring(0, 100) + "...";
     } else {
-      return props.project.description;
+      return props.project?.description;
     }
   };
 

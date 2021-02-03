@@ -16,7 +16,7 @@ import {
   ProjectTitle,
   CardIcon,
 } from "../../styles/ProfileProjectStyle";
-import trashicon from "../../icons/bin.png";
+// import trashicon from "../../icons/bin.png";
 import commenticon from "../../icons/Comment.png";
 
 const ContributingProject = ({ id, project_id }) => {

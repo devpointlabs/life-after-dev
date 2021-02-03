@@ -31,10 +31,16 @@ const LandingPage = () => {
           </h1>
 
           <p>
-            Welcome to Life After Dev! This is tool for DevPointLabs alumni to
-            show off, collaborate, and work together on any projects in any
-            stage whether it's just an idea or a completed project. We hope you
-            enjoy it!{" "}
+            {" "}
+            Life After Dev is a place for developers to share their ideas and
+            explore other projects that they might be interested in. Although
+            many of us started at{" "}
+            <a href="https://www.devpointlabs.com/">DevPointLabs</a>, anyone can
+            join and check out what other members creating. To get started,
+            simply scroll down below and find something you like!{" "}
+          </p>
+          <p>
+            <Link to={`/about`}>Learn about Life After Dev's developers</Link>
           </p>
           <Link to={`/register`}>
             <SiteInfoRegisterButton>Register</SiteInfoRegisterButton>

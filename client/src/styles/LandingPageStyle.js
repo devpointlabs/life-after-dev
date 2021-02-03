@@ -118,15 +118,15 @@ export const LogInButton = styled.button`
   border-radius: 10px;
   border: none;
   color: white;
-  padding: 0 32px;
+  padding: 0px 32px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
   cursor: pointer;
   height: 40px;
   display: inline-block;
-  float: right;
-  margin: 0 20px;
+
+  margin: 15px 20px;
   outline: none;
 `;
 
@@ -172,15 +172,16 @@ border-width: 3px;
 box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
 border-radius: 18px;
 margin-top: 20px;
-
+border-style: hidden;
 `;
 
 export const UserPic = styled.img`
   border-radius: 15px;
   height: 60px;
   width: 60px;
-  margin: 28px 28px;
+  margin: 28px 0px 0px 28px;
   display: flex;
+  flex-direction: row;
  
   
 `;
@@ -195,7 +196,8 @@ export const CardHeading = styled.span`
   font-weight: 900;
   font-size: 14px;
   display: flex;
-  margin: auto 100px ;
+  padding: 45px 0px 0px 10px;
+  margin-top: 0;
  
 `;
 
@@ -224,35 +226,37 @@ export const ProjectTitle = styled.div`
 color: #ffffff;
 font-weight: bold;
 font-size: 23px;
-padding-top: 55px;
+padding-top: 65px;
+
 
 
 `;
 
 export const ProjectDescrip = styled.div`
 color: #ffffff;
-padding-top: 20px;
+padding: 25px;
 
 
 `;
-export const JoinButton = styled.button`
-background-color: #42A5F5; 
-border-radius: 10px;
-border: none;
-border-width: 3px;
-color: white;
-text-align: center;
-text-decoration: none;
-font-size: 16px;
-cursor: pointer;
-height: 40px;
-outline: none;
-margin-top: 20px;
 
+export const FeedBackButton = styled.button`
+background-color: #53D769;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  margin: 10px auto;
+  font-size: 16px;
+  cursor: pointer;
+  height: 60px;
+  outline: none;
+  width: 170px;
 `;
+
 
 export const ContributorWrapper = styled.div`
   display: flex;
+  color: grey;
+  padding: 0px 0px 25px 20px;
 
 `
 
@@ -277,13 +281,28 @@ export const Right = styled.div`
   height: 430px;
   border-radius: 25px;
   display: flex;
-  flex-direction: column;
   text-align: center;
-
+  flex-direction: column;
 `
 
 
-export const LandingCommentsWrap = styled.div`
+export const LandingCommentsWrap = styled.span`
   display: flex;
   margin-left: 32px;
+`;
+
+export const SeeMoreComments = styled.div`
+color: grey;
+font-weight: bold;
+font-size: 18px;
+margin: 30px 0px 10px 32px;
+display: flex;
+`;
+
+export const LandingCardIcon = styled.img`
+  height: 15px;
+  width: 15px;
+  margin-right: 7px;
+  margin-top: 5px;
+ 
 `;
