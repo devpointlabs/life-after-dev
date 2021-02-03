@@ -30,6 +30,9 @@ export const NavColumn = styled.div`
 export const StickyNav = styled.div`
   display: block;
   margin: 0 auto;
+  top: 0;
+  position: sticky;
+  position: -webkit-sticky;
 `;
 
 export const Logo = styled.img`
