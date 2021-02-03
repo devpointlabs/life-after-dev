@@ -52,6 +52,17 @@ const UserProject = (props) => {
     }
   };
 
+  const renderEditButton = () => {
+    if (user.id == props.project.user_id) {
+      return (
+        <EditProjectModal
+          project={props.project}
+          updateProjects={props.updateProjects}
+        />
+      );
+    }
+  };
+
   return (
     <>
       <CardContainer>
@@ -61,10 +72,11 @@ const UserProject = (props) => {
             {props.owner.firstname} {props.owner.lastname}
           </UserName>
           <CrudIcon>
-            <EditProjectModal
+            {/* <EditProjectModal
               project={props.project}
               updateProjects={props.updateProjects}
-            />
+            /> */}
+            {renderEditButton()}
           </CrudIcon>
         </CardHeader>
         <CardDiv>
