@@ -29,8 +29,8 @@ export const NavColumn = styled.div`
 
 export const StickyNav = styled.div`
   display: block;
-  margin: 0 auto;
-  top: 0;
+  margin: 43px auto 0px auto;
+  top: 43px;
   position: sticky;
   position: -webkit-sticky;
 `;
