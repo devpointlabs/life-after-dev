@@ -5,7 +5,7 @@ import UserProject from "./UserProject";
 import "./style.css";
 import { AuthContext } from "../../providers/AuthProvider";
 import ContributingProject from "./ContributingProject";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import UserProjects from "./UserProjects";
 import Requests from "./Requests";
 import Axios from "axios";
@@ -31,13 +31,14 @@ const User = (props) => {
   const [contributingProjects, setContributingProjects] = useState([]);
   const [requests, setRequests] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const [editHover, setEditHover] = useState(false);
   // const [userpos, setUserpos] = useState({marginTop: `0px`});
 
   useEffect(() => {
     getTargetUser();
     getProjects();
     getContributingProjects();
-    getTheseRequests(user.id);
+    getTheseRequests(user?.id);
     // window.addEventListener('scroll', listenScrollEvent)
   }, [props.match.params.id]);
 
@@ -73,6 +74,7 @@ const User = (props) => {
   const getContributingProjects = async () => {
     try {
       let res = await axios.get(`/api/users/${props.match.params.id}/requests`);
+
       setContributingProjects(res.data);
     } catch (err) {
     }
@@ -83,11 +85,23 @@ const User = (props) => {
     console.log("im being pressed")
   }
 
+  const handleEditHover = (e) => {
+    if (editHover == false) {
+    e.target.style.opacity = "0.4";
+    setEditHover(!editHover)
+    } else{  
+    e.target.style.opacity = "1";
+    setEditHover(!editHover)
+    }
+  }
+
+
 
   const renderOutPage = (
     <Wrapper>
       <UserSection>
         <div className="namePlate">
+        <img className="userpic" src={targetuser.image} />
           <h1>
             {targetuser.firstname} {targetuser.lastname}{" "}
           </h1>
@@ -95,41 +109,18 @@ const User = (props) => {
             <p style={{ fontWeight: "bolder" }}>{projects.length}</p>
             <p>Projects</p>
           </div>
-          <img className="userpic" src={targetuser.image} />
-          <p className="userTag">{targetuser.tag}</p>
         </div>
-        <div className="socialPlate center">
-          <span className="socialText">Github</span>
-          <a href={`http://${targetuser.github_link}`} target="_blank">
-            <img
-              className="socialIcon"
-              src={imagelinks.github}
-              height="100px"
-              width="100px"
-            />
-          </a>
-        </div>
-        <div className="socialPlate center">
-          <span className="socialText">LinkedIn</span>
-          <a href={`http://${targetuser.linkedin_link}`} target="_blank">
-            <img
-              className="socialIcon"
-              src={imagelinks.linkedin}
-              height="100px"
-              width="100px"
-            />
-          </a>
-        </div>
-        <div className="socialPlate center">
-          <span className="socialText">Personal Site</span>
-          <a href={`http://${targetuser.personal_site}`} target="_blank">
-            <img
-              className="socialIcon"
-              src={imagelinks.personalsite}
-              height="100px"
-              width="100px"
-            />
-          </a>
+        <div style={{paddingBottom:"10%", paddingLeft: "5%"}}>
+          <h1 style={{fontSize: "15px", margin: "0"}}>
+            About
+          </h1>
+          <ul style={{listStyle: "none", padding: "0", margin: '0', color: "#9497a5"}}>
+            <li>
+                {targetuser.tag}</li><li>
+                LinkedIn: {targetuser.linkedin_link}</li><li>
+                Github: {targetuser.github_link}</li><li>
+                Personal: {targetuser.personal_site}</li>
+          </ul>
         </div>
       </UserSection>
       <UserProjects
@@ -144,38 +135,43 @@ const User = (props) => {
   const renderInPage = (
     <Wrapper>
       <div className="projectsectionlogged">
-        {toggle === true && myRequests.map(r => (
-          <>
-          <h1>{r.firstname} {r.lastname} wants to join {r.title}</h1>
-          <Button onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
-            Accept
-          </Button>
-          <Button onClick={()=> denyRequest(r.project_id, r.id)}>
-            Decline
-          </Button>
-      </>
-        ))}
-        {toggle == false && myRequests.slice(0,5).map(r => (
-          <>
-          <h1>{r.firstname} {r.lastname} wants to join {r.title}</h1>
-          <Button onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
-            Accept
-          </Button>
-          <Button onClick={()=> denyRequest(r.project_id, r.id)}>
-            Decline
-          </Button>
-      </>
-        ))}
-        {myRequests.length >5 && <button type="button" onClick={toggleRequestView}>Show More/Less</button>}
-      <UserProjects
-        projects={projects}
-        contributingProjects={contributingProjects}
-        userId={props.match.params.id}
-        updateProjects={updateProjects}
-      />
+        <div style={{borderStyle: "solid", borderRadius: "5px", borderWidth: "2px", borderColor: "#9497a5"}}>
+          {toggle === true && myRequests.map(r => (
+            <div style={{padding: "10px", backgroundColor: "white"}}>
+              <h1>{r.firstname} {r.lastname} wants to join {r.title}</h1>
+              <Button onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
+                Accept
+              </Button>
+              <Button onClick={()=> denyRequest(r.project_id, r.id)}>
+                Decline
+              </Button>
+            </div>
+          ))}
+          {toggle == false && 
+            myRequests.slice(0,5).map(r => (
+              <div style={{padding: "10px", backgroundColor: "white"}}>
+              <h1>{r.firstname} {r.lastname} wants to join {r.title}</h1>
+              <Button onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
+                Accept
+              </Button>
+              <Button onClick={()=> denyRequest(r.project_id, r.id)}>
+                Decline
+              </Button>
+              </div>
+            ))}
+            {myRequests.length >5 && <button type="button" onClick={toggleRequestView}>Show More/Less</button>}
+        </div>
+
+        <UserProjects
+          projects={projects}
+          contributingProjects={contributingProjects}
+          userId={props.match.params.id}
+          updateProjects={updateProjects}
+        />
       </div>
       <div className="usersectionLogged">
         <div className="namePlate">
+        <img className="userpic" src={targetuser.image} />
           <h1 style={{ color: "white" }}>
             {targetuser.firstname} {targetuser.lastname}{" "}
           </h1>
@@ -187,55 +183,43 @@ const User = (props) => {
             </p>
             <p style={{ color: "white", marginTop: "6%" }}>Projects</p>
           </div>
-          <img className="userpic" src={targetuser.image} />
-          <p className="userTag" style={{ color: "white" }}>
-            {targetuser.tag}
-          </p>
           <div>
-            <Button
-              color="teal"
-              onClick={() =>
-                props.history.push(`/profile/${targetuser.id}/settings`)
-              }
-            >
-              <Icon name="pencil" />
-              Edit Profile
-            </Button>
+            <Link
+              style={{color: "white", 
+              }}
+              onMouseEnter={handleEditHover}
+              onMouseLeave={handleEditHover}
+              to={`/profile/${targetuser.id}/settings`}
+              >
+                <div style={{
+                  backgroundColor: "#6fd76a", 
+                  height: "50px", 
+                  width: "200px", 
+                  borderRadius: "9px",
+                  textAlign: "center",
+                  }}
+                  >
+                  <p style={{
+                  paddingTop: "7.5%",
+                  }}>
+                      Edit Profile
+                  </p>
+                </div>
+              </Link>
           </div>
+          <div style={{paddingBottom:"10%", paddingLeft: "5%", paddingTop: "10%"}}>
+            <h1 style={{fontSize: "15px", margin: "0"}}>
+              About
+            </h1>
+            <ul style={{listStyle: "none", padding: "0", margin: '0', color: "#9497a5"}}>
+              <li>
+                  {targetuser.tag}</li><li>
+                  LinkedIn: {targetuser.linkedin_link}</li><li>
+                  Github: {targetuser.github_link}</li><li>
+                  Personal: {targetuser.personal_site}</li>
+            </ul>
         </div>
-        {/* <div className="socialPlate center">
-              <span className="socialText">Github</span>
-              <a href={`http://${targetuser.github_link}`} target="_blank">
-                <img
-                  className="socialIcon"
-                  src={imagelinks.github}
-                  height="100px"
-                  width="100px"
-                />
-              </a>
-            </div>
-              <div className="socialPlate center">
-                <span className="socialText">LinkedIn</span>
-                <a href={`http://${targetuser.linkedin_link}`} target="_blank">
-                  <img
-                    className="socialIcon"
-                    src={imagelinks.linkedin}
-                    height="100px"
-                    width="100px"
-                  />
-                </a>
-              </div>
-              <div className="socialPlate center">
-                <span className="socialText">Personal Site</span>
-                <a href={`http://${targetuser.personal_site}`} target="_blank">
-                  <img
-                    className="socialIcon"
-                    src={imagelinks.personalsite}
-                    height="100px"
-                    width="100px"
-                  />
-                </a>
-              </div> */}
+        </div>
       </div>
     </Wrapper>
   );
@@ -257,10 +241,10 @@ const Wrapper = styled.div`
 `;
 
 const UserSection = styled.div`
-background-color: rgb(176, 176, 176);
+background-color: white;
 width: 100%;
 height: 100%;
-border-radius: 25px;
+border-radius: 5%;
 position: -webkit-sticky;
 position: sticky;
 margin-top: 5%;

@@ -45,10 +45,10 @@ const UserProject = (props) => {
   };
 
   const returnShortDescription = () => {
-    if (props.project.description.length > 100) {
+    if (props.project.description?.length > 100) {
       return props.project.description.substring(0, 100) + "...";
     } else {
-      return props.project.description;
+      return props.project?.description;
     }
   };
 
