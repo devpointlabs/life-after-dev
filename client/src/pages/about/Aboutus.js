@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Rachel from "../../images/Rachel.jpg";
 import Andrew from "../../images/Andrew.jpeg";
 import DevLife from "../../images/DevLife.png";
@@ -14,8 +14,8 @@ const Aboutus = () => {
           “Life After Dev is a place for developers to share their ideas and
           explore other projects that they might be interested in. Although many
           of us started at DevPoint Labs, anyone can join and check out what
-          other members creating. To get started, simply scroll down below and
-          find something you like!”
+          other members are creating. To get started, simply scroll down below
+          and find something you like!”
         </p>
       </Wrapper>
       <Wrapper>
@@ -39,19 +39,28 @@ const Aboutus = () => {
 const Wrapper = styled.div`
   margin-top: 2rem;
   align-items: center;
+  justify-content: center;
+`;
+
+const animateOpacity = keyframes`
+0%, 100% {
+  opacity: 2;
+}
+50%{
+  opacity: 0;
+}
 `;
 
 const Heading = styled.h1`
-  text-align: center;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: center;
 `;
 
 const DevName = styled.p`
-  padding: 20px;
-  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
-    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
   font-weight: bold;
   align-text: justify;
+  animation: ${animateOpacity} 10s;
 `;
 
 // const DevEmail = styled.p`
@@ -70,6 +79,11 @@ const Card = styled.div`
   background-color: #79d0f1;
   text-decoration: none;
   align-text: center;
+  transition: transform 1s ease; 
+  &:hover {
+    transform: rotateY(-60deg);
+  }
+}
 `;
 
 const Card2 = styled.div`
@@ -77,6 +91,11 @@ const Card2 = styled.div`
   background-color: #53d769;
   text-decoration: none;
   align-text: center;
+  transition: transform 1s ease; 
+  &:hover {
+    transform: rotateY(-60deg);
+  }
+}
 `;
 
 const BackgroundImage = styled.img`
