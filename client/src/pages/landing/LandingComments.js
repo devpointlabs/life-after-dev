@@ -12,11 +12,12 @@ const LandingComments = ({ projectId }) => {
   }, [])
 
   return (
-    <div>
+    <span>
+      <br />
       <b><h3>Comments</h3></b>
       
       {comments?.map(comment => <LandingComment comment={comment} />)}
-    </div>
+    </span>
 
   )
 }
