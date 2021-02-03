@@ -12,6 +12,7 @@ export const UserInfoDiv = styled.div`
   height: 100%;
   position: fixed;
   right: 0%;
+  border-radius: 35px 0px 0px 0px;
 `;
 
 //// Form Section ////
