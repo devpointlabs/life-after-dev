@@ -22,29 +22,19 @@ let imagelinks = {
 
 const User = (props) => {
   const { user } = useContext(AuthContext);
-  // const authContext = useContext(AuthContext);
   const { getTheseRequests, myRequests, acceptRequest, denyRequest } = useRequest()
-  const [loginCheck, setLoginCheck] = useState(null);
-  const [showLoggedInComp, setShowLoggedInComp] = useState(false);
   const [targetuser, setTargetUser] = useState({});
   const [projects, setProjects] = useState([]);
   const [contributingProjects, setContributingProjects] = useState([]);
-  const [requests, setRequests] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [editHover, setEditHover] = useState(false);
-  // const [userpos, setUserpos] = useState({marginTop: `0px`});
 
   useEffect(() => {
     getTargetUser();
     getProjects();
     getContributingProjects();
     getTheseRequests(user?.id);
-    // window.addEventListener('scroll', listenScrollEvent)
   }, [props.match.params.id]);
-
-  // const listenScrollEvent = (e) => {
-  //   setUserpos({marginTop: `${window.scrollY + 40}px`})
-  // }
 
   const updateProjects = (project) => {
     const updatedProjects = projects.map((p) =>
@@ -135,28 +125,32 @@ const User = (props) => {
   const renderInPage = (
     <Wrapper>
       <div className="projectsectionlogged">
-        <div style={{borderStyle: "solid", borderRadius: "5px", borderWidth: "2px", borderColor: "#9497a5"}}>
+        <div style={{borderStyle: "solid", borderRadius: "5px", borderWidth: "2px", borderColor: "#9497a5", backgroundColor: "white"}}>
           {toggle === true && myRequests.map(r => (
-            <div style={{padding: "10px", backgroundColor: "white"}}>
-              <h1>{r.firstname} {r.lastname} wants to join {r.title}</h1>
-              <Button onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
-                Accept
-              </Button>
-              <Button onClick={()=> denyRequest(r.project_id, r.id)}>
-                Decline
-              </Button>
+            <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "10px", backgroundColor: "white"}}>
+              <h1 style={{margin: "0", fontSize:"20px"}}>{r.firstname} {r.lastname} wants to join {r.title}</h1>
+              <div style={{display: "flex", flexDirection: "row"}}>
+                <Button style={{backgroundColor: "#0959fb", color: "white"}} onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
+                  <Icon name="check"/>Accept
+                </Button>
+                <Button style={{backgroundColor: "#0959fb", color: "white"}} onClick={()=> denyRequest(r.project_id, r.id)}>
+                <Icon name="close"/>Decline
+                </Button>
+              </div>
             </div>
           ))}
           {toggle == false && 
             myRequests.slice(0,5).map(r => (
-              <div style={{padding: "10px", backgroundColor: "white"}}>
-              <h1>{r.firstname} {r.lastname} wants to join {r.title}</h1>
-              <Button onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
-                Accept
-              </Button>
-              <Button onClick={()=> denyRequest(r.project_id, r.id)}>
-                Decline
-              </Button>
+              <div style={{display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-between", padding: "10px", backgroundColor: "white"}}>
+              <h1 style={{margin: "0", fontSize:"20px"}}>{r.firstname} {r.lastname} wants to join {r.title}</h1>
+              <div style={{display: "flex", flexDirection: "row"}}>
+                <Button style={{backgroundColor: "#0959fb", color: "white"}} onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
+                  <Icon name="check"/>Accept
+                </Button>
+                <Button style={{backgroundColor: "#0959fb", color: "white"}} onClick={()=> denyRequest(r.project_id, r.id)}>
+                  <Icon name="close"/>Decline
+                </Button>
+              </div>
               </div>
             ))}
             {myRequests.length >5 && <button type="button" onClick={toggleRequestView}>Show More/Less</button>}

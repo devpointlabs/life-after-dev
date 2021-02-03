@@ -68,10 +68,18 @@ const useRequest = (project, id) => {
 
   const denyRequest = async (project_id, request_id) => {
     try {
+      let dummy = [];
       let res = await Axios.delete(
         `/api/projects/${project_id}/requests/${request_id}`
       );
-      console.log(res);
+      myRequests.forEach(r => {
+        if (r.id !== request_id) {
+          dummy.push(r)
+        } else {
+          return
+        }
+      })
+      setMyRequests(dummy);
     } catch (err) {
       console.log(err);
     }
@@ -79,6 +87,7 @@ const useRequest = (project, id) => {
 
   const acceptRequest = async (project_id, request_id, incoming_user_id) => {
     try {
+      let dummy = []
       let res = await Axios.put(
         `/api/projects/${project_id}/requests/${request_id}`,
         {
@@ -87,7 +96,14 @@ const useRequest = (project, id) => {
           contributor: true,
         }
       );
-      console.log(res);
+      myRequests.forEach(r => {
+        if (r.id !== request_id) {
+          dummy.push(r)
+        } else {
+          return
+        }
+      })
+      setMyRequests(dummy);
     } catch (err) {
       console.log(err);
     }
