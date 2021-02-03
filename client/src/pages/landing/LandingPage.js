@@ -20,7 +20,6 @@ const LandingPage = () => {
   const [toggle, setToggle] = useState(false);
   const { user } = useContext(AuthContext);
 
-
   return (
     <>
       <SearchBar />

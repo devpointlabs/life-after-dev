@@ -9,6 +9,7 @@ import AuthProvider from "./providers/AuthProvider";
 import { initMiddleware } from "devise-axios";
 import ScrollToTop from "./pages/landing/ScrollToTop";
 import QueryProvider from "./providers/QueryProvider";
+import "./fonts/SFNSDisplayCondensed-Medium.otf";
 
 initMiddleware();
 

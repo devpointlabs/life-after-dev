@@ -6,7 +6,6 @@ export const AppContainer = styled.div`
   min-height: 100vh;
   min-width: 100vh;
   background-color: #f7f7f7;
-  font-family: SFNS !important;
 `;
 // 2 sections, 'nav' and 'main'
 export const AppGrid = styled.div`

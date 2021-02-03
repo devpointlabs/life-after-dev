@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "SFNS", "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SFDisplayMedium",
+    "SFDisplayBold", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -13,6 +13,17 @@ code {
 }
 
 @font-face {
-  font-family: "SFNS";
-  src: local("SFNS"), url(./fonts/SFNS.ttf) format("truetype");
+  font-family: "SFDisplay";
+  font-style: normal;
+  font-weight: normal;
+  src: local("SFDNSDisplayCondesned-Medium"),
+    url(./fonts/SFNSDisplayCondensed-Medium.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "SFDisplay";
+  font-style: normal;
+  font-weight: bold;
+  src: local("SFNSDisplayCondesned-Bold"),
+    url(./fonts/SFNSDisplayCondensed-Bold.otf) format("opentype");
 }
