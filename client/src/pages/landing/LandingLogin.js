@@ -4,11 +4,13 @@ import { useHistory, useLocation, Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Axios from "axios";
 import useRequest from "../../hooks/useRequest";
+import styled from 'styled-components';
 import {
   LoginContainer,
   LogInButton,
   Input,
   LandingLoginForm,
+  UserPic,
 } from "../../styles/LandingPageStyle";
 
 const LandingLogin = (props) => {
@@ -50,17 +52,44 @@ const LandingLogin = (props) => {
     handleLogin({ email, password }, props.history);
   };
 
+
+  const MyProfileButton = styled.button`
+  background-color: #42a5f5;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  height: 40px;
+  outline: none;
+  width: 120px;
+  `;
+  const LogInPic = styled.img`
+  border-radius: 15px;
+  height: 70px;
+  width: 70px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  
+  `;
+
   if (user) {
     return (
       <LoginContainer>
-        <h1>
-          Welcome Back {user.firstname} {user.lastname}!
-        </h1>
+        <div>
+          <LogInPic  src={`${user.image}`} /></div>
+          <h2>Hello {user.firstname} {user.lastname}</h2>
+          
         <p>
-          You have
-          <Link to={`/user/${user.id}`}>{pendingRequests}</Link>
-          pending requests
-        </p>
+          You have {pendingRequests} pending requests
+             </p>
+             <Link to={`/user/${user.id}`}> 
+          <MyProfileButton>My Profile</MyProfileButton>
+          </Link>
       </LoginContainer>
     );
   } else

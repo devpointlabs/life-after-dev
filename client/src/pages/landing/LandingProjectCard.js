@@ -15,17 +15,19 @@ import {
   UserPic,
   ContributorSection,
   ContributorWrapper,
-  JoinButton,
   Left,
   LandingCommentsWrap,
   ContributorImage,
   ProjectDescrip,
   ProjectTitle,
+  FeedBackButton,
+  SeeMoreComments,
+  LandingCardIcon,
 } from "../../styles/LandingPageStyle";
 import useRequest from "../../hooks/useRequest";
 import RequestAction from "../../components/RequestAction";
-import CommentInput from "../project/CommentInput";
 import LandingComments from './LandingComments';
+import commenticon from "../../icons/Comment.png";
 
 
 const LandingProjectCard = (props) => { 
@@ -65,26 +67,30 @@ const LandingProjectCard = (props) => {
   )
 
 
-  // const registerRedirect = () => {
-  //   let path = `/register`;
-  //   let history = useHistory()
-  //   history.push(path)
-
-  // }
-
   const renderRequestAction = () => {
+    
+    
     if (props.currentUser) {
       if (props.currentUser.id !== props.incomingProject.user_id) {
-        return <JoinButton> <RequestAction projectId={props.incomingProject.id} userId={props.currentUser.id}/> </JoinButton>
+        return (
+        <>
+         <RequestAction projectId={props.incomingProject.id} userId={props.currentUser.id} page={"landing"} /> 
+         <Link to={`/projects/${props.incomingProject.id}`}>
+              <FeedBackButton>Leave Feedback</FeedBackButton>
+              </Link>
+            </>
+        )
       }
       else {
-        return " "
+        return <Link to={`/projects/${props.incomingProject.id}`}>
+        <FeedBackButton>Leave Feedback</FeedBackButton>
+        </Link>
       }
     } else {
       return (
-        <div href="http://localhost:3000/register">
-          Join</div>
-       
+        <Link to={`/register`}>
+        <FeedBackButton>Join</FeedBackButton>
+        </Link>
       )
     }
     
@@ -96,22 +102,32 @@ const LandingProjectCard = (props) => {
      <Left>
           <CardHeader>
             <Link to={`/user/${user.id}`}>
-            
               <UserPic src={`${user.image}`} />
+            </Link>
+            <Link to={`/user/${user.id}`}>
               <CardHeading>{user.firstname}   {user.lastname}</CardHeading>
             </Link>
           
           </CardHeader>
           <ContributorSection> {renderContributors()}</ContributorSection>
+          <Link to={`/projects/${props.incomingProject.id}`}>
           <CardImage src={`${props.incomingProject.picture}`} />
+          </Link>
           <LandingCommentsWrap>
           <LandingComments projectId={props.incomingProject.id} />
           </LandingCommentsWrap>
+
+          
+          <Link to={`/projects/${props.incomingProject.id}`}>
+
+            <SeeMoreComments><LandingCardIcon src={commenticon} /> <span>See More Comments</span></SeeMoreComments>
+          </Link>
         </Left>
         <Right>
           <ProjectTitle> {props.incomingProject.title}</ProjectTitle>
           <ProjectDescrip>{props.incomingProject.description}</ProjectDescrip>
-        {renderRequestAction()} 
+          {renderRequestAction()}
+         
         </Right>
         </CardWrapper>
     

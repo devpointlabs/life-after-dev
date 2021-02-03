@@ -32,7 +32,7 @@ function App() {
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/user/:id" component={User} />
                 <Route exact path="/dropzone" component={Dropzone} />
-                <Route exact path="/About" component={About} />
+                <Route exact path="/about" component={About} />
                 <Route
                   exact
                   path="/profile/:id/settings"
