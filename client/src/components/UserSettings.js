@@ -5,6 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import {
   EditPicButton,
   FormDiv,
+  FormField,
   HeaderDiv,
   PageHeader,
   ProfilePicDiv,
@@ -76,6 +77,13 @@ const UserSettings = ({ match, history }) => {
           <Button>Save Profile</Button>
           <br />
           <br />
+          <FormField.Input
+            label="FIRST NAME"
+            placeholder="First Name"
+            name="firstname"
+            value={userData.firstname}
+            onChange={handleChange}
+          />
           <Form.Input
             label="FIRST NAME"
             placeholder="First Name"

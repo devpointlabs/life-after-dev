@@ -52,4 +52,8 @@ export const EditPicButton = styled(Button)`
   border-radius: 12px !important;
 `;
 
-export const FormField = styled(Form)``;
+export const FormField = styled(Form)`
+  &::label {
+    color: red;
+  }
+`;
