@@ -1,4 +1,4 @@
-import { Button, Form, Input } from "semantic-ui-react";
+import { Button, Form, Icon, Input } from "semantic-ui-react";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -64,7 +64,7 @@ export const ProfilePicText = styled.h2`
 export const EditPicButton = styled(Button)`
   color: #fff !important;
   background-color: #53d769 !important;
-  padding: 20px 55px 20px 55px !important;
+  padding: 15px 50px 15px 50px !important;
   border-radius: 12px !important;
 `;
 
@@ -91,4 +91,8 @@ export const FormField = styled(Input)`
   &::placeholder {
     color: #868686;
   }
+`;
+
+export const CamIcon = styled(Icon)`
+  padding-bottom: 25px !important;
 `;

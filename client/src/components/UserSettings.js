@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button, Form, Icon } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
 import {
+  CamIcon,
   EditPicButton,
   FormDiv,
   FormField,
@@ -75,7 +76,7 @@ const UserSettings = ({ match, history }) => {
           <ProfilePicEditDiv>
             <ProfilePicText>Profile Picture</ProfilePicText>
             <EditPicButton onClick={togglePic}>
-              <Icon
+              <CamIcon
                 size="large"
                 name="camera retro"
                 style={{ paddingBottom: 10 }}
