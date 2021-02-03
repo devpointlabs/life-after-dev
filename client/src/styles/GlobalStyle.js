@@ -30,16 +30,16 @@ export const NavColumn = styled.div`
 export const StickyNav = styled.div`
   display: block;
   margin: 43px auto 0px auto;
-  top: 65px;
+  top: 55px;
   position: sticky;
   position: -webkit-sticky;
 `;
 
 export const Logo = styled.img`
   display: block;
-  margin: 65px auto 70px auto;
+  margin: 55px auto 70px auto;
   height: 100%;
-  width: 120px;
+  width: 130px;
 `;
 
 export const NavActiveIcon = styled.img`

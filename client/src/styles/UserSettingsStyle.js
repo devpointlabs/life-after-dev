@@ -51,14 +51,14 @@ export const SubHeadDiv = styled.div`
 export const ProfilePicDiv = styled.div``;
 
 export const ProfilePicEditDiv = styled.div`
-  margin: 20px 0px 50px 30px;
+  margin: 15px 0px 50px 30px;
 `;
 
 export const ProfilePicText = styled.h2`
   font-size: 16px;
   font-weight: 900;
   color: #8f9096;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 `;
 
 export const EditPicButton = styled(Button)`
@@ -75,7 +75,7 @@ export const SaveProfileButton = styled(Button)`
   margin-bottom: 20px;
 `;
 
-export const FormField = styled(Input)`
+export const FormField = styled(Form)`
   border: 0 !important;
   height: 60px;
   border-radius: 12px;
