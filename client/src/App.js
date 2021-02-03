@@ -15,6 +15,7 @@ import StyleTest from "./components/StyleTest";
 import { AppContainer, AppGrid, Logo, NavColumn } from "./styles/GlobalStyle";
 import devpointlogo from "./icons/devpointlogo.png";
 import ResultsPage from "./pages/landing/ResultsPage";
+import About from "./pages/about/Aboutus";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/user/:id" component={User} />
                 <Route exact path="/dropzone" component={Dropzone} />
+                <Route exact path="/about" component={About} />
                 <Route
                   exact
                   path="/profile/:id/settings"

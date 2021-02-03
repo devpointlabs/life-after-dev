@@ -46,9 +46,10 @@ const LandingPage = () => {
                   <h4>Site Info</h4>
                 </h1>
                
-                <p>Welcome to Life After Dev! This is tool for DevPointLabs alumni to
-                show off, collaborate, and work together on any projects in any stage whether it's just an idea
-                  or a completed project. We hope you enjoy it!  </p>
+          <p>  Life After Dev is a place for developers to share their ideas and explore other projects
+                  that they might be interested in. Although many of us started at <a href="https://www.devpointlabs.com/">DevPointLabs</a>,
+                  anyone can join and check out what other members creating.
+                  To get started, simply scroll down below and find something you like!  </p>
                 <Link to={`/register`}>
                 <SiteInfoRegisterButton>Register</SiteInfoRegisterButton>
                 </Link>

@@ -5,6 +5,7 @@ import useRequest from "../hooks/useRequest";
 import { AuthContext } from "../providers/AuthProvider";
 import { JoinButton } from "../styles/GlobalStyle";
 import { JoinButtonDiv } from "../styles/ProjectShowStyle";
+import styled from 'styled-components';
 
 const RequestAction = (props) => {
   const { sendRequest, checkRequests, requestStatus } = useRequest();
@@ -19,14 +20,36 @@ const RequestAction = (props) => {
     sendRequest(props.projectId, props.userId);
   };
   return (
-    <JoinButton
-      style={{ borderRadius: 10 }}
-      color="black"
-      onClick={handleClick}
-    >
-      <Icon name="bell outline" />
-      {requestStatus}
-    </JoinButton>
+    props.page == "landing"
+      ?
+      <StyledButton onClick={handleClick}>{requestStatus}</StyledButton>
+     
+      :
+        <JoinButton
+          style={{ borderRadius: 10 }}
+          color="black"
+          onClick={handleClick}
+        >
+          <Icon name="bell outline" />
+          {requestStatus}
+        </JoinButton>
   );
 };
+
+const StyledButton = styled.button`
+  background-color: #53D769;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  margin: 30px auto;
+  font-size: 16px;
+  cursor: pointer;
+  height: 60px;
+  outline: none;
+  width: 170px;
+  
+`;
+
+
 export default RequestAction;
+
