@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { Button, Form } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Button, Form, Icon } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
 import {
   EditPicButton,
@@ -11,8 +12,11 @@ import {
   ProfilePicDiv,
   ProfilePicEditDiv,
   ProfilePicText,
+  SaveProfileButton,
+  SettingsHeader,
   SubHeadDiv,
   UserInfoDiv,
+  UserPic,
   Wrapper,
 } from "../styles/UserSettingsStyle";
 import ProfilePicSetting from "./ProfilePicSetting";
@@ -70,20 +74,17 @@ const UserSettings = ({ match, history }) => {
           </ProfilePicDiv>
           <ProfilePicEditDiv>
             <ProfilePicText>Profile Picture</ProfilePicText>
-            <EditPicButton onClick={togglePic}>Replace</EditPicButton>
+            <EditPicButton onClick={togglePic}>
+              <Icon
+                size="large"
+                name="camera retro"
+                style={{ paddingBottom: 10 }}
+              />
+              Replace
+            </EditPicButton>
           </ProfilePicEditDiv>
         </SubHeadDiv>
         <Form onSubmit={handleSubmit}>
-          <Button>Save Profile</Button>
-          <br />
-          <br />
-          <FormField.Input
-            label="FIRST NAME"
-            placeholder="First Name"
-            name="firstname"
-            value={userData.firstname}
-            onChange={handleChange}
-          />
           <Form.Input
             label="FIRST NAME"
             placeholder="First Name"
@@ -126,9 +127,17 @@ const UserSettings = ({ match, history }) => {
             value={userData.tag}
             onChange={handleChange}
           />
+          <SaveProfileButton>Save Profile</SaveProfileButton>
         </Form>
       </FormDiv>
-      <UserInfoDiv></UserInfoDiv>
+      <UserInfoDiv>
+        {user && (
+          <Link to={`/user/${user.id}`}>
+            <UserPic src={user.image} />
+          </Link>
+        )}
+        <SettingsHeader>Settings</SettingsHeader>
+      </UserInfoDiv>
     </Wrapper>
   );
 };

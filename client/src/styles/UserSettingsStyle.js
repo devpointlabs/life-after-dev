@@ -1,4 +1,4 @@
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Input } from "semantic-ui-react";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -15,13 +15,28 @@ export const UserInfoDiv = styled.div`
   border-radius: 35px 0px 0px 0px;
 `;
 
+export const UserPic = styled.img`
+  border-radius: 16px;
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+  margin: 40px 0px 0px 415px;
+`;
+
+export const SettingsHeader = styled.h2`
+  color: #fff;
+  font-weight: 900;
+  margin: 40px 20px 0px 50px;
+`;
+
 //// Form Section ////
 export const FormDiv = styled.div`
   width: 55%;
+  margin-bottom: 60px;
 `;
 
 export const HeaderDiv = styled.div`
-  margin: 60px 0px 60px 0px;
+  margin: 50px 0px 60px 0px;
 `;
 
 export const PageHeader = styled.h1`
@@ -36,7 +51,7 @@ export const SubHeadDiv = styled.div`
 export const ProfilePicDiv = styled.div``;
 
 export const ProfilePicEditDiv = styled.div`
-  margin: 20px 0px 0px 30px;
+  margin: 20px 0px 50px 30px;
 `;
 
 export const ProfilePicText = styled.h2`
@@ -53,8 +68,27 @@ export const EditPicButton = styled(Button)`
   border-radius: 12px !important;
 `;
 
-export const FormField = styled(Form)`
-  &::label {
-    color: red;
+export const SaveProfileButton = styled(Button)`
+  color: #fff !important;
+  background-color: #53d769 !important;
+  margin-top: 10px;
+  margin-bottom: 20px;
+`;
+
+export const FormField = styled(Input)`
+  border: 0 !important;
+  height: 60px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  padding-left: 60px;
+  color: #000;
+  &:focus {
+    outline: none !important;
+  }
+  &:focus::placeholder {
+    color: #d9d9d9;
+  }
+  &::placeholder {
+    color: #868686;
   }
 `;
