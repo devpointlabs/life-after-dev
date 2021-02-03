@@ -39,16 +39,15 @@
   flex-direction: row;
   justify-content: space-between;
   width: 23%;
-  height: 20%
+  height: 20%;
 }
-
 
 .projectsSection {
   width: 55%;
 }
 
 .projectSectionLogged {
-  width: 75%
+  width: 75%;
 }
 
 .imagelinks {
@@ -64,7 +63,7 @@
   align-items: center;
 }
 .userpic {
-  border-radius: 50%;
+  border-radius: 30%;
   height: 130px !important;
   width: 130px !important;
 }
