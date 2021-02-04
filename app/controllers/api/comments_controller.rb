@@ -3,7 +3,7 @@ class Api::CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
 
   def index
-    render json: @project.comments.all
+    render json: @project.comments.all.limit(params[:limit])
   end
 
   def show
