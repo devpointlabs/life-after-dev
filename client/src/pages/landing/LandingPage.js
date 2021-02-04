@@ -27,7 +27,6 @@ const LandingPage = () => {
         <SiteInfoContainer>
           <h1>
             Life After Dev
-            <h4>Site Info</h4>
           </h1>
 
           <p>
@@ -36,7 +35,7 @@ const LandingPage = () => {
             explore other projects that they might be interested in. Although
             many of us started at{" "}
             <a href="https://www.devpointlabs.com/">DevPointLabs</a>, anyone can
-            join and check out what other members creating. To get started,
+            join and check out what other members are creating. To get started,
             simply scroll down below and find something you like!{" "}
           </p>
           <p>

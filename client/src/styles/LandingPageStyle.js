@@ -86,7 +86,8 @@ export const LoginContainer = styled.div`
   border-color: #9dbcd4;
   text-align: center;
   width: 300px;
-  height: 250px;
+  height: 274px;
+  padding: 2rem 0 2rem;
 
   border-radius: 15px;
   border-width: 2px;
@@ -136,11 +137,12 @@ export const SiteInfoContainer = styled.div`
   border-color: #9dbcd4;
   text-align: center;
   width: 840px;
-  height: 250px;
+  height: 100%;
   border-radius: 15px;
-  padding-top: 38px;
+  padding: 30px 40px;
   font-size: 16px;
   border-width: 2px;
+  font-family: SFDisplay;
   
   margin-right: 20px;
   
@@ -160,6 +162,8 @@ export const SiteInfoRegisterButton = styled.button`
   height: 40px;
   display: inline-block;
   outline: none;
+  font-family: SFDisplay;
+  
 `;
 
 export const CardWrapper = styled.div`
@@ -171,7 +175,8 @@ border-color: #B8B8B8;;
 border-width: 3px;
 box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
 border-radius: 18px;
-margin-top: 20px;
+font-family: SFDisplay;
+margin-top: 40px;
 border-style: hidden;
 `;
 
@@ -182,6 +187,7 @@ export const UserPic = styled.img`
   margin: 28px 0px 0px 28px;
   display: flex;
   flex-direction: row;
+  object-fit: cover;
  
   
 `;
@@ -257,6 +263,7 @@ export const ContributorWrapper = styled.div`
   display: flex;
   color: grey;
   padding: 0px 0px 25px 20px;
+  align-items: center;
 
 `
 
@@ -276,10 +283,13 @@ export const Left = styled.div`
   width: 100%;
 `
 export const Right = styled.div`
+  flex-grow: 2;
+  flex-shrink: 0;
   background: #2a2d34;
-  width: 390px;
-  height: 430px;
-  border-radius: 25px;
+  
+  width: 320px;
+  min-height: 100%;
+  border-radius: 21px;
   display: flex;
   text-align: center;
   flex-direction: column;
