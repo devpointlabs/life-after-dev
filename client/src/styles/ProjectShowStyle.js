@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
 export const ProjectSection = styled.div`
   width: 800px;
-  height: 600vh;
+  height: 100%;
   padding-right: 115px;
 `;
 
@@ -43,7 +43,7 @@ export const ProjectPic = styled.img`
   border-radius: 10px;
   width: 650px;
   height: 330px;
-  margin: 30px 0px 0px 20px;
+  margin: 10px 0px 0px 20px;
 `;
 
 export const BackButton = styled.div`
@@ -97,7 +97,7 @@ export const UserImage = styled.img`
 export const CommentSection = styled.div`
   background: #1e2021;
   width: 425px;
-  height: 600vh;
+  min-height: 100vh;
   padding: 1rem;
   flex-shrink: 0;
   border-radius: 30px 0px 0px 0px;

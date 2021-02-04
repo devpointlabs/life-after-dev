@@ -1,6 +1,9 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Button, Form, Segment, Header } from "semantic-ui-react";
+import blackLogo from "../images/blackLogo.png"
+import styled from 'styled-components';
+
 
 const Login = (props) => {
   const [email, setEmail] = useState("")
@@ -12,7 +15,13 @@ const Login = (props) => {
     handleLogin({email,password}, props.history);
   }
 
+
+
   return (
+    
+
+    <>
+    
     <Segment basic>
       <Header as="h1" textAlign="center">
         Login
@@ -42,7 +51,10 @@ const Login = (props) => {
           </Button>
         </Segment>
       </Form>
-    </Segment>
+      </Segment>
+      
+      </>
+      
   )
 }
 

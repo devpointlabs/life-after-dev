@@ -29,8 +29,10 @@ export const NavColumn = styled.div`
 
 export const StickyNav = styled.div`
   display: block;
-  position: fixed;
-  padding-left: 52px;
+  margin: 0 auto;
+  top: 0;
+  position: sticky;
+  position: -webkit-sticky;
 `;
 
 export const Logo = styled.img`
@@ -133,9 +135,24 @@ export const NavIconBottom = styled.img`
   width: 50px;
 `;
 
+export const AuthButtonDiv = styled.div``;
+
 export const AuthButton = styled.button`
   display: block;
   margin: 40px auto 0 auto;
+  background-color: #53d769;
+  border: none;
+  color: #fff;
+  height: 40px;
+  width: 90px;
+  position: relative;
+  border-radius: 10px;
+  font-weight: 900;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #9cd9a6;
+  }
 `;
 
 ///// Main Styles /////
@@ -146,9 +163,6 @@ export const MainColumn = styled.div`
   min-height: 100vh;
 `;
 
-
 //// Other ////
 
-export const JoinButton = styled(Button)`
-  
-`
+export const JoinButton = styled(Button)``;
