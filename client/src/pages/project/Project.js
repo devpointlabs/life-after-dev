@@ -128,10 +128,14 @@ const Project = (props) => {
     return contributors.map((c) => {
       return (
         <ContributorsDiv>
-          <ContPic src={c.image} />
-          <ContName>
-            {c.firstname} {c.lastname}
-          </ContName>
+          <Link to={`/user/${c.user_id}`}>
+            <ContPic src={c.image} />
+          </Link>
+          <Link to={`/user/${c.user_id}`}>
+            <ContName>
+              {c.firstname} {c.lastname}
+            </ContName>
+          </Link>
         </ContributorsDiv>
       );
     });

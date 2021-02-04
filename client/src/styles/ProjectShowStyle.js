@@ -121,8 +121,8 @@ export const ContributorsDiv = styled.div`
 
 export const ContPic = styled.img`
   object-fit: cover;
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   border-radius: 10px;
 `;
 
@@ -134,7 +134,8 @@ export const EditButton = styled(Button)`
 
 export const ContName = styled.h3`
   font-size: 14px;
-  margin: 5px 0px 0px 10px;
+  margin: 5px 0px 0px 10px !important;
+  color: #000;
 `;
 
 export const RealBackButton = styled(Button)`
