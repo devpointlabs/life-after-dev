@@ -150,13 +150,13 @@ const Project = (props) => {
   return (
     <>
       <Wrapper>
+      {seen ? (
+        <ProjectPicModal toggle={togglePic} user={user} project={project} />
+      ) : null}
         <ProjectSection>
           <BackButton>
             <Button onClick={() => history.goBack()}>Back</Button>
           </BackButton>
-          {seen ? (
-            <ProjectPicModal toggle={togglePic} user={user} project={project} />
-          ) : null}
           <ProjectOwnerDiv>
             <Link to={`/user/${owner.id}`}>
               <ProjectOwnerPic src={owner.image} />

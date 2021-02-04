@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
 display: flex;
 flex-direction: row;
+font-family: SFDisplay;
 `;
 
 export const UserSection = styled.div`
@@ -63,11 +64,10 @@ export const ProjectsLoggedIn = styled.div`
 `
 
 export const RequestsBox = styled.div`
-  border-style: solid;
-  border-radius: 5px; 
-  border-width: 2px; 
-  border-color: #9497a5; 
+  border-radius: 30px;
   background-color: white; 
+  width: 114.5%;
+  margin-bottom: 2rem;
 `
 
 export const RequestList = styled.div`
@@ -96,4 +96,24 @@ export const EditButton = styled.div`
   width: 200px; 
   border-radius: 9px;
   text-align: center;
+`
+
+export const RequestHeader = styled.h1`
+  text-align: center;
+  font-family: SFDisplay;
+
+`
+
+export const NoRequests = styled.p`
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 15px;
+`
+
+export const MoreLess = styled.button`
+  background-color: #0959fb;
+  color: white;
+  padding: 10px;
+  margin-bottom: 4px;
+  margin-left: 4px;
 `

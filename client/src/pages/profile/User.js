@@ -11,7 +11,7 @@ import Requests from "./Requests";
 import Axios from "axios";
 import useRequest from "../../hooks/useRequest";
 import styled from "styled-components";
-import { Aboutlist, AboutLoggedIn, AboutLoggedOut, DynamicProjects, EditButton, NamePlate, ProjectsLoggedIn, RequestList, RequestsBox, UserPic, UserSection, UserSectionLogged, Wrapper } from "../project/UserStyles";
+import { Aboutlist, AboutLoggedIn, AboutLoggedOut, DynamicProjects, EditButton, MoreLess, NamePlate, NoRequests, ProjectsLoggedIn, RequestHeader, RequestList, RequestsBox, UserPic, UserSection, UserSectionLogged, Wrapper } from "./UserStyles";
 
 
 let imagelinks = {
@@ -93,16 +93,28 @@ const User = (props) => {
       <UserSection>
         <NamePlate>
         <UserPic src={targetuser.image} />
-          <h1>
+          <h1 style={{fontFamily: 'SFDisplay'}}>
             {targetuser.firstname} {targetuser.lastname}{" "}
           </h1>
-          <DynamicProjects>
-            <p style={{ fontWeight: "bolder" }}>{projects.length}</p>
-            <p>Projects</p>
+          <DynamicProjects style={{width: '55%'}}>
+            <Wrapper>
+              <p
+                style={{ fontWeight: "bolder", fontSize: "20px" }}
+              >
+                {projects.length}<span>&nbsp;</span>
+              </p>
+              <p style={{marginTop: "6%" }}>Projects</p><span>&nbsp;</span>
+            </Wrapper>
+            <Wrapper>
+              <p style={{ fontWeight: "bolder", fontSize: "20px"}}>
+                {contributingProjects.length}<span>&nbsp;</span>
+              </p>
+              <p style={{marginTop: "6%" }}>Collabs</p>
+            </Wrapper>
           </DynamicProjects>
         </NamePlate>
         <AboutLoggedOut>
-          <h1 style={{fontSize: "15px", margin: "0"}}>
+          <h1 style={{fontSize: "15px", margin: "0", fontFamily: 'SFDisplay'}}>
             About
           </h1>
           <Aboutlist>
@@ -127,9 +139,11 @@ const User = (props) => {
     <Wrapper>
       <ProjectsLoggedIn>
         <RequestsBox>
+          <RequestHeader>Pending Requests</RequestHeader>
+          {myRequests.length == 0 && <NoRequests>You have no requests!</NoRequests>}
           {toggle === true && myRequests.map(r => (
             <RequestList>
-              <h1 style={{margin: "0", fontSize:"20px"}}>{r.firstname} {r.lastname} wants to join {r.title}</h1>
+              <h1 style={{margin: "0", fontSize:"20px", fontFamily: 'SFDisplay'}}>{r.firstname} {r.lastname} wants to join {r.title}</h1>
               <div style={{display: "flex", flexDirection: "row"}}>
                 <Button style={{backgroundColor: "#0959fb", color: "white"}} onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
                   <Icon name="check"/>Accept
@@ -143,7 +157,7 @@ const User = (props) => {
           {toggle == false && 
             myRequests.slice(0,5).map(r => (
               <RequestList>
-                <h1 style={{margin: "0", fontSize:"20px"}}>{r.firstname} {r.lastname} wants to join {r.title}</h1>
+                <h1 style={{margin: "0", fontSize:"20px", fontFamily: 'SFDisplay'}}>{r.firstname} {r.lastname} wants to join {r.title}</h1>
                 <div style={{display: "flex", flexDirection: "row"}}>
                   <Button style={{backgroundColor: "#0959fb", color: "white"}} onClick={()=> acceptRequest(r.project_id, r.id, r.origin_user)}> 
                     <Icon name="check"/>Accept
@@ -154,7 +168,7 @@ const User = (props) => {
                 </div>
               </RequestList>
             ))}
-            {myRequests.length >5 && <button type="button" onClick={toggleRequestView}>Show More/Less</button>}
+              {myRequests.length >5 && <MoreLess type="button" onClick={toggleRequestView}>Show More/Less</MoreLess>}
         </RequestsBox>
 
         <UserProjects
@@ -167,7 +181,7 @@ const User = (props) => {
       <UserSectionLogged>
         <NamePlate>
         <UserPic src={targetuser.image} />
-          <h1 style={{ color: "white" }}>
+          <h1 style={{ color: "white", fontFamily: 'SFDisplay'}}>
             {targetuser.firstname} {targetuser.lastname}{" "}
           </h1>
           <DynamicProjects>
@@ -175,13 +189,13 @@ const User = (props) => {
               <p
                 style={{ fontWeight: "bolder", fontSize: "20px", color: "white" }}
               >
-                {projects.length}
+                {projects.length}<span>&nbsp;</span>
               </p>
               <p style={{ color: "white", marginTop: "6%" }}>Projects</p>
             </Wrapper>
             <Wrapper>
               <p style={{ fontWeight: "bolder", fontSize: "20px", color: "white" }}>
-                {contributingProjects.length}
+                {contributingProjects.length}<span>&nbsp;</span>
               </p>
               <p style={{ color: "white", marginTop: "6%" }}>Collabs</p>
             </Wrapper>

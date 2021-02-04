@@ -68,11 +68,12 @@ const UserSettings = ({ match, history }) => {
   };
 
   return (
+    <>
     <Wrapper>
-      <FormDiv>
-        {seen ? (
+      {seen ? (
           <ProfilePicSetting toggle={togglePic} user={user} history={history} />
-        ) : null}
+      ) : null}
+      <FormDiv>
         <HeaderDiv>
           <PageHeader>Account Information</PageHeader>
         </HeaderDiv>
@@ -158,6 +159,7 @@ const UserSettings = ({ match, history }) => {
         </SettingsRow>
       </UserInfoDiv>
     </Wrapper>
+    </>
   );
 };
 
