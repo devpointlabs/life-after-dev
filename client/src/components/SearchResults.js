@@ -65,10 +65,12 @@ const SearchResults = ({ results }) => {
             {renderNoResults()}
             {renderProjectFormModal()}
             <Flex>
-              {/* {results?.map((r) => (
-                <ContributingProject key={r.id} project_id={r.id} />
-              ))} */}
-              {renderResults()}
+              {results?.map((r) => (
+                <div style={{ marginRight: 30 }}>
+                  <ContributingProject key={r.id} project_id={r.id} />
+                </div>
+              ))}
+              {/* {renderResults()} */}
             </Flex>
           </Grid.Column>
           <Grid.Column width={4}>
