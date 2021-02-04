@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import Axios from "axios";
 import styled from "styled-components";
-import binicon from "../../icons/Bin.png";
+import binicon from "../../icons/bin.png";
 import { AuthContext } from "../../providers/AuthProvider";
 import {
   CommentBin,
