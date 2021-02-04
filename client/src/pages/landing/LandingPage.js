@@ -23,7 +23,8 @@ const LandingPage = () => {
   const { user } = useContext(AuthContext);
 
   const LandingLogoCon = styled.img`
-    width: 60%;
+    width: 30%;
+    margin-bottom: 10px;
   `;
 
   return (
@@ -32,10 +33,11 @@ const LandingPage = () => {
       <LandingInfoWrap>
         <SiteInfoContainer>
           
-      {/* <LandingLogoCon src={LandingLogo}></LandingLogoCon> */}
+          <LandingLogoCon src={LandingLogo}></LandingLogoCon>
+        
           <p>
             {" "} 
-            Welcome to Life After Dev! Life After Dev is a place for developers to share their ideas and
+               Life After Dev is a place for developers to share their ideas and
             explore other projects that they might be interested in. Although
             many of us started at{" "}
             <a href="https://www.devpointlabs.com/">DevPointLabs</a>, anyone can
