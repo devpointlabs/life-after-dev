@@ -15,7 +15,7 @@ const LandingComment = ({ comment }) => {
   return (
    
     <>
-     <CommentName>{user?.firstname}  {user?.lastname} </CommentName> <CommentBody>{comment.body}</CommentBody>  
+     <CommentName>{user?.firstname}  {user?.lastname} </CommentName>   <CommentBody>{comment.body}</CommentBody> <br />
      </>
        
       
@@ -25,10 +25,10 @@ const LandingComment = ({ comment }) => {
 export default LandingComment
 
 const CommentName = styled.span`
-  color: #B8B8B8;
+  color: #808080;
   font-size: 16px;
   font-weight: bold;
-  display: flex;
+  display: inline-block;
   margin-top:10px;
 
 
@@ -36,5 +36,5 @@ const CommentName = styled.span`
 
 const CommentBody = styled.span`
   color: #B8B8B8 !important;
-  display: flex;
+  display: inline-block;
 `;
