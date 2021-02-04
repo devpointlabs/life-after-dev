@@ -86,8 +86,8 @@ export const LoginContainer = styled.div`
   text-align: center;
   width: 300px;
   height: 274px;
-  padding: 2rem 0 2rem;
-
+  padding: 1.3rem 0 2rem;
+  font-family: SFDisplay;
   border-radius: 15px;
   border-width: 2px;
 `;
@@ -103,6 +103,7 @@ export const Input = styled.input`
   width: 80%;
   margin: 8px;
   outline: none;
+  font-family: SFDisplay;
 `;
 
 export const LandingLoginForm = styled.form`
@@ -121,7 +122,7 @@ export const LogInButton = styled.button`
   cursor: pointer;
   height: 40px;
   display: inline-block;
-
+  font-family: SFDisplay;
   margin: 15px 20px;
   outline: none;
 `;
@@ -138,7 +139,6 @@ export const SiteInfoContainer = styled.div`
   font-size: 16px;
   border-width: 2px;
   font-family: SFDisplay;
-
   margin-right: 20px;
 `;
 

@@ -88,9 +88,15 @@ const LandingProjectCard = (props) => {
       }
     } else {
       return (
+        <>
         <Link to={`/register`}>
         <FeedBackButton>Join</FeedBackButton>
         </Link>
+        
+        <Link to={`/register`}>
+        <FeedBackButton>Leave Feedback</FeedBackButton>
+        </Link>
+        </>
       )
     }
     
