@@ -103,22 +103,6 @@ const Project = (props) => {
     }
   };
 
-  const renderRequestAction = () => {
-    if (user) {
-      if (user.id !== owner.id) {
-        return <RequestAction projectId={project?.id} userId={user.id} />;
-      } else {
-        return <span></span>;
-      }
-    } else {
-      return (
-        <a href="http://localhost:3000/register">
-          <button>Join</button>
-        </a>
-      );
-    }
-  };
-
   const maxcontribs = 3;
 
   const renderContributors = () => (
