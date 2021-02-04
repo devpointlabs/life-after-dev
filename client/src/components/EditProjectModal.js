@@ -2,6 +2,7 @@ import Axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Form, Header, Image, Modal } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
+import { EditButton } from "../styles/ProjectShowStyle";
 import EditProjectForm from "./projectForm/EditProjectForm";
 
 const EditProjectModal = ({ project, updateProjects }) => {
@@ -43,11 +44,7 @@ const EditProjectModal = ({ project, updateProjects }) => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={
-        <Button basic color="green">
-          Edit
-        </Button>
-      }
+      trigger={<EditButton>Edit</EditButton>}
     >
       <Modal.Header>Edit Project</Modal.Header>
       <Modal.Content image>

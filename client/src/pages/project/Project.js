@@ -9,11 +9,18 @@ import {
   BackButton,
   ChangePicButton,
   CommentSection,
+  ContName,
+  ContPic,
+  ContributorDiv,
+  ContributorsDiv,
+  ContributorTitle,
   CrudContainer,
+  DescriptionDiv,
   EditButtonDiv,
   GithubIcon,
   JoinButtonDiv,
   LiveIcon,
+  LowerBodyDiv,
   ProjectLinksDiv,
   ProjectOwnerDiv,
   ProjectOwnerName,
@@ -21,6 +28,7 @@ import {
   ProjectPic,
   ProjectSection,
   ProjectTitle,
+  RealBackButton,
   Wrapper,
 } from "../../styles/ProjectShowStyle";
 import ProjectPicModal from "./ProjectPicModal";
@@ -103,33 +111,35 @@ const Project = (props) => {
     }
   };
 
-  const renderRequestAction = () => {
-    if (user) {
-      if (user.id !== owner.id) {
-        return <RequestAction projectId={project?.id} userId={user.id} />;
-      } else {
-        return <span></span>;
-      }
-    } else {
+  const renderEditPhotoButton = () => {
+    if (user?.id == owner.id) {
       return (
-        <a href="http://localhost:3000/register">
-          <button>Join</button>
-        </a>
+        <ChangePicButton>
+          <Button basic size="small" onClick={togglePic}>
+            <Icon name="edit" />
+            Edit Photo
+          </Button>
+        </ChangePicButton>
       );
     }
   };
 
-  const maxcontribs = 3;
-
-  const renderContributors = () => (
-    <ContributorWrapper>
-      {contributors.map(
-        (c, i) => i < maxcontribs && <ContributorImage image={c.image} />
-      )}
-      {contributors.length > maxcontribs &&
-        ` +  ${contributors.length - maxcontribs}`}
-    </ContributorWrapper>
-  );
+  const renderContributors = () => {
+    return contributors.map((c) => {
+      return (
+        <ContributorsDiv>
+          <Link to={`/user/${c.user_id}`}>
+            <ContPic src={c.image} />
+          </Link>
+          <Link to={`/user/${c.user_id}`}>
+            <ContName>
+              {c.firstname} {c.lastname}
+            </ContName>
+          </Link>
+        </ContributorsDiv>
+      );
+    });
+  };
 
   const togglePic = () => {
     setSeen(!seen);
@@ -155,7 +165,10 @@ const Project = (props) => {
       ) : null}
         <ProjectSection>
           <BackButton>
-            <Button onClick={() => history.goBack()}>Back</Button>
+            <RealBackButton onClick={() => history.goBack()}>
+              <Icon name="angle left" />
+              Back
+            </RealBackButton>
           </BackButton>
           <ProjectOwnerDiv>
             <Link to={`/user/${owner.id}`}>
@@ -168,14 +181,8 @@ const Project = (props) => {
             </Link>
             {renderJoinButton()}
           </ProjectOwnerDiv>
-          <div style={{ marginLeft: 570 }}>{renderContributors()}</div>
           <ProjectPic src={project?.picture} />
-          <ChangePicButton>
-            <Button basic size="small" onClick={togglePic}>
-              <Icon name="edit" />
-              Edit Photo
-            </Button>
-          </ChangePicButton>
+          {renderEditPhotoButton()}
           <ProjectTitle>{project?.title}</ProjectTitle>
           <ProjectLinksDiv>
             <a href={`${project?.github_link}`} target="_blank">
@@ -184,16 +191,18 @@ const Project = (props) => {
             <a href={`${project?.live_link}`} target="_blank">
               <LiveIcon src={liveicon} />
             </a>
+            <div style={{ marginLeft: 30 }}>{renderEditButton()}</div>
           </ProjectLinksDiv>
-          <CrudContainer>{renderEditButton()}</CrudContainer>
-          <div className="Project_Image">
-            <div className="description">
-              <p>{project?.description}</p>
-            </div>
-          </div>
-          <CrudContainer style={{ marginBottom: 80 }}>
-            {renderDeleteButton()}
-          </CrudContainer>
+          <LowerBodyDiv>
+            <DescriptionDiv>
+              {project?.description}
+              <div style={{ marginTop: 60 }}>{renderDeleteButton()}</div>
+            </DescriptionDiv>
+            <ContributorDiv>
+              <ContributorTitle>Contributors</ContributorTitle>
+              {renderContributors()}
+            </ContributorDiv>
+          </LowerBodyDiv>
         </ProjectSection>
         <CommentSection>
           {project && <Comments project={project} />}

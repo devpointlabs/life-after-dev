@@ -24,6 +24,7 @@ import {
   UserPic,
   Wrapper,
   SettingsRow,
+  IconText,
 } from "../styles/UserSettingsStyle";
 import ProfilePicSetting from "./ProfilePicSetting";
 import profileicon from "../icons/user2x.png";
@@ -150,12 +151,13 @@ const UserSettings = ({ match, history }) => {
           <IconSquareWhite>
             <IconBlack src={profileicon} />
           </IconSquareWhite>
-          <span>TEST</span>
+          <IconText>My Account</IconText>
         </SettingsRow>
         <SettingsRow>
           <IconSquareBlack>
             <IconWhite src={helpicon} />
           </IconSquareBlack>
+          <IconText>Help</IconText>
         </SettingsRow>
       </UserInfoDiv>
     </Wrapper>

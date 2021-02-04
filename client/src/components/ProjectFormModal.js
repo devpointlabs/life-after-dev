@@ -2,6 +2,7 @@ import Axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { Button, Form, Header, Image, Modal } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
+import { SearchCreateButton } from "../styles/LandingPageStyle";
 import ProjectForm from "./projectForm/ProjectForm";
 
 const ProjectFormModal = ({ query, editing }) => {
@@ -53,7 +54,7 @@ const ProjectFormModal = ({ query, editing }) => {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button color="green">Create New Project</Button>}
+      trigger={<SearchCreateButton>Create New Project</SearchCreateButton>}
     >
       <Modal.Header>Create New Project</Modal.Header>
       <Modal.Content image>
