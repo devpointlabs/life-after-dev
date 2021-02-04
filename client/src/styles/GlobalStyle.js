@@ -29,15 +29,17 @@ export const NavColumn = styled.div`
 
 export const StickyNav = styled.div`
   display: block;
-  margin: 0 auto;
-  top: 0;
+  margin: 43px auto 0px auto;
+  top: 55px;
   position: sticky;
   position: -webkit-sticky;
 `;
 
 export const Logo = styled.img`
   display: block;
-  margin: 43px auto 90px auto;
+  margin: 55px auto 70px auto;
+  height: 100%;
+  width: 130px;
 `;
 
 export const NavActiveIcon = styled.img`
