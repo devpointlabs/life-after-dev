@@ -29,6 +29,50 @@ export const SettingsHeader = styled.h2`
   margin: 40px 20px 0px 50px;
 `;
 
+export const IconSquareWhite = styled.div`
+  height: 50px;
+  width: 50px;
+  display: flex;
+  margin: 0px 0px 0px 50px;
+  background-color: #fff;
+  border-radius: 15px;
+  justify-content: center;
+`;
+
+export const IconSquareBlack = styled.div`
+  height: 50px;
+  width: 50px;
+  display: flex;
+  margin: 0px 0px 0px 50px;
+  background-color: #1e1f20;
+  border-radius: 15px;
+  justify-content: center;
+  border: solid;
+  border-width: 2px;
+  border-color: #868686;
+`;
+
+export const IconBlack = styled.img`
+  display: block;
+  margin-top: 12px;
+  height: 25px;
+  /* filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(240deg)
+    brightness(107%) contrast(101%); */
+`;
+
+export const IconWhite = styled.img`
+  display: block;
+  margin-top: 10px;
+  height: 25px;
+  filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(240deg)
+    brightness(107%) contrast(101%);
+`;
+
+export const SettingsRow = styled.div`
+  display: flex;
+  margin-top: 40px;
+`;
+
 //// Form Section ////
 export const FormDiv = styled.div`
   width: 55%;

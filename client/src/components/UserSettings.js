@@ -9,6 +9,10 @@ import {
   FormDiv,
   FormField,
   HeaderDiv,
+  IconSquareBlack,
+  IconSquareWhite,
+  IconBlack,
+  IconWhite,
   PageHeader,
   ProfilePicDiv,
   ProfilePicEditDiv,
@@ -19,8 +23,11 @@ import {
   UserInfoDiv,
   UserPic,
   Wrapper,
+  SettingsRow,
 } from "../styles/UserSettingsStyle";
 import ProfilePicSetting from "./ProfilePicSetting";
+import profileicon from "../icons/user2x.png";
+import helpicon from "../icons/help2x.png";
 
 const UserSettings = ({ match, history }) => {
   const [userData, setUserData] = useState([]);
@@ -138,6 +145,17 @@ const UserSettings = ({ match, history }) => {
           </Link>
         )}
         <SettingsHeader>Settings</SettingsHeader>
+        <SettingsRow>
+          <IconSquareWhite>
+            <IconBlack src={profileicon} />
+          </IconSquareWhite>
+          <span>TEST</span>
+        </SettingsRow>
+        <SettingsRow>
+          <IconSquareBlack>
+            <IconWhite src={helpicon} />
+          </IconSquareBlack>
+        </SettingsRow>
       </UserInfoDiv>
     </Wrapper>
   );
