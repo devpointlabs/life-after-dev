@@ -15,7 +15,7 @@ const LandingComment = ({ comment }) => {
   return (
    
     <>
-     <CommentName>{user?.firstname}  {user?.lastname} </CommentName>   <CommentBody>{comment.body}</CommentBody> <br />
+     <CommentName>{user?.firstname}  {user?.lastname} </CommentName>  <span>&nbsp; &nbsp;<CommentBody>{comment.body}</CommentBody></span> <br />
      </>
        
       
