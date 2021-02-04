@@ -26,15 +26,15 @@ const Aboutus = () => {
       </Wrapper>
       <Column>
         <Wrapper2>
-          <Card>
-            <DevImage src={Rachel}></DevImage>
-            <DevName>Rachel Wadsworth-Smith</DevName>
+          <Card3>
+            <DevImage src={Danny}></DevImage>
+
+            <DevName>Danny Leaver</DevName>
             <p style={{ flex_wrap: "wrap" }}>
-              I decided I wanted to work on Life after Dev because I love the
-              idea of Developers showing off their side projects and helping
-              eachother
+              I'm Danny and I'm the Project Manager!
             </p>
-          </Card>
+          </Card3>
+
           <br />
           <br />
           <Card2>
@@ -50,14 +50,15 @@ const Aboutus = () => {
 
       <br />
       <br />
-      <Card3>
-        <DevImage src={Danny}></DevImage>
-
-        <DevName>Danny Leaver</DevName>
+      <Card>
+        <DevImage src={Rachel}></DevImage>
+        <DevName>Rachel Wadsworth-Smith</DevName>
         <p style={{ flex_wrap: "wrap" }}>
-          I'm Danny and I'm the Project Manager!
+          Back-end: the Request Controller <br />
+          Front-End: Comment section, worked with Taylor on the Project show
+          page.
         </p>
-      </Card3>
+      </Card>
       <br />
       <br />
       <Card4>
@@ -151,7 +152,7 @@ const Card3 = styled.div`
 
 const Card4 = styled.div`
 width: 30%;
-  background-color: #79D0F1;
+  background-color: #53d769;
   text-decoration: none;
   align-text: center;
   transition: transform 1s ease; 
