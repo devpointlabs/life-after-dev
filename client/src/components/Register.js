@@ -1,13 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Button, Form, Segment, Header } from "semantic-ui-react";
 import { useFormInput } from "../hooks/useFormInput";
-import { useDropzone } from "react-dropzone";
 
 const Register = ({ history }) => {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const firstname = useFormInput("", "First Name");
   const lastname = useFormInput("", "Last Name");
   const email = useFormInput("", "Email");
