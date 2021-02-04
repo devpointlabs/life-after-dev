@@ -20,7 +20,6 @@ import {
 } from "../../styles/ProfileProjectStyle";
 import ProjectFormModal from "../../components/ProjectFormModal";
 import EditProjectModal from "../../components/EditProjectModal";
-import trashicon from "../../icons/Bin.png";
 import commenticon from "../../icons/Comment.png";
 
 const UserProject = (props) => {

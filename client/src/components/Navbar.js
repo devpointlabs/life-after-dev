@@ -16,7 +16,7 @@ import {
   NavIconBottomInactive,
   AuthButtonDiv,
 } from "../styles/GlobalStyle";
-import devpointlogo from "../icons/devpointlogo.png";
+import devpointlogo from "../icons/LADLogo.png";
 import homeiconz from "../icons/homeicon.png";
 import profileiconz from "../icons/profileicon.png";
 import settingsiconz from "../icons/settingsicon.png";

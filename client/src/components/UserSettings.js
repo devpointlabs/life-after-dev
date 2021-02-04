@@ -1,21 +1,33 @@
 import Axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { Button, Form } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Button, Form, Icon } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
 import {
+  CamIcon,
   EditPicButton,
   FormDiv,
   FormField,
   HeaderDiv,
+  IconSquareBlack,
+  IconSquareWhite,
+  IconBlack,
+  IconWhite,
   PageHeader,
   ProfilePicDiv,
   ProfilePicEditDiv,
   ProfilePicText,
+  SaveProfileButton,
+  SettingsHeader,
   SubHeadDiv,
   UserInfoDiv,
+  UserPic,
   Wrapper,
+  SettingsRow,
 } from "../styles/UserSettingsStyle";
 import ProfilePicSetting from "./ProfilePicSetting";
+import profileicon from "../icons/user2x.png";
+import helpicon from "../icons/help2x.png";
 
 const UserSettings = ({ match, history }) => {
   const [userData, setUserData] = useState([]);
@@ -70,20 +82,17 @@ const UserSettings = ({ match, history }) => {
           </ProfilePicDiv>
           <ProfilePicEditDiv>
             <ProfilePicText>Profile Picture</ProfilePicText>
-            <EditPicButton onClick={togglePic}>Replace</EditPicButton>
+            <EditPicButton onClick={togglePic}>
+              <CamIcon
+                size="large"
+                name="camera retro"
+                style={{ paddingBottom: 10 }}
+              />
+              Replace
+            </EditPicButton>
           </ProfilePicEditDiv>
         </SubHeadDiv>
         <Form onSubmit={handleSubmit}>
-          <Button>Save Profile</Button>
-          <br />
-          <br />
-          <FormField.Input
-            label="FIRST NAME"
-            placeholder="First Name"
-            name="firstname"
-            value={userData.firstname}
-            onChange={handleChange}
-          />
           <Form.Input
             label="FIRST NAME"
             placeholder="First Name"
@@ -126,9 +135,28 @@ const UserSettings = ({ match, history }) => {
             value={userData.tag}
             onChange={handleChange}
           />
+          <SaveProfileButton>Save Profile</SaveProfileButton>
         </Form>
       </FormDiv>
-      <UserInfoDiv></UserInfoDiv>
+      <UserInfoDiv>
+        {user && (
+          <Link to={`/user/${user.id}`}>
+            <UserPic src={user.image} />
+          </Link>
+        )}
+        <SettingsHeader>Settings</SettingsHeader>
+        <SettingsRow>
+          <IconSquareWhite>
+            <IconBlack src={profileicon} />
+          </IconSquareWhite>
+          <span>TEST</span>
+        </SettingsRow>
+        <SettingsRow>
+          <IconSquareBlack>
+            <IconWhite src={helpicon} />
+          </IconSquareBlack>
+        </SettingsRow>
+      </UserInfoDiv>
     </Wrapper>
   );
 };
