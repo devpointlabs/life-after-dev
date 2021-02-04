@@ -62,7 +62,7 @@ const LandingProjectCard = (props) => {
       {contributors.map((c, i) => (
         i < maxcontribs && <ContributorImage image={c.image} />
       ))}
-      {contributors.length > maxcontribs && ` +  ${contributors.length - maxcontribs}`}
+      {contributors.length > maxcontribs &&   <span> &nbsp; + {contributors.length - maxcontribs}</span>}
     </ContributorWrapper>
   )
 
