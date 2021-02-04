@@ -160,6 +160,9 @@ const Project = (props) => {
   return (
     <>
       <Wrapper>
+      {seen ? (
+        <ProjectPicModal toggle={togglePic} user={user} project={project} />
+      ) : null}
         <ProjectSection>
           <BackButton>
             <RealBackButton onClick={() => history.goBack()}>
@@ -167,9 +170,6 @@ const Project = (props) => {
               Back
             </RealBackButton>
           </BackButton>
-          {seen ? (
-            <ProjectPicModal toggle={togglePic} user={user} project={project} />
-          ) : null}
           <ProjectOwnerDiv>
             <Link to={`/user/${owner.id}`}>
               <ProjectOwnerPic src={owner.image} />

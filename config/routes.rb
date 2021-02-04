@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       resources :comments
       resources :requests
     end
-   
+
     get "projects/:project_id/get_contributors", to: "requests#get_contributors"
     put "user/:user_id/update-picture", to: "users#update_picture"
     get "all_projects", to: "projects#all_projects"
@@ -19,7 +19,6 @@ Rails.application.routes.draw do
     put "project/:project_id/update-picture", to: "projects#update_picture"
     get "requests/:user_id/get_pending_requests", to: "users#pending_requests"
     get "requests/:user_id/pending-with-names", to: "users#pending_with_names"
-    get '*other', to: 'static#index'
-
   end
+  get "*other", to: "static#index"
 end

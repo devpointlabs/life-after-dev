@@ -24,9 +24,10 @@ export default (props) => {
     modal: {
       position: "fixed",
       zIndex: 1,
-      width: "100%",
+      width: "120%",
       height: "100%",
       backgroundColor: "rgba(0, 0, 0, 0.25)",
+      right: '1px',
     },
     modal_content: {
       backgroundColor: "white",
@@ -55,7 +56,7 @@ export default (props) => {
               {isDragActive ? (
                 <p>Drop the files here ...</p>
                 ) : (
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <p>Drag and drop your profile picture here, or click to select a file.</p>
               )}
             </div>
             <ul>

@@ -86,7 +86,7 @@ const ProjectForm = ({ query, addProject, closeModal, p }) => {
               {isDragActive ? (
                 <p>Drop the files here ...</p>
                 ) : (
-                <p>Drag 'n' drop some files here, or click to select files</p>
+                <p>Drag and drop a screenshot of your project here, or click to select a file.</p>
               )}
             </div>
         </div>
