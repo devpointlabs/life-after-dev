@@ -191,7 +191,9 @@ const Project = (props) => {
               <p>{project?.description}</p>
             </div>
           </div>
-          <CrudContainer>{renderDeleteButton()}</CrudContainer>
+          <CrudContainer style={{ marginBottom: 80 }}>
+            {renderDeleteButton()}
+          </CrudContainer>
         </ProjectSection>
         <CommentSection>
           {project && <Comments project={project} />}
