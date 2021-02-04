@@ -52,7 +52,7 @@ const UserProject = (props) => {
   };
 
   const renderEditButton = () => {
-    if (user.id == props.project.user_id) {
+    if (user?.id == props.project.user_id) {
       return (
         <EditProjectModal
           project={props.project}

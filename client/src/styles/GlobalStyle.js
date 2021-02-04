@@ -33,7 +33,7 @@ export const StickyNav = styled.div`
   top: 55px;
   position: sticky;
   position: -webkit-sticky;
-`;
+`;            
 
 export const Logo = styled.img`
   display: block;
@@ -41,7 +41,7 @@ export const Logo = styled.img`
   height: 100%;
   width: 130px;
 `;
-
+                                                                         
 export const NavActiveIcon = styled.img`
   display: block;
   margin-top: 12px;
@@ -66,6 +66,7 @@ export const NavActiveSquare = styled.div`
   background-color: #fff;
   border-radius: 15px;
   justify-content: center;
+  cursor: pointer;
 `;
 
 export const NavInactiveSquare = styled.div`
@@ -76,6 +77,7 @@ export const NavInactiveSquare = styled.div`
   background-color: #377afd;
   border-radius: 15px;
   justify-content: center;
+  cursor: pointer;
 
   &:hover {
     background-color: #fff;

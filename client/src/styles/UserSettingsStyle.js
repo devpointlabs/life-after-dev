@@ -73,6 +73,12 @@ export const SettingsRow = styled.div`
   margin-top: 40px;
 `;
 
+export const IconText = styled.h2`
+  font-size: 18px;
+  color: #fff;
+  margin: 12px 0px 5px 15px;
+`;
+
 //// Form Section ////
 export const FormDiv = styled.div`
   width: 55%;

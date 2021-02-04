@@ -1,3 +1,4 @@
+import { Button } from "semantic-ui-react";
 import styled from "styled-components";
 
 //// Project Section ////
@@ -11,11 +12,12 @@ export const ProjectSection = styled.div`
   width: 800px;
   height: 100%;
   padding-right: 115px;
+  margin-bottom: 80px;
 `;
 
 export const ProjectOwnerDiv = styled.div`
   display: flex;
-  margin: 40px 0px 0px 20px;
+  margin: 40px 0px 10px 20px;
 `;
 
 export const ProjectOwnerPic = styled.img`
@@ -43,7 +45,7 @@ export const ProjectPic = styled.img`
   border-radius: 10px;
   width: 650px;
   height: 330px;
-  margin: 10px 0px 0px 20px;
+  margin: 10px 0px 25px 20px;
 `;
 
 export const BackButton = styled.div`
@@ -53,7 +55,7 @@ export const BackButton = styled.div`
 export const ProjectTitle = styled.div`
   font-weight: 900;
   font-size: 28px;
-  margin: 10px 0px 10px 20px;
+  margin: 0px 0px 10px 20px;
 `;
 
 export const ProjectLinksDiv = styled.div`
@@ -74,7 +76,8 @@ export const LiveIcon = styled.img`
 `;
 
 export const ChangePicButton = styled.div`
-  margin: 0px 0px 0px 545px;
+  position: absolute;
+  margin: 0px 0px 500px 550px;
 `;
 
 export const CrudContainer = styled.div`
@@ -83,6 +86,64 @@ export const CrudContainer = styled.div`
 `;
 
 export const EditButtonDiv = styled.div``;
+
+export const LowerBodyDiv = styled.div`
+  display: flex;
+  margin: 20px 0px 0px 20px;
+`;
+
+export const DescriptionDiv = styled.div`
+  width: 65%;
+  padding-right: 50px;
+`;
+
+export const ContributorDiv = styled.div`
+  width: 35%;
+  border: solid;
+  border-width: 2px;
+  border-color: #b7b7b7;
+  border-radius: 10px;
+  padding: 20px;
+`;
+
+export const ContributorTitle = styled.h2`
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0px 0px 30px 35px;
+  text-decoration: underline;
+`;
+
+export const ContributorsDiv = styled.div`
+  padding: 5px;
+  display: flex;
+  margin-bottom: 10px;
+`;
+
+export const ContPic = styled.img`
+  object-fit: cover;
+  height: 35px;
+  width: 35px;
+  border-radius: 10px;
+`;
+
+export const EditButton = styled(Button)`
+  background-color: #53d769 !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+`;
+
+export const ContName = styled.h3`
+  font-size: 14px;
+  margin: 5px 0px 0px 10px !important;
+  color: #000;
+`;
+
+export const RealBackButton = styled(Button)`
+  background-color: #eeeeee !important;
+  color: #8a8a8a !important;
+  padding: 20px 25px 20px 20px !important;
+  border-radius: 10px !important;
+`;
 
 //// Comment Section ////
 

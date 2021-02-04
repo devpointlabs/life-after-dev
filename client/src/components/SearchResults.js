@@ -9,6 +9,7 @@ import {
   ResultsDescription,
   ResultsImage,
   ResultsTitle,
+  SearchCreateButton,
 } from "../styles/LandingPageStyle";
 import ProjectFormModal from "./ProjectFormModal";
 import styled from "styled-components";
@@ -31,15 +32,19 @@ const SearchResults = ({ results }) => {
         <div style={spacingStyle}>
           <h3>{query}</h3>
           <Link to={"/register"}>
-            <Button color="green">Create New Project</Button>
+            <SearchCreateButton color="green">
+              Create New Project
+            </SearchCreateButton>
           </Link>
         </div>
       );
     }
   };
 
-  const renderNothing = () => {
-    return <span></span>;
+  const renderNoResults = () => {
+    if (!query) {
+      return <h3>No Results</h3>;
+    }
   };
   // console.log("results", results);
   return (
@@ -47,6 +52,8 @@ const SearchResults = ({ results }) => {
       <Grid>
         <Grid.Row>
           <Grid.Column width={12}>
+            {renderNoResults()}
+            {renderProjectFormModal()}
             <Flex>
               {results?.map((r) => (
                 <ContributingProject key={r.id} project_id={r.id} />
@@ -54,7 +61,7 @@ const SearchResults = ({ results }) => {
             </Flex>
           </Grid.Column>
           <Grid.Column width={4}>
-            {query ? renderProjectFormModal() : renderNothing()}
+            {/* {query ? renderProjectFormModal() : renderNothing()} */}
           </Grid.Column>
         </Grid.Row>
       </Grid>

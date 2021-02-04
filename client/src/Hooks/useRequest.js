@@ -4,9 +4,9 @@ import { useState } from "react";
 const useRequest = (project, id) => {
   const [requestStatus, setRequestStatus] = useState("Join");
   const [myRequests, setMyRequests] = useState([]);
-  
 
   const checkRequests = (project, id) => {
+    console.log("checkRequests", project);
     Axios.get(`/api/projects/${project}/requests`)
       .then((res) => {
         res.data.forEach((r) => {
@@ -32,6 +32,7 @@ const useRequest = (project, id) => {
     })
       .then((res) => {
         setRequestStatus("Pending");
+        console.log("sendRequest success");
       })
       .catch((err) => {
         console.log(err);
@@ -72,13 +73,13 @@ const useRequest = (project, id) => {
       let res = await Axios.delete(
         `/api/projects/${project_id}/requests/${request_id}`
       );
-      myRequests.forEach(r => {
+      myRequests.forEach((r) => {
         if (r.id !== request_id) {
-          dummy.push(r)
+          dummy.push(r);
         } else {
-          return
+          return;
         }
-      })
+      });
       setMyRequests(dummy);
     } catch (err) {
       console.log(err);
@@ -87,7 +88,7 @@ const useRequest = (project, id) => {
 
   const acceptRequest = async (project_id, request_id, incoming_user_id) => {
     try {
-      let dummy = []
+      let dummy = [];
       let res = await Axios.put(
         `/api/projects/${project_id}/requests/${request_id}`,
         {
@@ -96,13 +97,13 @@ const useRequest = (project, id) => {
           contributor: true,
         }
       );
-      myRequests.forEach(r => {
+      myRequests.forEach((r) => {
         if (r.id !== request_id) {
-          dummy.push(r)
+          dummy.push(r);
         } else {
-          return
+          return;
         }
-      })
+      });
       setMyRequests(dummy);
     } catch (err) {
       console.log(err);
