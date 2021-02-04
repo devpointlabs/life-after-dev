@@ -6,6 +6,7 @@ import Life from "../../images/Life.png";
 import Danny from "../../images/Danny.jpeg";
 import Will from "../../images/Will.jpeg";
 import Ian from "../../images/Ian.jpg";
+import Taylor from "../../images/Taylor.jpg";
 
 const Aboutus = () => {
   return (
@@ -76,6 +77,11 @@ const Aboutus = () => {
         <DevName>Ian Wilkinson</DevName>
         <p style={{ flex_wrap: "wrap" }}>I'm slappin'</p>
       </Card5>
+      <Card>
+        <DevImage src={Taylor}></DevImage>
+        <DevName>Taylor Collins</DevName>
+        <p style={{ flex_wrap: "wrap" }}>Hi my name is Taylor</p>
+      </Card>
     </>
   );
 };
