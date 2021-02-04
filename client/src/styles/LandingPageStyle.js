@@ -85,8 +85,8 @@ export const LoginContainer = styled.div`
   border-color: #9dbcd4;
   text-align: center;
   width: 300px;
-  height: 274px;
-  padding: 1.3rem 0 2rem;
+  height: 322px;
+  padding: 2.9rem 0 0 0;
   font-family: SFDisplay;
   border-radius: 15px;
   border-width: 2px;
@@ -135,8 +135,8 @@ export const SiteInfoContainer = styled.div`
   width: 840px;
   height: 100%;
   border-radius: 15px;
-  padding: 30px 40px;
-  font-size: 16px;
+  padding: 15px 20px;
+  font-size: 14px;
   border-width: 2px;
   font-family: SFDisplay;
   margin-right: 20px;
@@ -242,7 +242,7 @@ export const FeedBackButton = styled.button`
 export const ContributorWrapper = styled.div`
   display: flex;
   color: grey;
-  padding: 0px 0px 25px 20px;
+  padding: 10px 0px 25px 26px;
   align-items: center;
 `;
 
@@ -264,7 +264,6 @@ export const Right = styled.div`
   flex-grow: 2;
   flex-shrink: 0;
   background: #2a2d34;
-
   width: 320px;
   min-height: 100%;
   border-radius: 21px;
@@ -282,7 +281,7 @@ export const SeeMoreComments = styled.div`
   color: grey;
   font-weight: bold;
   font-size: 18px;
-  margin: 30px 0px 10px 32px;
+  margin: 30px 0px 20px 32px;
   display: flex;
 `;
 
