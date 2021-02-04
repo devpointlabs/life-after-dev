@@ -5,7 +5,7 @@ import Andrew from "../../images/Andrew.jpeg";
 import DevLife from "../../images/DevLife.png";
 import Danny from "../../images/Danny.jpeg";
 import Will from "../../images/Will.jpeg";
-import Ian from "../../images/Ian.jpg";
+import Ian from "../../images/Ian.jpeg";
 
 const Aboutus = () => {
   return (
@@ -140,7 +140,7 @@ width: 20%;
 
 const Card5 = styled.div`
 width: 20%;
-  background-color: #53d769;
+  background-color: #79D0F1;
   text-decoration: none;
   align-text: center;
   transition: transform 1s ease; 
