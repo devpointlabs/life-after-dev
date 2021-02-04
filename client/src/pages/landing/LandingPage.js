@@ -4,6 +4,8 @@ import LandingLogin from "./LandingLogin";
 import SearchResults from "../../components/SearchResults";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import LandingLogo from "../../images/LandingLogo.png";
+import styled from "styled-components";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import {
@@ -20,18 +22,20 @@ const LandingPage = () => {
   const [toggle, setToggle] = useState(false);
   const { user } = useContext(AuthContext);
 
+  const LandingLogoCon = styled.img`
+    width: 60%;
+  `;
+
   return (
     <>
       <SearchBar />
       <LandingInfoWrap>
         <SiteInfoContainer>
-          <h1>
-            Life After Dev
-          </h1>
-
+          
+      {/* <LandingLogoCon src={LandingLogo}></LandingLogoCon> */}
           <p>
-            {" "}
-            Life After Dev is a place for developers to share their ideas and
+            {" "} 
+            Welcome to Life After Dev! Life After Dev is a place for developers to share their ideas and
             explore other projects that they might be interested in. Although
             many of us started at{" "}
             <a href="https://www.devpointlabs.com/">DevPointLabs</a>, anyone can
