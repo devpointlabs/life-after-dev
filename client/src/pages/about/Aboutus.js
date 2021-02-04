@@ -3,6 +3,9 @@ import styled, { keyframes } from "styled-components";
 import Rachel from "../../images/Rachel.jpg";
 import Andrew from "../../images/Andrew.jpeg";
 import DevLife from "../../images/DevLife.png";
+import Danny from "../../images/Danny.jpeg";
+import Will from "../../images/Will.jpeg";
+import Ian from "../../images/Ian.jpg";
 
 const Aboutus = () => {
   return (
@@ -32,6 +35,26 @@ const Aboutus = () => {
 
         <DevName>Andrew Sloan</DevName>
       </Card2>
+      <br />
+      <br />
+      <Card3>
+        <DevImage src={Danny}></DevImage>
+
+        <DevName>Danny Leaver</DevName>
+      </Card3>
+      <br />
+      <br />
+      <Card4>
+        <DevImage src={Will}></DevImage>
+
+        <DevName>Will Liang</DevName>
+      </Card4>
+      <br />
+      <br />
+      <Card5>
+        <DevImage src={Ian}></DevImage>
+        <DevName>Ian Wilkinson</DevName>
+      </Card5>
     </>
   );
 };
@@ -59,20 +82,9 @@ const Heading = styled.h1`
 
 const DevName = styled.p`
   font-weight: bold;
-  align-text: justify;
+  color: #f44336;
   animation: ${animateOpacity} 10s;
 `;
-
-// const DevEmail = styled.p`
-//   width: 300px;
-//   height: 16.64px;
-
-//   font-style: normal;
-//   font-weight: normal;
-//   font-size: 24px;
-//   line-height: 17px;
-//   color: black;
-// `;
 
 const Card = styled.div`
   width: 20%;
@@ -98,6 +110,46 @@ const Card2 = styled.div`
 }
 `;
 
+const Description = styled.div``;
+
+const Card3 = styled.div`
+ width: 20%;
+  background-color: #0659FD;
+  text-decoration: none;
+  align-text: center;
+  transition: transform 1s ease; 
+  &:hover {
+    transform: rotateY(-60deg);
+  }
+}
+`;
+
+const CardContainer = styled.div``;
+
+const Card4 = styled.div`
+width: 20%;
+  background-color: #79D0F1;
+  text-decoration: none;
+  align-text: center;
+  transition: transform 1s ease; 
+  &:hover {
+    transform: rotateY(-60deg);
+  }
+}
+`;
+
+const Card5 = styled.div`
+width: 20%;
+  background-color: #53d769;
+  text-decoration: none;
+  align-text: center;
+  transition: transform 1s ease; 
+  &:hover {
+    transform: rotateY(-60deg);
+  }
+}
+`;
+
 const BackgroundImage = styled.img`
   width: 100%;
   height: 33vh;
@@ -112,8 +164,5 @@ const BackgroundImage = styled.img`
 const DevImage = styled.img`
   width: 100%;
 `;
-// const DevImage2 = styled.img`
-//   width: 200px;
-//   height: 200px;
-// `;
+
 export default Aboutus;
