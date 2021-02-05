@@ -36,6 +36,13 @@ const UserSettings = ({ match, history }) => {
   const [seen, setSeen] = useState(false);
 
   useEffect(() => {
+   setUserData(user) 
+  },[user])
+ 
+  
+
+
+  useEffect(() => {
     Axios.get(`/api/users/${user.id}`)
       .then((res) => {
         setUserData(res.data);
@@ -54,7 +61,7 @@ const UserSettings = ({ match, history }) => {
 
   const handleSubmit = () => {
     console.log("submit clicked", userData);
-    Axios.patch(`/api/users/${user.id}`, userData)
+    Axios.patch(`/api/users/${user?.id}`, userData)
       .then((res) => {
         history.push(`/user/${user.id}`);
         console.log("updated name", res);
