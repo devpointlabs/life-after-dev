@@ -1,5 +1,6 @@
 import Axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Button, Form, Header, Image, Modal } from "semantic-ui-react";
 import { AuthContext } from "../providers/AuthProvider";
 import { SearchCreateButton } from "../styles/LandingPageStyle";
@@ -9,14 +10,14 @@ const ProjectFormModal = ({ query, editing }) => {
   const [open, setOpen] = React.useState(false);
   const [projects, setProjects] = useState([]);
   const { user } = useContext(AuthContext);
-
+  let history = useHistory()
   console.log("query", query);
 
   const getProjects = () => {};
 
   const editProject = () => {};
 
-  const addProject = async (newProject, image) => {
+  const addProject = (newProject, image, history) => {
     if (image == null) {
       alert("Image can't be blank");
       return;
@@ -32,16 +33,17 @@ const ProjectFormModal = ({ query, editing }) => {
     console.log(newProject);
     let data = new FormData();
     data.append("file", image);
-    try {
-      let res = await Axios.post(
-        `/api/users/${user.id}/projects`,
-        data,
-        options
-      );
-      console.log("project added", res);
-    } catch (err) {
-      console.log(err);
-    }
+    
+    Axios.post(
+      `/api/users/${user.id}/projects`,
+      data,
+      options
+    ).then ((res)=> 
+  
+      history.push(`/projects/${res.data.id}`)
+    ) .catch ((err) =>
+      console.log(err)
+    )
   };
 
   const closeModal = () => {
