@@ -41,7 +41,10 @@ class Api::UsersController < ApplicationController
         #   render json: { error: "error uploading image" }, status: 422
         # end
         # (image: cloud_image["secure_url"])
+<<<<<<< HEAD
         
+=======
+>>>>>>> 62992caf98e0d093d8949483d2ff1e676f16613f
         ext = File.extname(file.tempfile)
         cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
         current_user.image = cloud_image['secure_url']
@@ -56,7 +59,6 @@ class Api::UsersController < ApplicationController
       end
     end
   end
-
 
 
   def destroy

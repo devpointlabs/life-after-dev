@@ -77,97 +77,97 @@ const UserSettings = ({ match, history }) => {
 
   return (
     <>
-    <Wrapper>
-      {seen ? (
+      <Wrapper>
+        {seen ? (
           <ProfilePicSetting toggle={togglePic} user={user} history={history} />
-      ) : null}
-      <FormDiv>
-        <HeaderDiv>
-          <PageHeader>Account Information</PageHeader>
-        </HeaderDiv>
-        <SubHeadDiv>
-          <ProfilePicDiv>
-            <img className="userpic" src={user?.image} />
-          </ProfilePicDiv>
-          <ProfilePicEditDiv>
-            <ProfilePicText>Profile Picture</ProfilePicText>
-            <EditPicButton onClick={togglePic}>
-              <CamIcon
-                size="large"
-                name="camera retro"
-                style={{ paddingBottom: 10 }}
-              />
-              Replace
-            </EditPicButton>
-          </ProfilePicEditDiv>
-        </SubHeadDiv>
-        <Form onSubmit={handleSubmit}>
-          <Form.Input
-            label="FIRST NAME"
-            placeholder="First Name"
-            name="firstname"
-            value={userData.firstname}
-            onChange={handleChange}
-          />
-          <Form.Input
-            label="LAST NAME"
-            placeholder="Last Name"
-            name="lastname"
-            value={userData.lastname}
-            onChange={handleChange}
-          />
-          <Form.Input
-            label="GITHUB LINK"
-            placeholder="GitHub Link"
-            name="github_link"
-            value={userData.github_link}
-            onChange={handleChange}
-          />
-          <Form.Input
-            label="PERSONAL SITE "
-            placeholder="Personal Site URL"
-            name="personal_site"
-            value={userData.personal_site}
-            onChange={handleChange}
-          />
-          <Form.Input
-            label="LINKEDIN"
-            placeholder="Linkedin"
-            name="linkedin_link"
-            value={userData.linkedin_link}
-            onChange={handleChange}
-          />
-          <Form.Input
-            label="TAG"
-            placeholder="Tag"
-            name="tag"
-            value={userData.tag}
-            onChange={handleChange}
-          />
-          <SaveProfileButton>Save Profile</SaveProfileButton>
-        </Form>
-      </FormDiv>
-      <UserInfoDiv>
-        {user && (
-          <Link to={`/user/${user.id}`}>
-            <UserPic src={user.image} />
-          </Link>
-        )}
-        <SettingsHeader>Settings</SettingsHeader>
-        <SettingsRow>
-          <IconSquareWhite>
-            <IconBlack src={profileicon} />
-          </IconSquareWhite>
-          <IconText>My Account</IconText>
-        </SettingsRow>
-        <SettingsRow>
-          <IconSquareBlack>
-            <IconWhite src={helpicon} />
-          </IconSquareBlack>
-          <IconText>Help</IconText>
-        </SettingsRow>
-      </UserInfoDiv>
-    </Wrapper>
+        ) : null}
+        <FormDiv>
+          <HeaderDiv>
+            <PageHeader>Account Information</PageHeader>
+          </HeaderDiv>
+          <SubHeadDiv>
+            <ProfilePicDiv>
+              <img className="userpic" src={user?.image} />
+            </ProfilePicDiv>
+            <ProfilePicEditDiv>
+              <ProfilePicText>Profile Picture</ProfilePicText>
+              <EditPicButton onClick={togglePic}>
+                <CamIcon
+                  size="large"
+                  name="camera retro"
+                  style={{ paddingBottom: 10 }}
+                />
+                Replace
+              </EditPicButton>
+            </ProfilePicEditDiv>
+          </SubHeadDiv>
+          <Form onSubmit={handleSubmit}>
+            <Form.Input
+              label="FIRST NAME"
+              placeholder="First Name"
+              name="firstname"
+              value={userData.firstname}
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="LAST NAME"
+              placeholder="Last Name"
+              name="lastname"
+              value={userData.lastname}
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="GITHUB LINK"
+              placeholder="GitHub Link"
+              name="github_link"
+              value={userData.github_link}
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="PERSONAL SITE "
+              placeholder="Personal Site URL"
+              name="personal_site"
+              value={userData.personal_site}
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="LINKEDIN"
+              placeholder="Linkedin"
+              name="linkedin_link"
+              value={userData.linkedin_link}
+              onChange={handleChange}
+            />
+            <Form.Input
+              label="TAG"
+              placeholder="Tag"
+              name="tag"
+              value={userData.tag}
+              onChange={handleChange}
+            />
+            <SaveProfileButton>Save Profile</SaveProfileButton>
+          </Form>
+        </FormDiv>
+        <UserInfoDiv>
+          {user && (
+            <Link to={`/user/${user.id}`}>
+              <UserPic src={user.image} />
+            </Link>
+          )}
+          <SettingsHeader>Settings</SettingsHeader>
+          <SettingsRow>
+            <IconSquareWhite>
+              <IconBlack src={profileicon} />
+            </IconSquareWhite>
+            <IconText>My Account</IconText>
+          </SettingsRow>
+          <SettingsRow>
+            <IconSquareBlack>
+              <IconWhite src={helpicon} />
+            </IconSquareBlack>
+            <IconText>Help</IconText>
+          </SettingsRow>
+        </UserInfoDiv>
+      </Wrapper>
     </>
   );
 };

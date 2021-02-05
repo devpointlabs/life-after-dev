@@ -14,12 +14,10 @@ const Aboutus = () => {
       <BackgroundImage />
       <Wrapper>
         <Heading>About Life After Dev</Heading>
-        <p>
-          “Life After Dev is a place for developers to share their ideas and
-          explore other projects that they might be interested in. Although many
-          of us started at DevPoint Labs, anyone can join and check out what
-          other members are creating. To get started, simply scroll down below
-          and find something you like!”
+        <p style={{ flex_wrap: "wrap", textAlign: "center" }}>
+          "Life After Dev was created by a team with a mission to create a place
+          for Developers to come together and show off their projects and meet
+          new friends along the way."
         </p>
       </Wrapper>
       <Wrapper>
@@ -27,61 +25,91 @@ const Aboutus = () => {
       </Wrapper>
       <Column>
         <Wrapper2>
+          <br />
           <Card3>
             <DevImage src={Danny}></DevImage>
-
             <DevName>Danny Leaver</DevName>
-            <p style={{ flex_wrap: "wrap" }}>
-              I'm Danny and I'm the Project Manager!
-            </p>
+            <h3 style={{ flexWrap: "wrap", textAlign: "center" }}>
+              Project Manager
+            </h3>
+            <br /> <br />
           </Card3>
 
           <br />
           <br />
           <Card2>
             <DevImage src={Andrew}></DevImage>
-
             <DevName>Andrew Sloan</DevName>
-            <p style={{ flex_wrap: "wrap" }}>
-              My Name is Andrew and I'm awesome!
-            </p>
+            <h3 style={{ flex_wrap: "wrap", textAlign: "center" }}>
+              Front-End:<p>Landing/home page</p> <br /> <br />
+              Back-End:<p>project controller/ model/ contributors</p>
+              <br /> <br />
+            </h3>
+            <br /> <br />
           </Card2>
         </Wrapper2>
       </Column>
+      <br />
+      <br />
+      <Column>
+        <Wrapper2>
+          <Card>
+            <DevImage src={Rachel}></DevImage>
+            <DevName>Rachel Wadsworth-Smith</DevName>
+            <h3 style={{ flex_wrap: "wrap", textAlign: "center" }}>
+              Back-end:<p>Request Controller</p> <br />
+              Front-End:
+              <p>
+                Comment section, worked with Taylor on the Project show page.
+              </p>{" "}
+              <br /> <br />
+            </h3>
+          </Card>
+          <br />
+          <br />
+          <Card4>
+            <DevImage src={Will}></DevImage>
 
-      <br />
-      <br />
-      <Card>
-        <DevImage src={Rachel}></DevImage>
-        <DevName>Rachel Wadsworth-Smith</DevName>
-        <p style={{ flex_wrap: "wrap" }}>
-          Back-end: the Request Controller <br />
-          Front-End: Comment section, worked with Taylor on the Project show
-          page.
-        </p>
-      </Card>
-      <br />
-      <br />
-      <Card4>
-        <DevImage src={Will}></DevImage>
-
-        <DevName>Will Liang</DevName>
-        <p style={{ flex_wrap: "wrap" }}>
-          I'm Will Liang I came up with all the designs!
-        </p>
-      </Card4>
-      <br />
-      <br />
-      <Card5>
-        <DevImage src={Ian}></DevImage>
-        <DevName>Ian Wilkinson</DevName>
-        <p style={{ flex_wrap: "wrap" }}>I'm slappin'</p>
-      </Card5>
-      <Card>
-        <DevImage src={Taylor}></DevImage>
-        <DevName>Taylor Collins</DevName>
-        <p style={{ flex_wrap: "wrap" }}>Hi my name is Taylor</p>
-      </Card>
+            <DevName>Will Liang</DevName>
+            <h3 style={{ flexWrap: "wrap", textAlign: "center" }}>
+              Lead Designer <br />
+            </h3>
+            <br />
+          </Card4>
+          <br />
+          <br />
+          <Card5>
+            <DevImage src={Ian}></DevImage>
+            <DevName>Ian Wilkinson</DevName>
+            <h3 style={{ flexWrap: "wrap", textAlign: "center" }}>
+              Front-End:<p>User Profile Page and Requests</p> <br /> <br />
+              Back-End:<p>Image uploading </p>
+              <br /> <br />
+            </h3>
+            <br /> <br />
+          </Card5>
+          <br />
+          <br />
+          <Card2>
+            <DevImage src={Taylor}></DevImage>
+            <DevName>Taylor Collins</DevName>
+            <h3 style={{ flexWrap: "wrap", textAlign: "center" }}>
+              Front-End:
+              <p>User controller and model, other various odds and ends</p>{" "}
+              <br /> <br />
+              Back-End:
+              <p>
+                {" "}
+                Nav bar, search, project show, settings, project cards, and bug
+                fixes!
+              </p>
+              <br /> <br />
+            </h3>
+            <br /> <br />
+          </Card2>
+        </Wrapper2>
+      </Column>
+      <br /> <br />
     </>
   );
 };
@@ -96,6 +124,7 @@ const Wrapper2 = styled.div`
   flex: 2;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const animateOpacity = keyframes`
@@ -111,19 +140,21 @@ const Heading = styled.h1`
   padding-top: 20px;
   padding-bottom: 20px;
   justify-content: center;
+  text-align: center;
 `;
 
 const DevName = styled.p`
   font-weight: bold;
+  font-size: 24px;
   color: #f44336;
   animation: ${animateOpacity} 10s;
+  text-align: center;
 `;
 
 const Card = styled.div`
   width: 30%;
   background-color: #79d0f1;
   text-decoration: none;
-  align-text: center;
   transition: transform 1s ease; 
   &:hover {
     transform: rotateY(-60deg);
@@ -141,8 +172,6 @@ const Card2 = styled.div`
   }
 }
 `;
-
-const Description = styled.div``;
 
 const Card3 = styled.div`
  width: 30%;
