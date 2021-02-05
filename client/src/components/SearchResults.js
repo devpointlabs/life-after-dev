@@ -46,7 +46,17 @@ const SearchResults = ({ results }) => {
       return <h3>No Results</h3>;
     }
   };
-  // console.log("results", results);
+
+  const renderResults = () => {
+    if (results)
+      return results?.map((r) => {
+        <>
+          <ContributingProject key={r.id} project_id={r.id} />
+          <span style={{ marginRight: 20 }}></span>
+        </>;
+      });
+  };
+
   return (
     <div>
       <Grid>
@@ -56,8 +66,11 @@ const SearchResults = ({ results }) => {
             {renderProjectFormModal()}
             <Flex>
               {results?.map((r) => (
-                <ContributingProject key={r.id} project_id={r.id} />
+                <div style={{ marginRight: 30 }}>
+                  <ContributingProject key={r.id} project_id={r.id} />
+                </div>
               ))}
+              {/* {renderResults()} */}
             </Flex>
           </Grid.Column>
           <Grid.Column width={4}>
