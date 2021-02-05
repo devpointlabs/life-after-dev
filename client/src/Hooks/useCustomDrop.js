@@ -16,7 +16,8 @@ const useCustomDrop = (user_id, image) => {
     data.append("file", image);
     try {
       let res = await Axios.put(`/api/user/${user_id}/update-picture`, data)
-      setUser(res.data.data)
+      setUser(res.data)
+      console.log("profile pic", res)
     } catch (err) {
       console.log(err);
       alert("err occured");

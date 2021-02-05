@@ -1,7 +1,9 @@
 import Axios from "axios";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { useHistory } from "react-router-dom";
 import { Button, Form, Header, Image, Modal } from "semantic-ui-react";
+
 
 const formFields = [
   { title: "Project Title", name: "title" },
@@ -29,7 +31,7 @@ const ProjectForm = ({ query, addProject, closeModal, p }) => {
     //   }
   );
   const [image, setImage] = useState(null)
-
+  let history = useHistory()
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
     setImage(acceptedFiles[0]);
@@ -38,7 +40,9 @@ const ProjectForm = ({ query, addProject, closeModal, p }) => {
 
   const handleSubmit = (e) => {
     console.log("Project Add submit clicked");
-    addProject(project, image);
+    addProject(project, image, history);
+    closeModal()
+    
   };
 
   const styles = {
