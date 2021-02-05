@@ -35,15 +35,22 @@ class Api::UsersController < ApplicationController
 
     if file
       begin
-        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
+        # cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
 
-        if current_user.update(image: cloud_image["secure_url"]) #try other way here
-          render json: { data: current_user }
-        else
-          render json: { error: "error uploading image" }, status: 422
-        end
+        # if current_user.update(image: cloud_image["secure_url"]) #try other way here
+        #   render json: { data: current_user }
+        # else
+        #   render json: { error: "error uploading image" }, status: 422
+        # end
         # (image: cloud_image["secure_url"])
-        
+        ext = File.extname(file.tempfile)
+        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
+        current_user.image = cloud_image['secure_url']
+        if current_user.save
+          render(json: current_user)
+        else
+          render(json: { errors: current_user.errors.messages }, status: 422)
+        end
       rescue => e
         render json: { errors: e }, status: 422
         return
@@ -51,7 +58,23 @@ class Api::UsersController < ApplicationController
     end
   end
 
-
+  def update_profile_image
+    file = params[:file]
+    if file
+      begin
+        ext = File.extname(file.tempfile)
+        cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true)
+        @user.image = cloud_image['secure_url']
+        if @user.save
+          render(json: @user)
+        else
+          render(json: { errors: @user.errors.messages }, status: 422)
+        end
+      rescue => e
+        render json: { errors: e }, status: 422
+      end
+    end
+  end
 
   def destroy
   end

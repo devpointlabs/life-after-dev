@@ -39,6 +39,7 @@ const ProjectForm = ({ query, addProject, closeModal, p }) => {
   const handleSubmit = (e) => {
     console.log("Project Add submit clicked");
     addProject(project, image);
+    
   };
 
   const styles = {

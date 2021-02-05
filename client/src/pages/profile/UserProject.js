@@ -75,7 +75,6 @@ const UserProject = (props) => {
               project={props.project}
               updateProjects={props.updateProjects}
             /> */}
-            {renderEditButton()}
           </CrudIcon>
         </CardHeader>
         <CardDiv>
