@@ -41,8 +41,9 @@ const Aboutus = () => {
             <DevImage src={Andrew}></DevImage>
             <DevName>Andrew Sloan</DevName>
             <h3 style={{ flex_wrap: "wrap", textAlign: "center" }}>
-              Front-End: <br /> <br />
-              Back-End: <br /> <br />
+              Front-End:<p>Landing/home page</p> <br /> <br />
+              Back-End:<p>project controller/ model/ contributors</p>
+              <br /> <br />
             </h3>
             <br /> <br />
           </Card2>
@@ -50,53 +51,64 @@ const Aboutus = () => {
       </Column>
       <br />
       <br />
-      <Wrapper2>
-        <Card>
-          <DevImage src={Rachel}></DevImage>
-          <DevName>Rachel Wadsworth-Smith</DevName>
-          <h3 style={{ flex_wrap: "wrap", textAlign: "center" }}>
-            Back-end:<p>Request Controller</p> <br />
-            Front-End:
-            <p>
-              Comment section, worked with Taylor on the Project show page.
-            </p>{" "}
-            <br /> <br />
-          </h3>
-        </Card>
-        <br />
-        <br />
-        <Card4>
-          <DevImage src={Will}></DevImage>
-
-          <DevName>Will Liang</DevName>
-          <h3 style={{ flexWrap: "wrap", textAlign: "center" }}>
-            Lead Designer <br />
-          </h3>
+      <Column>
+        <Wrapper2>
+          <Card>
+            <DevImage src={Rachel}></DevImage>
+            <DevName>Rachel Wadsworth-Smith</DevName>
+            <h3 style={{ flex_wrap: "wrap", textAlign: "center" }}>
+              Back-end:<p>Request Controller</p> <br />
+              Front-End:
+              <p>
+                Comment section, worked with Taylor on the Project show page.
+              </p>{" "}
+              <br /> <br />
+            </h3>
+          </Card>
           <br />
-        </Card4>
-        <br />
-        <br />
-        <Card5>
-          <DevImage src={Ian}></DevImage>
-          <DevName>Ian Wilkinson</DevName>
-          <h3 style={{ flexWrap: "wrap", textAlign: "center" }}>
-            Front-End: <br /> <br />
-            Back-End: <br /> <br />
-          </h3>
-          <br /> <br />
-        </Card5>
-        <br />
-        <br />
-        <Card2>
-          <DevImage src={Taylor}></DevImage>
-          <DevName>Taylor Collins</DevName>
-          <h3 style={{ flexWrap: "wrap", textAlign: "center" }}>
-            Front-End: <br /> <br />
-            Back-End: <br /> <br />
-          </h3>
-          <br /> <br />
-        </Card2>
-      </Wrapper2>
+          <br />
+          <Card4>
+            <DevImage src={Will}></DevImage>
+
+            <DevName>Will Liang</DevName>
+            <h3 style={{ flexWrap: "wrap", textAlign: "center" }}>
+              Lead Designer <br />
+            </h3>
+            <br />
+          </Card4>
+          <br />
+          <br />
+          <Card5>
+            <DevImage src={Ian}></DevImage>
+            <DevName>Ian Wilkinson</DevName>
+            <h3 style={{ flexWrap: "wrap", textAlign: "center" }}>
+              Front-End:<p>User Profile Page and Requests</p> <br /> <br />
+              Back-End:<p>Image uploading </p>
+              <br /> <br />
+            </h3>
+            <br /> <br />
+          </Card5>
+          <br />
+          <br />
+          <Card2>
+            <DevImage src={Taylor}></DevImage>
+            <DevName>Taylor Collins</DevName>
+            <h3 style={{ flexWrap: "wrap", textAlign: "center" }}>
+              Front-End:
+              <p>User controller and model, other various odds and ends</p>{" "}
+              <br /> <br />
+              Back-End:
+              <p>
+                {" "}
+                Nav bar, search, project show, settings, project cards, and bug
+                fixes!
+              </p>
+              <br /> <br />
+            </h3>
+            <br /> <br />
+          </Card2>
+        </Wrapper2>
+      </Column>
       <br /> <br />
     </>
   );
