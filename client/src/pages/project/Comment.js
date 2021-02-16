@@ -9,6 +9,7 @@ import {
   CommentName,
   UserPic,
 } from "../../styles/ProjectShowStyle";
+import { Link } from "react-router-dom";
 
 function Comment({ comment, project, deleteComment }) {
   const [account, setAccount] = useState(null);
@@ -36,10 +37,14 @@ function Comment({ comment, project, deleteComment }) {
   return (
     <Wrapper>
       <UserInfo>
-        <UserPic src={account?.image} />
-        <CommentName>
-          {account?.firstname} {account?.lastname}
-        </CommentName>
+        <Link to={`/user/${account?.id}`}>
+          <UserPic src={account?.image} />
+        </Link>
+        <Link to={`/user/${account?.id}`}>
+          <CommentName style={{ color: "white" }}>
+            {account?.firstname} {account?.lastname}
+          </CommentName>
+        </Link>
       </UserInfo>
       <CommentBody>{comment.body}</CommentBody>
       {renderDelete()}

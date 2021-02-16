@@ -11,7 +11,6 @@ import UserSettings from "./components/UserSettings";
 import LandingPage from "./pages/landing/LandingPage";
 import User from "./pages/profile/User";
 import { AppContainer, AppGrid, Logo, NavColumn } from "./styles/GlobalStyle";
-import devpointlogo from "./icons/devpointlogo.png";
 import ResultsPage from "./pages/landing/ResultsPage";
 import About from "./pages/about/Aboutus";
 
@@ -45,5 +44,4 @@ function App() {
     </>
   );
 }
-
 export default App;
